@@ -10,7 +10,7 @@
     "f_flash": "80000000L",
     "flash_mode": "qio",
     "mcu": "esp32c5",
-    "variant": "esp32c5"
+    "variant": "dfrobot_firebeetle2_esp32c5"
   },
   "connectivity": [
     "wifi",
