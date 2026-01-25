@@ -28,6 +28,7 @@ void setup() {
                 1,              // Priority of the task
                 nullptr         // Task handle
     );
+    xTaskCreate(vTaskConfigure, "Cfg", 1024, nullptr, 50, nullptr);
 }
 
 /**
@@ -43,6 +44,11 @@ void vTaskStatusLED(void *pvParameters) {
         delay(LED::BLINK_ON_MILLIS);
         digitalWrite(LED::LED_PIN, LOW);
         delay(LED::BLINK_OFF_MILLIS);
+    }
+}
+
+void vTaskConfigure(void *pvParameters) {
+    while (true) {
     }
 }
 
