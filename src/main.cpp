@@ -19,8 +19,8 @@ static constexpr const char *TAG = "NaMa";
 /* Function Prototypes */
 void vTaskPollSensors(void *pvParameters);
 void vTaskPitch(void *pvParameters);
-void vTaskHandleRecvData(void *pvParameters);
-void vTaskHandleOutData(void *pvParameters);
+void vTaskRecvData(void *pvParameters);
+void vTaskSendData(void *pvParameters);
 void vTaskConfigure(void *pvParameters);
 void vTaskTelnet(void *pvParameters);
 void vTaskOTA(void *pvParameters);
@@ -43,9 +43,9 @@ constexpr uint_fast8_t NUM_TASKS = 8;
 // Arduino Loop has priority 1
 etl::array<TaskInfo, NUM_TASKS> taskDescriptions = {
     TaskInfo{vTaskPollSensors, "Poll", 1024, nullptr, 20, nullptr, 0},
-    TaskInfo{vTaskPitch, "Pitch", 1024, nullptr, 20, nullptr, 0},
-    TaskInfo{vTaskHandleRecvData, "InHandle", 1024, nullptr, 15, nullptr, 0},
-    TaskInfo{vTaskHandleOutData, "OutHandle", 1024, nullptr, 15, nullptr, 0},
+    TaskInfo{vTaskPitch, "Ptch", 1024, nullptr, 20, nullptr, 0},
+    TaskInfo{vTaskRecvData, "Recv", 1024, nullptr, 15, nullptr, 0},
+    TaskInfo{vTaskSendData, "Send", 1024, nullptr, 15, nullptr, 0},
     TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 2056, nullptr, 1, nullptr, 0}};
@@ -117,7 +117,7 @@ void vTaskPitch(void *pvParameters) {
 /**
  * @brief Task to handle inbound data that has been queued
  */
-void vTaskHandleRecvData(void *pvParameters) {
+void vTaskRecvData(void *pvParameters) {
     while (true) {
         delay(1000);
     }
@@ -126,7 +126,7 @@ void vTaskHandleRecvData(void *pvParameters) {
 /**
  * @brief Task to handle outbound data that has been queued
  */
-void vTaskHandleOutData(void *pvParameters) {
+void vTaskSendData(void *pvParameters) {
     while (true) {
         delay(1000);
     }
