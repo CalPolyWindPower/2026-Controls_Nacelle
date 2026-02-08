@@ -33,6 +33,7 @@ struct TaskInfo {
     UBaseType_t minFreeStack_Bytes = 0;
 };
 constexpr uint_fast8_t NUM_TASKS = 3;
+// Arduino Loop has priority 1
 etl::array<TaskInfo, NUM_TASKS> taskDescriptions = {
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 14, nullptr, 0},
@@ -75,20 +76,51 @@ void setup() {
 }
 
 /**
- * MARK: Tasks
+ * MARK: Main Tasks
  * @see
  * https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/01-Tasks-and-co-routines/05-Implementing-a-task
  * @see https://forum.arduino.cc/t/non-blocking-delay-actions/1044079
  */
 
-void vTaskStatusLED(void *pvParameters) {
+/**
+ * @brief Task to poll high priority sensors
+ */
+void vTaskPollSensors(void *pvParameters) {
     while (true) {
-        digitalWrite(LED::LED_PIN, HIGH);
-        delay(LED::BLINK_ON_MILLIS);
-        digitalWrite(LED::LED_PIN, LOW);
-        delay(LED::BLINK_OFF_MILLIS);
+        delay(1000);
     }
 }
+
+/**
+ * @brief Task to control the pitch actuator
+ */
+void vTaskPitch(void *pvParameters) {
+    while (true) {
+        delay(1000);
+    }
+}
+
+// MARK: Network Tasks
+
+/**
+ * @brief Task to handle inbound data that has been queued
+ */
+void vTaskHandleInboundData(void *pvParameters) {
+    while (true) {
+        delay(1000);
+    }
+}
+
+/**
+ * @brief Task to handle outbound data that has been queued
+ */
+void vTaskHandleOutboundData(void *pvParameters) {
+    while (true) {
+        delay(1000);
+    }
+}
+
+// MARK: Utility Tasks
 
 void vTaskConfigure(void *pvParameters) {
     while (true) {
@@ -115,39 +147,14 @@ void vTaskOTA(void *pvParameters) {
     }
 }
 
-/**
- * @brief Task to poll high priority sensors
- */
-void vTaskPollSensors(void *pvParameters) {
-    while (true) {
-        delay(1000);
-    }
-}
+// MARK: Status Tasks
 
-/**
- * @brief Task to control the pitch actuator
- */
-void vTaskPitch(void *pvParameters) {
+void vTaskStatusLED(void *pvParameters) {
     while (true) {
-        delay(1000);
-    }
-}
-
-/**
- * @brief Task to handle inbound data that has been queued
- */
-void vTaskHandleInboundData(void *pvParameters) {
-    while (true) {
-        delay(1000);
-    }
-}
-
-/**
- * @brief Task to handle outbound data that has been queued
- */
-void vTaskHandleOutboundData(void *pvParameters) {
-    while (true) {
-        delay(1000);
+        digitalWrite(LED::LED_PIN, HIGH);
+        delay(LED::BLINK_ON_MILLIS);
+        digitalWrite(LED::LED_PIN, LOW);
+        delay(LED::BLINK_OFF_MILLIS);
     }
 }
 
@@ -166,7 +173,9 @@ void vTaskLogData(void *pvParameters) {
         ESP_LOGV(TAG, "Logging Data:");
 
         char statsBuffer[40 * NUM_TASKS];
-        vTaskGetRunTimeStats(statsBuffer); // TODO: Not recommended in production
+        vTaskGetRunTimeStats(
+            statsBuffer); // TODO: Not recommended in production
+        // uxTaskGetSystemState();
         ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
         delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
 
