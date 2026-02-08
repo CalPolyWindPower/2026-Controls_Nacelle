@@ -3,21 +3,36 @@
 // https://pvs-studio.com
 
 /* Includes */
-#include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+// #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
-#include "esp_log.h"
+#include "CommonConfig.hpp"
 #include <Arduino.h>
+// #include "2026Core/Net/Net-Application/NTP.hpp"
+// #include "2026Core/Net/NetAdapter_A.hpp"
+#include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
+
+#include <esp_log.h>
 
 /* Config */
-static constexpr char *TAG = "NaMa";
+static constexpr const char *TAG = "NaMa";
 
 /* Function Prototypes */
+void vTaskStatusLED(void *pvParameters);
+void vTaskConfigure(void *pvParameters);
+
+/* Global Objects */
+AdapterESPNow adapterESPNow = AdapterESPNow();
+// SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 
 /**
  * MARK: Setup
  * put your setup code here, to run once:
  */
 void setup() {
+    Serial.begin(115200);
+    ESP_LOGI(TAG, "Serial initialized");
+    // Serial.println("Hello world!");
+
     pinMode(LED::LED_PIN, OUTPUT);
 
     // Set up tasks
@@ -28,7 +43,8 @@ void setup() {
                 1,              // Priority of the task
                 nullptr         // Task handle
     );
-    xTaskCreate(vTaskConfigure, "Cfg", 1024, nullptr, 50, nullptr);
+    xTaskCreate(vTaskConfigure, "Cfg", 1024, nullptr, 14, nullptr);
+    // TODO: Note: Task priority must be <25
 }
 
 /**
@@ -49,6 +65,7 @@ void vTaskStatusLED(void *pvParameters) {
 
 void vTaskConfigure(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -57,6 +74,7 @@ void vTaskConfigure(void *pvParameters) {
  */
 void vTaskTelnet(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -66,6 +84,7 @@ void vTaskTelnet(void *pvParameters) {
  */
 void vTaskOTA(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -74,6 +93,7 @@ void vTaskOTA(void *pvParameters) {
  */
 void vTaskPollSensors(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -82,6 +102,7 @@ void vTaskPollSensors(void *pvParameters) {
  */
 void vTaskPitch(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -90,6 +111,7 @@ void vTaskPitch(void *pvParameters) {
  */
 void vTaskHandleInboundData(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -98,6 +120,7 @@ void vTaskHandleInboundData(void *pvParameters) {
  */
 void vTaskHandleOutboundData(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -106,6 +129,7 @@ void vTaskHandleOutboundData(void *pvParameters) {
  */
 void vTaskLogData(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -114,6 +138,7 @@ void vTaskLogData(void *pvParameters) {
  */
 void vTaskIdle(void *pvParameters) {
     while (true) {
+        delay(1000);
     }
 }
 
@@ -121,4 +146,7 @@ void vTaskIdle(void *pvParameters) {
  * MARK: loop
  * Arduino: put your main code here, to run repeatedly:
  */
-void loop() {}
+void loop() {
+    // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
+    delay(1000);
+}
