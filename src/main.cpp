@@ -19,8 +19,24 @@ static constexpr const char *TAG = "NaMa";
 /* Function Prototypes */
 void vTaskStatusLED(void *pvParameters);
 void vTaskConfigure(void *pvParameters);
+void vTaskLogData(void *pvParameters);
 
 /* Global Objects */
+struct TaskInfo {
+    const TaskFunction_t function;
+    const char *const name;
+    const configSTACK_DEPTH_TYPE stackSize_bytes = 1024;
+    void *const pvParameters = nullptr;
+    const UBaseType_t priority; // Note: Task priority must be <25 for some
+                                // reason, possible bug
+    TaskHandle_t pxCreatedTask = nullptr;
+    UBaseType_t minFreeStack_Bytes = 0;
+};
+constexpr uint_fast8_t NUM_TASKS = 3;
+etl::array<TaskInfo, NUM_TASKS> taskDescriptions = {
+    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 1, nullptr, 0},
+    TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 14, nullptr, 0},
+    TaskInfo{vTaskLogData, "Log", 2056, nullptr, 0, nullptr, 0}};
 AdapterESPNow adapterESPNow = AdapterESPNow();
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 
@@ -36,14 +52,25 @@ void setup() {
     pinMode(LED::LED_PIN, OUTPUT);
 
     // Set up tasks
-    xTaskCreate(vTaskStatusLED, // Task function
-                "Status LED",   // Name of the task (for debugging)
-                1024,           // Stack size (in words, not bytes)
-                nullptr,        // Task input parameter
-                1,              // Priority of the task
-                nullptr         // Task handle
-    );
-    xTaskCreate(vTaskConfigure, "Cfg", 1024, nullptr, 14, nullptr);
+    for (TaskInfo &taskDesc : taskDescriptions) {
+        if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
+            ESP_LOGW(TAG, "Stack size not word aligned");
+        }
+        // Syntax: xTaskCreate(Task function, Name of the task (for debugging),
+        // Stack size (in words, not bytes), Task input parameter, Priority of
+        // the task, Task handle)
+        BaseType_t result =
+            xTaskCreate(taskDesc.function, taskDesc.name,
+                        taskDesc.stackSize_bytes, taskDesc.pvParameters,
+                        taskDesc.priority, &(taskDesc.pxCreatedTask));
+        if (result != pdPASS) {
+            ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
+        } else {
+            ESP_LOGV(
+                TAG, "Created task %s with priority %u and stack size %u bytes",
+                taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+        }
+    }
     // TODO: Note: Task priority must be <25
 }
 
@@ -124,12 +151,28 @@ void vTaskHandleOutboundData(void *pvParameters) {
     }
 }
 
+constexpr uint32_t LOG_INTERVAL_MS = 1000;
+constexpr uint32_t ITEMS_TO_LOG = 1;
 /**
  * @brief Task to log data
  */
 void vTaskLogData(void *pvParameters) {
     while (true) {
-        delay(1000);
+        // if (!Serial.isConnected()) {
+        //     delay(LOG_INTERVAL_MS);
+        //     continue;
+        // }
+
+        ESP_LOGV(TAG, "Logging Data:");
+
+        for (TaskInfo &taskDesc : taskDescriptions) {
+            taskDesc.minFreeStack_Bytes =
+                uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
+            ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
+                     taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
+                     taskDesc.minFreeStack_Bytes);
+        }
+        delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
     }
 }
 
