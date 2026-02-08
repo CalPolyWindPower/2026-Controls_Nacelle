@@ -34,9 +34,9 @@ struct TaskInfo {
 };
 constexpr uint_fast8_t NUM_TASKS = 3;
 etl::array<TaskInfo, NUM_TASKS> taskDescriptions = {
-    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 1, nullptr, 0},
+    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 14, nullptr, 0},
-    TaskInfo{vTaskLogData, "Log", 2056, nullptr, 0, nullptr, 0}};
+    TaskInfo{vTaskLogData, "Log", 2056, nullptr, 1, nullptr, 0}};
 AdapterESPNow adapterESPNow = AdapterESPNow();
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 
@@ -151,8 +151,8 @@ void vTaskHandleOutboundData(void *pvParameters) {
     }
 }
 
-constexpr uint32_t LOG_INTERVAL_MS = 1000;
-constexpr uint32_t ITEMS_TO_LOG = 1;
+constexpr uint32_t LOG_INTERVAL_MS = 2000;
+constexpr uint32_t ITEMS_TO_LOG = 3;
 /**
  * @brief Task to log data
  */
@@ -165,6 +165,15 @@ void vTaskLogData(void *pvParameters) {
 
         ESP_LOGV(TAG, "Logging Data:");
 
+        char statsBuffer[40 * NUM_TASKS];
+        vTaskGetRunTimeStats(statsBuffer); // TODO: Not recommended in production
+        ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+        delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
+
+        ESP_LOGI(TAG, "Minimum free heap: %u bytes",
+                 esp_get_minimum_free_heap_size());
+        delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
+
         for (TaskInfo &taskDesc : taskDescriptions) {
             taskDesc.minFreeStack_Bytes =
                 uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
@@ -173,15 +182,9 @@ void vTaskLogData(void *pvParameters) {
                      taskDesc.minFreeStack_Bytes);
         }
         delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
-    }
-}
 
-/**
- * @brief Task to track idle time
- */
-void vTaskIdle(void *pvParameters) {
-    while (true) {
-        delay(1000);
+        // esp_wifi_get_bandwidth
+        // esp_wifi_sta_get_rssi
     }
 }
 
