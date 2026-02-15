@@ -33,6 +33,10 @@ namespace FR_FIREBEETLE2_ESP32C6 {
     // Onboard LED
     constexpr uint_fast8_t LED_PIN = 15;
 
+    // Actuator Pins
+    constexpr uint_fast8_t ACTUATOR_PWM_PIN = 3;
+    constexpr uint_fast8_t ACTUATOR_FB_PIN = 2;
+
     // I2C
     constexpr uint_fast8_t HPI2C_SDA_PIN = 9;
     constexpr uint_fast8_t HPI2C_SCL_PIN = 10;
@@ -43,7 +47,13 @@ namespace FR_FIREBEETLE2_ESP32C6 {
     constexpr uint_fast8_t SPI_CIPO_PIN = 25;
     constexpr uint_fast8_t SPI_CLK_PIN = 23;
     constexpr uint_fast8_t SPI_COPI_PIN = 24;
-    constexpr uint_fast8_t SPI_CS_PIN = -1; // todo
+    constexpr uint_fast8_t SPI_CS_PIN = 28;
+
+    // UART
+    constexpr uint_fast8_t UART_TX_PIN = TX;
+    constexpr uint_fast8_t UART_RX_PIN = RX;
+    constexpr uint_fast8_t LPUART_TX_PIN = LP_TX;
+    constexpr uint_fast8_t LPUART_RX_PIN = LP_RX;
 } // namespace FR_FIREBEETLE2_ESP32C6
 
 // MARK: Constants
