@@ -1,15 +1,49 @@
+/**
+ * @file NacelleConfig.hpp
+ */
 #pragma once
 
 static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 
 // Imports
 #include <cstdint>
+#define ESP32C5 1
+#define BOARD ESP32C5
+#if not(BOARD == ESP32C5)
+#    warning "Not using production nacelle board!"
+#endif
 
-// CommonConfig.hpp
+/**
+ * @brief Debugging Setup
+ * @see
+ * https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/log.html
+ */
+#pragma region Debugging Setup
+
+#define PROJECT_ID "WT26N" // CONFIG - Project ID to use with logger
+
+#pragma endregion // Debugging Setup
 
 // MARK: Boards
+
+// Make sure the hardware pins are imported
+#include <pins_arduino.h>
+
 namespace FR_FIREBEETLE2_ESP32C6 {
+    // Onboard LED
     constexpr uint_fast8_t LED_PIN = 15;
+
+    // I2C
+    constexpr uint_fast8_t HPI2C_SDA_PIN = 9;
+    constexpr uint_fast8_t HPI2C_SCL_PIN = 10;
+    constexpr uint_fast8_t LPI2C_SDA_PIN = 6;
+    constexpr uint_fast8_t LPI2C_SCL_PIN = 7;
+
+    // SPI
+    constexpr uint_fast8_t SPI_CIPO_PIN = 25;
+    constexpr uint_fast8_t SPI_CLK_PIN = 23;
+    constexpr uint_fast8_t SPI_COPI_PIN = 24;
+    constexpr uint_fast8_t SPI_CS_PIN = -1; // todo
 } // namespace FR_FIREBEETLE2_ESP32C6
 
 // MARK: Constants
