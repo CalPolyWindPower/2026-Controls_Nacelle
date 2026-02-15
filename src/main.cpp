@@ -55,21 +55,59 @@ SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 
 /**
  * MARK: Setup
- * put your setup code here, to run once:
+ * @details put your setup code here, to run once:
  */
 void setup() {
-    Serial.begin(115200);
-    ESP_LOGI(TAG, "Serial initialized");
+    static bool serialInitialized = false;
+    if (!serialInitialized) {
+        Serial.begin(115200);
+        ESP_LOGI(TAG, "Serial initialized");
+        serialInitialized = true;
+    }
 
     // Configure Hardare
-    pinMode(LED::LED_PIN, OUTPUT); // Onboard LED
-    digitalWrite(LED::LED_PIN, HIGH);
+    static bool LEDInitialized = false;
+    if (!LEDInitialized) {
+        pinMode(LED::LED_PIN, OUTPUT); // Onboard LED
+        digitalWrite(LED::LED_PIN, HIGH);
+        LEDInitialized = true;
+    } else {
+        // Save power during main operations
+        digitalWrite(LED::LED_PIN, LOW);
+    }
+
+    // Configure Network
+    static bool espNowInitalized = false;
+    if (espNowInitalized) {
+        // Continue
+    } else if (adapterESPNow.begin()) {
+        ESP_LOGI(TAG, "ESP-NOW initialized.");
+        espNowInitalized = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+    }
+    static bool peerRegistered = false;
+    if (!peerRegistered) {
+        // Continue
+    } else if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
+        ESP_LOGI(TAG, "Registered peer");
+        peerRegistered = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to register peer");
+    }
+
     // Sync Time
-    if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+    static bool timeSynced = false;
+    if (timeSynced) {
+        // Continue
+    } else if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
         ESP_LOGI(TAG, "Time sync initialized successfully");
+        timeSynced = true;
     } else {
         ESP_LOGE(TAG, "Failed to initialize time sync");
     }
+
+    // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
 
     digitalWrite(LED::LED_PIN, LOW);
@@ -146,7 +184,8 @@ void vTaskSendData(void *pvParameters) {
 
 void vTaskConfigure(void *pvParameters) {
     while (true) {
-        delay(1000);
+        setup();
+        delay(2000);
     }
 }
 
