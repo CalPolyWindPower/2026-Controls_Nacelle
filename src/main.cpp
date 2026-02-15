@@ -6,6 +6,7 @@
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
 #include "2026Core/Net/Net-Application/NTP.hpp"
+// #include "2026Core/Net/Net-Application/Telnet.hpp"
 #include "NacelleConfig.hpp"
 #include <Arduino.h>
 // #include "2026Core/Net/NetAdapter_A.hpp"
@@ -154,7 +155,8 @@ void vTaskConfigure(void *pvParameters) {
  */
 void vTaskTelnet(void *pvParameters) {
     while (true) {
-        delay(1000);
+        // TELNET::loop();
+        delay(500);
     }
 }
 

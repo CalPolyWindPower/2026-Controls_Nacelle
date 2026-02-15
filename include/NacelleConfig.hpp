@@ -82,3 +82,10 @@ namespace RUN {
     constexpr uint32_t SLEEP_TIME_MILLIS =
         SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
+
+namespace TELNET {
+    constexpr uint_fast32_t SERIAL_SPEED = 115200;
+    constexpr const char *WIFI_SSID = "CPWP-Nacelle";
+    constexpr const char *WIFI_PASSWORD = "CowPolyWindPower";
+    constexpr uint_fast8_t PORT = 23;
+} // namespace TELNET
