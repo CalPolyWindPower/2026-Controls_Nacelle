@@ -5,18 +5,17 @@
 /* Includes */
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
-#include "CommonConfig.hpp"
+#include "2026Core/Net/Net-Application/NTP.hpp"
+#include "NacelleConfig.hpp"
 #include <Arduino.h>
-// #include "2026Core/Net/Net-Application/NTP.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
-
 #include <esp_log.h>
 
-/* Config */
+// MARK: Config
 static constexpr const char *TAG = "NaMa";
 
-/* Function Prototypes */
+// MARK: Function Prototypes
 void vTaskPollSensors(void *pvParameters);
 void vTaskPitch(void *pvParameters);
 void vTaskRecvData(void *pvParameters);
@@ -28,7 +27,7 @@ void vTaskStatusLED(void *pvParameters);
 void vTaskConfigure(void *pvParameters);
 void vTaskLogData(void *pvParameters);
 
-/* Global Objects */
+// MARK:  Global Objects
 struct TaskInfo {
     const TaskFunction_t function;
     const char *const name;
@@ -51,7 +50,7 @@ etl::array<TaskInfo, NUM_TASKS> taskDescriptions = {
     TaskInfo{vTaskLogData, "Log", 2056, nullptr, 1, nullptr, 0}};
 
 AdapterESPNow adapterESPNow = AdapterESPNow();
-// SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 
 /**
  * MARK: Setup
@@ -60,9 +59,19 @@ AdapterESPNow adapterESPNow = AdapterESPNow();
 void setup() {
     Serial.begin(115200);
     ESP_LOGI(TAG, "Serial initialized");
-    // Serial.println("Hello world!");
 
-    pinMode(LED::LED_PIN, OUTPUT);
+    // Configure Hardare
+    pinMode(LED::LED_PIN, OUTPUT); // Onboard LED
+    digitalWrite(LED::LED_PIN, HIGH);
+    // Sync Time
+    if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+        ESP_LOGI(TAG, "Time sync initialized successfully");
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize time sync");
+    }
+    // TODO: Configure response handler, load server
+
+    digitalWrite(LED::LED_PIN, LOW);
 
     // Set up tasks
     for (TaskInfo &taskDesc : taskDescriptions) {
