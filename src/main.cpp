@@ -3,14 +3,15 @@
 // https://pvs-studio.com
 
 /* Includes */
+#include "NacelleConfig.hpp"
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
 #include "2026Core/Net/Net-Application/NTP.hpp"
 // #include "2026Core/Net/Net-Application/Telnet.hpp"
-#include "NacelleConfig.hpp"
 #include <Arduino.h>
 // #include "2026Core/Net/NetAdapter_A.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
+#include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include <esp_log.h>
 
 // MARK: Config
@@ -39,17 +40,20 @@ struct TaskInfo {
     TaskHandle_t pxCreatedTask = nullptr;
     UBaseType_t minFreeStack_Bytes = 0;
 };
-constexpr uint_fast8_t NUM_TASKS = 8;
+constexpr uint_fast8_t NUM_USR_TASKS = 7; // Must match number of entires!
+// constexpr uint_fast8_t NUM_USR_TASKS = 1;
 // Arduino Loop has priority 1
-etl::array<TaskInfo, NUM_TASKS> taskDescriptions = {
+// TODO: Note: Task priority must be <25
+etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
     TaskInfo{vTaskPollSensors, "Poll", 1024, nullptr, 20, nullptr, 0},
     TaskInfo{vTaskPitch, "Ptch", 1024, nullptr, 20, nullptr, 0},
     TaskInfo{vTaskRecvData, "Recv", 1024, nullptr, 15, nullptr, 0},
     TaskInfo{vTaskSendData, "Send", 1024, nullptr, 15, nullptr, 0},
     TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
-    TaskInfo{vTaskLogData, "Log", 2056, nullptr, 1, nullptr, 0}};
+    TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
 
+AdapterWLAN adapterWLAN = AdapterWLAN();
 AdapterESPNow adapterESPNow = AdapterESPNow();
 SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 
@@ -71,41 +75,70 @@ void setup() {
         pinMode(LED::LED_PIN, OUTPUT); // Onboard LED
         digitalWrite(LED::LED_PIN, HIGH);
         LEDInitialized = true;
+        ESP_LOGI(TAG, "LED initialized");
     } else {
         // Save power during main operations
         digitalWrite(LED::LED_PIN, LOW);
     }
 
-    // Configure Network
-    static bool espNowInitalized = false;
-    if (espNowInitalized) {
-        // Continue
-    } else if (adapterESPNow.begin()) {
-        ESP_LOGI(TAG, "ESP-NOW initialized.");
-        espNowInitalized = true;
-    } else {
-        ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+    // Configure WiFi
+    static bool wifiInitialized = false;
+    if (!wifiInitialized) {
+        digitalWrite(LED::LED_PIN,
+                     LOW); // Will take a while, so turn off the LED
+        uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
+        digitalWrite(LED::LED_PIN, HIGH);
+        ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
+        // if (adapterWLAN.begin(optimalChannel)) {
+        //     ESP_LOGI(TAG, "WiFi initialized");
+        //     wifiInitialized = true;
+        // } else {
+        //     ESP_LOGE(TAG, "Failed to initialize WiFi");
+        // }
     }
+    digitalWrite(LED::LED_PIN, LOW);
+
+    // Configure ESP-NOW
+    static bool espNowInitalized = false;
+    if (!espNowInitalized) {
+        if (adapterESPNow.begin()) {
+            ESP_LOGI(TAG, "ESP-NOW initialized.");
+            espNowInitalized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+        }
+    }
+    digitalWrite(LED::LED_PIN, HIGH);
+
+    // Configure ESP-NOW Peers
     static bool peerRegistered = false;
     if (!peerRegistered) {
-        // Continue
-    } else if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
-        ESP_LOGI(TAG, "Registered peer");
-        peerRegistered = true;
-    } else {
-        ESP_LOGE(TAG, "Failed to register peer");
+        if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
+            ESP_LOGI(TAG, "Registered peer");
+            peerRegistered = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to register peer");
+        }
     }
+    digitalWrite(LED::LED_PIN, LOW);
 
-    // Sync Time
-    static bool timeSynced = false;
-    if (timeSynced) {
-        // Continue
-    } else if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
-        ESP_LOGI(TAG, "Time sync initialized successfully");
-        timeSynced = true;
-    } else {
-        ESP_LOGE(TAG, "Failed to initialize time sync");
-    }
+    // Sync Time // FIXME! - Load accesses fault
+    // static bool timeSynced = false;
+    // if (!timeSynced) {
+    //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+    //         ESP_LOGI(TAG, "Time sync initialized successfully");
+    //         timeSynced = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize time sync");
+    //     }
+    // }
+    digitalWrite(LED::LED_PIN, HIGH);
+
+    // Print MAC Address // todo - verify
+    ESP_LOGI(
+        TAG, "MAC Address: %s",
+        AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    digitalWrite(LED::LED_PIN, LOW);
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
@@ -113,26 +146,32 @@ void setup() {
     digitalWrite(LED::LED_PIN, LOW);
 
     // Set up tasks
-    for (TaskInfo &taskDesc : taskDescriptions) {
-        if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
-            ESP_LOGW(TAG, "Stack size not word aligned");
+    static bool tasksSetup = false;
+    if (!tasksSetup) {
+        for (TaskInfo &taskDesc : taskDescriptions) {
+            if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
+                ESP_LOGW(TAG, "Stack size not word aligned");
+            }
+            // Syntax: xTaskCreate(Task function, Name of the task (for
+            // debugging), Stack size (in words, not bytes), Task input
+            // parameter, Priority of the task, Task handle)
+            BaseType_t result =
+                xTaskCreate(taskDesc.function, taskDesc.name,
+                            taskDesc.stackSize_bytes, taskDesc.pvParameters,
+                            taskDesc.priority, &(taskDesc.pxCreatedTask));
+            if (result != pdPASS) {
+                ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
+            } else {
+                ESP_LOGV(
+                    TAG,
+                    "Created task %s with priority %u and stack size %u bytes",
+                    taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+            }
         }
-        // Syntax: xTaskCreate(Task function, Name of the task (for debugging),
-        // Stack size (in words, not bytes), Task input parameter, Priority of
-        // the task, Task handle)
-        BaseType_t result =
-            xTaskCreate(taskDesc.function, taskDesc.name,
-                        taskDesc.stackSize_bytes, taskDesc.pvParameters,
-                        taskDesc.priority, &(taskDesc.pxCreatedTask));
-        if (result != pdPASS) {
-            ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
-        } else {
-            ESP_LOGV(
-                TAG, "Created task %s with priority %u and stack size %u bytes",
-                taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
-        }
+        tasksSetup = true;
+
+        ESP_LOGI(TAG, "Setup complete!");
     }
-    // TODO: Note: Task priority must be <25
 }
 
 /**
@@ -184,7 +223,7 @@ void vTaskSendData(void *pvParameters) {
 
 void vTaskConfigure(void *pvParameters) {
     while (true) {
-        setup();
+        // setup(); // todo
         delay(2000);
     }
 }
@@ -194,7 +233,7 @@ void vTaskConfigure(void *pvParameters) {
  */
 void vTaskTelnet(void *pvParameters) {
     while (true) {
-        // TELNET::loop();
+        // TELNET::loop(); // todo
         delay(500);
     }
 }
@@ -213,6 +252,7 @@ void vTaskOTA(void *pvParameters) {
 
 void vTaskStatusLED(void *pvParameters) {
     while (true) {
+        ESP_LOGV(TAG, "vTSL");
         digitalWrite(LED::LED_PIN, HIGH);
         delay(LED::BLINK_ON_MILLIS);
         digitalWrite(LED::LED_PIN, LOW);
@@ -232,26 +272,43 @@ void vTaskLogData(void *pvParameters) {
         //     continue;
         // }
 
-        ESP_LOGV(TAG, "Logging Data:");
+        ESP_LOGD(TAG, "Logging Data:");
 
-        char statsBuffer[40 * NUM_TASKS];
-        vTaskGetRunTimeStats(
-            statsBuffer); // TODO: Not recommended in production
-        // uxTaskGetSystemState();
-        ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+        ESP_LOGI(TAG, "Num tasks reported by FreeRTOS: %u",
+                 uxTaskGetNumberOfTasks());
+
+        constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
+        constexpr uint_fast8_t NUM_ESP_TASKS = 8;
+        constexpr uint_fast16_t STATS_BUFFER_SIZE =
+            REC_BYTES_PER_TASK * (NUM_USR_TASKS + NUM_ESP_TASKS);
+        char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
+        if (uxTaskGetNumberOfTasks() > NUM_USR_TASKS + NUM_ESP_TASKS) {
+            ESP_LOGE(
+                TAG,
+                "Number of tasks (%d) exceeds expected max (%d), skipping to "
+                "prevent memory corruption",
+                uxTaskGetNumberOfTasks(), NUM_USR_TASKS + NUM_ESP_TASKS);
+        } else {
+            // TODO: Not recommended in production
+            vTaskGetRunTimeStats(statsBuffer);
+            statsBuffer[STATS_BUFFER_SIZE - 1] =
+                '\0'; // hard cap, avoid over-read
+            // uxTaskGetSystemState();
+            ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
+
+            for (TaskInfo &taskDesc : taskDescriptions) {
+                taskDesc.minFreeStack_Bytes =
+                    uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
+                ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
+                         taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
+                         taskDesc.minFreeStack_Bytes);
+            }
+        }
         delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
 
         ESP_LOGI(TAG, "Minimum free heap: %u bytes",
                  esp_get_minimum_free_heap_size());
-        delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
-
-        for (TaskInfo &taskDesc : taskDescriptions) {
-            taskDesc.minFreeStack_Bytes =
-                uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
-            ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
-                     taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
-                     taskDesc.minFreeStack_Bytes);
-        }
         delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
 
         // esp_wifi_get_bandwidth
