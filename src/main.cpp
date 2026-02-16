@@ -13,6 +13,7 @@
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include <esp_log.h>
+#include <temperature_sensor.h>
 
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
@@ -260,12 +261,42 @@ void vTaskStatusLED(void *pvParameters) {
     }
 }
 
-constexpr uint32_t LOG_INTERVAL_MS = 2000;
-constexpr uint32_t ITEMS_TO_LOG = 3;
+/**
+ * @brief Convert Celsius to Fahrenheit
+ */
+// consteval uint_fast8_t celsiusToFahrenheit(uint_fast8_t celsius) {
+//     return (celsius * 9 / 5) + 32;
+// }
+// static_assert(celsiusToFahrenheit(0) == 32);
+// static_assert(celsiusToFahrenheit(130) <= UINT8_MAX,
+//               "Value exceeds uint8_t max");
+
+/**
+ * @brief Convert Fahrenheit to Celsius
+ */
+// consteval uint_fast8_t fahrenheitToCelsius(uint_fast8_t fahrenheit) {
+//     return (fahrenheit - 32) * 5 / 9;
+// }
+
+constexpr uint32_t LOG_INTERVAL_MS = 4000;
+constexpr uint32_t ITEMS_TO_LOG = 4;
+constexpr uint32_t LOG_ITEM_INTERVAL_MS = LOG_INTERVAL_MS / ITEMS_TO_LOG;
 /**
  * @brief Task to log data
  */
 void vTaskLogData(void *pvParameters) {
+    /**
+     * @See
+     * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
+     * TODO: The temp. sensor may use more power
+     * TODO: Temp interput/ callback/ hardware monitoring
+     */
+    temperature_sensor_handle_t tempSensHandle = NULL;
+    temperature_sensor_config_t tempSensConfig =
+        TEMPERATURE_SENSOR_CONFIG_DEFAULT(20, 100);
+    ESP_ERROR_CHECK(
+        temperature_sensor_install(&tempSensConfig, &tempSensHandle));
+
     while (true) {
         // if (!Serial.isConnected()) {
         //     delay(LOG_INTERVAL_MS);
@@ -295,7 +326,7 @@ void vTaskLogData(void *pvParameters) {
                 '\0'; // hard cap, avoid over-read
             // uxTaskGetSystemState();
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
-            delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
+            delay(LOG_ITEM_INTERVAL_MS);
 
             for (TaskInfo &taskDesc : taskDescriptions) {
                 taskDesc.minFreeStack_Bytes =
@@ -305,11 +336,30 @@ void vTaskLogData(void *pvParameters) {
                          taskDesc.minFreeStack_Bytes);
             }
         }
-        delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
+        delay(LOG_ITEM_INTERVAL_MS);
 
         ESP_LOGI(TAG, "Minimum free heap: %u bytes",
                  esp_get_minimum_free_heap_size());
-        delay(LOG_INTERVAL_MS / ITEMS_TO_LOG);
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        // Enable temperature sensor
+        ESP_ERROR_CHECK(temperature_sensor_enable(tempSensHandle));
+        // Get converted sensor data
+        float tsens_out;
+        ESP_ERROR_CHECK(
+            temperature_sensor_get_celsius(tempSensHandle, &tsens_out));
+        int32_t tempTrunc_C = (int32_t)tsens_out;
+        ESP_LOGI(TAG, "Temperature in %d dC", tempTrunc_C);
+        constexpr int32_t MAX_EXT_TEMP = 105;
+        constexpr int32_t MIN_EXT_TEMP = -40;
+        if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
+            ESP_LOGE(TAG, "Temperature out of bounds: %d dC", tempTrunc_C);
+        } else {
+            ESP_LOGI(TAG, "Temperature: %d dC", tempTrunc_C);
+        }
+        // Disable the temperature sensor if it is not needed and save the power
+        ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
+        delay(LOG_ITEM_INTERVAL_MS);
 
         // esp_wifi_get_bandwidth
         // esp_wifi_sta_get_rssi

@@ -1,0 +1,1478 @@
+[ 20885][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 29 dC
+[ 20886][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 21885][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 21885][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 21887][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	14117		<1%
+IDLE           	21113610		96%
+tiT            	3491		<1%
+Poll           	46		<1%
+Ptch           	39		<1%
+Recv           	44		<1%
+Send           	38		<1%
+Cfg            	23		<1%
+LED            	45		<1%
+loopTask       	89874		<1%
+Tmr Svc        	5		<1%
+esp_timer      	41335		<1%
+wifi           	616815		2%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 22887][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 22887][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 22888][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 22888][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 22888][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 22888][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 22889][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2292, F: 1804
+[ 23888][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 24888][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 29 dC
+[ 24889][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 25888][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 25888][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 25890][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	19119		<1%
+IDLE           	25110958		96%
+tiT            	3869		<1%
+Poll           	66		<1%
+Ptch           	55		<1%
+Recv           	64		<1%
+Send           	54		<1%
+Cfg            	33		<1%
+LED            	60		<1%
+loopTask       	89910		<1%
+sys_evt        	911		<1%
+wifi           	616884		2%
+esp_timer      	41405		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 26890][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 26890][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 26891][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 26891][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 26891][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 26891][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 26892][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 27891][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 28891][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 29 dC
+[ 28892][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 29891][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 29891][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 29893][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	24154		<1%
+IDLE           	29108345		97%
+tiT            	4246		<1%
+Poll           	86		<1%
+Ptch           	71		<1%
+Recv           	84		<1%
+Send           	71		<1%
+Cfg            	42		<1%
+LED            	75		<1%
+loopTask       	89946		<1%
+wifi           	616884		2%
+arduino_events 	299		<1%
+esp_timer      	41473		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[ 30893][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 30893][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 30894][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 30894][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 30894][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 30894][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 30895][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 31894][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 32894][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 32895][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 33894][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 33894][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 33895][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	29062		<1%
+IDLE           	33105761		97%
+tiT            	4625		<1%
+Poll           	106		<1%
+Ptch           	87		<1%
+Recv           	104		<1%
+Send           	88		<1%
+Cfg            	51		<1%
+LED            	90		<1%
+loopTask       	89982		<1%
+Tmr Svc        	5		<1%
+wifi           	616978		1%
+esp_timer      	41543		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 34896][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 34896][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 34897][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 34897][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 34897][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 34897][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 34898][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 35897][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 36897][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 36898][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 37897][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 37897][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 37898][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	33945		<1%
+IDLE           	37103227		97%
+tiT            	5003		<1%
+Poll           	126		<1%
+Ptch           	103		<1%
+Recv           	124		<1%
+Send           	105		<1%
+Cfg            	60		<1%
+LED            	105		<1%
+loopTask       	90018		<1%
+sys_evt        	911		<1%
+wifi           	617049		1%
+esp_timer      	41612		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 38899][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 38899][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 38900][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 38900][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 38900][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 38900][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 38901][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 39900][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 40900][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 40901][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 41900][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 41900][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 41902][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	38877		<1%
+IDLE           	41100634		98%
+tiT            	5379		<1%
+Poll           	146		<1%
+Ptch           	119		<1%
+Recv           	144		<1%
+Send           	123		<1%
+Cfg            	69		<1%
+LED            	120		<1%
+loopTask       	90054		<1%
+arduino_events 	299		<1%
+wifi           	617130		1%
+esp_timer      	41682		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[ 42902][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 42902][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 42903][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 42903][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 42903][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 42903][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 42904][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 43903][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 44903][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 44904][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 45903][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 45903][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 45905][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	43746		<1%
+IDLE           	45098166		98%
+tiT            	5755		<1%
+Poll           	166		<1%
+Ptch           	136		<1%
+Recv           	163		<1%
+Send           	141		<1%
+Cfg            	77		<1%
+LED            	133		<1%
+loopTask       	90090		<1%
+Tmr Svc        	5		<1%
+wifi           	617154		1%
+esp_timer      	41750		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 46905][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 46905][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 46906][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 46906][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 46906][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 46906][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 46907][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 47906][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 48906][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 48907][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 49906][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 49906][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 49908][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	48769		<1%
+IDLE           	49095456		98%
+tiT            	6134		<1%
+Poll           	186		<1%
+Ptch           	152		<1%
+Recv           	183		<1%
+Send           	158		<1%
+Cfg            	86		<1%
+LED            	148		<1%
+loopTask       	90126		<1%
+sys_evt        	911		<1%
+wifi           	617259		1%
+esp_timer      	41820		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 50908][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 50908][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 50909][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 50909][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 50909][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 50909][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 50910][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 51909][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 52909][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 52910][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 53909][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 53909][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 53911][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	53989		<1%
+IDLE           	53092579		98%
+tiT            	6513		<1%
+Poll           	206		<1%
+Ptch           	168		<1%
+Recv           	203		<1%
+Send           	174		<1%
+Cfg            	96		<1%
+LED            	161		<1%
+loopTask       	90160		<1%
+arduino_events 	299		<1%
+wifi           	617342		1%
+esp_timer      	41886		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[ 54911][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 54911][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 54912][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 54912][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 54912][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 54912][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 54913][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 55912][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 56912][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 56913][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 57912][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 57912][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 57914][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	58933		<1%
+IDLE           	57089992		98%
+tiT            	6889		<1%
+Poll           	226		<1%
+Ptch           	184		<1%
+Recv           	223		<1%
+Send           	191		<1%
+LED            	176		<1%
+Cfg            	105		<1%
+loopTask       	90196		<1%
+Tmr Svc        	5		<1%
+wifi           	617406		1%
+esp_timer      	41956		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 58914][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 58914][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 58915][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 58915][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 58915][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 58915][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 58916][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 59915][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 60915][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 60916][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 61915][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 61915][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 61917][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	63860		<1%
+IDLE           	61087365		98%
+tiT            	7267		<1%
+Poll           	246		<1%
+Ptch           	200		<1%
+Recv           	243		<1%
+Send           	208		<1%
+LED            	189		<1%
+Cfg            	114		<1%
+loopTask       	90230		<1%
+sys_evt        	911		<1%
+esp_timer      	42022		<1%
+wifi           	617533		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 62917][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 62917][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 62918][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 62918][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 62918][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 62918][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 62919][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 63918][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 64918][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 64919][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 65918][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 65918][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 65919][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	68960		<1%
+IDLE           	65084674		98%
+tiT            	7643		<1%
+Poll           	266		<1%
+Ptch           	216		<1%
+Recv           	263		<1%
+Send           	224		<1%
+LED            	204		<1%
+Cfg            	124		<1%
+loopTask       	90266		<1%
+arduino_events 	299		<1%
+wifi           	617545		<1%
+esp_timer      	42092		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[ 66920][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 66920][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 66921][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 66921][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 66921][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 66921][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 66922][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 67921][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 68921][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 68922][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 69921][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 69921][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 69922][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	73964		<1%
+IDLE           	69081979		98%
+tiT            	8020		<1%
+Poll           	286		<1%
+Ptch           	232		<1%
+Recv           	283		<1%
+Send           	240		<1%
+LED            	218		<1%
+Cfg            	134		<1%
+loopTask       	90301		<1%
+Tmr Svc        	5		<1%
+wifi           	617661		<1%
+esp_timer      	42159		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 70923][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 70923][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 70924][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 70924][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 70924][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 70924][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 70925][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 71924][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 72924][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 72925][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 73924][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 73924][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 73925][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	78938		<1%
+IDLE           	73079294		98%
+tiT            	8435		<1%
+Poll           	306		<1%
+Ptch           	248		<1%
+Recv           	303		<1%
+Send           	258		<1%
+LED            	233		<1%
+Cfg            	143		<1%
+loopTask       	90336		<1%
+sys_evt        	911		<1%
+wifi           	617755		<1%
+esp_timer      	42228		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 74926][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 74926][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 74927][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 74927][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 74927][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 74927][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 74928][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 75927][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 76927][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 76928][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 77927][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 77927][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 77928][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	83856		<1%
+IDLE           	77076732		98%
+tiT            	8810		<1%
+Poll           	326		<1%
+Ptch           	264		<1%
+Recv           	323		<1%
+Send           	276		<1%
+LED            	249		<1%
+Cfg            	152		<1%
+loopTask       	90373		<1%
+arduino_events 	299		<1%
+wifi           	617814		<1%
+esp_timer      	42302		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[ 78929][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 78929][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 78930][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 78930][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 78930][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 78930][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 78931][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 79930][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 80930][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 80931][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 81930][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 81930][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 81931][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	88885		<1%
+IDLE           	81074111		98%
+tiT            	9189		<1%
+LED            	264		<1%
+Poll           	346		<1%
+Ptch           	280		<1%
+Recv           	343		<1%
+Send           	293		<1%
+Cfg            	161		<1%
+loopTask       	90409		<1%
+Tmr Svc        	5		<1%
+wifi           	617826		<1%
+esp_timer      	42370		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 82932][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 82932][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 82933][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 82933][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 82933][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 82933][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 82934][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 83933][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 84933][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 84934][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 85933][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 85933][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 85934][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	93711		<1%
+IDLE           	85071671		98%
+tiT            	9563		<1%
+LED            	279		<1%
+Poll           	366		<1%
+Ptch           	296		<1%
+Recv           	363		<1%
+Send           	310		<1%
+Cfg            	171		<1%
+loopTask       	90445		<1%
+sys_evt        	911		<1%
+wifi           	617862		<1%
+esp_timer      	42440		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 86935][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 86935][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 86936][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 86936][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 86936][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 86936][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 86937][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 87936][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 88936][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 88937][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 89936][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 89936][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 89937][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	98679		<1%
+IDLE           	89069021		99%
+tiT            	9940		<1%
+LED            	294		<1%
+Poll           	386		<1%
+Ptch           	313		<1%
+Recv           	382		<1%
+Send           	327		<1%
+Cfg            	181		<1%
+loopTask       	90481		<1%
+arduino_events 	299		<1%
+wifi           	617965		<1%
+esp_timer      	42508		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[ 90938][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 90938][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 90939][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 90939][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 90939][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 90939][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 90940][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 91939][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 92939][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 92940][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 93939][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 93939][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 93941][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	103654		<1%
+IDLE           	93066360		99%
+tiT            	10318		<1%
+LED            	309		<1%
+Poll           	406		<1%
+Ptch           	330		<1%
+Recv           	401		<1%
+Send           	344		<1%
+Cfg            	190		<1%
+loopTask       	90517		<1%
+Tmr Svc        	5		<1%
+wifi           	618070		<1%
+esp_timer      	42578		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[ 94941][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 94941][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 94942][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 94942][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 94942][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 94942][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 94943][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 95942][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[ 96942][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[ 96943][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[ 97942][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[ 97942][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[ 97944][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	108563		<1%
+IDLE           	97063839		99%
+tiT            	10694		<1%
+LED            	324		<1%
+Poll           	426		<1%
+Ptch           	346		<1%
+Recv           	421		<1%
+Send           	361		<1%
+Cfg            	199		<1%
+loopTask       	90553		<1%
+sys_evt        	911		<1%
+wifi           	618105		<1%
+esp_timer      	42646		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[ 98944][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[ 98944][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[ 98945][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[ 98945][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[ 98945][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[ 98945][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[ 98946][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 99945][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[100945][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[100946][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[101945][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[101945][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[101946][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	113467		<1%
+IDLE           	101061214		99%
+loopTask       	90589		<1%
+tiT            	11070		<1%
+Poll           	446		<1%
+Ptch           	362		<1%
+Recv           	441		<1%
+Send           	378		<1%
+Cfg            	208		<1%
+LED            	339		<1%
+arduino_events 	299		<1%
+wifi           	618247		<1%
+esp_timer      	42716		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[102947][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[102947][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[102948][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[102948][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[102948][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[102948][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[102949][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[103948][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[104948][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[104949][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[105948][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[105948][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[105950][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	118371		<1%
+IDLE           	105058619		99%
+tiT            	11451		<1%
+LED            	363		<1%
+Poll           	466		<1%
+Ptch           	378		<1%
+Recv           	461		<1%
+Send           	395		<1%
+Cfg            	217		<1%
+loopTask       	90626		<1%
+Tmr Svc        	5		<1%
+wifi           	618346		<1%
+esp_timer      	42784		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[106950][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[106950][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[106951][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[106951][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[106951][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[106951][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[106952][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[107951][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[108951][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[108952][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[109951][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[109951][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[109953][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	123217		<1%
+IDLE           	109056061		99%
+loopTask       	90662		<1%
+tiT            	11831		<1%
+Poll           	486		<1%
+Ptch           	394		<1%
+Recv           	481		<1%
+Send           	412		<1%
+Cfg            	226		<1%
+LED            	378		<1%
+sys_evt        	911		<1%
+wifi           	618475		<1%
+esp_timer      	42854		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[110953][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[110953][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[110954][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[110954][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[110954][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[110954][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[110955][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[111954][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[112954][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[112955][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[113954][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[113954][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[113956][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	128067		<1%
+IDLE           	113053589		99%
+tiT            	12210		<1%
+Poll           	506		<1%
+Ptch           	410		<1%
+Recv           	501		<1%
+Send           	429		<1%
+Cfg            	235		<1%
+LED            	399		<1%
+loopTask       	90698		<1%
+arduino_events 	299		<1%
+wifi           	618511		<1%
+esp_timer      	42922		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[114956][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[114956][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[114957][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[114957][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[114957][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[114957][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[114958][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[115957][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[116957][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[116958][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[117957][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[117957][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[117959][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	133163		<1%
+IDLE           	117050820		99%
+loopTask       	90734		<1%
+Poll           	526		<1%
+Ptch           	426		<1%
+Recv           	521		<1%
+Send           	446		<1%
+Cfg            	244		<1%
+LED            	414		<1%
+tiT            	12585		<1%
+Tmr Svc        	5		<1%
+wifi           	618606		<1%
+esp_timer      	42992		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[118959][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[118959][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[118960][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[118960][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[118960][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[118960][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[118961][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[119960][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[120960][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[120961][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[121960][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[121960][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[121962][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	138214		<1%
+IDLE           	121048130		99%
+loopTask       	90770		<1%
+Poll           	546		<1%
+Ptch           	442		<1%
+Recv           	541		<1%
+Send           	462		<1%
+Cfg            	254		<1%
+LED            	429		<1%
+tiT            	12964		<1%
+sys_evt        	911		<1%
+esp_timer      	43060		<1%
+wifi           	618665		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[122962][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[122962][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[122963][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[122963][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[122963][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[122963][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[122964][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[123963][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[124963][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[124964][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[125963][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[125963][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[125965][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	143421		<1%
+IDLE           	125045280		99%
+loopTask       	90807		<1%
+Poll           	566		<1%
+Ptch           	458		<1%
+Recv           	561		<1%
+Send           	478		<1%
+Cfg            	264		<1%
+LED            	444		<1%
+tiT            	13342		<1%
+arduino_events 	299		<1%
+wifi           	618725		<1%
+esp_timer      	43131		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[126965][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[126965][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[126966][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[126966][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[126966][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[126966][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[126967][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[127966][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[128966][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[128967][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[129966][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[129966][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[129968][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	148435		<1%
+IDLE           	129042616		99%
+loopTask       	90842		<1%
+Poll           	586		<1%
+Ptch           	474		<1%
+Recv           	581		<1%
+Send           	495		<1%
+Cfg            	273		<1%
+LED            	459		<1%
+tiT            	13721		<1%
+Tmr Svc        	5		<1%
+wifi           	618796		<1%
+esp_timer      	43199		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[130968][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[130968][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[130969][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[130969][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[130969][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[130969][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[130970][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[131969][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[132969][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[132970][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[133969][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[133969][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[133971][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	153426		<1%
+IDLE           	133039844		99%
+loopTask       	90879		<1%
+Poll           	606		<1%
+Ptch           	491		<1%
+Recv           	600		<1%
+Send           	512		<1%
+Cfg            	282		<1%
+LED            	473		<1%
+tiT            	14129		<1%
+sys_evt        	911		<1%
+wifi           	618965		<1%
+esp_timer      	43270		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[134971][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[134971][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[134972][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[134972][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[134972][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[134972][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[134973][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[135972][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[136972][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[136973][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[137972][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[137972][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[137974][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	158651		<1%
+IDLE           	137036987		99%
+loopTask       	90917		<1%
+Poll           	626		<1%
+Ptch           	507		<1%
+Recv           	620		<1%
+Send           	528		<1%
+Cfg            	292		<1%
+LED            	488		<1%
+tiT            	14506		<1%
+arduino_events 	299		<1%
+wifi           	619013		<1%
+esp_timer      	43342		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[138974][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[138974][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[138975][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[138975][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[138975][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[138975][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[138976][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[139975][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[140975][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[140976][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[141975][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[141975][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[141976][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	163565		<1%
+IDLE           	141034431		99%
+loopTask       	90953		<1%
+Poll           	646		<1%
+Ptch           	523		<1%
+Recv           	640		<1%
+Send           	545		<1%
+Cfg            	301		<1%
+LED            	503		<1%
+tiT            	14886		<1%
+Tmr Svc        	5		<1%
+wifi           	619073		<1%
+esp_timer      	43411		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[142977][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[142977][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[142978][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[142978][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[142978][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[142978][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[142979][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[143978][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[144978][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[144979][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[145978][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[145978][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[145979][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	168506		<1%
+IDLE           	145031844		99%
+loopTask       	90988		<1%
+Poll           	665		<1%
+Ptch           	540		<1%
+Recv           	660		<1%
+Send           	562		<1%
+Cfg            	310		<1%
+LED            	517		<1%
+tiT            	15262		<1%
+sys_evt        	911		<1%
+esp_timer      	43480		<1%
+wifi           	619143		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[146980][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[146980][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[146981][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[146981][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[146981][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[146981][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[146982][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[147981][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[148981][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[148982][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[149981][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[149981][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[149983][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	173590		<1%
+IDLE           	149029110		99%
+loopTask       	91024		<1%
+Poll           	685		<1%
+Ptch           	556		<1%
+Recv           	680		<1%
+Send           	579		<1%
+LED            	532		<1%
+Cfg            	319		<1%
+tiT            	15639		<1%
+arduino_events 	299		<1%
+wifi           	619214		<1%
+esp_timer      	43549		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[150983][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[150983][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[150984][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[150984][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[150984][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[150984][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[150985][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[151984][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[152984][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[152985][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[153984][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[153984][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[153985][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	178486		<1%
+IDLE           	153026602		99%
+loopTask       	91059		<1%
+Poll           	705		<1%
+Ptch           	572		<1%
+Recv           	700		<1%
+Send           	596		<1%
+LED            	546		<1%
+Cfg            	328		<1%
+tiT            	16014		<1%
+Tmr Svc        	5		<1%
+wifi           	619251		<1%
+esp_timer      	43618		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[154986][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[154986][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[154987][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[154987][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[154987][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[154987][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[154988][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[155987][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[156987][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[156988][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[157987][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[157987][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[157989][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	183304		<1%
+IDLE           	157024103		99%
+loopTask       	91095		<1%
+Poll           	725		<1%
+Ptch           	589		<1%
+Recv           	719		<1%
+Send           	613		<1%
+LED            	561		<1%
+Cfg            	337		<1%
+tiT            	16393		<1%
+sys_evt        	911		<1%
+wifi           	619351		<1%
+esp_timer      	43687		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[158989][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[158989][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[158990][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[158990][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[158990][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[158990][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[158991][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[159990][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[160990][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[160991][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[161990][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[161990][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[161992][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	188378		<1%
+IDLE           	161021236		99%
+loopTask       	91131		<1%
+Poll           	745		<1%
+Ptch           	605		<1%
+Recv           	739		<1%
+Send           	629		<1%
+LED            	576		<1%
+Cfg            	347		<1%
+tiT            	16769		<1%
+arduino_events 	299		<1%
+wifi           	619565		<1%
+esp_timer      	43757		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[162992][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[162992][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[162993][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[162993][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[162993][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[162993][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[162994][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[163993][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[164993][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[164994][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[165993][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[165993][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[165995][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	193326		<1%
+IDLE           	165018634		99%
+loopTask       	91168		<1%
+Poll           	765		<1%
+Ptch           	621		<1%
+Recv           	759		<1%
+Send           	646		<1%
+LED            	591		<1%
+Cfg            	356		<1%
+tiT            	17150		<1%
+Tmr Svc        	5		<1%
+wifi           	619635		<1%
+esp_timer      	43826		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[166995][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[166995][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[166996][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[166996][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[166996][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[166996][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[166997][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[167996][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[168996][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[168997][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[169996][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[169996][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[169998][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	198276		<1%
+IDLE           	169016081		99%
+loopTask       	91204		<1%
+Poll           	785		<1%
+Ptch           	637		<1%
+Recv           	779		<1%
+Send           	663		<1%
+LED            	606		<1%
+Cfg            	365		<1%
+tiT            	17526		<1%
+sys_evt        	911		<1%
+wifi           	619659		<1%
+esp_timer      	43896		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[170998][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[170998][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[170999][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[170999][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[170999][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[170999][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[171000][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[171999][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[172999][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[173000][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[173999][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[173999][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[174000][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	203483		<1%
+IDLE           	173013221		99%
+loopTask       	91240		<1%
+LED            	621		<1%
+Poll           	805		<1%
+Ptch           	653		<1%
+Recv           	799		<1%
+Send           	680		<1%
+Cfg            	374		<1%
+tiT            	17906		<1%
+arduino_events 	299		<1%
+wifi           	619730		<1%
+esp_timer      	43965		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[175001][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[175001][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[175002][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[175002][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[175002][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[175002][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[175003][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[176002][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[177002][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[177003][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[178002][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[178002][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[178003][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	208396		<1%
+IDLE           	177010611		99%
+loopTask       	91277		<1%
+LED            	636		<1%
+Poll           	825		<1%
+Ptch           	670		<1%
+Recv           	818		<1%
+Send           	697		<1%
+Cfg            	383		<1%
+tiT            	18282		<1%
+Tmr Svc        	5		<1%
+wifi           	619847		<1%
+esp_timer      	44035		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[179004][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[179004][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[179005][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[179005][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[179005][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[179005][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[179006][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[180005][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[181005][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 30 dC
+[181006][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 30 dC
+[182005][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[182005][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[182007][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	213325		<1%
+IDLE           	181008019		99%
+loopTask       	91314		<1%
+LED            	651		<1%
+Poll           	845		<1%
+Ptch           	686		<1%
+Recv           	838		<1%
+Send           	713		<1%
+Cfg            	393		<1%
+tiT            	18660		<1%
+sys_evt        	911		<1%
+wifi           	619929		<1%
+esp_timer      	44104		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[183007][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[183007][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[183008][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[183008][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[183008][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[183008][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[183009][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[184008][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[185008][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[185009][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[186008][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[186008][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[186009][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	218328		<1%
+IDLE           	185005314		99%
+loopTask       	91351		<1%
+LED            	666		<1%
+Poll           	865		<1%
+Ptch           	702		<1%
+Recv           	858		<1%
+Send           	730		<1%
+Cfg            	402		<1%
+tiT            	19039		<1%
+arduino_events 	299		<1%
+esp_timer      	44174		<1%
+wifi           	620048		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[187010][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[187010][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[187011][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[187011][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[187011][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[187011][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[187012][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[188011][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[189011][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[189012][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[190011][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[190011][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[190012][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	223437		<1%
+IDLE           	189002588		99%
+LED            	681		<1%
+loopTask       	91388		<1%
+Poll           	885		<1%
+Ptch           	719		<1%
+Recv           	877		<1%
+Send           	747		<1%
+Cfg            	411		<1%
+tiT            	19416		<1%
+Tmr Svc        	5		<1%
+esp_timer      	44243		<1%
+wifi           	620085		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[191013][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[191013][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[191014][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[191014][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[191014][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[191014][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[191015][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[192014][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[193014][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[193015][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[194014][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[194014][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[194016][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	228466		<1%
+IDLE           	192999854		99%
+tiT            	19824		<1%
+loopTask       	91424		<1%
+Poll           	905		<1%
+Ptch           	735		<1%
+Recv           	896		<1%
+Send           	764		<1%
+Cfg            	421		<1%
+LED            	696		<1%
+sys_evt        	911		<1%
+wifi           	620179		<1%
+esp_timer      	44313		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[195016][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[195016][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[195017][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[195017][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[195017][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[195017][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[195018][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[196017][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[197017][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[197018][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[198017][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[198017][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[198018][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	233410		<1%
+IDLE           	196997258		99%
+LED            	721		<1%
+loopTask       	91461		<1%
+Poll           	925		<1%
+Ptch           	751		<1%
+Recv           	916		<1%
+Send           	780		<1%
+Cfg            	431		<1%
+tiT            	20200		<1%
+arduino_events 	299		<1%
+wifi           	620238		<1%
+esp_timer      	44386		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[199019][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[199019][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[199020][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[199020][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[199020][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[199020][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[199020][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[200020][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[201020][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[201021][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[202020][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[202020][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[202021][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	238141		<1%
+IDLE           	200994832		99%
+tiT            	20583		<1%
+loopTask       	91497		<1%
+Poll           	945		<1%
+Ptch           	767		<1%
+Recv           	936		<1%
+Send           	796		<1%
+Cfg            	441		<1%
+LED            	736		<1%
+Tmr Svc        	5		<1%
+wifi           	620348		<1%
+esp_timer      	44455		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[203022][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[203022][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[203023][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[203023][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[203023][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[203023][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[203024][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[204023][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[205023][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[205024][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[206023][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[206023][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[206025][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	243111		<1%
+IDLE           	204992226		99%
+loopTask       	91534		<1%
+Poll           	965		<1%
+Ptch           	783		<1%
+Recv           	956		<1%
+Send           	812		<1%
+Cfg            	451		<1%
+LED            	756		<1%
+tiT            	20962		<1%
+sys_evt        	911		<1%
+wifi           	620396		<1%
+esp_timer      	44525		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[207025][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[207025][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[207026][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[207026][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[207026][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[207026][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[207027][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[208026][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[209026][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[209027][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[210026][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[210026][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[210028][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	248128		<1%
+IDLE           	208989541		99%
+loopTask       	91571		<1%
+Poll           	985		<1%
+Ptch           	799		<1%
+Recv           	975		<1%
+Send           	829		<1%
+Cfg            	461		<1%
+LED            	771		<1%
+tiT            	21343		<1%
+arduino_events 	299		<1%
+esp_timer      	44595		<1%
+wifi           	620479		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[211028][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[211028][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[211029][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[211029][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[211029][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[211029][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[211030][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[212029][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[213029][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[213030][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[214029][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[214029][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[214031][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	253162		<1%
+IDLE           	212986880		99%
+loopTask       	91607		<1%
+Poll           	1005		<1%
+Ptch           	815		<1%
+Recv           	995		<1%
+Send           	845		<1%
+Cfg            	471		<1%
+LED            	786		<1%
+tiT            	21720		<1%
+Tmr Svc        	5		<1%
+wifi           	620526		<1%
+esp_timer      	44665		<1%
+sys_evt        	911		<1%
+arduino_events 	299		<1%
+
+[215031][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[215031][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[215032][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[215032][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[215032][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[215032][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[215033][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[216032][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[217032][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[217033][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[218032][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[218032][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[218034][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	258145		<1%
+IDLE           	216984222		99%
+loopTask       	91643		<1%
+Poll           	1025		<1%
+Ptch           	831		<1%
+Recv           	1015		<1%
+Send           	862		<1%
+Cfg            	480		<1%
+LED            	802		<1%
+tiT            	22099		<1%
+sys_evt        	911		<1%
+esp_timer      	44734		<1%
+wifi           	620619		<1%
+arduino_events 	299		<1%
+Tmr Svc        	5		<1%
+
+[219034][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[219034][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[219035][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[219035][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[219035][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[219035][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[219036][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[220035][I][main.cpp:335] vTaskLogData(): [NaMa] Minimum free heap: 147932 bytes
+[221035][I][main.cpp:346] vTaskLogData(): [NaMa] Temperature in 31 dC
+[221036][I][main.cpp:352] vTaskLogData(): [NaMa] Temperature: 31 dC
+[222035][D][main.cpp:300] vTaskLogData(): [NaMa] Logging Data:
+[222035][I][main.cpp:302] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 15
+[222037][I][main.cpp:322] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	263184		<1%
+IDLE           	220981521		99%
+loopTask       	91679		<1%
+Poll           	1044		<1%
+Ptch           	848		<1%
+Recv           	1035		<1%
+Send           	878		<1%
+Cfg            	490		<1%
+LED            	818		<1%
+tiT            	22475		<1%
+arduino_events 	299		<1%
+wifi           	620701		<1%
+esp_timer      	44804		<1%
+Tmr Svc        	5		<1%
+sys_evt        	911		<1%
+
+[223037][I][main.cpp:328] vTaskLogData(): [NaMa] T: Poll, U: 224, F: 800
+[223037][I][main.cpp:328] vTaskLogData(): [NaMa] T: Ptch, U: 220, F: 804
+[223038][I][main.cpp:328] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 808
+[223038][I][main.cpp:328] vTaskLogData(): [NaMa] T: Send, U: 212, F: 812
+[223038][I][main.cpp:328] vTaskLogData(): [NaMa] T: Cfg, U: 224, F: 32
+[223038][I][main.cpp:328] vTaskLogData(): [NaMa] T: LED, U: 220, F: 36
+[223039][I][main.cpp:328] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
