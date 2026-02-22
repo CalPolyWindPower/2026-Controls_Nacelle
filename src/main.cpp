@@ -111,12 +111,12 @@ void setup() {
         uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
         digitalWrite(LED::LED_PIN, HIGH);
         ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
-        // if (adapterWLAN.begin(optimalChannel)) {
-        //     ESP_LOGI(TAG, "WiFi initialized");
-        //     wifiInitialized = true;
-        // } else {
-        //     ESP_LOGE(TAG, "Failed to initialize WiFi");
-        // }
+        if (adapterWLAN.begin(optimalChannel)) {
+            ESP_LOGI(TAG, "WiFi initialized");
+            wifiInitialized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize WiFi");
+        }
     }
     digitalWrite(LED::LED_PIN, LOW);
 
