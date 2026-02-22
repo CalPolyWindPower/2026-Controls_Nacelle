@@ -53,6 +53,15 @@ etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
     TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
+enum class TASK_IDS : uint_fast8_t {
+    POLL = 0,
+    PITCH,
+    RECV,
+    SEND,
+    CFG,
+    LED,
+    LOG
+};
 
 AdapterWLAN adapterWLAN = AdapterWLAN();
 AdapterESPNow adapterESPNow = AdapterESPNow();
@@ -207,7 +216,12 @@ void vTaskPitch(void *pvParameters) {
  */
 void vTaskRecvData(void *pvParameters) {
     while (true) {
-        delay(1000);
+        if (false) {
+            delay(1000);
+        } else {
+            // Suspend until reenabled from interrupt
+            vTaskSuspend(taskDescriptions[TASK_IDS::RECV].pxCreatedTask);
+        }
     }
 }
 
@@ -216,7 +230,12 @@ void vTaskRecvData(void *pvParameters) {
  */
 void vTaskSendData(void *pvParameters) {
     while (true) {
-        delay(1000);
+        if (false) {
+            delay(1000);
+        } else {
+            // Suspend until reenabled
+            vTaskSuspend(taskDescriptions[TASK_IDS::SEND].pxCreatedTask);
+        }
     }
 }
 
