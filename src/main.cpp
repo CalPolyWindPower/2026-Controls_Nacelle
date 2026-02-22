@@ -145,15 +145,15 @@ void setup() {
     digitalWrite(LED::LED_PIN, LOW);
 
     // Sync Time // FIXME! - Load accesses fault
-    // static bool timeSynced = false;
-    // if (!timeSynced) {
-    //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
-    //         ESP_LOGI(TAG, "Time sync initialized successfully");
-    //         timeSynced = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to initialize time sync");
-    //     }
-    // }
+    static bool timeSynced = false;
+    if (!timeSynced) {
+        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+            ESP_LOGI(TAG, "Time sync initialized successfully");
+            timeSynced = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize time sync");
+        }
+    }
     digitalWrite(LED::LED_PIN, HIGH);
 
     // Print MAC Address // todo - verify
