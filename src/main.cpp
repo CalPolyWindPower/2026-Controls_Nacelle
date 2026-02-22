@@ -12,6 +12,7 @@
 // #include "2026Core/Net/NetAdapter_A.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+// #include <PID.hpp>
 #include <esp_log.h>
 #include <temperature_sensor.h>
 
@@ -46,11 +47,11 @@ constexpr uint_fast8_t NUM_USR_TASKS = 7; // Must match number of entires!
 // Arduino Loop has priority 1
 // TODO: Note: Task priority must be <25
 etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
-    TaskInfo{vTaskPollSensors, "Poll", 1024, nullptr, 20, nullptr, 0},
-    TaskInfo{vTaskPitch, "Ptch", 1024, nullptr, 20, nullptr, 0},
-    TaskInfo{vTaskRecvData, "Recv", 1024, nullptr, 15, nullptr, 0},
-    TaskInfo{vTaskSendData, "Send", 1024, nullptr, 15, nullptr, 0},
-    TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 10, nullptr, 0},
+    TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0},
+    TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0},
+    TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0},
+    TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0},
+    TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
 enum TASK_IDS : uint_fast8_t {
@@ -66,6 +67,17 @@ enum TASK_IDS : uint_fast8_t {
 AdapterWLAN adapterWLAN = AdapterWLAN();
 AdapterESPNow adapterESPNow = AdapterESPNow();
 SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+// PID pitchPIDController =
+//     PID(PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd,
+//         // PITCHING::TARGET_RPM,
+//         2000.0f, PID::ProportionalMode::ProportionalOnMeas,
+//         // PITCH_MAX_ANGLE_DEG = min actuator extension = minimum PID output
+//         // (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MAX_ANGLE_DEG),
+//         1000.0f,
+//         // PITCH_CUTIN_ANGLE_DEG = max actuator extension = maximum PID output
+//         // (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MIN_ANGLE_DEG),
+//         2000.0f, 0, PID::Direction::DIRECT, "PC");
+; // todo
 
 /**
  * MARK: Setup
@@ -180,6 +192,9 @@ void setup() {
         }
         tasksSetup = true;
 
+        // pitchPIDController.enable(
+        //     0.0f, 1500.0f); // todo - just a quick performances test
+
         ESP_LOGI(TAG, "Setup complete!");
     }
 }
@@ -205,6 +220,11 @@ void vTaskPollSensors(void *pvParameters) {
  */
 void vTaskPitch(void *pvParameters) {
     while (true) {
+        static int i = 0;
+        // ESP_LOGI(TAG, "Pitch PID Output: %f",
+        //          pitchPIDController.compute(
+        //              i)); // todo - just a quick performances test
+        i += 20;
         delay(RUN::TASK_INTERVALS::TI_PITCH_mS);
     }
 }
