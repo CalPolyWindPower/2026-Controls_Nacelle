@@ -53,14 +53,14 @@ etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
     TaskInfo{vTaskConfigure, "Cfg", 256, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
-enum class TASK_IDS : uint_fast8_t {
-    POLL = 0,
-    PITCH,
-    RECV,
-    SEND,
-    CFG,
-    LED,
-    LOG
+enum TASK_IDS : uint_fast8_t {
+    TID_POLL = 0,
+    TID_PITCH,
+    TID_RECV,
+    TID_SEND,
+    TID_CFG,
+    TID_LED,
+    TID_LOG
 };
 
 AdapterWLAN adapterWLAN = AdapterWLAN();
@@ -196,7 +196,7 @@ void setup() {
  */
 void vTaskPollSensors(void *pvParameters) {
     while (true) {
-        delay(1000);
+        delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
     }
 }
 
@@ -205,7 +205,7 @@ void vTaskPollSensors(void *pvParameters) {
  */
 void vTaskPitch(void *pvParameters) {
     while (true) {
-        delay(1000);
+        delay(RUN::TASK_INTERVALS::TI_PITCH_mS);
     }
 }
 
@@ -217,10 +217,10 @@ void vTaskPitch(void *pvParameters) {
 void vTaskRecvData(void *pvParameters) {
     while (true) {
         if (false) {
-            delay(1000);
+            delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
-            vTaskSuspend(taskDescriptions[TASK_IDS::RECV].pxCreatedTask);
+            vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
         }
     }
 }
@@ -231,10 +231,10 @@ void vTaskRecvData(void *pvParameters) {
 void vTaskSendData(void *pvParameters) {
     while (true) {
         if (false) {
-            delay(1000);
+            delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
-            vTaskSuspend(taskDescriptions[TASK_IDS::SEND].pxCreatedTask);
+            vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
         }
     }
 }
@@ -244,7 +244,7 @@ void vTaskSendData(void *pvParameters) {
 void vTaskConfigure(void *pvParameters) {
     while (true) {
         // setup(); // todo
-        delay(2000);
+        delay(RUN::TASK_INTERVALS::TI_CFG_ms);
     }
 }
 
@@ -254,7 +254,7 @@ void vTaskConfigure(void *pvParameters) {
 void vTaskTelnet(void *pvParameters) {
     while (true) {
         // TELNET::loop(); // todo
-        delay(500);
+        delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
     }
 }
 
@@ -264,7 +264,7 @@ void vTaskTelnet(void *pvParameters) {
  */
 void vTaskOTA(void *pvParameters) {
     while (true) {
-        delay(1000);
+        delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
 }
 
@@ -297,9 +297,9 @@ void vTaskStatusLED(void *pvParameters) {
 //     return (fahrenheit - 32) * 5 / 9;
 // }
 
-constexpr uint32_t LOG_INTERVAL_MS = 4000;
 constexpr uint32_t ITEMS_TO_LOG = 4;
-constexpr uint32_t LOG_ITEM_INTERVAL_MS = LOG_INTERVAL_MS / ITEMS_TO_LOG;
+constexpr uint32_t LOG_ITEM_INTERVAL_MS =
+    RUN::TASK_INTERVALS::TI_LOG_DATA_ms / ITEMS_TO_LOG;
 /**
  * @brief Task to log data
  */
@@ -368,7 +368,6 @@ void vTaskLogData(void *pvParameters) {
         ESP_ERROR_CHECK(
             temperature_sensor_get_celsius(tempSensHandle, &tsens_out));
         int32_t tempTrunc_C = (int32_t)tsens_out;
-        ESP_LOGI(TAG, "Temperature in %d dC", tempTrunc_C);
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
