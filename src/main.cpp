@@ -3,16 +3,16 @@
 // https://pvs-studio.com
 
 /* Includes */
-#include "NacelleConfig.hpp"
+// #include "2026Core/Net/Net-Application/Telnet.hpp"
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
-#include "2026Core/Net/Net-Application/NTP.hpp"
-// #include "2026Core/Net/Net-Application/Telnet.hpp"
-#include <Arduino.h>
 // #include "2026Core/Net/NetAdapter_A.hpp"
+// #include <PID.hpp>
+#include "2026Core/Net/Net-Application/NTP.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
-// #include <PID.hpp>
+#include "NacelleConfig.hpp"
+#include <Arduino.h>
 #include <esp_log.h>
 #include <temperature_sensor.h>
 
@@ -20,16 +20,22 @@
 static constexpr const char *TAG = "NaMa";
 
 // MARK: Function Prototypes
+// Main Tasks
 void vTaskPollSensors(void *pvParameters);
 void vTaskPitch(void *pvParameters);
 void vTaskRecvData(void *pvParameters);
 void vTaskSendData(void *pvParameters);
+
 void vTaskConfigure(void *pvParameters);
+void vTaskStatusLED(void *pvParameters);
+void vTaskLogData(void *pvParameters);
+
+// Optional Tasks
 void vTaskTelnet(void *pvParameters);
 void vTaskOTA(void *pvParameters);
-void vTaskStatusLED(void *pvParameters);
-void vTaskConfigure(void *pvParameters);
-void vTaskLogData(void *pvParameters);
+
+// Helper Functions
+// ...
 
 // MARK:  Global Objects
 struct TaskInfo {
@@ -42,20 +48,23 @@ struct TaskInfo {
     TaskHandle_t pxCreatedTask = nullptr;
     UBaseType_t minFreeStack_Bytes = 0;
 };
-constexpr uint_fast8_t NUM_USR_TASKS = 7; // Must match number of entires!
+constexpr uint_fast8_t NUM_USR_TASKS = 8; // Must match number of entires!
 // constexpr uint_fast8_t NUM_USR_TASKS = 1;
 // Arduino Loop has priority 1
 // TODO: Note: Task priority must be <25
 etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
+    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 25, nullptr, 0},
     TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0},
     TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0},
     TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0},
+
     TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0},
     TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
 enum TASK_IDS : uint_fast8_t {
-    TID_POLL = 0,
+    TID_FSM = 0,
+    TID_POLL,
     TID_PITCH,
     TID_RECV,
     TID_SEND,
@@ -72,10 +81,13 @@ SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 //         // PITCHING::TARGET_RPM,
 //         2000.0f, PID::ProportionalMode::ProportionalOnMeas,
 //         // PITCH_MAX_ANGLE_DEG = min actuator extension = minimum PID output
-//         // (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MAX_ANGLE_DEG),
+//         //
+//         (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MAX_ANGLE_DEG),
 //         1000.0f,
-//         // PITCH_CUTIN_ANGLE_DEG = max actuator extension = maximum PID output
-//         // (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MIN_ANGLE_DEG),
+//         // PITCH_CUTIN_ANGLE_DEG = max actuator extension = maximum PID
+//         output
+//         //
+//         (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MIN_ANGLE_DEG),
 //         2000.0f, 0, PID::Direction::DIRECT, "PC");
 ; // todo
 
@@ -144,7 +156,7 @@ void setup() {
     }
     digitalWrite(LED::LED_PIN, LOW);
 
-    // Sync Time // FIXME! - Load accesses fault
+    // Sync Time // FIXME! - Load accesses fault - DONE?
     static bool timeSynced = false;
     if (!timeSynced) {
         if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
@@ -205,6 +217,14 @@ void setup() {
  * https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/01-Tasks-and-co-routines/05-Implementing-a-task
  * @see https://forum.arduino.cc/t/non-blocking-delay-actions/1044079
  */
+
+/**
+ * @brief Task to control run the FSM
+ */
+void vTaskUpdateFSM(void *pvParameters) {
+    while (true) {
+    }
+}
 
 /**
  * @brief Task to poll high priority sensors
