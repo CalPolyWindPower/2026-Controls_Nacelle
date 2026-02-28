@@ -8,7 +8,9 @@
 // #include "2026Core/Net/NetAdapter_A.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
 // #include <PID.hpp>
+#include "2026Core/CommonConfig.hpp"
 #include "2026Core/Net/Net-Application/NTP.hpp"
+#include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include "NacelleConfig.hpp"
@@ -21,11 +23,12 @@ static constexpr const char *TAG = "NaMa";
 
 // MARK: Function Prototypes
 // Main Tasks
+void vTaskUpdateFSM(void *pvParameters);
 void vTaskPollSensors(void *pvParameters);
 void vTaskPitch(void *pvParameters);
 void vTaskRecvData(void *pvParameters);
-void vTaskSendData(void *pvParameters);
 
+void vTaskSendData(void *pvParameters);
 void vTaskConfigure(void *pvParameters);
 void vTaskStatusLED(void *pvParameters);
 void vTaskLogData(void *pvParameters);
@@ -73,9 +76,13 @@ enum TASK_IDS : uint_fast8_t {
     TID_LOG
 };
 
-AdapterWLAN adapterWLAN = AdapterWLAN();
-AdapterESPNow adapterESPNow = AdapterESPNow();
-SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+// AdapterWLAN adapterWLAN = AdapterWLAN();
+AdapterWLAN adapterWLAN;
+// AdapterESPNow adapterESPNow = AdapterESPNow();
+AdapterESPNow adapterESPNow;
+// SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+SyncedClock netClock(adapterESPNow); // todo
+
 // PID pitchPIDController =
 //     PID(PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd,
 //         // PITCHING::TARGET_RPM,
@@ -290,6 +297,7 @@ void vTaskConfigure(void *pvParameters) {
 
 /**
  * @brief Task to handle Telnet connections
+ * @deprecated Just use a USB cable if possible
  */
 void vTaskTelnet(void *pvParameters) {
     while (true) {
