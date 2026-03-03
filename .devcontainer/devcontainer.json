@@ -4,9 +4,7 @@
         "codespaces": {
             "repositories": {
                 "calpolywindpower/2026-Controls_Core": {
-                    "permissions": {
-                        "contents ": "write"
-                    }
+                    "permissions": "write-all"
                 }
             }
         }
