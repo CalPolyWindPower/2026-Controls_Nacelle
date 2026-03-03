@@ -17,6 +17,15 @@
                 "kind": "build",
                 "isDefault": false
             }
+        },
+        {
+            "label": "Init Git Submodules (non-recursive)",
+            "type": "shell",
+            "command": "git submodule update --init",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
         }
     ]
 }
