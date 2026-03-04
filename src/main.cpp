@@ -10,7 +10,7 @@
 // #include <PID.hpp>
 #include "2026Core/CommonConfig.hpp"
 #include "2026Core/Net/Net-Application/NTP.hpp"
-#include "2026Core/Net/Net-Application/OTA.hpp"
+// #include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include "NacelleConfig.hpp"
