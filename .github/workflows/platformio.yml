@@ -19,7 +19,7 @@ jobs:
         with:
           path: |
             ~/.cache/pip/
-            /opt/hostedtoolcache/Python/
+            # /opt/hostedtoolcache/Python/
           key: ${{ runner.os }}-pio-2026-python
       - uses: actions/setup-python@v5
         with:
