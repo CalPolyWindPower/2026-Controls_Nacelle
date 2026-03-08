@@ -4,7 +4,7 @@
  *
  * The DFRobot Firebeetle 2 ESP32-C5 has one USB C port.  The baud
  *   rate is seto to 115,000 below and uses the internal USB
- *   perheprial, not a serperate chip.
+ *   perheprial, not a seperate chip.
  * Some compatible serial monitors include the Arduino IDE
  *   <https://www.arduino.cc/en/software/>, VSCode "Serial" extension
  *   from Microsoft
@@ -20,6 +20,7 @@
  *      File > Preferences > Settings >
  *      Additional Board Manager URLS:
  *      `https://espressif.github.io/arduino-esp32/package_esp32_index.json`
+ *     (See also: https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
  * 3. Go to the library manager in the left sidebar and install "ESP32Servo" by Kevin.
  * 4. Load the attached sketch or the latest version from GitHub:
  *    https://github.com/CalPolyWindPower/2026-Controls_Nacelle/blob/main/demos/ActuatorDemo/ActuatorDemo.ino
@@ -47,29 +48,29 @@
 /**
  * @see https://github.com/madhephaestus/ESP32Servo/blob/master/src/ESP32Servo.h
  */
-#  include <ESP32Servo.h>
+#include <ESP32Servo.h>
 #else
-#  include <Servo.h>
+#include <Servo.h>
 #endif
 
 // Varialbes
 namespace SERIAL_CONFIG {
-  constexpr long BAUD = 115200;
+constexpr long BAUD = 115200;
 }  // namespace serial
 
 namespace Actuator {
-  Servo device = Servo();
-  constexpr int MIN_POS_us = 1000; // Minimum position in microseconds
-  constexpr int MAX_POS_us = 2000; // Maximum position in microseconds
-  // constexpr int DEFAULT_us = 1500; // Default position in microseconds
-  constexpr int CONTROL_PIN = 3; // PWM pin
-  constexpr uint8_t FEEDBACK_PIN = 2; // Analgo feedback pin
+Servo device = Servo();
+constexpr int MIN_POS_us = 1000;     // Minimum position in microseconds
+constexpr int MAX_POS_us = 2000;     // Maximum position in microseconds
+constexpr int DEFAULT_us = 1500;     // Default position in microseconds
+constexpr int CONTROL_PIN = 3;       // PWM pin
+constexpr uint8_t FEEDBACK_PIN = 2;  // Analgo feedback pin
 }  // namespace Actuator
 
 namespace LED {
-  constexpr uint8_t PIN = 15;
-  constexpr uint_fast32_t TIME_ON_MS = 1000;
-  constexpr uint_fast32_t TIME_OFF_MS = 3000;
+constexpr uint8_t PIN = 15;
+constexpr uint_fast32_t TIME_ON_MS = 1000;
+constexpr uint_fast32_t TIME_OFF_MS = 3000;
 }  // namespace LED
 
 /**
@@ -78,16 +79,24 @@ namespace LED {
 void setup() {
   Serial.begin(SERIAL_CONFIG::BAUD);  // Start serial
 
-// The DFRobot Firebeetle 2 ESP32-C5 has one user controllable LED built in
+// The DFRobot FireBeetle 2 ESP32-C5 has one user controllable LED built in
 #if defined(ESP32)
   /**
    * @see https://docs.arduino.cc/language-reference/en/functions/digital-io/pinMode/
    */
   pinMode(LED::PIN, OUTPUT);     // Setup LED
   digitalWrite(LED::PIN, HIGH);  // Toggle LED
+
+  // Debug actuator pin
+  // pinMode(Actuator::CONTROL_PIN, OUTPUT);     // Setup LED
+  // digitalWrite(Actuator::CONTROL_PIN, HIGH);  // Toggle LED
+  // while(1) {}
 #endif
 
-  Actuator::device.attach(Actuator::CONTROL_PIN);  // Attach actuator
+  // Servo device = Servo();
+
+  Actuator::device.attach(Actuator::CONTROL_PIN, Actuator::MIN_POS_us, Actuator::MAX_POS_us);  // Attach actuator
+  Actuator::device.writeMicroseconds(Actuator::DEFAULT_us);
 
   Serial.println("Initalized 2026 Actuator Demo v2026-3-5 / v1.0.0");
   digitalWrite(LED::PIN, LOW);  // Toggle LED
