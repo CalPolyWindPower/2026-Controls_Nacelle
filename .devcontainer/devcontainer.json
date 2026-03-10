@@ -5,6 +5,9 @@
             "repositories": {
                 "calpolywindpower/2026-Controls_Core": {
                     "permissions": "write-all"
+                },
+                "calpolywindpower/ESP32Servo": {
+                    "permissions": "write-all"
                 }
             }
         }
