@@ -15,7 +15,7 @@
 // #include <PID.hpp>
 #include <esp_log.h>
 #include <temperature_sensor.h>
-
+#include <ActuonixL12.hpp>
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
 
@@ -32,7 +32,8 @@ void vTaskConfigure(void *pvParameters);
 void vTaskLogData(void *pvParameters);
 
 // MARK:  Global Objects
-struct TaskInfo {
+struct TaskInfo
+{
     const TaskFunction_t function;
     const char *const name;
     const configSTACK_DEPTH_TYPE stackSize_bytes = 1024;
@@ -54,7 +55,8 @@ etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
     TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
-enum TASK_IDS : uint_fast8_t {
+enum TASK_IDS : uint_fast8_t
+{
     TID_POLL = 0,
     TID_PITCH,
     TID_RECV,
@@ -79,13 +81,17 @@ SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 //         2000.0f, 0, PID::Direction::DIRECT, "PC");
 ; // todo
 
+ActuonixL12 pitchActuator(/*PIN3*/ 5, 1000, 2000); // Temp Pin
+
 /**
  * MARK: Setup
  * @details put your setup code here, to run once:
  */
-void setup() {
+void setup()
+{
     static bool serialInitialized = false;
-    if (!serialInitialized) {
+    if (!serialInitialized)
+    {
         Serial.begin(115200);
         ESP_LOGI(TAG, "Serial initialized");
         serialInitialized = true;
@@ -93,28 +99,44 @@ void setup() {
 
     // Configure Hardare
     static bool LEDInitialized = false;
-    if (!LEDInitialized) {
+    if (!LEDInitialized)
+    {
         pinMode(LED::LED_PIN, OUTPUT); // Onboard LED
         digitalWrite(LED::LED_PIN, HIGH);
         LEDInitialized = true;
         ESP_LOGI(TAG, "LED initialized");
-    } else {
+    }
+    else
+    {
         // Save power during main operations
         digitalWrite(LED::LED_PIN, LOW);
     }
 
+    // Initialize Actuator
+    static bool actuatorInitialized = false;
+    if (!actuatorInitialized)
+    {
+        pitchActuator.begin();
+        actuatorInitialized = true;
+        ESP_LOGI(TAG, "Actuator Initialized");
+    }
+
     // Configure WiFi
     static bool wifiInitialized = false;
-    if (!wifiInitialized) {
+    if (!wifiInitialized)
+    {
         digitalWrite(LED::LED_PIN,
                      LOW); // Will take a while, so turn off the LED
         uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
         digitalWrite(LED::LED_PIN, HIGH);
         ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
-        if (adapterWLAN.begin(optimalChannel)) {
+        if (adapterWLAN.begin(optimalChannel))
+        {
             ESP_LOGI(TAG, "WiFi initialized");
             wifiInitialized = true;
-        } else {
+        }
+        else
+        {
             ESP_LOGE(TAG, "Failed to initialize WiFi");
         }
     }
@@ -122,11 +144,15 @@ void setup() {
 
     // Configure ESP-NOW
     static bool espNowInitalized = false;
-    if (!espNowInitalized) {
-        if (adapterESPNow.begin()) {
+    if (!espNowInitalized)
+    {
+        if (adapterESPNow.begin())
+        {
             ESP_LOGI(TAG, "ESP-NOW initialized.");
             espNowInitalized = true;
-        } else {
+        }
+        else
+        {
             ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
         }
     }
@@ -134,11 +160,15 @@ void setup() {
 
     // Configure ESP-NOW Peers
     static bool peerRegistered = false;
-    if (!peerRegistered) {
-        if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
+    if (!peerRegistered)
+    {
+        if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC))
+        {
             ESP_LOGI(TAG, "Registered peer");
             peerRegistered = true;
-        } else {
+        }
+        else
+        {
             ESP_LOGE(TAG, "Failed to register peer");
         }
     }
@@ -146,11 +176,15 @@ void setup() {
 
     // Sync Time // FIXME! - Load accesses fault
     static bool timeSynced = false;
-    if (!timeSynced) {
-        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+    if (!timeSynced)
+    {
+        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC))
+        {
             ESP_LOGI(TAG, "Time sync initialized successfully");
             timeSynced = true;
-        } else {
+        }
+        else
+        {
             ESP_LOGE(TAG, "Failed to initialize time sync");
         }
     }
@@ -169,9 +203,12 @@ void setup() {
 
     // Set up tasks
     static bool tasksSetup = false;
-    if (!tasksSetup) {
-        for (TaskInfo &taskDesc : taskDescriptions) {
-            if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
+    if (!tasksSetup)
+    {
+        for (TaskInfo &taskDesc : taskDescriptions)
+        {
+            if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0)
+            {
                 ESP_LOGW(TAG, "Stack size not word aligned");
             }
             // Syntax: xTaskCreate(Task function, Name of the task (for
@@ -181,9 +218,12 @@ void setup() {
                 xTaskCreate(taskDesc.function, taskDesc.name,
                             taskDesc.stackSize_bytes, taskDesc.pvParameters,
                             taskDesc.priority, &(taskDesc.pxCreatedTask));
-            if (result != pdPASS) {
+            if (result != pdPASS)
+            {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
-            } else {
+            }
+            else
+            {
                 ESP_LOGV(
                     TAG,
                     "Created task %s with priority %u and stack size %u bytes",
@@ -209,8 +249,10 @@ void setup() {
 /**
  * @brief Task to poll high priority sensors
  */
-void vTaskPollSensors(void *pvParameters) {
-    while (true) {
+void vTaskPollSensors(void *pvParameters)
+{
+    while (true)
+    {
         delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
     }
 }
@@ -218,8 +260,10 @@ void vTaskPollSensors(void *pvParameters) {
 /**
  * @brief Task to control the pitch actuator
  */
-void vTaskPitch(void *pvParameters) {
-    while (true) {
+void vTaskPitch(void *pvParameters)
+{
+    while (true)
+    {
         static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
         //          pitchPIDController.compute(
@@ -234,11 +278,16 @@ void vTaskPitch(void *pvParameters) {
 /**
  * @brief Task to handle inbound data that has been queued
  */
-void vTaskRecvData(void *pvParameters) {
-    while (true) {
-        if (false) {
+void vTaskRecvData(void *pvParameters)
+{
+    while (true)
+    {
+        if (false)
+        {
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
-        } else {
+        }
+        else
+        {
             // Suspend until reenabled from interrupt
             vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
         }
@@ -248,11 +297,16 @@ void vTaskRecvData(void *pvParameters) {
 /**
  * @brief Task to handle outbound data that has been queued
  */
-void vTaskSendData(void *pvParameters) {
-    while (true) {
-        if (false) {
+void vTaskSendData(void *pvParameters)
+{
+    while (true)
+    {
+        if (false)
+        {
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
-        } else {
+        }
+        else
+        {
             // Suspend until reenabled
             vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
         }
@@ -261,8 +315,10 @@ void vTaskSendData(void *pvParameters) {
 
 // MARK: Utility Tasks
 
-void vTaskConfigure(void *pvParameters) {
-    while (true) {
+void vTaskConfigure(void *pvParameters)
+{
+    while (true)
+    {
         // setup(); // todo
         delay(RUN::TASK_INTERVALS::TI_CFG_ms);
     }
@@ -271,8 +327,10 @@ void vTaskConfigure(void *pvParameters) {
 /**
  * @brief Task to handle Telnet connections
  */
-void vTaskTelnet(void *pvParameters) {
-    while (true) {
+void vTaskTelnet(void *pvParameters)
+{
+    while (true)
+    {
         // TELNET::loop(); // todo
         delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
     }
@@ -282,16 +340,20 @@ void vTaskTelnet(void *pvParameters) {
  * @brief Task to handle ElegantOTA connections
  * @deprecated Just use a USB cable if possible
  */
-void vTaskOTA(void *pvParameters) {
-    while (true) {
+void vTaskOTA(void *pvParameters)
+{
+    while (true)
+    {
         delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
 }
 
 // MARK: Status Tasks
 
-void vTaskStatusLED(void *pvParameters) {
-    while (true) {
+void vTaskStatusLED(void *pvParameters)
+{
+    while (true)
+    {
         ESP_LOGV(TAG, "vTSL");
         digitalWrite(LED::LED_PIN, HIGH);
         delay(LED::BLINK_ON_MILLIS);
@@ -323,7 +385,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 /**
  * @brief Task to log data
  */
-void vTaskLogData(void *pvParameters) {
+void vTaskLogData(void *pvParameters)
+{
     /**
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
@@ -336,7 +399,8 @@ void vTaskLogData(void *pvParameters) {
     ESP_ERROR_CHECK(
         temperature_sensor_install(&tempSensConfig, &tempSensHandle));
 
-    while (true) {
+    while (true)
+    {
         // if (!Serial.isConnected()) {
         //     delay(LOG_INTERVAL_MS);
         //     continue;
@@ -352,13 +416,16 @@ void vTaskLogData(void *pvParameters) {
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_USR_TASKS + NUM_ESP_TASKS);
         char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
-        if (uxTaskGetNumberOfTasks() > NUM_USR_TASKS + NUM_ESP_TASKS) {
+        if (uxTaskGetNumberOfTasks() > NUM_USR_TASKS + NUM_ESP_TASKS)
+        {
             ESP_LOGE(
                 TAG,
                 "Number of tasks (%d) exceeds expected max (%d), skipping to "
                 "prevent memory corruption",
                 uxTaskGetNumberOfTasks(), NUM_USR_TASKS + NUM_ESP_TASKS);
-        } else {
+        }
+        else
+        {
             // TODO: Not recommended in production
             vTaskGetRunTimeStats(statsBuffer);
             statsBuffer[STATS_BUFFER_SIZE - 1] =
@@ -367,7 +434,8 @@ void vTaskLogData(void *pvParameters) {
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
             delay(LOG_ITEM_INTERVAL_MS);
 
-            for (TaskInfo &taskDesc : taskDescriptions) {
+            for (TaskInfo &taskDesc : taskDescriptions)
+            {
                 taskDesc.minFreeStack_Bytes =
                     uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
                 ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
@@ -390,9 +458,12 @@ void vTaskLogData(void *pvParameters) {
         int32_t tempTrunc_C = (int32_t)tsens_out;
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
-        if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {
+        if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP)
+        {
             ESP_LOGE(TAG, "Temperature out of bounds: %d dC", tempTrunc_C);
-        } else {
+        }
+        else
+        {
             ESP_LOGI(TAG, "Temperature: %d dC", tempTrunc_C);
         }
         // Disable the temperature sensor if it is not needed and save the power
@@ -408,7 +479,8 @@ void vTaskLogData(void *pvParameters) {
  * MARK: loop
  * Arduino: put your main code here, to run repeatedly:
  */
-void loop() {
+void loop()
+{
     // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
     delay(1000);
 }
