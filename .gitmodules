@@ -1,3 +1,7 @@
 [submodule "2026-Controls_Core"]
 	path = lib/2026-Controls_Core
 	url = https://github.com/CalPolyWindPower/2026-Controls_Core.git
+[submodule "lib/ESP32Servo"]
+	path = lib/ESP32Servo
+	url = https://github.com/CalPolyWindPower/ESP32Servo.git
+	branch = esp32c5-ledc
