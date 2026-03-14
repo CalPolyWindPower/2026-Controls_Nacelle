@@ -1,6 +1,10 @@
 /**
  * @file ActuatorDemo.ino
  * @brief Manually control the actuator
+ * @version 1.0.0
+ * @since Winter 2026
+ * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for @CalPolyWindPower <https://github.com/calpolywindpower>
+ * @author Inspired by Trevor (@rover-t <https://github.com/rover-t>) at @CalPolyWindPower <https://github.com/calpolywindpower>
  *
  * The DFRobot Firebeetle 2 ESP32-C5 has one USB C port.  The baud
  *   rate is seto to 115,000 below and uses the internal USB
