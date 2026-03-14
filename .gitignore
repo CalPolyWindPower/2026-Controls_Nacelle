@@ -46,3 +46,4 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 /docs/doxygen-out
+/demos/ActuatorDemo_v*.zip
