@@ -22,17 +22,15 @@
  *      `https://espressif.github.io/arduino-esp32/package_esp32_index.json`
  *     (See also:
  * https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
- * 3. Go to the library manager in the left sidebar and install "ESP32Servo" by
- * Kevin.
- * 4. Load the attached sketch or the latest version from GitHub:
+ * 3. Load the attached sketch or the latest version from GitHub:
  *    https://github.com/CalPolyWindPower/2026-Controls_Nacelle/blob/main/demos/ActuatorDemo/ActuatorDemo.ino
- * 5. Set the board to "ESP32C5 Dev Module".  There may be multiple
+ * 4. Set the board to "ESP32C5 Dev Module".  There may be multiple
  *    COM / serial ports to choose from.  If one is labled "ESP32
  *    Family Device", use that and switch it to "ESP32C5 Dev Module".
- * 6. Under Tools, set "USB CDC On Boot" to "Enabled"
- * 7. [Recomended] Under Tools, set "Core Debug Level" to "Info"
- * 8. Select Upload
- * 9. Open a serial terminal
+ * 5. Under Tools, set "USB CDC On Boot" to "Enabled"
+ * 6. [Recomended] Under Tools, set "Core Debug Level" to "Info"
+ * 7. Select Upload
+ * 8. Open a serial terminal
  *   A. In Arduino IDE, got Tools > Serial Monitor and switch to 115200 baud
  *
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
