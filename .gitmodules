@@ -5,3 +5,6 @@
 	path = lib/ESP32Servo
 	url = https://github.com/CalPolyWindPower/ESP32Servo.git
 	branch = esp32c5-ledc
+[submodule "demos/ActuatorDemo/src/ESP32Servo"]
+	path = demos/ActuatorDemo/src/ESP32Servo
+	url = https://github.com/CalPolyWindPower/ESP32Servo.git

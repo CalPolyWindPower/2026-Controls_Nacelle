@@ -51,8 +51,8 @@
  */
 // #define ENFORCE_PINS 0
 // #include <ESP32Servo.h>
-#include "./src/ESP32PWM.h"
-#include "./src/ESP32Servo.h"
+#include "./src/ESP32Servo/src/ESP32PWM.h"
+#include "./src/ESP32Servo/src/ESP32Servo.h"
 #else
 #    include <Servo.h>
 #endif
