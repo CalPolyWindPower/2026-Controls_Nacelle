@@ -3,17 +3,17 @@
 // https://pvs-studio.com
 
 /* Includes */
+#include "NacelleConfig.hpp"
 // #include "2026Core/Net/Net-Application/Telnet.hpp"
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
 // #include <PID.hpp>
-#include "2026Core/CommonConfig.hpp"
+#include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
 #include "2026Core/Net/Net-Application/NTP.hpp"
 // #include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
-#include "NacelleConfig.hpp"
 #include <ActuonixL12.hpp>
 #include <Arduino.h>
 #include <esp_log.h>
