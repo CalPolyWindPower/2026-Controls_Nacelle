@@ -28,6 +28,15 @@
             }
         },
         {
+            "label": "Platformio: Check (Linux)",
+            "type": "shell",
+            "command": "~/.platformio/penv/bin/pio check",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
             "label": "Platformio Remote: Initalzie Remote Agent",
             "type": "shell",
             "command": "pio remote agent start",
