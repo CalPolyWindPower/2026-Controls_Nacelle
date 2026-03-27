@@ -23,19 +23,45 @@ static constexpr const char *TAG = "NaMa";
 
 // MARK: Function Prototypes
 // Main Tasks
-void vTaskUpdateFSM(void *pvParameters);
-void vTaskPollSensors(void *pvParameters);
-void vTaskPitch(void *pvParameters);
-void vTaskRecvData(void *pvParameters);
+/**
+ * @brief Task to control run the FSM
+ */
+void vTaskUpdateFSM([[maybe_unused]] void *pvParameters);
+/**
+ * @brief Task to poll high priority sensors
+ */
+void vTaskPollSensors([[maybe_unused]] void *pvParameters);
+/**
+ * @brief Task to control the pitch actuator
+ */
+void vTaskPitch([[maybe_unused]] void *pvParameters);
+/** 
+ * @brief Task to handle inbound data that has been queued
+ */
+void vTaskRecvData([[maybe_unused]] void *pvParameters);
 
-void vTaskSendData(void *pvParameters);
-void vTaskConfigure(void *pvParameters);
-void vTaskStatusLED(void *pvParameters);
-void vTaskLogData(void *pvParameters);
+/**
+ * @brief Task to handle outbound data that has been queued
+ */
+void vTaskSendData([[maybe_unused]] void *pvParameters);
+void vTaskConfigure([[maybe_unused]] void *pvParameters);
+void vTaskStatusLED([[maybe_unused]] void *pvParameters);
+/**
+ * @brief Task to log data
+ */
+void vTaskLogData([[maybe_unused]] void *pvParameters);
 
 // Optional Tasks
-void vTaskTelnet(void *pvParameters);
-void vTaskOTA(void *pvParameters);
+/**
+ * @brief Task to handle Telnet connections
+ * @deprecated Just use a USB cable if possible
+ */
+void vTaskTelnet([[maybe_unused]] void *pvParameters);
+/**
+ * @brief Task to handle ElegantOTA connections
+ * @deprecated Just use a USB cable if possible
+ */
+void vTaskOTA([[maybe_unused]] void *pvParameters);
 
 // Helper Functions
 // ...
@@ -65,7 +91,10 @@ etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
     TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0},
     TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
     TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
-enum TASK_IDS : uint_fast8_t {
+/**
+ * @SupressWarnings("cpp:S3642") // Does not work
+ */
+enum TASK_IDS : uint_fast8_t { // NOSONAR
     TID_POLL = 0,
     TID_PITCH,
     TID_RECV,
@@ -236,27 +265,29 @@ void setup() {
  */
 
 /**
- * @brief Task to control run the FSM
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskUpdateFSM(void *pvParameters) {
+__attribute__((noreturn)) void
+vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_FSM_mS);
     }
 }
 
 /**
- * @brief Task to poll high priority sensors
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskPollSensors(void *pvParameters) {
+__attribute__((noreturn)) void
+vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
     }
 }
 
 /**
- * @brief Task to control the pitch actuator
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskPitch(void *pvParameters) {
+__attribute__((noreturn)) void vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
@@ -270,38 +301,47 @@ __attribute__((noreturn)) void vTaskPitch(void *pvParameters) {
 // MARK: Network Tasks
 
 /**
- * @brief Task to handle inbound data that has been queued
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskRecvData(void *pvParameters) {
+__attribute__((noreturn)) void
+vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
             // vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
-            delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling (suspend ^ blocks setup)
+            delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling
+                                                    // (suspend ^ blocks setup)
         }
     }
 }
 
 /**
  * @brief Task to handle outbound data that has been queued
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskSendData(void *pvParameters) {
+__attribute__((noreturn)) void
+vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
             // vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
-            delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling (suspend ^ blocks setup)
+            delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling
+                                                    // (suspend ^ blocks setup)
         }
     }
 }
 
 // MARK: Utility Tasks
 
-__attribute__((noreturn)) void vTaskConfigure(void *pvParameters) {
+/**
+ * @SuppressWarnings("cpp:S5008") // Does not work
+ */
+__attribute__((noreturn)) void
+vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // setup(); // todo
         delay(RUN::TASK_INTERVALS::TI_CFG_ms);
@@ -309,10 +349,10 @@ __attribute__((noreturn)) void vTaskConfigure(void *pvParameters) {
 }
 
 /**
- * @brief Task to handle Telnet connections
- * @deprecated Just use a USB cable if possible
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskTelnet(void *pvParameters) {
+__attribute__((noreturn)) void
+vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // TELNET::loop(); // todo
         delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
@@ -320,10 +360,9 @@ __attribute__((noreturn)) void vTaskTelnet(void *pvParameters) {
 }
 
 /**
- * @brief Task to handle ElegantOTA connections
- * @deprecated Just use a USB cable if possible
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskOTA(void *pvParameters) {
+__attribute__((noreturn)) void vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
@@ -331,7 +370,11 @@ __attribute__((noreturn)) void vTaskOTA(void *pvParameters) {
 
 // MARK: Status Tasks
 
-__attribute__((noreturn)) void vTaskStatusLED(void *pvParameters) {
+/**
+ * @SuppressWarnings("cpp:S5008") // Does not work
+ */
+__attribute__((noreturn)) void
+vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         ESP_LOGV(TAG, "vTSL");
         digitalWrite(LED::LED_PIN, HIGH);
@@ -357,14 +400,14 @@ __attribute__((noreturn)) void vTaskStatusLED(void *pvParameters) {
 // consteval uint_fast8_t fahrenheitToCelsius(uint_fast8_t fahrenheit) {
 //     return (fahrenheit - 32) * 5 / 9;
 // }
-
 constexpr uint32_t ITEMS_TO_LOG = 4;
 constexpr uint32_t LOG_ITEM_INTERVAL_MS =
     RUN::TASK_INTERVALS::TI_LOG_DATA_ms / ITEMS_TO_LOG;
 /**
- * @brief Task to log data
+ * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskLogData(void *pvParameters) {
+__attribute__((noreturn)) void
+vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
     /**
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
@@ -392,7 +435,9 @@ __attribute__((noreturn)) void vTaskLogData(void *pvParameters) {
         constexpr uint_fast8_t NUM_ESP_TASKS = 8;
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_USR_TASKS + NUM_ESP_TASKS);
-        char statsBuffer[STATS_BUFFER_SIZE] = {'\0'};
+        // char statsBuffer[STATS_BUFFER_SIZE] = {'\0'}; // Frowned on by sonar
+        // lint:
+        etl::string<STATS_BUFFER_SIZE> statsBuffer = {'\0'};
         if (uxTaskGetNumberOfTasks() > NUM_USR_TASKS + NUM_ESP_TASKS) {
             ESP_LOGE(
                 TAG,
@@ -401,11 +446,12 @@ __attribute__((noreturn)) void vTaskLogData(void *pvParameters) {
                 uxTaskGetNumberOfTasks(), NUM_USR_TASKS + NUM_ESP_TASKS);
         } else {
             // TODO: Not recommended in production
-            vTaskGetRunTimeStats(statsBuffer);
+            vTaskGetRunTimeStats(statsBuffer.data());
             statsBuffer[STATS_BUFFER_SIZE - 1] =
                 '\0'; // hard cap, avoid over-read
+            statsBuffer.trim_to_terminator();
             // uxTaskGetSystemState();
-            ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer);
+            ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer.c_str());
             delay(LOG_ITEM_INTERVAL_MS);
 
             for (TaskInfo &taskDesc : taskDescriptions) {

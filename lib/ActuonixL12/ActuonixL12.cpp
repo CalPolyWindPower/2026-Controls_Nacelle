@@ -1,7 +1,7 @@
 #include "ActuonixL12.hpp"
 #include <esp_log.h>
 
-static const char *TAG = "ActL12";
+static constexpr const char *TAG = "ActL12";
 
 ActuonixL12::ActuonixL12(int pin, int min_us, int max_us)
     : pin_(pin), min_us_(min_us), max_us_(max_us) {}
