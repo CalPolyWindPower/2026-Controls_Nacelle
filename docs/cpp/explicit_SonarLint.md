@@ -1,0 +1,90 @@
+# SonarLint: "explicit" should be used on single-parameter constructors and conversion operators (cpp:S1709)
+
+> Copied from the SonarQube Rule Description
+
+Maintainability: Intentionality issue | Not clear
+
+## Why is this an issue?
+
+If you invoked a method with arguments of the wrong type, you would typically expect an error at compile time (if not in the IDE). However, when the expected parameter is a class with a single-argument constructor, the compiler will implicitly pass the method argument to that constructor to implicitly create an object of the correct type for the method invocation. Alternately, if the wrong type has a conversion operator to the correct type, the operator will be called to create an object of the needed type.
+
+But just because you can do something, that doesn’t mean you should, and using implicit conversions makes the execution flow difficult to understand. Readers may not notice that a conversion occurs, and if they do notice, it will raise a lot of questions: Is the source type able to convert to the destination type? Is the destination type able to construct an instance from the source? Is it both? And if so, which method is called by the compiler?
+
+Moreover, implicit promotions can lead to unexpected behavior, so they should be prevented by using the explicit keyword on single-argument constructors and (C++11) conversion operators. Doing so will prevent the compiler from performing implicit conversions.
+
+### Noncompliant code example
+
+~~~C++
+struct Bar {
+};
+
+struct Foo {
+  Foo(Bar& bar); // Noncompliant; allow implicit conversion from 'Bar' to 'Foo'
+};
+
+struct Baz {
+  operator Foo(); // Noncompliant; allow implicit conversion from 'Baz' to 'Foo'
+};
+
+void func(const Foo& b); // this function needs a 'Foo' not a 'Bar' nor a 'Baz'
+
+int test(Bar& bar, Baz& baz) {
+  func(bar); // implicit conversion using Foo::Foo(Bar& bar)
+  func(baz); // implicit conversion using Baz::operator Foo()
+  func(baz);
+}
+~~~
+
+### Compliant solution
+
+~~~c++
+struct Bar {
+};
+
+struct Foo {
+  explicit Foo(Bar& bar); // Compliant, using "explicit" keyword
+};
+
+struct Baz {
+  Foo asFoo();             // Compliant, explicit function
+  explicit operator Foo(); // Compliant, using C++11 "explicit" keyword for conversion function
+};
+
+void func(const Foo& b); // this function needs a 'Foo' not a 'Bar' nor a 'Baz'
+
+int test(Bar& bar, Baz& baz) {
+  func(Foo(bar));              // explicit conversion using Foo::Foo(Bar& bar)
+  func(baz.asFoo());           // explicit conversion using Baz::asFoo()
+  func(static_cast<Foo>(baz)); // explicit conversion using Baz::operator Foo()
+}
+~~~
+
+## Exceptions
+
+The issue is not raised for constructors that have a single parameter of type `std::initializer_list` - such constructors have special meaning and allow objects to be constructed from brace delimited list of initializers.
+
+~~~C++
+struct Container {
+  Container(std::initializer_list<int> elems); // Compliant
+};
+
+void handle(Container const& c);
+
+int test(Bar& bar, Baz& baz) {
+  Container c1{1, 2, 3};      // OK whether the constructor is explicit or not
+  Container c2 = {1, 2, 3};   // Ill-formed if constructor would be explicit
+  handle({1, 2, 3});          // Ill-formed if constructor would be explicit
+  handle(Container{1, 2, 3}); // OK whether the constructor is explicit or not
+}
+~~~
+
+C++20 introduced conditional `explicit(expr)` that allows developers to make a constructor or conversion operator conditionally explicit depending on the value of `expr`. The new syntax allows a constructor or conversion operator declared with an `explicit(expr)` specifier to be implicit when `expr` evaluates to `false`. The issue is not raised in such situation.
+
+Additionally, developers can use `explicit(false)` to mark constructors or conversion operators as intentionally implicit.
+
+## More Info
+
+- MISRA C++:2008, 12-1-3 - All constructors that are callable with a single argument of fundamental type shall be declared `explicit`.
+- C++ Core Guidelines - [C.46: By default, declare single-argument constructors explicit](https://github.com/isocpp/CppCoreGuidelines/blob/e49158a/CppCoreGuidelines.md#c46-by-default-declare-single-argument-constructors-explicit)
+- C++ Core Guidelines - [C.164: Avoid implicit conversion operators](https://github.com/isocpp/CppCoreGuidelines/blob/e49158a/CppCoreGuidelines.md#c164-avoid-implicit-conversion-operators)
+
