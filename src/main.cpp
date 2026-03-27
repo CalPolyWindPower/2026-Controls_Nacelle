@@ -14,6 +14,8 @@
 // #include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#include "NacelleContainer.hpp"
+// #include "NacelleFSM.hpp"
 #include <ActuonixL12.hpp>
 #include <Arduino.h>
 #include <esp_log.h>
@@ -35,7 +37,7 @@ void vTaskPollSensors([[maybe_unused]] void *pvParameters);
  * @brief Task to control the pitch actuator
  */
 void vTaskPitch([[maybe_unused]] void *pvParameters);
-/** 
+/**
  * @brief Task to handle inbound data that has been queued
  */
 void vTaskRecvData([[maybe_unused]] void *pvParameters);
@@ -127,6 +129,9 @@ SyncedClock netClock(adapterESPNow); // todo
 ; // todo
 
 ActuonixL12 pitchActuator(/*PIN3*/ 5, 1000, 2000); // Temp Pin
+
+// NacelleContainer nacelle;
+// NacelleFSM nacelleFSM(nacelle);
 
 /**
  * MARK: Setup
@@ -270,6 +275,13 @@ void setup() {
 __attribute__((noreturn)) void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+        // NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
+        // if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
+        //     ESP_LOGI(TAG, "FSM State Changed: %d",
+        //              nacelleFSM.getCurrentState());
+        // } else if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
+        //     ESP_LOGE(TAG, "Error updating FSM state");
+        // }
         delay(RUN::TASK_INTERVALS::TI_FSM_mS);
     }
 }
@@ -287,7 +299,8 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
+__attribute__((noreturn)) void
+vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
@@ -362,7 +375,8 @@ vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
+__attribute__((noreturn)) void
+vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }

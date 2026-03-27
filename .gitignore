@@ -48,3 +48,4 @@
 /docs/doxygen-out
 /demos/ActuatorDemo_v*.zip
 compile_commands.json
+logs/device-monitor-260327-003900.log
