@@ -1,7 +1,7 @@
 /**
  * @file ActuatorDemo.ino
  * @brief Manually control the actuator
- * @version 1.1.0
+ * @version 1.1.1
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -30,10 +30,10 @@
  * 3. Load the attached sketch or the latest version from GitHub:
  *    https://github.com/CalPolyWindPower/2026-Controls_Nacelle/blob/main/demos/ActuatorDemo/ActuatorDemo.ino
  * 4. Set the board to "ESP32C5 Dev Module".  There may be multiple
- *    COM / serial ports to choose from.  If one is labled "ESP32
+ *    COM / serial ports to choose from.  If one is labeled "ESP32
  *    Family Device", use that and switch it to "ESP32C5 Dev Module".
  * 5. Under Tools, set "USB CDC On Boot" to "Enabled"
- * 6. [Recomended] Under Tools, set "Core Debug Level" to "Info"
+ * 6. [Recommended] Under Tools, set "Core Debug Level" to "Info"
  * 7. Select Upload
  * 8. Open a serial terminal
  *   A. In Arduino IDE, got Tools > Serial Monitor and switch to 115200 baud

@@ -54,9 +54,9 @@ struct TaskInfo {
 constexpr uint_fast8_t NUM_USR_TASKS = 8; // Must match number of entires!
 // constexpr uint_fast8_t NUM_USR_TASKS = 1;
 // Arduino Loop has priority 1
-// TODO: Note: Task priority must be <25
+// TODO: Note: Task priority must be < 25
 etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
-    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 25, nullptr, 0},
+    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0},
     TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0},
     TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0},
     TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0},
@@ -199,6 +199,7 @@ void setup() {
     static bool tasksSetup = false;
     if (!tasksSetup) {
         for (TaskInfo &taskDesc : taskDescriptions) {
+            ESP_LOGI(TAG, "Setting up task: %s", taskDesc.name);
             if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
                 ESP_LOGW(TAG, "Stack size not word aligned");
             }
@@ -237,15 +238,16 @@ void setup() {
 /**
  * @brief Task to control run the FSM
  */
-void vTaskUpdateFSM(void *pvParameters) {
+__attribute__((noreturn)) void vTaskUpdateFSM(void *pvParameters) {
     while (true) {
+        delay(RUN::TASK_INTERVALS::TI_FSM_mS);
     }
 }
 
 /**
  * @brief Task to poll high priority sensors
  */
-void vTaskPollSensors(void *pvParameters) {
+__attribute__((noreturn)) void vTaskPollSensors(void *pvParameters) {
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
     }
@@ -254,7 +256,7 @@ void vTaskPollSensors(void *pvParameters) {
 /**
  * @brief Task to control the pitch actuator
  */
-void vTaskPitch(void *pvParameters) {
+__attribute__((noreturn)) void vTaskPitch(void *pvParameters) {
     while (true) {
         static int i = 0;
         // ESP_LOGI(TAG, "Pitch PID Output: %f",
@@ -270,13 +272,14 @@ void vTaskPitch(void *pvParameters) {
 /**
  * @brief Task to handle inbound data that has been queued
  */
-void vTaskRecvData(void *pvParameters) {
+__attribute__((noreturn)) void vTaskRecvData(void *pvParameters) {
     while (true) {
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
-            vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
+            // vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
+            delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling (suspend ^ blocks setup)
         }
     }
 }
@@ -284,20 +287,21 @@ void vTaskRecvData(void *pvParameters) {
 /**
  * @brief Task to handle outbound data that has been queued
  */
-void vTaskSendData(void *pvParameters) {
+__attribute__((noreturn)) void vTaskSendData(void *pvParameters) {
     while (true) {
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
-            vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
+            // vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
+            delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling (suspend ^ blocks setup)
         }
     }
 }
 
 // MARK: Utility Tasks
 
-void vTaskConfigure(void *pvParameters) {
+__attribute__((noreturn)) void vTaskConfigure(void *pvParameters) {
     while (true) {
         // setup(); // todo
         delay(RUN::TASK_INTERVALS::TI_CFG_ms);
@@ -308,7 +312,7 @@ void vTaskConfigure(void *pvParameters) {
  * @brief Task to handle Telnet connections
  * @deprecated Just use a USB cable if possible
  */
-void vTaskTelnet(void *pvParameters) {
+__attribute__((noreturn)) void vTaskTelnet(void *pvParameters) {
     while (true) {
         // TELNET::loop(); // todo
         delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
@@ -319,7 +323,7 @@ void vTaskTelnet(void *pvParameters) {
  * @brief Task to handle ElegantOTA connections
  * @deprecated Just use a USB cable if possible
  */
-void vTaskOTA(void *pvParameters) {
+__attribute__((noreturn)) void vTaskOTA(void *pvParameters) {
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
@@ -327,7 +331,7 @@ void vTaskOTA(void *pvParameters) {
 
 // MARK: Status Tasks
 
-void vTaskStatusLED(void *pvParameters) {
+__attribute__((noreturn)) void vTaskStatusLED(void *pvParameters) {
     while (true) {
         ESP_LOGV(TAG, "vTSL");
         digitalWrite(LED::LED_PIN, HIGH);
@@ -360,7 +364,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 /**
  * @brief Task to log data
  */
-void vTaskLogData(void *pvParameters) {
+__attribute__((noreturn)) void vTaskLogData(void *pvParameters) {
     /**
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
@@ -421,10 +425,10 @@ void vTaskLogData(void *pvParameters) {
         // Enable temperature sensor
         ESP_ERROR_CHECK(temperature_sensor_enable(tempSensHandle));
         // Get converted sensor data
-        float tsens_out;
+        float tempSens_out;
         ESP_ERROR_CHECK(
-            temperature_sensor_get_celsius(tempSensHandle, &tsens_out));
-        int32_t tempTrunc_C = (int32_t)tsens_out;
+            temperature_sensor_get_celsius(tempSensHandle, &tempSens_out));
+        auto tempTrunc_C = (int32_t)tempSens_out;
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {

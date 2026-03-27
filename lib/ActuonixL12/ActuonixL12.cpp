@@ -8,7 +8,7 @@ ActuonixL12::ActuonixL12(int pin, int min_us, int max_us)
 
 void ActuonixL12::begin()
 {
-    ESP_LOGI(TAG, "Attatching on pin %d (range %d-%d us)", pin_, min_us_, max_us_);
+    ESP_LOGI(TAG, "Attaching on pin %d (range %d-%d us)", pin_, min_us_, max_us_);
     servo_.attach(pin_);
 }
 

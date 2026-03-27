@@ -4,7 +4,7 @@
 class ActuonixL12
 {
 public:
-    ActuonixL12(int pin, int min_us = 1000, int max_us = 2000);
+    explicit ActuonixL12(int pin, int min_us = 1000, int max_us = 2000);
     ~ActuonixL12() = default;
 
     void begin();
