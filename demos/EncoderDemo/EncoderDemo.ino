@@ -4,65 +4,87 @@
 
 
 
-AS5600 as5600;   //  use default Wire
+namespace Encoder {
+  AS5600 as5600;
 
-const int SCL_firebeetle = 10;
-const int SDA_firebeetle = 9;
+  constexpr uint8_t SCL_FIREBEETLE = 10; // SCL pin for the Firebeetle
+  constexpr uint8_t SDA_FIREBEETLE = 9;  // SDA pin for the Firebeetle
 
-const int t = 100;
-const int dataset_size = 2;
+  constexpr uint32_t AVERAGING_PERIOD_MS = 1000; // time window of moving average, in milliseconds
+  constexpr uint8_t DATASET_SIZE = 3;            // size of the rpmSamples array and # of times encoder samples per second
 
-float rpms[dataset_size + 1];
+  // Sets delay between samples so that collecting DATASET_SIZE samples spans one full averaging period
+  constexpr uint32_t SAMPLE_DELAY_MS = AVERAGING_PERIOD_MS / DATASET_SIZE; 
+
+  float rpmSamples[DATASET_SIZE]; // Circular buffer of recent RPM samples
+  float runningRpmSum = 0;        // Sum of the RPM samples currently stored in rpmSamples
+
+  void getRpmMovingAverage(float& rpmAvg);
+  void errorChecking();
+}
 
 
 
 void setup() {
-
   Serial.begin(115200);
 
-  Wire.begin(SDA_firebeetle,SCL_firebeetle);
-  as5600.begin();  //  set direction pin.
-  as5600.setDirection(AS5600_CLOCK_WISE);  //  default, just be explicit.
-  int b = as5600.isConnected();
+  Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
+  Encoder::as5600.begin(); 
+  Encoder::as5600.setDirection(AS5600_CLOCK_WISE);    // sets encoder's assumed direction of rotation to clockwise 
+  int connectionTest = Encoder::as5600.isConnected(); // checks if the microcontroller has successfully established a connection with the encoder
   Serial.print("Connect: ");
-  Serial.println(b);
+  Serial.println(connectionTest);
   delay(1000);
 
-  // load rpm data into array to prevent error during main loop
-  for (int i = 0; i<=dataset_size; i++) {
-    rpms[i] = as5600.getAngularSpeed(AS5600_MODE_RPM);
-    delay(t);
-    Serial.println(String(i));
+  // load RPM samples into array to prevent error during main loop
+  for (int i = 0; i < Encoder::DATASET_SIZE; i++) {
+    Encoder::rpmSamples[i] = Encoder::as5600.getAngularSpeed(AS5600_MODE_RPM);
+    Encoder::runningRpmSum += Encoder::rpmSamples[i];
+    delay(Encoder::SAMPLE_DELAY_MS);
   }
-
 }
 
 
 
 void loop() {
-  float rpm_average;
+  Encoder::errorChecking();
 
-  // shifts every element in rpms[] to the right
-  for (int i = dataset_size; i >= 1; i--) {
-    rpms[i] = rpms[i-1];
-  }
-  rpms[0] = as5600.getAngularSpeed(AS5600_MODE_RPM); 
-
-  // sums rpms[]
-  for (int i = 0; i <= dataset_size; i++) {
-    rpm_average += rpms[i];
-  }
-
-  rpm_average = rpm_average/dataset_size + 1;
+  float rpmAverage;
+  Encoder::getRpmMovingAverage(rpmAverage);
 
   Serial.print("\tω = ");
-  Serial.println(String(rpm_average));
-  delay(100);
+  Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
 
-  // error checking; definitely room for a more in depth system
-  int e = as5600.lastError();
-  if (e != AS5600_OK){
-    Serial.println(String(e));
+  delay(Encoder::SAMPLE_DELAY_MS);
+}
+
+
+
+// Updates the moving average of the RPM over the averaging period
+void Encoder::getRpmMovingAverage(float& rpmAvg) {
+  static uint16_t index = 0; // Index of the oldest RPM sample
+
+  Encoder::runningRpmSum -= Encoder::rpmSamples[index];                           // Subtracts the oldest rpm sample from the running sum
+  Encoder::rpmSamples[index] = Encoder::as5600.getAngularSpeed(AS5600_MODE_RPM);  // Replaces oldest rpm sample with newest
+  Encoder::runningRpmSum += Encoder::rpmSamples[index];                           // Adds the newest rpm sample to the running sum
+
+  rpmAvg = Encoder::runningRpmSum / Encoder::DATASET_SIZE;  // RPM average: Quotient of the running sum of the RPM samples and the size of the dataset
+
+  // loops index back to the start 
+  if (index == (Encoder::DATASET_SIZE - 1)) {
+    index = 0;
   }
+  else {
+    index += 1;
+  }
+}
 
+
+
+// Definitely room for a more in depth system
+void Encoder::errorChecking() {
+  int e = Encoder::as5600.lastError();
+  if (e != AS5600_OK){
+    Serial.println(e);
+  }
 }
