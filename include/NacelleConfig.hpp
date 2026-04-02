@@ -34,20 +34,32 @@ namespace FR_FIREBEETLE2_ESP32C6 {
     constexpr uint_fast8_t LED_PIN = 15;
 
     // Actuator Pins
+    /**
+     * @brief Actuator PWM control pin
+     * @details Control with pulse width modulation (PWM): Hobby RC style
+     * (1,000-2,00 microseconds pulses every 20,0000 microsecond period) or by
+     * duty cycle at 1 kHz)
+     */
     constexpr uint_fast8_t ACTUATOR_PWM_PIN = 3;
     constexpr uint_fast8_t ACTUATOR_FB_PIN = 2;
 
     // I2C
-    constexpr uint_fast8_t HPI2C_SDA_PIN = 9;
-    constexpr uint_fast8_t HPI2C_SCL_PIN = 10;
-    constexpr uint_fast8_t LPI2C_SDA_PIN = 6;
-    constexpr uint_fast8_t LPI2C_SCL_PIN = 7;
+    constexpr uint_fast8_t HPI2C_SDA_PIN = 9;  // High Power I2C Serial Data
+    constexpr uint_fast8_t HPI2C_SCL_PIN = 10; // High Power I2C Serial Clock
+    constexpr uint_fast8_t LPI2C_SDA_PIN = 6;  // Low Power I2C Serial Data
+    constexpr uint_fast8_t LPI2C_SCL_PIN = 7;  // Low Power I2C Serial Clock
 
     // SPI
+    /**
+     * @brief SPI Controller In Peripheral Out (MISO)
+     */
     constexpr uint_fast8_t SPI_CIPO_PIN = 25;
-    constexpr uint_fast8_t SPI_CLK_PIN = 23;
+    constexpr uint_fast8_t SPI_CLK_PIN = 23; // SPI Clock
+    /**
+     * @brief SPI Controller Out Peripheral In (MOSI)
+     */
     constexpr uint_fast8_t SPI_COPI_PIN = 24;
-    constexpr uint_fast8_t SPI_CS_PIN = 28;
+    constexpr uint_fast8_t SPI_CS_PIN = 28; // SPI Chip Select (SS)
 
     // UART
     constexpr uint_fast8_t UART_TX_PIN = TX;
@@ -130,6 +142,7 @@ namespace PITCHING {
 namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint32_t {
+        TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz)
         TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
         TI_RECV_ms = 100,       // CONFIG - 100 ms (10 Hz)
@@ -142,8 +155,8 @@ namespace RUN {
 
     // todo: What was this for?
     // constexpr uint32_t SLEEP_TIME_MINS = 10;
-    // constexpr uint32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS * CONSTS::SECS_PER_MIN;
-    // constexpr uint32_t SLEEP_TIME_MILLIS =
+    // constexpr uint32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS *
+    // CONSTS::SECS_PER_MIN; constexpr uint32_t SLEEP_TIME_MILLIS =
     //     SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
 

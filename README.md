@@ -1,6 +1,6 @@
 # 2026-Controls_Nacelle
 
-Nacelle specifc code fore 2026 Controls .
+Nacelle specific code fore 2026 Controls .
 
 ## Actions Status
 
@@ -23,7 +23,7 @@ Nacelle specifc code fore 2026 Controls .
 - `include` - Miscellaneous header files
   - `NacelleConfig.hpp` - Nacelle specific configuration
 - `lib` - Private libraries
-  - `2026-Controls-Core` - Common files - [`CalPolyWindPower/2026-Controls_Core`](<https://github.com/CalPolyWindPower/2026-Controls_Core)
+  - `2026-Controls-Core` - Common files - [`CalPolyWindPower/2026-Controls_Core`](https://github.com/CalPolyWindPower/2026-Controls_Core)
 - `logs` - Log files from the serial console / monitor
 - `src` - Miscellaneous source files
 - `test` - Where tests would go if he had them
