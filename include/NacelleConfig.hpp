@@ -116,20 +116,23 @@ namespace PITCHING {
         100; // angle between arm and tip chord (+ccw looking from tip)
     constexpr uint16_t PITCH_ANGLE_OFFSET = ARM_CHORD_DEG_CCW - 90;
 
-    constexpr uint16_t SERVO_MIN_MS_2025 = 1000;
-    constexpr uint16_t SERVO_MAX_MS_2025 = 2000;
-    constexpr uint16_t SERVO_MIN_MS_2024 = 1450;
-    constexpr uint16_t SERVO_MAX_MS_2024 = 1870;
+    constexpr uint16_t SERVO_MIN_uS_2026 = 1000; // todo
+    constexpr uint16_t SERVO_MAX_uS_2026 = 2000; // todo
+    constexpr uint16_t SERVO_MIN_uS_2025 = 1000;
+    constexpr uint16_t SERVO_MAX_uS_2025 = 2000;
+    constexpr uint16_t SERVO_MIN_uS_2024 = 1450;
+    constexpr uint16_t SERVO_MAX_uS_2024 = 1870;
 
     // Pitching config
     constexpr uint8_t BLADE_PITCH_STARTUP_DEG =
         PITCH_CUTIN_ANGLE_DEG; // CONFIG //todo
-    constexpr uint16_t BLADE_SERVO_STARTUP_MS =
-        SERVO_MAX_MS_2025; // CONFIG //todo
+    constexpr uint16_t BLADE_SERVO_STARTUP_uS =
+        SERVO_MAX_uS_2025; // CONFIG //todo
 
     constexpr uint8_t BLADE_PITCH_STOP_DEG =
-        PITCH_MAX_ANGLE_DEG;                                    // CONFIG //todo
-    constexpr uint16_t BLADE_SERVO_STOP_MS = SERVO_MIN_MS_2025; // CONFIG //todo
+        PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
+    constexpr uint16_t BLADE_SERVO_STOP_uS =
+        SERVO_MIN_uS_2025; // Feather -CONFIG //todo
 
     // todo: Ftarget rpm var
 

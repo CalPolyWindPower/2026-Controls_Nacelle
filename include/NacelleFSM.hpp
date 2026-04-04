@@ -1,6 +1,7 @@
 #pragma once
 
 #include "2026Core/FSMStates.hpp"
+#include "NacelleConfig.hpp"
 #include "NacelleContainer.hpp"
 #include <cstdint>
 
@@ -41,7 +42,8 @@ class NacelleFSM {
         // Check safety task
         if (currentState != FSMCommon::sESTOP && nacelle.getSafetyFlag()) {
             currentState = FSMCommon::sESTOP;
-            // todo feather
+            nacelle.pitchActuator.writePosMicros(
+                PITCHING::BLADE_SERVO_STOP_uS); // Feather
             return UPDATE_RESULT::STATE_CHANGED;
         } else if (currentState == FSMCommon::sESTOP &&
                    nacelle.getSafetyFlag()) {
@@ -52,7 +54,8 @@ class NacelleFSM {
         // Check reset task
         if (currentState != FSMCommon::sRST && !nacelle.isPowerPositive()) {
             currentState = FSMCommon::sRST;
-            // todo pitch cut in
+            nacelle.pitchActuator.writePosMicros(
+                PITCHING::BLADE_SERVO_STARTUP_uS); // cut in
             return UPDATE_RESULT::STATE_CHANGED;
         } else if (currentState == FSMCommon::sRST &&
                    !nacelle.isPowerPositive()) {

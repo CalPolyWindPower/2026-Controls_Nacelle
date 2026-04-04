@@ -128,9 +128,11 @@ SyncedClock netClock(adapterESPNow); // todo
 //         2000.0f, 0, PID::Direction::DIRECT, "PC");
 ; // todo
 
-ActuonixL12 pitchActuator(/*PIN3*/ 5, 1000, 2000); // Temp Pin
+ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
+                          PITCHING::SERVO_MIN_uS_2026,
+                          PITCHING::SERVO_MAX_uS_2026);
 
-// NacelleContainer nacelle;
+NacelleContainer nacelle(pitchActuator);
 // NacelleFSM nacelleFSM(nacelle);
 
 /**
