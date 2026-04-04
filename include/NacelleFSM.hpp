@@ -11,6 +11,8 @@
  */
 class NacelleFSM {
   public:
+    static constexpr const char *TAG = "NFSM";
+
     /**
      * @brief Construct a new Nacelle FSM object
      * @param nacelle The NacelleContainer object that tracks the overall state
@@ -19,7 +21,7 @@ class NacelleFSM {
     NacelleFSM(NacelleContainer nacelle) : nacelle(nacelle) {
         if (!currentState.is_lock_free()) {
             ESP_LOGE(TAG,
-                     "Atomic operations on uint_fast32_t are not lock-free on "
+                     "Atomic operations on uint_fast8_t are not lock-free on "
                      "this platform.");
         }
     }
