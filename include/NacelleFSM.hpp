@@ -3,6 +3,7 @@
 #include "2026Core/FSMStates.hpp"
 #include "NacelleConfig.hpp"
 #include "NacelleContainer.hpp"
+#include <atomic>
 #include <cstdint>
 
 /**
@@ -15,7 +16,13 @@ class NacelleFSM {
      * @param nacelle The NacelleContainer object that tracks the overall state
      * of the nacelle
      */
-    NacelleFSM(NacelleContainer nacelle) : nacelle(nacelle) {}
+    NacelleFSM(NacelleContainer nacelle) : nacelle(nacelle) {
+        if (!currentState.is_lock_free()) {
+            ESP_LOGE(TAG,
+                     "Atomic operations on uint_fast32_t are not lock-free on "
+                     "this platform.");
+        }
+    }
     ~NacelleFSM() = default;
 
     /**
@@ -99,5 +106,49 @@ class NacelleFSM {
 
   private:
     NacelleContainer nacelle;
-    FSMCommon::States currentState = FSMCommon::sINIT;
+
+    /**
+     * @see https://stackoverflow.com/a/49915536
+     */
+    static_assert(
+        (__cplusplus >= 201703L),
+        "C++17 or higher is required for std::atomic is_always_lock_free");
+
+    /**
+     * @see https://www.reddit.com/r/embedded/comments/zn23of/comment/j0fav6o/
+     * @see
+     * https://stackoverflow.com/questions/63471387/should-volatile-still-be-used-for-sharing-data-with-isrs-in-modern-c
+     * @see https://en.cppreference.com/w/c/language/atomic.html
+     * @see https://en.cppreference.com/w/cpp/atomic/atomic.html
+     * @see https://stackoverflow.com/a/16783513
+     */
+    // static_assert(std::atomic<uint_fast8_t>::is_always_lock_free,
+    //               "Atomic operations on uint_fast8_t are not lock-free on "
+    //               "this platform.");
+
+    /**
+     * From C++14.2.0 atomic.h:
+     * Check Lock-free property.
+     *
+     * 0 indicates that the types are never lock-free.
+     * 1 indicates that the types are sometimes lock-free.
+     * 2 indicates that the types are always lock-free.
+     */
+    static_assert(sizeof(int) == sizeof(uint_fast8_t),
+                  "Atomic Lock-free check issue");
+#if (ATOMIC_INT_LOCK_FREE == 0)
+#    error "Atomic operations on int are not lock-free on this platform."
+#elif (ATOMIC_INT_LOCK_FREE == 1)
+#    warning                                                                   \
+        "Atomic operations on int are only sometimes lock-free on this platform."
+#endif
+
+    /**
+     * @see
+     * https://stackoverflow.com/questions/21756457/how-can-i-create-an-atomic-enum-in-c
+     * @see
+     * https://stackoverflow.com/questions/31978324/what-exactly-is-stdatomic
+     * @see https://en.cppreference.com/w/cpp/atomic/atomic.html
+     */
+    std::atomic<FSMCommon::States> currentState = FSMCommon::sINIT;
 };

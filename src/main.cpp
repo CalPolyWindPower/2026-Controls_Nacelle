@@ -230,13 +230,27 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
 __attribute__((noreturn)) void
 vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        static int i = 0;
-        // ESP_LOGI(TAG, "Pitch PID Output: %f",
-        //          pitchPIDController.compute(
-        //              i)); // todo - just a quick performances test
-        i += 20;
+        if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartLoad ||
+            nacelleFSM.getCurrentState() == FSMCommon::States::sSRunLoad) {
+            // Fine
+        } else if (nacelleFSM.getCurrentState() ==
+                   FSMCommon::States::sCurtail) {
+            // static int i = 0;
+            // ESP_LOGI(TAG, "Pitch PID Output: %f",
+            //          pitchPIDController.compute(
+            //              i)); // todo - just a quick performances test
+            // i += 20;
+        } else {
+            // No updates needed
+            ESP_LOGI(TAG, "No pitch updates needed in state %d, supsending",
+                     nacelleFSM.getCurrentState());
+            // DONE: Consider suspending when not in use
+            vTaskSuspend(
+                nacelle
+                    .mainTaskDescriptions[NacelleContainer::TASK_IDS::TID_PITCH]
+                    .pxHandle); // Suspend until reenabled by FSM
+        }
         delay(RUN::TASK_INTERVALS::TI_PITCH_mS);
-        // TODO: Consider suspending when not in use
     }
 }
 
