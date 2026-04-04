@@ -78,21 +78,31 @@ struct TaskInfo {
                                 // reason, possible bug
     TaskHandle_t pxCreatedTask = nullptr;
     UBaseType_t minFreeStack_Bytes = 0;
+    bool initialized = false;
 };
-constexpr uint_fast8_t NUM_USR_TASKS = 8; // Must match number of entires!
-// constexpr uint_fast8_t NUM_USR_TASKS = 1;
+constexpr uint_fast8_t NUM_MAIN_TASKS = 8; // Must match number of entires!
+// constexpr uint_fast8_t NUM_MAIN_TASKS = 1;
 // Arduino Loop has priority 1
 // TODO: Note: Task priority must be < 25
-etl::array<TaskInfo, NUM_USR_TASKS> taskDescriptions = {
-    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0},
-    TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0},
-    TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0},
-    TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0},
+etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
+    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0, false}, // 0
+    TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
+             false},                                                       // 1
+    TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0, false},    // 2
+    TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0, false}, // 3
 
-    TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0},
-    TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0},
-    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0},
-    TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0}};
+    TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0, false}, // 4
+    TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0, false},  // 5
+    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0, false},   // 6
+    TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false}     // 7
+};
+
+constexpr uint_fast8_t NUM_OPTIONAL_TASKS = 2; // Must match number of entires!
+etl::array<TaskInfo, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {
+    TaskInfo{vTaskTelnet, "Telnet", 4096, nullptr, 1, nullptr, 0, false}, // 0
+    TaskInfo{vTaskOTA, "OTA", 4096, nullptr, 1, nullptr, 0, false},       // 1
+};
+
 /**
  * @SupressWarnings("cpp:S3642") // Does not work
  */
@@ -234,7 +244,7 @@ void setup() {
     // Set up tasks
     static bool tasksSetup = false;
     if (!tasksSetup) {
-        for (TaskInfo &taskDesc : taskDescriptions) {
+        for (TaskInfo &taskDesc : mainTaskDescriptions) {
             ESP_LOGI(TAG, "Setting up task: %s", taskDesc.name);
             if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
                 ESP_LOGW(TAG, "Stack size not word aligned");
@@ -249,6 +259,7 @@ void setup() {
             if (result != pdPASS) {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
             } else {
+                taskDesc.initialized = true;
                 ESP_LOGV(
                     TAG,
                     "Created task %s with priority %u and stack size %u bytes",
@@ -310,6 +321,7 @@ vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
         //              i)); // todo - just a quick performances test
         i += 20;
         delay(RUN::TASK_INTERVALS::TI_PITCH_mS);
+        // TODO: Consider suspending when not in use
     }
 }
 
@@ -325,7 +337,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
-            // vTaskSuspend(taskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
+            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
             delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling
                                                     // (suspend ^ blocks setup)
         }
@@ -343,7 +355,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
-            // vTaskSuspend(taskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
+            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
             delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling
                                                     // (suspend ^ blocks setup)
         }
@@ -450,16 +462,16 @@ vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
         constexpr uint_fast8_t REC_BYTES_PER_TASK = 40;
         constexpr uint_fast8_t NUM_ESP_TASKS = 8;
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
-            REC_BYTES_PER_TASK * (NUM_USR_TASKS + NUM_ESP_TASKS);
+            REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
         // char statsBuffer[STATS_BUFFER_SIZE] = {'\0'}; // Frowned on by sonar
         // lint:
         etl::string<STATS_BUFFER_SIZE> statsBuffer = {'\0'};
-        if (uxTaskGetNumberOfTasks() > NUM_USR_TASKS + NUM_ESP_TASKS) {
+        if (uxTaskGetNumberOfTasks() > NUM_MAIN_TASKS + NUM_ESP_TASKS) {
             ESP_LOGE(
                 TAG,
                 "Number of tasks (%d) exceeds expected max (%d), skipping to "
                 "prevent memory corruption",
-                uxTaskGetNumberOfTasks(), NUM_USR_TASKS + NUM_ESP_TASKS);
+                uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
         } else {
             // TODO: Not recommended in production
             vTaskGetRunTimeStats(statsBuffer.data());
@@ -470,12 +482,24 @@ vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer.c_str());
             delay(LOG_ITEM_INTERVAL_MS);
 
-            for (TaskInfo &taskDesc : taskDescriptions) {
+            for (TaskInfo &taskDesc : mainTaskDescriptions) {
                 taskDesc.minFreeStack_Bytes =
                     uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
                 ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
                          taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
                          taskDesc.minFreeStack_Bytes);
+            }
+            for (TaskInfo &taskDesc : optionalTaskDescriptions) {
+                if (taskDesc.initialized) { // Not sure if you can get stack
+                                            // info for uninitialized tasks, so
+                                            // check first
+                    taskDesc.minFreeStack_Bytes =
+                        uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
+                    ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
+                             taskDesc.stackSize_bytes -
+                                 taskDesc.minFreeStack_Bytes,
+                             taskDesc.minFreeStack_Bytes);
+                }
             }
         }
         delay(LOG_ITEM_INTERVAL_MS);
