@@ -42,6 +42,9 @@ class NacelleFSM {
         // Check safety task
         if (currentState != FSMCommon::sESTOP && nacelle.getSafetyFlag()) {
             currentState = FSMCommon::sESTOP;
+            vTaskSuspend(
+                nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+                    .pxHandle);
             nacelle.pitchActuator.writePosMicros(
                 PITCHING::BLADE_SERVO_STOP_uS); // Feather
             return UPDATE_RESULT::STATE_CHANGED;
@@ -54,6 +57,9 @@ class NacelleFSM {
         // Check reset task
         if (currentState != FSMCommon::sRST && !nacelle.isPowerPositive()) {
             currentState = FSMCommon::sRST;
+            vTaskSuspend(
+                nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+                    .pxHandle);
             nacelle.pitchActuator.writePosMicros(
                 PITCHING::BLADE_SERVO_STARTUP_uS); // cut in
             return UPDATE_RESULT::STATE_CHANGED;
@@ -66,6 +72,9 @@ class NacelleFSM {
         // Other transitions
         if (currentState == FSMCommon::sRST) {
             currentState = FSMCommon::sStartLoad;
+            vTaskResume(
+                nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+                    .pxHandle);
             // todo: pitch fine
         } else if ((currentState == FSMCommon::sStartLoad &&
                     nacelle.isSteadyRPM()) ||

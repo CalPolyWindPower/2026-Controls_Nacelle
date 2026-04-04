@@ -16,105 +16,21 @@
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include "NacelleContainer.hpp"
 // #include "NacelleFSM.hpp"
+#include "Tasks.hpp"
 #include <ActuonixL12.hpp>
 #include <Arduino.h>
+#include <NacelleFSM.hpp>
 #include <esp_log.h>
 #include <temperature_sensor.h>
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
 
 // MARK: Function Prototypes
-// Main Tasks
-/**
- * @brief Task to control run the FSM
- */
-void vTaskUpdateFSM([[maybe_unused]] void *pvParameters);
-/**
- * @brief Task to poll high priority sensors
- */
-void vTaskPollSensors([[maybe_unused]] void *pvParameters);
-/**
- * @brief Task to control the pitch actuator
- */
-void vTaskPitch([[maybe_unused]] void *pvParameters);
-/**
- * @brief Task to handle inbound data that has been queued
- */
-void vTaskRecvData([[maybe_unused]] void *pvParameters);
-
-/**
- * @brief Task to handle outbound data that has been queued
- */
-void vTaskSendData([[maybe_unused]] void *pvParameters);
-void vTaskConfigure([[maybe_unused]] void *pvParameters);
-void vTaskStatusLED([[maybe_unused]] void *pvParameters);
-/**
- * @brief Task to log data
- */
-void vTaskLogData([[maybe_unused]] void *pvParameters);
-
-// Optional Tasks
-/**
- * @brief Task to handle Telnet connections
- * @deprecated Just use a USB cable if possible
- */
-void vTaskTelnet([[maybe_unused]] void *pvParameters);
-/**
- * @brief Task to handle ElegantOTA connections
- * @deprecated Just use a USB cable if possible
- */
-void vTaskOTA([[maybe_unused]] void *pvParameters);
 
 // Helper Functions
 // ...
 
 // MARK:  Global Objects
-struct TaskInfo {
-    const TaskFunction_t function;
-    const char *const name;
-    const configSTACK_DEPTH_TYPE stackSize_bytes = 1024;
-    void *const pvParameters = nullptr;
-    const UBaseType_t priority; // Note: Task priority must be <25 for some
-                                // reason, possible bug
-    TaskHandle_t pxCreatedTask = nullptr;
-    UBaseType_t minFreeStack_Bytes = 0;
-    bool initialized = false;
-};
-constexpr uint_fast8_t NUM_MAIN_TASKS = 8; // Must match number of entires!
-// constexpr uint_fast8_t NUM_MAIN_TASKS = 1;
-// Arduino Loop has priority 1
-// TODO: Note: Task priority must be < 25
-etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
-    TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0, false}, // 0
-    TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
-             false},                                                       // 1
-    TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0, false},    // 2
-    TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0, false}, // 3
-
-    TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0, false}, // 4
-    TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0, false},  // 5
-    TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0, false},   // 6
-    TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false}     // 7
-};
-
-constexpr uint_fast8_t NUM_OPTIONAL_TASKS = 2; // Must match number of entires!
-etl::array<TaskInfo, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {
-    TaskInfo{vTaskTelnet, "Telnet", 4096, nullptr, 1, nullptr, 0, false}, // 0
-    TaskInfo{vTaskOTA, "OTA", 4096, nullptr, 1, nullptr, 0, false},       // 1
-};
-
-/**
- * @SupressWarnings("cpp:S3642") // Does not work
- */
-enum TASK_IDS : uint_fast8_t { // NOSONAR
-    TID_POLL = 0,
-    TID_PITCH,
-    TID_RECV,
-    TID_SEND,
-    TID_CFG,
-    TID_LED,
-    TID_LOG
-};
 
 // AdapterWLAN adapterWLAN = AdapterWLAN();
 AdapterWLAN adapterWLAN;
@@ -136,14 +52,14 @@ SyncedClock netClock(adapterESPNow); // todo
 //         //
 //         (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MIN_ANGLE_DEG),
 //         2000.0f, 0, PID::Direction::DIRECT, "PC");
-; // todo
+// ; // todo
 
 ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
                           PITCHING::SERVO_MIN_uS_2026,
                           PITCHING::SERVO_MAX_uS_2026);
 
 NacelleContainer nacelle(pitchActuator);
-// NacelleFSM nacelleFSM(nacelle);
+NacelleFSM nacelleFSM(nacelle);
 
 /**
  * MARK: Setup
@@ -244,7 +160,7 @@ void setup() {
     // Set up tasks
     static bool tasksSetup = false;
     if (!tasksSetup) {
-        for (TaskInfo &taskDesc : mainTaskDescriptions) {
+        for (TaskInfo &taskDesc : nacelle.mainTaskDescriptions) {
             ESP_LOGI(TAG, "Setting up task: %s", taskDesc.name);
             if (taskDesc.stackSize_bytes % sizeof(uint_fast8_t) != 0) {
                 ESP_LOGW(TAG, "Stack size not word aligned");
@@ -252,10 +168,9 @@ void setup() {
             // Syntax: xTaskCreate(Task function, Name of the task (for
             // debugging), Stack size (in words, not bytes), Task input
             // parameter, Priority of the task, Task handle)
-            BaseType_t result =
-                xTaskCreate(taskDesc.function, taskDesc.name,
-                            taskDesc.stackSize_bytes, taskDesc.pvParameters,
-                            taskDesc.priority, &(taskDesc.pxCreatedTask));
+            BaseType_t result = xTaskCreate(
+                taskDesc.function, taskDesc.name, taskDesc.stackSize_bytes,
+                taskDesc.pvParameters, taskDesc.priority, &(taskDesc.pxHandle));
             if (result != pdPASS) {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
             } else {
@@ -337,7 +252,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
-            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_RECV].pxCreatedTask);
+            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_RECV].pxHandle);
             delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling
                                                     // (suspend ^ blocks setup)
         }
@@ -355,7 +270,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
-            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_SEND].pxCreatedTask);
+            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_SEND].pxHandle);
             delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling
                                                     // (suspend ^ blocks setup)
         }
@@ -482,19 +397,19 @@ vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer.c_str());
             delay(LOG_ITEM_INTERVAL_MS);
 
-            for (TaskInfo &taskDesc : mainTaskDescriptions) {
+            for (TaskInfo &taskDesc : nacelle.mainTaskDescriptions) {
                 taskDesc.minFreeStack_Bytes =
-                    uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
+                    uxTaskGetStackHighWaterMark(taskDesc.pxHandle);
                 ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
                          taskDesc.stackSize_bytes - taskDesc.minFreeStack_Bytes,
                          taskDesc.minFreeStack_Bytes);
             }
-            for (TaskInfo &taskDesc : optionalTaskDescriptions) {
+            for (TaskInfo &taskDesc : nacelle.optionalTaskDescriptions) {
                 if (taskDesc.initialized) { // Not sure if you can get stack
                                             // info for uninitialized tasks, so
                                             // check first
                     taskDesc.minFreeStack_Bytes =
-                        uxTaskGetStackHighWaterMark(taskDesc.pxCreatedTask);
+                        uxTaskGetStackHighWaterMark(taskDesc.pxHandle);
                     ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
                              taskDesc.stackSize_bytes -
                                  taskDesc.minFreeStack_Bytes,
