@@ -2,26 +2,30 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java:
 // https://pvs-studio.com
 
-/* Includes */
+// System Includes
+#include <esp_log.h>
+#include <temperature_sensor.h>
+
+// Library Includes
+#include <Arduino.h>
+#include <PID.hpp>
+
+// Project Includes
 #include "NacelleConfig.hpp"
 // #include "2026Core/Net/Net-Application/Telnet.hpp"
-// #include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
 // #include "2026Core/Net/NetAdapter_A.hpp"
-// #include "2026Core/Net/NetAdapter_A.hpp"
-// #include <PID.hpp>
+// #include "2026Core/Net/NetAdapter_ FA.hpp"
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
 #include "2026Core/Net/Net-Application/NTP.hpp"
 // #include "2026Core/Net/Net-Application/OTA.hpp"
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
+// #include "2026Core/Net/Net-Link/AdapterUHCI.hpp" // NOSONAR
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#include "ActuonixL12.hpp"
 #include "NacelleContainer.hpp"
-// #include "NacelleFSM.hpp"
+#include "NacelleFSM.hpp"
 #include "Tasks.hpp"
-#include <ActuonixL12.hpp>
-#include <Arduino.h>
-#include <NacelleFSM.hpp>
-#include <esp_log.h>
-#include <temperature_sensor.h>
+
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
 
