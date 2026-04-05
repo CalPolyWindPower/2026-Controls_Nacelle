@@ -10,7 +10,7 @@
  * @brief Class to manage the finite state machine for the nacelle
  */
 class NacelleFSM {
-  public:
+  public: // MARK: Public
     static constexpr const char *TAG = "NFSM";
 
     /**
@@ -24,15 +24,28 @@ class NacelleFSM {
                      "Atomic operations on uint_fast8_t are not lock-free on "
                      "this platform.");
         }
+        UPDATE_RESULT result = updateState();
+        if (result == UPDATE_RESULT::ERROR) {
+            ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
+        } else if (result == UPDATE_RESULT::STATE_CHANGED) {
+            ESP_LOGI(TAG, "Initialized FSM to state %d",
+                     (uint_fast8_t)currentState.load());
+        } else if (result == UPDATE_RESULT::NO_CHANGE) {
+            ESP_LOGE(TAG, "Failed to enter a valid state");
+        } else {
+            ESP_LOGE(TAG, "Unknown FSM init. result: %d", (uint_fast8_t)result);
+        }
     }
     ~NacelleFSM() = default;
 
+    // MARK: Getters
     /**
      * @brief Get the current state of the FSM
      * @return The current state
      */
-    FSMCommon::States getCurrentState() const { return currentState; }
+    inline FSMCommon::States getCurrentState() const { return currentState; }
 
+    // MARK: State Logic
     /**
      * @brief result of an FSM update/ input check
      */
@@ -48,56 +61,83 @@ class NacelleFSM {
      * an error occurred
      */
     UPDATE_RESULT updateState() {
-        // Check safety task
-        if (currentState != FSMCommon::sESTOP && nacelle.getSafetyFlag()) {
-            currentState = FSMCommon::sESTOP;
+        // Check safety task / E-Stop conditions
+        if ((currentState != FSMCommon::States::sESTOP) &&
+            nacelle.getSafetyFlag()) {
+            // * -> sESTOP
+            currentState = FSMCommon::States::sESTOP;
+
+            // Blade pitch -> feather
             vTaskSuspend(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
-            nacelle.pitchActuator.writePosMicros(
-                PITCHING::BLADE_SERVO_STOP_uS); // Feather
+            nacelle.pitchActuator.writePosMicros(PITCHING::POS_STOP_uS);
+
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if (currentState == FSMCommon::sESTOP &&
+        } else if ((currentState == FSMCommon::States::sESTOP) &&
                    nacelle.getSafetyFlag()) {
             // Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } // else: ~safetyTask
 
-        // Check reset task
-        if (currentState != FSMCommon::sRST && !nacelle.isPowerPositive()) {
-            currentState = FSMCommon::sRST;
+        // Check reset conditions
+        if ((currentState != FSMCommon::States::sRST) &&
+            !nacelle.isPowerPositive()) {
+            // * -> sRST
+            currentState = FSMCommon::States::sRST;
+
+            // Blade pitch -> cut in
             vTaskSuspend(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
-            nacelle.pitchActuator.writePosMicros(
-                PITCHING::BLADE_SERVO_STARTUP_uS); // cut in
+            nacelle.pitchActuator.writePosMicros(PITCHING::POS_STARTUP_uS);
+
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if (currentState == FSMCommon::sRST &&
+        } else if ((currentState == FSMCommon::States::sRST) &&
                    !nacelle.isPowerPositive()) {
             // Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } // else: producingPositivePower
 
-        // Other transitions
-        if (currentState == FSMCommon::sRST) {
-            currentState = FSMCommon::sStartLoad;
+        // Check other transition conditions
+        if (currentState == FSMCommon::States::sRST) {
+            // sRST -> sStartLoad
+            currentState = FSMCommon::States::sStartLoad;
+
+            // Pitch -> Adjust (fine) // TODO: Check on this
             vTaskResume(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
-            // todo: pitch fine
-        } else if ((currentState == FSMCommon::sStartLoad &&
-                    nacelle.isSteadyRPM()) ||
-                   (currentState == FSMCommon::sCurtail &&
-                    !nacelle.isTargetRPMExceeded())) {
-            currentState = FSMCommon::sSRunLoad;
-            // Pitch is already set to fine
-            // todo signal load
+
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if (currentState == FSMCommon::sSRunLoad &&
+        } else if ((currentState == FSMCommon::States::sStartLoad) &&
+                   nacelle.isSteadyRPM()) {
+            // sStartLoad -> sSRunLoad
+            currentState = FSMCommon::States::sSRunLoad;
+
+            // Pitch is already set to adjust (fine)
+            // TODO: signal load
+
+            return UPDATE_RESULT::STATE_CHANGED;
+        } else if ((currentState == FSMCommon::States::sSRunLoad) &&
                    nacelle.isTargetRPMExceeded()) {
-            currentState = FSMCommon::sCurtail;
-            // todo pitch PI
-            // todo signal load
+            // sSRunLoad -> sCurtail
+            currentState = FSMCommon::States::sCurtail;
+
+            // Pitch is already set to adjust (fine), which will detect the new
+            // state (PI)
+            // TODO: signal load
+
+            return UPDATE_RESULT::STATE_CHANGED;
+        } else if ((currentState == FSMCommon::States::sCurtail) &&
+                   !nacelle.isTargetRPMExceeded()) {
+            // sCurtail -> sSRunLoad
+            currentState = FSMCommon::States::sSRunLoad;
+
+            // Pitch is already set to adjust (PI), which will detect the new
+            // state (fine)
+            // TODO: signal load
+
             return UPDATE_RESULT::STATE_CHANGED;
         } else {
             return UPDATE_RESULT::NO_CHANGE;
@@ -106,10 +146,12 @@ class NacelleFSM {
         return UPDATE_RESULT::ERROR;
     }
 
-  private:
+  private: // MARK: Private
     NacelleContainer nacelle;
 
     /**
+     * @brief Check for C++17 support, which allows us to verify if std::atomic
+     * is a acceptable (lock free) solution for shared variables
      * @see https://stackoverflow.com/a/49915536
      */
     static_assert(
@@ -117,18 +159,7 @@ class NacelleFSM {
         "C++17 or higher is required for std::atomic is_always_lock_free");
 
     /**
-     * @see https://www.reddit.com/r/embedded/comments/zn23of/comment/j0fav6o/
-     * @see
-     * https://stackoverflow.com/questions/63471387/should-volatile-still-be-used-for-sharing-data-with-isrs-in-modern-c
-     * @see https://en.cppreference.com/w/c/language/atomic.html
-     * @see https://en.cppreference.com/w/cpp/atomic/atomic.html
-     * @see https://stackoverflow.com/a/16783513
-     */
-    // static_assert(std::atomic<uint_fast8_t>::is_always_lock_free,
-    //               "Atomic operations on uint_fast8_t are not lock-free on "
-    //               "this platform.");
-
-    /**
+     * @brief Do some basic checks regarding std::atomic and data types
      * From C++14.2.0 atomic.h:
      * Check Lock-free property.
      *
@@ -146,11 +177,27 @@ class NacelleFSM {
 #endif
 
     /**
+     * @brief Check if std::atomic<uint_fast8_t> is an acceptable (lock free)
+     * solution for shared variables
+     * @see https://www.reddit.com/r/embedded/comments/zn23of/comment/j0fav6o/
+     * @see
+     * https://stackoverflow.com/questions/63471387/should-volatile-still-be-used-for-sharing-data-with-isrs-in-modern-c
+     * @see https://en.cppreference.com/w/c/language/atomic.html
+     * @see https://en.cppreference.com/w/cpp/atomic/atomic.html
+     * @see https://stackoverflow.com/a/16783513
+     */
+    static_assert(std::atomic<uint_fast8_t>::is_always_lock_free,
+                  "Atomic operations on uint_fast8_t are not lock-free on "
+                  "this platform.");
+
+    /**
+     * @details Store the FSM state as an atomic variable such that it can be
+     * safely accessed from multiple tasks
      * @see
      * https://stackoverflow.com/questions/21756457/how-can-i-create-an-atomic-enum-in-c
      * @see
      * https://stackoverflow.com/questions/31978324/what-exactly-is-stdatomic
      * @see https://en.cppreference.com/w/cpp/atomic/atomic.html
      */
-    std::atomic<FSMCommon::States> currentState = FSMCommon::sINIT;
+    std::atomic<FSMCommon::States> currentState = FSMCommon::States::sINIT;
 };

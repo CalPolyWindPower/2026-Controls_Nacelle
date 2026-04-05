@@ -126,12 +126,12 @@ namespace PITCHING {
     // Pitching config
     constexpr uint8_t BLADE_PITCH_STARTUP_DEG =
         PITCH_CUTIN_ANGLE_DEG; // CONFIG //todo
-    constexpr uint16_t BLADE_SERVO_STARTUP_uS =
+    constexpr uint16_t POS_STARTUP_uS =
         SERVO_MAX_uS_2025; // CONFIG //todo
 
     constexpr uint8_t BLADE_PITCH_STOP_DEG =
         PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
-    constexpr uint16_t BLADE_SERVO_STOP_uS =
+    constexpr uint16_t POS_STOP_uS =
         SERVO_MIN_uS_2025; // Feather -CONFIG //todo
 
     // todo: Ftarget rpm var
