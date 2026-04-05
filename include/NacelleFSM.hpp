@@ -1,10 +1,13 @@
 #pragma once
 
+// Standard Library Includes
+#include <atomic>
+#include <cstdint>
+
+// Project Includes
 #include "2026Core/FSMStates.hpp"
 #include "NacelleConfig.hpp"
 #include "NacelleContainer.hpp"
-#include <atomic>
-#include <cstdint>
 
 /**
  * @brief Class to manage the finite state machine for the nacelle
