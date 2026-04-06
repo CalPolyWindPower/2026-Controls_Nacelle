@@ -6,7 +6,7 @@
 #include <freertos/task.h>
 #include <portmacro.h>
 
-// MARK: Datatypes * Co
+// MARK: Datatypes & Constants
 struct TaskInfo {
     const TaskFunction_t function;
     const char *const name;
