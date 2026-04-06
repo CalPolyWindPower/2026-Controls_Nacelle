@@ -234,7 +234,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartLoad ||
-            nacelleFSM.getCurrentState() == FSMCommon::States::sSRunLoad) {
+            nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
             // Fine
         } else if (nacelleFSM.getCurrentState() ==
                    FSMCommon::States::sCurtail) {

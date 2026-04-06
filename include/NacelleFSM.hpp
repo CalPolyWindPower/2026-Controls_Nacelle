@@ -115,16 +115,16 @@ class NacelleFSM {
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sStartLoad) &&
                    nacelle.isSteadyRPM()) {
-            // sStartLoad -> sSRunLoad
-            currentState = FSMCommon::States::sSRunLoad;
+            // sStartLoad -> sRunLoad
+            currentState = FSMCommon::States::sRunLoad;
 
             // Pitch is already set to adjust (fine)
             // TODO: signal load
 
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if ((currentState == FSMCommon::States::sSRunLoad) &&
+        } else if ((currentState == FSMCommon::States::sRunLoad) &&
                    nacelle.isTargetRPMExceeded()) {
-            // sSRunLoad -> sCurtail
+            // sRunLoad -> sCurtail
             currentState = FSMCommon::States::sCurtail;
 
             // Pitch is already set to adjust (fine), which will detect the new
@@ -134,8 +134,8 @@ class NacelleFSM {
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sCurtail) &&
                    !nacelle.isTargetRPMExceeded()) {
-            // sCurtail -> sSRunLoad
-            currentState = FSMCommon::States::sSRunLoad;
+            // sCurtail -> sRunLoad
+            currentState = FSMCommon::States::sRunLoad;
 
             // Pitch is already set to adjust (PI), which will detect the new
             // state (fine)
