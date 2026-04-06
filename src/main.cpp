@@ -204,7 +204,7 @@ void setup() {
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
+[[noreturn]] void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
@@ -221,7 +221,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
+[[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS);
@@ -231,8 +231,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
-vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
+[[noreturn]] void vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartLoad ||
             nacelleFSM.getCurrentState() == FSMCommon::States::sSRunLoad) {
@@ -263,7 +262,7 @@ vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
+[[noreturn]] void
 vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         if (false) {
@@ -281,7 +280,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
  * @brief Task to handle outbound data that has been queued
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
+[[noreturn]] void
 vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         if (false) {
@@ -300,7 +299,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
+[[noreturn]] void
 vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // setup(); // todo
@@ -311,8 +310,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
-vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
+[[noreturn]] void vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         // TELNET::loop();
         delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
@@ -322,8 +320,7 @@ vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
-vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
+[[noreturn]] void vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         delay(RUN::TASK_INTERVALS::TI_OTA_ms);
     }
@@ -334,7 +331,7 @@ vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
+[[noreturn]] void
 vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         ESP_LOGV(TAG, "vTSL");
@@ -367,8 +364,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
-__attribute__((noreturn)) void
-vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
+[[noreturn]] void vTaskLogData([[maybe_unused]] void *pvParameters) { // NOSONAR
     /**
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
