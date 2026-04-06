@@ -32,7 +32,7 @@ class NacelleFSM {
             ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
         } else if (result == UPDATE_RESULT::STATE_CHANGED) {
             ESP_LOGI(TAG, "Initialized FSM to state %d",
-                     (uint_fast8_t)currentState.load());
+                     (uint_fast8_t)currentState);
         } else if (result == UPDATE_RESULT::NO_CHANGE) {
             ESP_LOGE(TAG, "Failed to enter a valid state");
         } else {
@@ -55,6 +55,10 @@ class NacelleFSM {
     enum class UPDATE_RESULT : uint_fast8_t {
         NO_CHANGE = 0,
         STATE_CHANGED = 1,
+        /**
+         * @details Trim -1 to an 8-bit unsigned integer(255), unsigned extend
+         * to uint_fast8_t
+         */
         ERROR = (uint_fast8_t)(uint8_t)-1
     };
 
@@ -116,10 +120,12 @@ class NacelleFSM {
         } else if ((currentState == FSMCommon::States::sStartLoad) &&
                    nacelle.isSteadyRPM()) {
             // sStartLoad -> sRunLoad
+            // Note: The producing positive power condition is handled by the
+            // reset logic
             currentState = FSMCommon::States::sRunLoad;
 
             // Pitch is already set to adjust (fine)
-            // TODO: signal load
+            // TODO: signal load (set steadyRPM)
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRunLoad) &&
@@ -129,7 +135,7 @@ class NacelleFSM {
 
             // Pitch is already set to adjust (fine), which will detect the new
             // state (PI)
-            // TODO: signal load
+            // TODO: signal load (set targetRPMExceeded)
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sCurtail) &&
@@ -139,7 +145,7 @@ class NacelleFSM {
 
             // Pitch is already set to adjust (PI), which will detect the new
             // state (fine)
-            // TODO: signal load
+            // TODO: signal load (unset targetRPMExceeded)
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else {
