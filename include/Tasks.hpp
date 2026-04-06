@@ -28,39 +28,39 @@ constexpr uint_fast8_t NUM_OPTIONAL_TASKS = 2; // Must match number of entires!
 /**
  * @brief Task to control run the FSM
  */
-void vTaskUpdateFSM([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskUpdateFSM([[maybe_unused]] void *pvParameters);
 /**
  * @brief Task to poll high priority sensors
  */
-void vTaskPollSensors([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskPollSensors([[maybe_unused]] void *pvParameters);
 /**
  * @brief Task to control the pitch actuator
  */
-void vTaskPitch([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskPitch([[maybe_unused]] void *pvParameters);
 /**
  * @brief Task to handle inbound data that has been queued
  */
-void vTaskRecvData([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskRecvData([[maybe_unused]] void *pvParameters);
 
 /**
  * @brief Task to handle outbound data that has been queued
  */
-void vTaskSendData([[maybe_unused]] void *pvParameters);
-void vTaskConfigure([[maybe_unused]] void *pvParameters);
-void vTaskStatusLED([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskSendData([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskConfigure([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskStatusLED([[maybe_unused]] void *pvParameters);
 /**
  * @brief Task to log data
  */
-void vTaskLogData([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskLogData([[maybe_unused]] void *pvParameters);
 
 // Optional Tasks
 /**
  * @brief Task to handle Telnet connections
  * @deprecated Just use a USB cable if possible
  */
-void vTaskTelnet([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskTelnet([[maybe_unused]] void *pvParameters);
 /**
  * @brief Task to handle ElegantOTA connections
  * @deprecated Just use a USB cable if possible
  */
-void vTaskOTA([[maybe_unused]] void *pvParameters);
+[[noreturn]] void vTaskOTA([[maybe_unused]] void *pvParameters);
