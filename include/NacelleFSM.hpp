@@ -27,17 +27,6 @@ class NacelleFSM {
                      "Atomic operations on uint_fast8_t are not lock-free on "
                      "this platform.");
         }
-        UPDATE_RESULT result = updateState();
-        if (result == UPDATE_RESULT::ERROR) {
-            ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
-        } else if (result == UPDATE_RESULT::STATE_CHANGED) {
-            ESP_LOGI(TAG, "Initialized FSM to state %d",
-                     (uint_fast8_t)currentState);
-        } else if (result == UPDATE_RESULT::NO_CHANGE) {
-            ESP_LOGE(TAG, "Failed to enter a valid state");
-        } else {
-            ESP_LOGE(TAG, "Unknown FSM init. result: %d", (uint_fast8_t)result);
-        }
     }
     ~NacelleFSM() = default;
 
@@ -156,7 +145,7 @@ class NacelleFSM {
     }
 
   private: // MARK: Private
-    NacelleContainer nacelle;
+    NacelleContainer nacelle; // todo switch to by reference
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic

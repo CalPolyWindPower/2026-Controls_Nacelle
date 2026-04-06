@@ -40,14 +40,20 @@ class NacelleContainer {
     /**
      * @SupressWarnings("cpp:S3642") // Does not work
      */
-    enum TASK_IDS : uint_fast8_t { // NOSONAR
-        TID_POLL = 0,
+    enum MAIN_TASK_IDS : uint_fast8_t { // NOSONAR
+        TID_FSM = 0,
+        TID_POLL,
         TID_PITCH,
         TID_RECV,
         TID_SEND,
         TID_CFG,
         TID_LED,
         TID_LOG
+    };
+
+    enum OPT_TASK_IDS : uint_fast8_t { // NOSONAR
+        TID_TELNET = 0,
+        TID_OTA
     };
 
     ActuonixL12 &pitchActuator;

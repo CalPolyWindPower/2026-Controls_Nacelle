@@ -185,6 +185,19 @@ void setup() {
                     taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
             }
         }
+
+        NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
+        if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
+            ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
+        } else if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
+            ESP_LOGI(TAG, "Initialized FSM to state %d",
+                     (uint_fast8_t)nacelleFSM.getCurrentState());
+        } else if (result == NacelleFSM::UPDATE_RESULT::NO_CHANGE) {
+            ESP_LOGE(TAG, "Failed to enter a valid state");
+        } else {
+            ESP_LOGE(TAG, "Unknown FSM init. result: %d", (uint_fast8_t)result);
+        }
+
         tasksSetup = true;
 
         // pitchPIDController.enable(
@@ -250,7 +263,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             // DONE: Consider suspending when not in use
             vTaskSuspend(
                 nacelle
-                    .mainTaskDescriptions[NacelleContainer::TASK_IDS::TID_PITCH]
+                    .mainTaskDescriptions[NacelleContainer::MAIN_TASK_IDS::TID_PITCH]
                     .pxHandle); // Suspend until reenabled by FSM
         }
         delay(RUN::TASK_INTERVALS::TI_PITCH_mS);
@@ -269,7 +282,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
         } else {
             // Suspend until reenabled from interrupt
-            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_RECV].pxHandle);
+            // vTaskSuspend(mainTaskDescriptions[MAIN_TASK_IDS::TID_RECV].pxHandle);
             delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling
                                                     // (suspend ^ blocks setup)
         }
@@ -287,7 +300,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             delay(RUN::TASK_INTERVALS::TI_SEND_ms);
         } else {
             // Suspend until reenabled
-            // vTaskSuspend(mainTaskDescriptions[TASK_IDS::TID_SEND].pxHandle);
+            // vTaskSuspend(mainTaskDescriptions[MAIN_TASK_IDS::TID_SEND].pxHandle);
             delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling
                                                     // (suspend ^ blocks setup)
         }
