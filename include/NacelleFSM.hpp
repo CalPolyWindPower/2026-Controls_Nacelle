@@ -21,7 +21,7 @@ class NacelleFSM {
      * @param nacelle The NacelleContainer object that tracks the overall state
      * of the nacelle
      */
-    NacelleFSM(NacelleContainer nacelle) : nacelle(nacelle) {
+    NacelleFSM(NacelleContainer &nacelle) : nacelle(nacelle) {
         if (!currentState.is_lock_free()) {
             ESP_LOGE(TAG,
                      "Atomic operations on uint_fast8_t are not lock-free on "
@@ -144,8 +144,8 @@ class NacelleFSM {
         return UPDATE_RESULT::ERROR;
     }
 
-  private: // MARK: Private
-    NacelleContainer nacelle; // todo switch to by reference
+  private:                     // MARK: Private
+    NacelleContainer &nacelle; // todo switch to by reference
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic
