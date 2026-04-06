@@ -314,7 +314,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
 __attribute__((noreturn)) void
 vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        // TELNET::loop(); // todo
+        // TELNET::loop();
         delay(RUN::TASK_INTERVALS::TI_TELNET_ms);
     }
 }
