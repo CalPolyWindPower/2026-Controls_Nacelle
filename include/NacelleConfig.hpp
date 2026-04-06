@@ -70,8 +70,9 @@ namespace FR_FIREBEETLE2_ESP32C6 {
 
 // MARK: Constants
 namespace CONSTS {
-    constexpr uint32_t MILLIS_PER_SEC = 1000;
-    constexpr uint32_t SECS_PER_MIN = 60;
+    constexpr uint_fast32_t MILLIS_PER_SEC = 1000;
+    constexpr uint_fast32_t SECS_PER_MIN = 60;
+    constexpr uint_fast16_t uVOLTS_PER_VOLT = 1'000'000;
 } // namespace CONSTS
 
 // Mark: Application
@@ -81,23 +82,25 @@ namespace LED {
      * https://wiki.dfrobot.com/SKU_DFR1075_FireBeetle_2_Board_ESP32_C6#5.2%20LED%20Blinking
      */
     constexpr uint_fast8_t LED_PIN = FR_FIREBEETLE2_ESP32C6::LED_PIN;
-    // constexpr uint32_t BLINK_OFF_SECS = 3;
-    constexpr uint32_t BLINK_OFF_MILLIS = 3500;
-    // constexpr uint32_t LED_BLINK_ON_SEC = 1;
-    constexpr uint32_t BLINK_ON_MILLIS = CONSTS::MILLIS_PER_SEC / 3;
-
+    // constexpr uint_fast32_t BLINK_OFF_SECS = 3;
+    constexpr uint_fast32_t BLINK_OFF_MILLIS = 3500;
+    // constexpr uint_fast32_t LED_BLINK_ON_SEC = 1;
+    constexpr uint_fast32_t BLINK_ON_MILLIS = CONSTS::MILLIS_PER_SEC / 3;
 } // namespace LED
 
 namespace SENSORS {
-    constexpr uint16_t ENCODER_MIN_MEAS_TIME_DELTA_MS = 0;    // CONFIG
-    constexpr uint16_t ENCODER_MAX_MEAS_TIME_DELTA_MS = 1000; // CONFIG
-    constexpr uint16_t ENCODER_FILTER_HISTORY_SIZE = 10;      // CONFIG
+    constexpr uint_fast16_t ENCODER_MIN_MEAS_TIME_DELTA_MS = 0;    // CONFIG
+    constexpr uint_fast16_t ENCODER_MAX_MEAS_TIME_DELTA_MS = 1000; // CONFIG
+    constexpr uint_fast16_t ENCODER_FILTER_HISTORY_SIZE = 10;      // CONFIG
 
-    constexpr uint16_t TARGET_RPM = 2750;              // CONFIG
-    constexpr uint16_t CURTAIL_HYSTERESIS_UP = 0;      // CONFIG
-    constexpr uint16_t CURTAIL_HYSTERESIS_DOWN = 1000; // CONFIG
-    constexpr uint16_t FINE_CONTROL_MIN_RPM = 200;     // CONFIG
-    constexpr uint16_t MAX_RATED_RPM = 6000;           // CONFIG
+    constexpr uint_fast16_t TARGET_RPM = 2750;              // CONFIG
+    constexpr uint_fast16_t CURTAIL_HYSTERESIS_UP = 0;      // CONFIG
+    constexpr uint_fast16_t CURTAIL_HYSTERESIS_DOWN = 1000; // CONFIG
+    constexpr uint_fast16_t FINE_CONTROL_MIN_RPM = 200;     // CONFIG
+    constexpr uint_fast16_t MAX_RATED_RPM = 3500;           // CONFIG
+    constexpr uint_fast16_t MOTOR_kV_RPMPV = 107;
+    constexpr uint_fast16_t MOTOR_IkV_RPSPuV =
+        CONSTS::uVOLTS_PER_VOLT * CONSTS::SECS_PER_MIN / MOTOR_kV_RPMPV;
 } // namespace SENSORS
 
 namespace PITCHING {
@@ -109,29 +112,28 @@ namespace PITCHING {
     constexpr float SERVO_A2 = 0.000178592;
 
     // Mechanism constants
-    constexpr uint16_t PITCH_MIN_ANGLE_DEG = 0;
-    constexpr uint16_t PITCH_CUTIN_ANGLE_DEG = 9;
-    constexpr uint16_t PITCH_MAX_ANGLE_DEG = 85;
-    constexpr uint16_t ARM_CHORD_DEG_CCW =
+    constexpr uint_fast16_t PITCH_MIN_ANGLE_DEG = 0;
+    constexpr uint_fast16_t PITCH_CUTIN_ANGLE_DEG = 9;
+    constexpr uint_fast16_t PITCH_MAX_ANGLE_DEG = 85;
+    constexpr uint_fast16_t ARM_CHORD_DEG_CCW =
         100; // angle between arm and tip chord (+ccw looking from tip)
-    constexpr uint16_t PITCH_ANGLE_OFFSET = ARM_CHORD_DEG_CCW - 90;
+    constexpr uint_fast16_t PITCH_ANGLE_OFFSET = ARM_CHORD_DEG_CCW - 90;
 
-    constexpr uint16_t SERVO_MIN_uS_2026 = 1000; // todo
-    constexpr uint16_t SERVO_MAX_uS_2026 = 2000; // todo
-    constexpr uint16_t SERVO_MIN_uS_2025 = 1000;
-    constexpr uint16_t SERVO_MAX_uS_2025 = 2000;
-    constexpr uint16_t SERVO_MIN_uS_2024 = 1450;
-    constexpr uint16_t SERVO_MAX_uS_2024 = 1870;
+    constexpr uint_fast16_t SERVO_MIN_uS_2026 = 1000; // todo
+    constexpr uint_fast16_t SERVO_MAX_uS_2026 = 2000; // todo
+    constexpr uint_fast16_t SERVO_MIN_uS_2025 = 1000;
+    constexpr uint_fast16_t SERVO_MAX_uS_2025 = 2000;
+    constexpr uint_fast16_t SERVO_MIN_uS_2024 = 1450;
+    constexpr uint_fast16_t SERVO_MAX_uS_2024 = 1870;
 
     // Pitching config
-    constexpr uint8_t BLADE_PITCH_STARTUP_DEG =
-        PITCH_CUTIN_ANGLE_DEG; // CONFIG //todo
-    constexpr uint16_t POS_STARTUP_uS =
-        SERVO_MAX_uS_2025; // CONFIG //todo
+    constexpr uint_fast8_t BLADE_PITCH_STARTUP_DEG =
+        PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG //todo
+    constexpr uint_fast16_t POS_STARTUP_uS = SERVO_MAX_uS_2025; // CONFIG //todo
 
-    constexpr uint8_t BLADE_PITCH_STOP_DEG =
+    constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
         PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
-    constexpr uint16_t POS_STOP_uS =
+    constexpr uint_fast16_t POS_STOP_uS =
         SERVO_MIN_uS_2025; // Feather -CONFIG //todo
 
     // todo: Ftarget rpm var
@@ -144,7 +146,7 @@ namespace PITCHING {
 
 namespace RUN {
     // Task Execution Intervals
-    enum TASK_INTERVALS : uint32_t {
+    enum TASK_INTERVALS : uint_fast32_t {
         TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz)
         TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
@@ -157,9 +159,9 @@ namespace RUN {
     };
 
     // todo: What was this for?
-    // constexpr uint32_t SLEEP_TIME_MINS = 10;
-    // constexpr uint32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS *
-    // CONSTS::SECS_PER_MIN; constexpr uint32_t SLEEP_TIME_MILLIS =
+    // constexpr uint_fast32_t SLEEP_TIME_MINS = 10;
+    // constexpr uint_fast32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS *
+    // CONSTS::SECS_PER_MIN; constexpr uint_fast32_t SLEEP_TIME_MILLIS =
     //     SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
 } // namespace RUN
 
