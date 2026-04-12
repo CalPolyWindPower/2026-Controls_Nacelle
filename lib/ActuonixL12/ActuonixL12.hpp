@@ -6,7 +6,7 @@
 #include <etl/to_string.h>
 
 class ActuonixL12 {
-  public:
+  public: // MARK: Public
     static constexpr const char *TAG = "AL12";
 
     /**
@@ -17,6 +17,8 @@ class ActuonixL12 {
 
     void begin();
 
+    void writePosMicros(int us);
+
     static constexpr uint_fast8_t LOG_STRING_SIZE = 3 + 6 + 1;
     /**
      * @brief Get at string that describes the current state of the actuator
@@ -24,9 +26,7 @@ class ActuonixL12 {
      */
     etl::string<LOG_STRING_SIZE> getLogString();
 
-    void writePosMicros(int us);
-
-  private:
+  private: // MARK: Private Vars
     Servo servo_;
     int pin_;
     int min_us_;
