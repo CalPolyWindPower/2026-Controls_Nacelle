@@ -2,21 +2,75 @@
 
 #include <cstdint>
 
+#include "NacelleTasks.hpp"
+#include <ActuonixL12.hpp>
+
 /**
  * @brief Class to manage the container for nacelle data
  */
 class NacelleContainer {
   public:
-    NacelleContainer() = default;
+    // constexpr uint_fast8_t NUM_MAIN_TASKS = 1;
+    // Arduino Loop has priority 1
+    // TODO: Note: Task priority must be < 25
+    etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
+        TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0,
+                 false}, // 0
+        TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
+                 false},                                                    // 1
+        TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0, false}, // 2
+        TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0,
+                 false}, // 3
+
+        TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0,
+                 false}, // 4
+        TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0,
+                 false}, // 5
+        TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0,
+                 false},                                                   // 6
+        TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
+    };
+
+    etl::array<TaskInfo, NUM_OPTIONAL_TASKS> optionalTaskDescriptions = {
+        TaskInfo{vTaskTelnet, "Telnet", 4096, nullptr, 1, nullptr, 0,
+                 false},                                                // 0
+        TaskInfo{vTaskOTA, "OTA", 4096, nullptr, 1, nullptr, 0, false}, // 1
+    };
+
+    /**
+     * @SupressWarnings("cpp:S3642") // Does not work
+     */
+    enum MAIN_TASK_IDS : uint_fast8_t { // NOSONAR
+        TID_FSM = 0,
+        TID_POLL,
+        TID_PITCH,
+        TID_RECV,
+        TID_SEND,
+        TID_CFG,
+        TID_LED,
+        TID_LOG
+    };
+
+    enum OPT_TASK_IDS : uint_fast8_t { // NOSONAR
+        TID_TELNET = 0,
+        TID_OTA
+    };
+
+    ActuonixL12 &pitchActuator;
+
+    NacelleContainer(ActuonixL12 &pitchActuator)
+        : pitchActuator(pitchActuator) {}
     ~NacelleContainer() = default;
 
-    bool getSafetyFlag() const { return safetyFlag; }
-    bool isPowerPositive() const { return powerPositive; }
-    bool isSteadyRPM() const { return false; }         // todo
-    bool isTargetRPMExceeded() const { return false; } // todo
+    inline bool getSafetyFlag() const { return safetyFlag; }
+    inline bool isPowerPositive() const { return powerPositive; }
+    inline bool isSteadyRPM() const { return false; }         // todo
+    inline bool isTargetRPMExceeded() const { return false; } // todo
 
-    void updateSafetyFlag(bool safetyFlag) { this->safetyFlag = safetyFlag; }
-    void updatePowerPositive(bool powerPositive) {
+    inline void updateSafetyFlag(bool safetyFlag) {
+        this->safetyFlag = safetyFlag;
+    }
+    inline void updatePowerPositive(bool powerPositive) {
         this->powerPositive = powerPositive;
     }
 
