@@ -51,6 +51,7 @@
 #include <cstdint> // Fixed size integers
 #include "AS5600.h"
 #include <Wire.h>
+#include <pins_arduino.h>
 /**
  * @details Only use ESP32 Servo on the ESP32, and use our custom one for better
  * ESP32 C5 support.
@@ -94,8 +95,8 @@ namespace SERIAL_CONFIG {
  */
 namespace Actuator {
     Servo device = Servo();
-    constexpr int MIN_POS_us = 1000;    // Minimum position in microseconds
-    constexpr int MAX_POS_us = 2000;    // Maximum position in microseconds
+    constexpr int MIN_POS_us = 1230;    // Minimum position in microseconds
+    constexpr int MAX_POS_us = 1900;    // Maximum position in microseconds
     constexpr int DEFAULT_us = 1500;    // Default position in microseconds
     constexpr int CONTROL_PIN = 3;      // PWM pin
     constexpr uint8_t FEEDBACK_PIN = 2; // Analog feedback pin
