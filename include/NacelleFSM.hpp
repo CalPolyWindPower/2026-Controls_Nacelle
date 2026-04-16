@@ -67,6 +67,7 @@ class NacelleFSM {
             vTaskSuspend(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
+            nacelle.pitchPIDController.disable();
             nacelle.pitchActuator.writePosMicros(PITCHING::POS_STOP_uS);
 
             return UPDATE_RESULT::STATE_CHANGED;
@@ -86,6 +87,7 @@ class NacelleFSM {
             vTaskSuspend(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
+            //  PID is already disabled
             nacelle.pitchActuator.writePosMicros(PITCHING::POS_STARTUP_uS);
 
             return UPDATE_RESULT::STATE_CHANGED;
@@ -104,7 +106,7 @@ class NacelleFSM {
             vTaskResume(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
-
+            // PID is already disabled
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sStartLoad) &&
                    nacelle.isSteadyRPM()) {
@@ -124,6 +126,7 @@ class NacelleFSM {
 
             // Pitch is already set to adjust (fine), which will detect the new
             // state (PI)
+            nacelle.pitchPIDController.enable(0.0, 0.0); // todo input & output
             // TODO: signal load (set targetRPMExceeded)
 
             return UPDATE_RESULT::STATE_CHANGED;
@@ -134,6 +137,7 @@ class NacelleFSM {
 
             // Pitch is already set to adjust (PI), which will detect the new
             // state (fine)
+            nacelle.pitchPIDController.disable();
             // TODO: signal load (unset targetRPMExceeded)
 
             return UPDATE_RESULT::STATE_CHANGED;

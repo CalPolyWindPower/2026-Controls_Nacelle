@@ -20,7 +20,7 @@ static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
  */
 #pragma region Debugging Setup
 
-#define PROJECT_ID "WT26N" // CONFIG - Project ID to use with logger
+#define PROJECT_ID "WT26N" // CONFIG - Project ID to use with logger // NOSONAR
 
 #pragma endregion // Debugging Setup
 

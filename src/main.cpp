@@ -8,7 +8,7 @@
 
 // Library Includes
 #include <Arduino.h>
-// #include <PID.hpp>
+// #include <PID_v1.h>
 
 // Project Includes
 #include "NacelleConfig.hpp"
@@ -25,6 +25,7 @@
 #include "NacelleContainer.hpp"
 #include "NacelleFSM.hpp"
 #include "NacelleTasks.hpp"
+#include "PID.hpp"
 
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
@@ -43,26 +44,17 @@ AdapterESPNow adapterESPNow;
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
 SyncedClock netClock(adapterESPNow); // todo
 
-// PID pitchPIDController =
-//     PID(PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd,
-//         // PITCHING::TARGET_RPM,
-//         2000.0f, PID::ProportionalMode::ProportionalOnMeas,
-//         // PITCH_MAX_ANGLE_DEG = min actuator extension = minimum PID output
-//         //
-//         (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MAX_ANGLE_DEG),
-//         1000.0f,
-//         // PITCH_CUTIN_ANGLE_DEG = max actuator extension = maximum PID
-//         output
-//         //
-//         (float)pitchActuator.angleToMicros(WTbNacCfg::PITCH_MIN_ANGLE_DEG),
-//         2000.0f, 0, PID::Direction::DIRECT, "PC");
-// ; // todo
-
 ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
                           PITCHING::SERVO_MIN_uS_2026,
                           PITCHING::SERVO_MAX_uS_2026);
 
-NacelleContainer nacelle(pitchActuator);
+PID pitchPIDController = PID( // todo
+    PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd,
+    /* Setpoint */ 1500.0f, PID::ProportionalMode::ProportionalOnMeas,
+    /* Min Output */ 1100.0f, /* Max Output */ 1900.0f, /* Min Sample Time */ 0,
+    /* Direction */ PID::Direction::DIRECT, "PC");
+
+NacelleContainer nacelle(pitchActuator, pitchPIDController);
 NacelleFSM nacelleFSM(nacelle);
 
 /**
@@ -179,10 +171,11 @@ void setup() {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
             } else {
                 taskDesc.initialized = true;
-                ESP_LOGV(
-                    TAG,
-                    "Created task %s with priority %u and stack size %u bytes",
-                    taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+                ESP_LOGV(TAG,
+                         "Created task %s with priority %u and stack "
+                         "size %u bytes",
+                         taskDesc.name, taskDesc.priority,
+                         taskDesc.stackSize_bytes);
             }
         }
 
@@ -199,9 +192,6 @@ void setup() {
         }
 
         tasksSetup = true;
-
-        // pitchPIDController.enable(
-        //     0.0f, 1500.0f); // todo - just a quick performances test
 
         ESP_LOGI(TAG, "Setup complete!");
     }
@@ -220,13 +210,13 @@ void setup() {
 [[noreturn]] void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        // NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
-        // if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
-        //     ESP_LOGI(TAG, "FSM State Changed: %d",
-        //              nacelleFSM.getCurrentState());
-        // } else if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
-        //     ESP_LOGE(TAG, "Error updating FSM state");
-        // }
+        NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
+        if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
+            ESP_LOGI(TAG, "FSM State Changed: %d",
+                     nacelleFSM.getCurrentState());
+        } else if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
+            ESP_LOGE(TAG, "Error updating FSM state");
+        }
         delay(RUN::TASK_INTERVALS::TI_FSM_mS);
     }
 }
@@ -251,20 +241,19 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Fine
         } else if (nacelleFSM.getCurrentState() ==
                    FSMCommon::States::sCurtail) {
-            // static int i = 0;
-            // ESP_LOGI(TAG, "Pitch PID Output: %f",
-            //          pitchPIDController.compute(
-            //              i)); // todo - just a quick performances test
-            // i += 20;
+            auto pidOutput =
+                (uint_fast16_t)pitchPIDController.compute(0.0f); // todo - input
+            ESP_LOGI(TAG, "PID Output: %u", pidOutput);
+            pitchActuator.writePosMicros(pidOutput);
         } else {
             // No updates needed
             ESP_LOGI(TAG, "No pitch updates needed in state %d, supsending",
                      nacelleFSM.getCurrentState());
             // DONE: Consider suspending when not in use
-            vTaskSuspend(
-                nacelle
-                    .mainTaskDescriptions[NacelleContainer::MAIN_TASK_IDS::TID_PITCH]
-                    .pxHandle); // Suspend until reenabled by FSM
+            vTaskSuspend(nacelle
+                             .mainTaskDescriptions
+                                 [NacelleContainer::MAIN_TASK_IDS::TID_PITCH]
+                             .pxHandle); // Suspend until reenabled by FSM
         }
         delay(RUN::TASK_INTERVALS::TI_PITCH_mS);
     }
@@ -284,7 +273,8 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Suspend until reenabled from interrupt
             // vTaskSuspend(mainTaskDescriptions[MAIN_TASK_IDS::TID_RECV].pxHandle);
             delay(RUN::TASK_INTERVALS::TI_RECV_ms); // TODO: Fix polling
-                                                    // (suspend ^ blocks setup)
+                                                    // (suspend ^ blocks
+                                                    // setup)
         }
     }
 }
@@ -302,7 +292,8 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Suspend until reenabled
             // vTaskSuspend(mainTaskDescriptions[MAIN_TASK_IDS::TID_SEND].pxHandle);
             delay(RUN::TASK_INTERVALS::TI_SEND_ms); // TODO: Fix polling
-                                                    // (suspend ^ blocks setup)
+                                                    // (suspend ^ blocks
+                                                    // setup)
         }
     }
 }
@@ -382,7 +373,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
      * @See
      * https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32c5/api-reference/peripherals/temp_sensor.html
      * TODO: The temp. sensor may use more power
-     * TODO: Temp interput/ callback/ hardware monitoring
+     * Not needed?: Temp interput/ callback/ hardware monitoring
      */
     temperature_sensor_handle_t tempSensHandle = NULL;
     temperature_sensor_config_t tempSensConfig =
@@ -398,6 +389,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 
         ESP_LOGD(TAG, "Logging Data:");
 
+        // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
+
+        // Free RTOS Stats
         ESP_LOGI(TAG, "Num tasks reported by FreeRTOS: %u",
                  uxTaskGetNumberOfTasks());
 
@@ -405,22 +399,22 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         constexpr uint_fast8_t NUM_ESP_TASKS = 8;
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
-        // char statsBuffer[STATS_BUFFER_SIZE] = {'\0'}; // Frowned on by sonar
-        // lint:
+        // char statsBuffer[STATS_BUFFER_SIZE] = {'\0'}; // Frowned on
+        // by sonar lint:
         etl::string<STATS_BUFFER_SIZE> statsBuffer = {'\0'};
         if (uxTaskGetNumberOfTasks() > NUM_MAIN_TASKS + NUM_ESP_TASKS) {
-            ESP_LOGE(
-                TAG,
-                "Number of tasks (%d) exceeds expected max (%d), skipping to "
-                "prevent memory corruption",
-                uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
+            ESP_LOGE(TAG,
+                     "Number of tasks (%d) exceeds expected max (%d), "
+                     "skipping to "
+                     "prevent memory corruption",
+                     uxTaskGetNumberOfTasks(), NUM_MAIN_TASKS + NUM_ESP_TASKS);
         } else {
             // TODO: Not recommended in production
             vTaskGetRunTimeStats(statsBuffer.data());
             statsBuffer[STATS_BUFFER_SIZE - 1] =
                 '\0'; // hard cap, avoid over-read
             statsBuffer.trim_to_terminator();
-            // uxTaskGetSystemState();
+            // Alt. realted function: uxTaskGetSystemState();
             ESP_LOGI(TAG, "Task Run Time Stats:\n%s", statsBuffer.c_str());
             delay(LOG_ITEM_INTERVAL_MS);
 
@@ -433,8 +427,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
             }
             for (TaskInfo &taskDesc : nacelle.optionalTaskDescriptions) {
                 if (taskDesc.initialized) { // Not sure if you can get stack
-                                            // info for uninitialized tasks, so
-                                            // check first
+                                            // info for uninitialized tasks,
+                                            // so check first
                     taskDesc.minFreeStack_Bytes =
                         uxTaskGetStackHighWaterMark(taskDesc.pxHandle);
                     ESP_LOGI(TAG, "T: %s, U: %u, F: %u", taskDesc.name,
@@ -464,12 +458,25 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         } else {
             ESP_LOGI(TAG, "Temperature: %d dC", tempTrunc_C);
         }
-        // Disable the temperature sensor if it is not needed and save the power
+        // Disable the temperature sensor if it is not needed and save
+        // the power
         ESP_ERROR_CHECK(temperature_sensor_disable(tempSensHandle));
         delay(LOG_ITEM_INTERVAL_MS);
 
         // esp_wifi_get_bandwidth
         // esp_wifi_sta_get_rssi
+
+        ESP_LOGI(TAG, "%s", netClock.getLogString().c_str());
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        ESP_LOGI(TAG, "%s", pitchActuator.getLogString().c_str());
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        ESP_LOGI(TAG, "%s", pitchPIDController.getLogString().c_str());
+        delay(LOG_ITEM_INTERVAL_MS);
+
+        ESP_LOGI(TAG, "Current State: %d", nacelleFSM.getCurrentState());
+        delay(LOG_ITEM_INTERVAL_MS);
     }
 }
 
@@ -477,7 +484,4 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
  * MARK: loop
  * Arduino: put your main code here, to run repeatedly:
  */
-void loop() {
-    // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
-    delay(1000);
-}
+void loop() { delay(1000); }

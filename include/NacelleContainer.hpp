@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "NacelleTasks.hpp"
+#include "PID.hpp"
 #include <ActuonixL12.hpp>
 
 /**
@@ -14,7 +15,7 @@ class NacelleContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
     etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
-        TaskInfo{vTaskUpdateFSM, "FSM", 256, nullptr, 24, nullptr, 0,
+        TaskInfo{vTaskUpdateFSM, "FSM", 512, nullptr, 24, nullptr, 0,
                  false}, // 0
         TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
                  false},                                                    // 1
@@ -57,9 +58,11 @@ class NacelleContainer {
     };
 
     ActuonixL12 &pitchActuator;
+    PID &pitchPIDController;
 
-    NacelleContainer(ActuonixL12 &pitchActuator)
-        : pitchActuator(pitchActuator) {}
+    NacelleContainer(ActuonixL12 &pitchActuator, PID &pitchPIDController)
+        : pitchActuator(pitchActuator), pitchPIDController(pitchPIDController) {
+    }
     ~NacelleContainer() = default;
 
     inline bool getSafetyFlag() const { return safetyFlag; }
