@@ -8,6 +8,6 @@
 [submodule "demos/ActuatorDemo/src/ESP32Servo"]
 	path = demos/ActuatorDemo/src/ESP32Servo
 	url = https://github.com/CalPolyWindPower/ESP32Servo.git
-[submodule "demos/nacelleDemo/src"]
-	path = demos/nacelleDemo/src
+[submodule "demos/NacelleDemo/src"]
+	path = demos/NacelleDemo/src
 	url = https://github.com/CalPolyWindPower/ESP32Servo.git
