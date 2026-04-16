@@ -2,7 +2,9 @@
     // See http://go.microsoft.com/fwlink/?LinkId=827846
     // for the documentation about the extensions.json format
     "recommendations": [
-        "platformio.platformio-ide"
+        "platformio.platformio-ide",
+        "redhat.vscode-yaml",
+        "sonarsource.sonarlint-vscode"
     ],
     "unwantedRecommendations": [
         "ms-vscode.cpptools-extension-pack",
