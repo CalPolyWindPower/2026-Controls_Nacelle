@@ -1,0 +1,1885 @@
+[ 11293][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 38
+[ 11293][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11293][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -41, iRSSI: 79
+[ 11294][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11294][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -42
+[ 11294][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -42, iRSSI: 78
+[ 11294][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 78, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -46, iRSSI: 74
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 78, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -46, iRSSI: 74
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 78, C11: 0
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -47
+[ 11296][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -47, iRSSI: 73
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 151, C11: 0
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -47
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -47, iRSSI: 73
+[ 11297][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 224, C11: 0
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -72, iRSSI: 48
+[ 11298][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 224, C11: 48
+[ 11298][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -72, iRSSI: 48
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 224, C11: 96
+[ 11299][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11299][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -76, iRSSI: 44
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 44, C6: 224, C11: 96
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11300][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11300][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 87, C6: 224, C11: 96
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11301][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 96
+[ 11301][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -77, iRSSI: 43
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 96
+[ 11302][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11302][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -77, iRSSI: 43
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 96
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -77, iRSSI: 43
+[ 11303][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 96
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -79, iRSSI: 41
+[ 11304][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 137
+[ 11304][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -79, iRSSI: 41
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 137
+[ 11305][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11305][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 137
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11306][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11306][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 137
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -82, iRSSI: 38
+[ 11307][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 175
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11308][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -84, iRSSI: 36
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 175
+[ 11308][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11308][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -85, iRSSI: 35
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 210
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11309][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -85, iRSSI: 35
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 245
+[ 11310][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -86, iRSSI: 34
+[ 11310][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 224, C11: 245
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -87, iRSSI: 33
+[ 11311][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 163, C6: 224, C11: 245
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11312][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -88, iRSSI: 32
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 163, C6: 224, C11: 245
+[ 11312][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11312][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -89, iRSSI: 31
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 224, C11: 245
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11313][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -89, iRSSI: 31
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 224, C11: 245
+[ 11314][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -89, iRSSI: 31
+[ 11314][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 224, C11: 245
+[ 11315][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11315][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 224, C11: 245
+[ 11315][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11316][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -91, iRSSI: 29
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 245
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11316][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11317][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 245
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11317][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -91, iRSSI: 29
+[ 11317][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 245
+[ 11318][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -92, iRSSI: 28
+[ 11318][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 245
+[ 11318][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11319][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -92, iRSSI: 28
+[ 11319][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 245
+[ 11319][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11319][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[ 11320][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 272
+[ 11320][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11320][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -93, iRSSI: 27
+[ 11320][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 272
+[ 11321][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11321][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -93, iRSSI: 27
+[ 11321][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 253, C11: 272
+[ 11321][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -97
+[ 11322][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -97, iRSSI: 23
+[ 11322][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 276, C11: 272
+[ 11322][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11323][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11323][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11427][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11428][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11428][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11429][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11429][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11429][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11430][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11430][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11430][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11430][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11430][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11431][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0x98983a47 0x4085e7a4 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   158][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   159][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   160][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   161][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized
+[ 11291][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 36
+[ 11292][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -36
+[ 11292][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -36, iRSSI: 84
+[ 11292][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11293][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -40
+[ 11293][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -40, iRSSI: 80
+[ 11293][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11293][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11294][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -41, iRSSI: 79
+[ 11294][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11294][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11294][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 74, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -50
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -50, iRSSI: 70
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 144, C11: 0
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -51
+[ 11296][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -51, iRSSI: 69
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 213, C11: 0
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -72, iRSSI: 48
+[ 11297][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 213, C11: 48
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -75, iRSSI: 45
+[ 11298][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 213, C11: 48
+[ 11298][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -78, iRSSI: 42
+[ 11298][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 42, C6: 213, C11: 48
+[ 11299][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11299][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -79, iRSSI: 41
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 83, C6: 213, C11: 48
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11300][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -79, iRSSI: 41
+[ 11300][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 48
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11300][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -80, iRSSI: 40
+[ 11301][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11301][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11302][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11302][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11303][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11304][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11304][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -81, iRSSI: 39
+[ 11304][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11305][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11305][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -85, iRSSI: 35
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 124, C6: 213, C11: 88
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11306][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -86, iRSSI: 34
+[ 11306][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 88
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -86, iRSSI: 34
+[ 11307][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 88
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -86, iRSSI: 34
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 88
+[ 11308][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11308][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -87, iRSSI: 33
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 121
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11309][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -87, iRSSI: 33
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -88, iRSSI: 32
+[ 11310][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11310][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -90, iRSSI: 30
+[ 11311][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -90, iRSSI: 30
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11312][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11312][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11313][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -91, iRSSI: 29
+[ 11314][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 154
+[ 11314][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -92, iRSSI: 28
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 158, C6: 213, C11: 182
+[ 11315][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11315][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -93, iRSSI: 27
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 213, C11: 182
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11316][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 213, C11: 209
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11317][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -93, iRSSI: 27
+[ 11317][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 213, C11: 209
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -94, iRSSI: 26
+[ 11318][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 213, C11: 209
+[ 11318][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -97
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -97, iRSSI: 23
+[ 11319][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 236, C11: 209
+[ 11319][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -97
+[ 11319][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 128, RSSI: -97, iRSSI: 23
+[ 11319][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 185, C6: 236, C11: 209
+[ 11320][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11320][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11320][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11424][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11425][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11425][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11426][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11426][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11426][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11427][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11427][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11427][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11428][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11427][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11428][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0x35ecd333 0x420e3000 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   159][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   160][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   161][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized
+[ 11292][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 37
+[ 11293][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -38
+[ 11293][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -38, iRSSI: 82
+[ 11293][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11294][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -43
+[ 11294][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -43, iRSSI: 77
+[ 11294][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11294][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -43
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -43, iRSSI: 77
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -44
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -44, iRSSI: 76
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 76, C11: 0
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -49
+[ 11296][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -49, iRSSI: 71
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 147, C11: 0
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -49
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -49, iRSSI: 71
+[ 11297][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 218, C11: 0
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -72, iRSSI: 48
+[ 11298][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 218, C11: 48
+[ 11298][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -75, iRSSI: 45
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 45, C6: 218, C11: 48
+[ 11299][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11299][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 88, C6: 218, C11: 48
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[ 11300][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -78, iRSSI: 42
+[ 11300][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 88, C6: 218, C11: 90
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -79, iRSSI: 41
+[ 11301][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 88, C6: 218, C11: 90
+[ 11301][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -79, iRSSI: 41
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 88, C6: 218, C11: 90
+[ 11302][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11302][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -80, iRSSI: 40
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 90
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11303][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 90
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -81, iRSSI: 39
+[ 11304][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 90
+[ 11304][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -81, iRSSI: 39
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 90
+[ 11305][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11305][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -81, iRSSI: 39
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 90
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11306][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -85, iRSSI: 35
+[ 11306][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 125
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -85, iRSSI: 35
+[ 11307][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 218, C11: 125
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -86, iRSSI: 34
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 162, C6: 218, C11: 125
+[ 11308][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11308][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -87, iRSSI: 33
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 125
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11309][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -88, iRSSI: 32
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 157
+[ 11310][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -88, iRSSI: 32
+[ 11310][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 189
+[ 11310][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -88, iRSSI: 32
+[ 11311][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 189
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -89, iRSSI: 31
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 189
+[ 11312][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11312][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -89, iRSSI: 31
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 189
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11313][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -90, iRSSI: 30
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 219
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -90, iRSSI: 30
+[ 11314][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 219
+[ 11314][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 219
+[ 11315][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11315][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 219
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11316][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -91, iRSSI: 29
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 195, C6: 218, C11: 219
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11317][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -92, iRSSI: 28
+[ 11317][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 218, C11: 219
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -92, iRSSI: 28
+[ 11318][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 218, C11: 219
+[ 11318][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -94, iRSSI: 26
+[ 11319][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 244, C11: 219
+[ 11319][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11319][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -94, iRSSI: 26
+[ 11319][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 244, C11: 219
+[ 11320][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11320][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -94, iRSSI: 26
+[ 11320][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 244, C11: 219
+[ 11320][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -95
+[ 11321][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -95, iRSSI: 25
+[ 11321][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 244, C11: 244
+[ 11321][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11321][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11322][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11426][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11427][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11427][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11428][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11428][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11428][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11429][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11429][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11429][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11429][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11429][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11430][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0x0240b9e1 0x00000000 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   159][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   160][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized
+[ 11291][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 36
+[ 11291][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -37
+[ 11291][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -37, iRSSI: 83
+[ 11291][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11292][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -42
+[ 11292][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -42, iRSSI: 78
+[ 11292][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11292][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -42
+[ 11293][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -42, iRSSI: 78
+[ 11293][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11293][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11293][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11294][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 74, C11: 0
+[ 11294][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11294][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11294][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 148, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -51
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -51, iRSSI: 69
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 217, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11296][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -72, iRSSI: 48
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 217, C11: 48
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11296][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -73, iRSSI: 47
+[ 11297][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 217, C11: 95
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -76, iRSSI: 44
+[ 11297][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 44, C6: 217, C11: 95
+[ 11298][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11298][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 87, C6: 217, C11: 95
+[ 11298][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11299][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -79, iRSSI: 41
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 87, C6: 217, C11: 95
+[ 11299][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11299][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -79, iRSSI: 41
+[ 11300][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 87, C6: 217, C11: 95
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11300][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -80, iRSSI: 40
+[ 11300][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 95
+[ 11301][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11301][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 95
+[ 11301][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11302][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 95
+[ 11302][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11302][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11303][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 95
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11303][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 95
+[ 11304][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -83
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -83, iRSSI: 37
+[ 11304][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 132
+[ 11304][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11305][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -85, iRSSI: 35
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 132
+[ 11305][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11305][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -86, iRSSI: 34
+[ 11306][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 166
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11306][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -86, iRSSI: 34
+[ 11306][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 200
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -87, iRSSI: 33
+[ 11307][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 200
+[ 11308][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11308][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -87, iRSSI: 33
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 127, C6: 217, C11: 200
+[ 11308][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11309][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -88, iRSSI: 32
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 200
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11309][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -88, iRSSI: 32
+[ 11310][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 200
+[ 11310][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -89, iRSSI: 31
+[ 11310][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -89, iRSSI: 31
+[ 11311][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -89, iRSSI: 31
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11312][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11312][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11313][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11314][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -91, iRSSI: 29
+[ 11314][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11314][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11315][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -92, iRSSI: 28
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 217, C11: 231
+[ 11315][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11315][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -93, iRSSI: 27
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 244, C11: 231
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11316][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 244, C11: 258
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11317][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -93, iRSSI: 27
+[ 11317][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 244, C11: 258
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -94, iRSSI: 26
+[ 11318][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 159, C6: 244, C11: 258
+[ 11318][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11318][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11319][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11423][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11424][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11424][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11425][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11425][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11425][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11426][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11426][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11426][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11426][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11426][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11427][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0x1b2d8493 0x4085e79c 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   158][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   160][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized
+[ 11294][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 38
+[ 11294][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -36
+[ 11294][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -36, iRSSI: 84
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11295][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11295][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -41, iRSSI: 79
+[ 11295][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11296][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -41, iRSSI: 79
+[ 11296][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11296][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11297][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 74, C11: 0
+[ 11297][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11297][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11298][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 148, C11: 0
+[ 11298][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -53
+[ 11298][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -53, iRSSI: 67
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 215, C11: 0
+[ 11299][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11299][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -72, iRSSI: 48
+[ 11299][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 215, C11: 48
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11300][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -73, iRSSI: 47
+[ 11300][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 215, C11: 95
+[ 11300][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -73, iRSSI: 47
+[ 11301][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 215, C11: 142
+[ 11301][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11301][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 43, C6: 215, C11: 142
+[ 11302][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11302][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11302][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 86, C6: 215, C11: 142
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[ 11303][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -78, iRSSI: 42
+[ 11303][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11303][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -79, iRSSI: 41
+[ 11304][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11304][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11304][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11305][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11305][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11305][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11306][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11306][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11306][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11307][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11307][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11307][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 142
+[ 11308][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11308][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -82, iRSSI: 38
+[ 11308][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 180
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11309][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -84, iRSSI: 36
+[ 11309][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 216
+[ 11309][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -84, iRSSI: 36
+[ 11310][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 252
+[ 11310][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11310][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -86, iRSSI: 34
+[ 11311][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 252
+[ 11311][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11311][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -87, iRSSI: 33
+[ 11311][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 161, C6: 215, C11: 252
+[ 11312][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11312][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -87, iRSSI: 33
+[ 11312][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 215, C11: 252
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11313][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -87, iRSSI: 33
+[ 11313][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 215, C11: 285
+[ 11313][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11313][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -87, iRSSI: 33
+[ 11314][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 215, C11: 285
+[ 11314][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11314][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -88, iRSSI: 32
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 215, C11: 285
+[ 11315][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11315][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -89, iRSSI: 31
+[ 11315][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11316][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -89, iRSSI: 31
+[ 11316][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11316][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11317][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -89, iRSSI: 31
+[ 11317][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11317][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11317][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -89, iRSSI: 31
+[ 11318][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11318][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11318][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -90, iRSSI: 30
+[ 11318][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11319][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11319][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11319][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11319][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11320][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11320][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 194, C6: 246, C11: 285
+[ 11320][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11320][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -91, iRSSI: 29
+[ 11321][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 246, C11: 285
+[ 11321][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11321][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11321][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 246, C11: 285
+[ 11322][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11322][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -94, iRSSI: 26
+[ 11322][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 272, C11: 285
+[ 11322][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11323][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -94, iRSSI: 26
+[ 11323][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 223, C6: 272, C11: 285
+[ 11323][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11324][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11324][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11428][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11429][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11429][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11430][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11430][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11430][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11431][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11431][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11431][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11431][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11431][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11432][I][main.cpp:168] setup(): [NaMa] Setting up task:
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0x44090943 0x420e3000 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   158][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   159][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   160][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   161][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized
+[ 11498][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 38
+[ 11498][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -37
+[ 11498][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -37, iRSSI: 83
+[ 11499][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11499][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11499][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -41, iRSSI: 79
+[ 11499][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11500][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -42
+[ 11500][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -42, iRSSI: 78
+[ 11500][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11500][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -44
+[ 11501][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -44, iRSSI: 76
+[ 11501][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 76, C11: 0
+[ 11501][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -48
+[ 11501][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -48, iRSSI: 72
+[ 11502][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 148, C11: 0
+[ 11502][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -48
+[ 11502][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -48, iRSSI: 72
+[ 11502][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 220, C11: 0
+[ 11503][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -71
+[ 11503][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -71, iRSSI: 49
+[ 11503][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 220, C11: 49
+[ 11503][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11504][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -76, iRSSI: 44
+[ 11504][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 44, C6: 220, C11: 49
+[ 11504][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11504][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -76, iRSSI: 44
+[ 11505][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 88, C6: 220, C11: 49
+[ 11505][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11505][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -77, iRSSI: 43
+[ 11505][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 88, C6: 220, C11: 92
+[ 11506][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[ 11506][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -78, iRSSI: 42
+[ 11506][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11506][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11507][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11507][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11507][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11507][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11508][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11508][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11508][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11508][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11509][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11509][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11509][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11509][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11510][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11510][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11510][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11510][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11511][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 130, C6: 220, C11: 92
+[ 11511][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11511][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 5, RSSI: -82, iRSSI: 38
+[ 11511][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 187, C6: 296, C11: 92
+[ 11512][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11512][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -84, iRSSI: 36
+[ 11512][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 187, C6: 296, C11: 128
+[ 11512][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11513][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -84, iRSSI: 36
+[ 11513][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 187, C6: 296, C11: 164
+[ 11513][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11513][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -85, iRSSI: 35
+[ 11514][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 187, C6: 296, C11: 199
+[ 11514][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11514][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -86, iRSSI: 34
+[ 11514][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 187, C6: 296, C11: 233
+[ 11515][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11515][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -86, iRSSI: 34
+[ 11515][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 187, C6: 296, C11: 233
+[ 11515][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11516][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -87, iRSSI: 33
+[ 11516][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 233
+[ 11516][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11516][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -87, iRSSI: 33
+[ 11517][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 233
+[ 11517][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11517][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -89, iRSSI: 31
+[ 11517][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 233
+[ 11518][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11518][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -89, iRSSI: 31
+[ 11518][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 233
+[ 11518][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11519][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -90, iRSSI: 30
+[ 11519][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11519][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11519][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -90, iRSSI: 30
+[ 11520][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11520][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11520][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11520][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11521][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11521][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -90, iRSSI: 30
+[ 11521][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11521][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11522][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11522][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11522][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11522][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11523][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11523][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11523][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -91, iRSSI: 29
+[ 11523][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 220, C6: 296, C11: 263
+[ 11524][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11524][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -92, iRSSI: 28
+[ 11524][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 248, C6: 296, C11: 263
+[ 11524][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11525][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -93, iRSSI: 27
+[ 11525][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 248, C6: 323, C11: 263
+[ 11525][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11525][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[ 11526][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 248, C6: 323, C11: 290
+[ 11526][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11526][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -93, iRSSI: 27
+[ 11526][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 248, C6: 323, C11: 290
+[ 11527][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11527][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11527][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11632][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11633][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11633][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11634][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11634][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11634][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11635][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11635][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11635][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11636][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11635][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11636][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0xb32a1468 0x4085e7ac 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   158][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   161][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized
+[ 11694][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 35
+[ 11694][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -34
+[ 11694][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -34, iRSSI: 86
+[ 11695][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11695][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -39
+[ 11695][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -39, iRSSI: 81
+[ 11695][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11696][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -39
+[ 11696][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -39, iRSSI: 81
+[ 11696][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11696][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -45
+[ 11697][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -45, iRSSI: 75
+[ 11697][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 75, C11: 0
+[ 11697][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -50
+[ 11697][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -50, iRSSI: 70
+[ 11698][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 145, C11: 0
+[ 11698][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -50
+[ 11698][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -50, iRSSI: 70
+[ 11698][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 215, C11: 0
+[ 11699][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -71
+[ 11699][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -71, iRSSI: 49
+[ 11699][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 215, C11: 49
+[ 11699][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11700][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -75, iRSSI: 45
+[ 11700][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 45, C6: 215, C11: 49
+[ 11700][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11700][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -75, iRSSI: 45
+[ 11701][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 45, C6: 215, C11: 94
+[ 11701][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11701][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -76, iRSSI: 44
+[ 11701][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 89, C6: 215, C11: 94
+[ 11702][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11702][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -79, iRSSI: 41
+[ 11702][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 89, C6: 215, C11: 94
+[ 11702][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11703][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -79, iRSSI: 41
+[ 11703][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 89, C6: 215, C11: 94
+[ 11703][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11703][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -79, iRSSI: 41
+[ 11704][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 89, C6: 215, C11: 94
+[ 11704][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11704][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -80, iRSSI: 40
+[ 11704][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 89, C6: 215, C11: 94
+[ 11705][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11705][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -81, iRSSI: 39
+[ 11705][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 215, C11: 94
+[ 11705][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11706][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 5, RSSI: -84, iRSSI: 36
+[ 11706][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 182, C6: 287, C11: 94
+[ 11706][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11706][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -84, iRSSI: 36
+[ 11707][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 182, C6: 287, C11: 94
+[ 11707][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -84
+[ 11707][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -84, iRSSI: 36
+[ 11707][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 182, C6: 287, C11: 94
+[ 11708][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11708][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -86, iRSSI: 34
+[ 11708][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 182, C6: 287, C11: 128
+[ 11708][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11709][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -86, iRSSI: 34
+[ 11709][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 182, C6: 287, C11: 128
+[ 11709][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11709][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -87, iRSSI: 33
+[ 11710][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 128
+[ 11710][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11710][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -87, iRSSI: 33
+[ 11710][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11711][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11711][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -88, iRSSI: 32
+[ 11711][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11711][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11712][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -88, iRSSI: 32
+[ 11712][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11712][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11712][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -88, iRSSI: 32
+[ 11713][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11713][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11713][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -89, iRSSI: 31
+[ 11713][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11714][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11714][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -90, iRSSI: 30
+[ 11714][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11714][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11715][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11715][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 161
+[ 11715][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11715][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -91, iRSSI: 29
+[ 11716][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 190
+[ 11716][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11716][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 48, RSSI: -91, iRSSI: 29
+[ 11716][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 190
+[ 11717][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11717][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -91, iRSSI: 29
+[ 11717][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 190
+[ 11717][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11718][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -91, iRSSI: 29
+[ 11718][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 190
+[ 11718][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11718][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -92, iRSSI: 28
+[ 11719][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 218
+[ 11719][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11719][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -94, iRSSI: 26
+[ 11719][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 218
+[ 11720][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -95
+[ 11720][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -95, iRSSI: 25
+[ 11720][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 215, C6: 287, C11: 218
+[ 11720][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11721][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11721][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11825][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11826][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11826][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11827][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11827][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11827][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11828][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11828][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11828][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11828][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11828][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11829][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+
+***ERROR*** A stack overflow in task FSM has been detected.
+Core  0 register dump:
+MEPC    : 0x4080a6f0  RA      : 0x4080a6b4  SP      : 0x4081f470  GP      : 0x40815f04  
+TP      : 0x40839120  T0      : 0x40038640  T1      : 0x0000000f  T2      : 0x00000000  
+S0/FP   : 0x4081f490  S1      : 0x4081f490  A0      : 0x4081f490  A1      : 0x420ec778  
+A2      : 0x0000000b  A3      : 0x4081f4b9  A4      : 0x00000001  A5      : 0x40825000  
+A6      : 0x00000001  A7      : 0x40825000  S2      : 0x00001881  S3      : 0x00000001  
+S4      : 0x600c2000  S5      : 0x420e4000  S6      : 0x40825438  S7      : 0x420e4000  
+S8      : 0x420e3000  S9      : 0x00000000  S10     : 0x40800256  S11     : 0x00001881  
+T3      : 0x00000000  T4      : 0x00000000  T5      : 0x00000000  T6      : 0x00000000  
+MSTATUS : 0x00001801  MTVEC   : 0x40800003  MCAUSE  : 0x00000002  MTVAL   : 0x00000000  
+MHARTID : 0x00000000  
+
+Stack memory:
+4081f470: 0x00000000 0x00000001 0x00000040 0x4080c004 0x600a5000 0x420ec73c 0x4083916c 0x420ec764
+4081f490: 0x452a2a2a 0x524f5252 0x202a2a2a 0x74732041 0x206b6361 0x7265766f 0x776f6c66 0x206e6920
+4081f4b0: 0x6b736174 0x4d534620 0x73616820 0x65656220 0x6564206e 0x74636574 0x002e6465 0x00000000
+4081f4d0: 0x00000000 0x00000000 0x00000000 0x00aa54eb 0x420e2db6 0xb8000013 0x40825000 0x4080d38a
+4081f4f0: 0x00001881 0xb8000013 0x40825000 0x4080c868 0x6000a000 0x40808e42 0x40808e4e 0x4081f568
+4081f510: 0x4081f568 0x4081f608 0x4081f5f8 0x00000000 0x4081f524 0xffffffff 0x4081f524 0x4081f524
+4081f530: 0x00000001 0x4081f538 0xffffffff 0x4082b574 0x4082b574 0x00000000 0x0000000a 0x00000010
+4081f550: 0x0001ffff 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f570: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f590: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f5f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x4081f610
+4081f610: 0xffffffff 0x4081f610 0x4081f610 0x00000000 0x4081f624 0xffffffff 0x4081f624 0x4081f624
+4081f630: 0x00000000 0x4081f630 0x00000000 0x00000000 0x00000000 0x4081f648 0xffffffff 0x4081f648
+4081f650: 0x4081f648 0x00000000 0x4081f65c 0xffffffff 0x4081f65c 0x4081f65c 0x00000001 0x00000001
+4081f670: 0x00000000 0x0001ffff 0x00000000 0x00000000 0x00000004 0x00000000 0x00000000 0x00000000
+4081f690: 0x4081f68c 0x00000000 0x00000000 0x00000000 0x4081f6a4 0xffffffff 0x4081f6a4 0x4081f6a4
+4081f6b0: 0x00000000 0x4081f6b8 0xffffffff 0x4081f6b8 0x4081f6b8 0x00000001 0x00000001 0x00000000
+4081f6d0: 0x0001ffff 0x00000000 0x00000000 0x00000001 0x00000000 0x00000000 0x6000a000 0x40808e42
+4081f6f0: 0x40808e4e 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f710: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f730: 0x00000000 0x4082ec14 0x40832094 0x00000002 0x00000000 0x00000000 0x00000000 0x00000000
+4081f750: 0x40825d08 0x40825d38 0x40825d6c 0x40825d9c 0x40828f9c 0x00000000 0x00000000 0x00000000
+4081f770: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f790: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7b0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7d0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f7f0: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f810: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f830: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+4081f850: 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000
+
+
+
+ELF file SHA256: 6565622f0
+
+Rebooting...
+ESP-ROM:esp32c5-eco2-20250121
+Build:Jan 21 2025
+rst:0xc (SW_CPU),boot:0x1d (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4080a812
+SPI mode:DIO, clock div:1
+load:0x408556b0,len:0x1258
+load:0x4084bba0,len:0xca4
+load:0x4084e5a0,len:0x315c
+entry 0x4084bba0
+E (285) MSPI Timing: Failed to allocate dummy cacheline for PSRAM memory barrier!
+[     1][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    12][I][AdapterWLAN.cpp:22] AdapterWLAN(): [AW] init
+[    17][I][NetAdapter_A.cpp:23] NetAdapter_A(): [NA] init
+[    22][I][AdapterESPNow.cpp:27] AdapterESPNow(): [AE] init
+[    28][I][ESP32PWM.cpp:56] ESP32PWM(): [ESP32PWM] ESP32C5 detected - MCPWM support not enabled
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   253008 B ( 247.1 KB)
+  Free Bytes        :   216868 B ( 211.8 KB)
+  Allocated Bytes   :    32972 B (  32.2 KB)
+  Minimum Free Bytes:   216724 B ( 211.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : Apr  5 2026 23:43:02
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081df80
+[   157][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081df80
+[   158][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[   158][I][main.cpp:86] setup(): [NaMa] LED initialized
+[   158][I][ActuonixL12.cpp:11] begin(): [ActL12] Attaching on pin 3 (range 1000-2000 us)
+[   158][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[   159][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[   159][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[   160][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[   160][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[   160][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[   161][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[   161][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[   161][I][main.cpp:97] setup(): [NaMa] Actuator Initialized

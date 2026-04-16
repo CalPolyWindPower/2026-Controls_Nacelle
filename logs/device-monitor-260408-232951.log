@@ -1,0 +1,726 @@
+[ 11504][I][AdapterWLAN.cpp:83] identifyOptimalChannel(): [AW] WiFI Net Cnt: 40
+[ 11504][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11505][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -41, iRSSI: 79
+[ 11505][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 0, C11: 0
+[ 11505][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -42
+[ 11505][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -42, iRSSI: 78
+[ 11506][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 78, C11: 0
+[ 11506][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11506][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11506][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 152, C11: 0
+[ 11507][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11507][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -46, iRSSI: 74
+[ 11507][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 226, C11: 0
+[ 11507][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11508][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -46, iRSSI: 74
+[ 11508][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 226, C11: 0
+[ 11508][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -47
+[ 11508][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 100, RSSI: -47, iRSSI: 73
+[ 11509][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 226, C11: 0
+[ 11509][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11509][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -73, iRSSI: 47
+[ 11510][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 226, C11: 47
+[ 11510][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11510][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -73, iRSSI: 47
+[ 11510][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 226, C11: 94
+[ 11511][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -74
+[ 11511][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -74, iRSSI: 46
+[ 11511][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 0, C6: 226, C11: 140
+[ 11511][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11512][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11512][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 43, C6: 226, C11: 140
+[ 11512][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11512][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -77, iRSSI: 43
+[ 11513][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 86, C6: 226, C11: 140
+[ 11513][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11513][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -77, iRSSI: 43
+[ 11513][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 86, C6: 226, C11: 140
+[ 11514][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -78
+[ 11514][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -78, iRSSI: 42
+[ 11514][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 226, C11: 140
+[ 11514][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11515][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11515][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 226, C11: 140
+[ 11515][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11515][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -80, iRSSI: 40
+[ 11516][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 226, C11: 140
+[ 11516][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11516][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -81, iRSSI: 39
+[ 11516][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 226, C11: 140
+[ 11517][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11517][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -81, iRSSI: 39
+[ 11517][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 226, C11: 140
+[ 11518][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11518][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 149, RSSI: -82, iRSSI: 38
+[ 11518][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 128, C6: 226, C11: 140
+[ 11518][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11519][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 5, RSSI: -85, iRSSI: 35
+[ 11519][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 180, C6: 296, C11: 140
+[ 11519][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11519][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -85, iRSSI: 35
+[ 11520][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 180, C6: 296, C11: 175
+[ 11520][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11520][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -85, iRSSI: 35
+[ 11520][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 180, C6: 296, C11: 175
+[ 11521][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11521][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -85, iRSSI: 35
+[ 11521][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 180, C6: 296, C11: 175
+[ 11522][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11522][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -86, iRSSI: 34
+[ 11522][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 175
+[ 11522][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11522][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -86, iRSSI: 34
+[ 11523][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 175
+[ 11523][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11523][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -86, iRSSI: 34
+[ 11524][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 175
+[ 11524][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11524][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -88, iRSSI: 32
+[ 11524][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 207
+[ 11525][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11525][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -88, iRSSI: 32
+[ 11525][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 239
+[ 11525][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11526][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -88, iRSSI: 32
+[ 11526][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 239
+[ 11526][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11526][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -89, iRSSI: 31
+[ 11527][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 270
+[ 11527][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11527][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -90, iRSSI: 30
+[ 11527][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11528][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11528][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 128, RSSI: -90, iRSSI: 30
+[ 11528][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11528][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11529][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11529][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11529][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11529][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -90, iRSSI: 30
+[ 11530][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11530][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11530][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -92, iRSSI: 28
+[ 11530][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11531][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11531][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -93, iRSSI: 27
+[ 11531][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11532][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11532][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 128, RSSI: -93, iRSSI: 27
+[ 11532][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 296, C11: 300
+[ 11532][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11532][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -94, iRSSI: 26
+[ 11533][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 322, C11: 300
+[ 11533][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11533][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -94, iRSSI: 26
+[ 11533][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 348, C11: 300
+[ 11534][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11534][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 128, RSSI: -94, iRSSI: 26
+[ 11534][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 348, C11: 300
+[ 11534][D][AdapterWLAN.cpp:100] identifyOptimalChannel(): [AW] RSSI: -94
+[ 11535][D][AdapterWLAN.cpp:115] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -94, iRSSI: 26
+[ 11535][D][AdapterWLAN.cpp:155] identifyOptimalChannel(): [AW] Subtotals: C1: 214, C6: 348, C11: 300
+[ 11535][I][AdapterWLAN.cpp:161] identifyOptimalChannel(): [AW] Optimal Ch.: 1
+[ 11536][I][main.cpp:107] setup(): [NaMa] Optimal WiFi Channel: 1
+[ 11536][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[ 11640][E][AdapterWLAN.cpp:314] begin(): [AW] Failed to set WiFi bandwidth
+[ 11641][E][main.cpp:112] setup(): [NaMa] Failed to initialize WiFi
+[ 11641][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11642][I][main.cpp:121] setup(): [NaMa] ESP-NOW initialized.
+[ 11642][D][AdapterESPNow.cpp:185] registerPeer(): [AE] Peer registered: 
+[ 11642][I][main.cpp:133] setup(): [NaMa] Registered peer
+[ 11643][I][main.cpp:145] setup(): [NaMa] Time sync initialized successfully
+[ 11643][D][WiFiGeneric.cpp:818] setBandMode(): No change in Band Mode
+[ 11643][D][AdapterWLAN.cpp:227] getMACAddress(): [AW] Queried MACAddr
+[ 11643][D][AdapterWLAN.cpp:284] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11643][I][main.cpp:154] setup(): [NaMa] MAC Address: 30:ed:a0:e0:64:84
+[ 11644][I][main.cpp:168] setup(): [NaMa] Setting up task: FSM
+[ 11644][I][main.cpp:168] setup(): [NaMa] Setting up task: Poll
+[ 11644][I][main.cpp:168] setup(): [NaMa] Setting up task: Ptch
+[ 11645][I][main.cpp:261] vTaskPitch(): [NaMa] No pitch updates needed in state 2, supsending
+[ 11645][I][main.cpp:168] setup(): [NaMa] Setting up task: Recv
+[ 11645][I][main.cpp:168] setup(): [NaMa] Setting up task: Send
+[ 11645][I][main.cpp:168] setup(): [NaMa] Setting up task: Cfg
+[ 11646][I][main.cpp:168] setup(): [NaMa] Setting up task: LED
+[ 11646][I][main.cpp:168] setup(): [NaMa] Setting up task: Log
+[ 11646][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 11646][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 11648][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	0		<1%
+loopTask       	5121[ 11648][E][main.cpp:196] setup(): [NaMa] Failed to enter a valid state
+[ 11648][I][main.cpp:206] setup(): [NaMa] Setup complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size 5		<1%
+IDLE           	10924535		93%
+Send           	5		<1%
+tiT            	2725		<1%
+Recv           	5		<1%
+LED            	9		<1%
+Cfg            	4		<1%
+Poll           	10		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+wifi           	613409		5%
+esp_timer      	47727		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+
+       :   253008 B ( 247.1 KB)
+  Free Bytes        :   137536 B ( 134.3 KB)
+  Allocated Bytes   :   109344 B ( 106.8 KB)
+  Minimum Free Bytes:   137384 B ( 134.2 KB)
+  Largest Free Block:   118772 B ( 116.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     3 : LEDC[0][0]
+    11 : UART_TX[0]
+    12 : UART_RX[0]
+    13 : USB_DM
+    14 : USB_DP
+    15 : GPIO
+============ After Setup End =============
+[ 12649][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 12649][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 12650][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 12650][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 12650][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 12651][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 12651][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 12651][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2340, F: 1756
+[ 13651][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 14651][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 15651][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 15651][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 15652][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	6005		<1%
+IDLE           	14907989		95%
+Send           	1970		<1%
+tiT            	3216		<1%
+loopTask       	53906		<1%
+Recv           	165		<1%
+LED            	29		<1%
+Cfg            	20		<1%
+Poll           	9999		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+wifi           	613425		3%
+esp_timer      	47831		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+
+[ 16653][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 16653][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 16654][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 16654][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 16654][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 16654][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 16655][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 16655][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 17655][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 18655][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 19655][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 19655][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 19657][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	11471		<1%
+IDLE           	18893804		96%
+tiT            	3593		<1%
+Send           	3935		<1%
+loopTask       	53940		<1%
+Recv           	326		<1%
+Cfg            	37		<1%
+LED            	46		<1%
+Poll           	19985		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+wifi           	613527		3%
+esp_timer      	47896		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+
+[ 20657][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 20657][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 20658][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 20658][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 20658][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 20658][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 20659][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 20659][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 21659][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 22659][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 23659][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 23659][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 23660][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	16938		<1%
+IDLE           	22879712		96%
+tiT            	3964		<1%
+Send           	5898		<1%
+loopTask       	53976		<1%
+Recv           	487		<1%
+Cfg            	53		<1%
+LED            	57		<1%
+Poll           	29972		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+wifi           	613539		2%
+esp_timer      	47959		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+
+[ 24661][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 24661][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 24662][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 24662][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 24662][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 24662][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 24663][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 24663][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 25663][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 26663][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 27663][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 27663][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 27665][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	22302		<1%
+IDLE           	26865589		97%
+Send           	7862		<1%
+loopTask       	54010		<1%
+Recv           	647		<1%
+tiT            	4383		<1%
+Cfg            	69		<1%
+LED            	68		<1%
+Poll           	39962		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+wifi           	613641		2%
+esp_timer      	48022		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+
+[ 28665][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 28665][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 28666][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 28666][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 28666][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 28666][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 28667][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 28667][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 29667][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 30667][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 31667][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 31667][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 31668][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	27779		<1%
+IDLE           	30851430		97%
+Send           	9829		<1%
+loopTask       	54045		<1%
+Recv           	807		<1%
+tiT            	4758		<1%
+Cfg            	85		<1%
+LED            	79		<1%
+Poll           	49958		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+wifi           	613699		1%
+esp_timer      	48086		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+
+[ 32669][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 32669][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 32670][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 32670][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 32670][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 32671][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 32671][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 32671][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 33671][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 34671][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 35671][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 35671][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 35672][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	33428		<1%
+IDLE           	34837149		97%
+Send           	11790		<1%
+loopTask       	54079		<1%
+Recv           	969		<1%
+tiT            	5131		<1%
+Cfg            	101		<1%
+LED            	90		<1%
+Poll           	59945		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+wifi           	613722		1%
+esp_timer      	48151		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+
+[ 36673][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 36673][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 36674][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 36674][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 36674][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 36674][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 36675][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 36675][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 37675][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 38675][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 39675][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 39675][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 39676][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	38770		<1%
+IDLE           	38823040		97%
+Send           	13755		<1%
+loopTask       	54113		<1%
+Recv           	1129		<1%
+tiT            	5511		<1%
+Cfg            	117		<1%
+LED            	101		<1%
+Poll           	69942		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+wifi           	613864		1%
+esp_timer      	48218		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+
+[ 40677][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 40677][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 40678][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 40678][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 40678][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 40678][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 40679][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 40679][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 41679][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 42679][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 43679][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 43679][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 43680][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	44144		<1%
+IDLE           	42808929		98%
+Send           	15719		<1%
+Recv           	1289		<1%
+loopTask       	54147		<1%
+tiT            	5885		<1%
+Cfg            	133		<1%
+LED            	112		<1%
+Poll           	79928		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+wifi           	613988		1%
+esp_timer      	48281		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+
+[ 44681][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 44681][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 44682][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 44682][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 44682][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 44682][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 44683][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 44683][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 45683][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 46683][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 47683][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 47683][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 47685][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	49641		<1%
+IDLE           	46794713		98%
+Send           	17682		<1%
+Recv           	1449		<1%
+loopTask       	54181		<1%
+tiT            	6261		<1%
+Cfg            	149		<1%
+LED            	122		<1%
+Poll           	89919		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+wifi           	614092		1%
+esp_timer      	48346		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+
+[ 48685][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 48685][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 48686][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 48686][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 48686][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 48686][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 48687][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 48687][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 49687][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 50687][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 51687][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 51687][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 51688][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	55444		<1%
+IDLE           	50780277		98%
+Send           	19649		<1%
+Recv           	1609		<1%
+loopTask       	54215		<1%
+tiT            	6633		<1%
+Cfg            	165		<1%
+LED            	132		<1%
+Poll           	99907		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+wifi           	614114		1%
+esp_timer      	48410		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+
+[ 52689][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 52689][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 52690][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 52690][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 52690][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 52690][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 52691][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 52691][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 53691][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 54691][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 55691][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 55691][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 55693][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	60894		<1%
+IDLE           	54766120		98%
+Send           	21613		<1%
+Recv           	1769		<1%
+loopTask       	54249		<1%
+tiT            	7007		<1%
+Cfg            	181		<1%
+LED            	143		<1%
+Poll           	109887		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+wifi           	614217		1%
+esp_timer      	48475		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+
+[ 56693][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 56693][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 212, F: 1836
+[ 56694][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 56694][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 56694][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 216, F: 1832
+[ 56694][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 56695][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 56695][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 57695][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 58695][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 29 dC
+[ 59695][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 59695][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 59696][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	66320		<1%
+IDLE           	58752032		98%
+Send           	23588		<1%
+Recv           	1929		<1%
+loopTask       	54283		<1%
+tiT            	7387		<1%
+Cfg            	197		<1%
+LED            	154		<1%
+Poll           	119888		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+wifi           	614241		1%
+esp_timer      	48541		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+
+[ 60697][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 60697][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 260, F: 1788
+[ 60698][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 60698][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 60698][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 280, F: 1768
+[ 60698][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 60699][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 60699][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 61699][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 62699][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 63699][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 63699][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 63700][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	71757		<1%
+IDLE           	62737892		98%
+Send           	25552		<1%
+Recv           	2089		<1%
+loopTask       	54317		<1%
+tiT            	7767		<1%
+Cfg            	213		<1%
+LED            	165		<1%
+Poll           	129873		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+wifi           	614324		<1%
+esp_timer      	48606		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+
+[ 64701][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 64701][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 260, F: 1788
+[ 64702][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 64702][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 64702][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 280, F: 1768
+[ 64702][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 64703][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 64703][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 65703][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 66703][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 67703][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 67703][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 67705][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	77138		<1%
+IDLE           	66723872		98%
+Send           	27516		<1%
+Recv           	2249		<1%
+loopTask       	54351		<1%
+tiT            	8145		<1%
+Cfg            	229		<1%
+LED            	176		<1%
+Poll           	139872		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+wifi           	614336		<1%
+esp_timer      	48671		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+
+[ 68705][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 68705][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 260, F: 1788
+[ 68706][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 68706][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 68706][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 280, F: 1768
+[ 68706][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 68707][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 68707][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 69707][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 70707][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 71707][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 71707][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 71708][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	82622		<1%
+IDLE           	70709600		98%
+Send           	29482		<1%
+Recv           	2409		<1%
+loopTask       	54385		<1%
+tiT            	8560		<1%
+Cfg            	245		<1%
+LED            	187		<1%
+Poll           	149859		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+wifi           	614470		<1%
+esp_timer      	48736		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+
+[ 72709][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 72709][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 260, F: 1788
+[ 72710][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 72710][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 72710][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 280, F: 1768
+[ 72710][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 72711][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 72711][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 73711][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 74711][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 75711][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 75711][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 75713][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	87910		<1%
+IDLE           	74695683		98%
+Send           	31446		<1%
+Recv           	2569		<1%
+loopTask       	54419		<1%
+tiT            	8938		<1%
+Cfg            	261		<1%
+LED            	198		<1%
+Poll           	159848		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+wifi           	614482		<1%
+esp_timer      	48801		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+
+[ 76713][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 76713][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 260, F: 1788
+[ 76714][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 76714][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 76714][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 280, F: 1768
+[ 76714][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 76715][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 76715][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 77715][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 78715][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 79715][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 79715][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 79716][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	93428		<1%
+IDLE           	78681524		98%
+Send           	33410		<1%
+Recv           	2729		<1%
+loopTask       	54453		<1%
+tiT            	9313		<1%
+LED            	209		<1%
+Cfg            	277		<1%
+Poll           	169835		<1%
+FSM            	15		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+wifi           	614516		<1%
+esp_timer      	48866		<1%
+sys_evt        	1234		<1%
+arduino_events 	363		<1%
+
+[ 80717][I][main.cpp:430] vTaskLogData(): [NaMa] T: FSM, U: 248, F: 264
+[ 80717][I][main.cpp:430] vTaskLogData(): [NaMa] T: Poll, U: 260, F: 1788
+[ 80718][I][main.cpp:430] vTaskLogData(): [NaMa] T: Ptch, U: 1640, F: 2456
+[ 80718][I][main.cpp:430] vTaskLogData(): [NaMa] T: Recv, U: 216, F: 1832
+[ 80718][I][main.cpp:430] vTaskLogData(): [NaMa] T: Send, U: 280, F: 1768
+[ 80718][I][main.cpp:430] vTaskLogData(): [NaMa] T: Cfg, U: 212, F: 300
+[ 80719][I][main.cpp:430] vTaskLogData(): [NaMa] T: LED, U: 216, F: 40
+[ 80719][I][main.cpp:430] vTaskLogData(): [NaMa] T: Log, U: 2388, F: 1708
+[ 81719][I][main.cpp:449] vTaskLogData(): [NaMa] Minimum free heap: 137384 bytes
+[ 82719][I][main.cpp:465] vTaskLogData(): [NaMa] Temperature: 28 dC
+[ 83719][D][main.cpp:399] vTaskLogData(): [NaMa] Logging Data:
+[ 83719][I][main.cpp:401] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 83720][I][main.cpp:424] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	98837		<1%
+IDLE           	82667455		98%
+Send           	35374		<1%
+Recv           	2889		<1%
+loopTask       	54487		<1%
+tiT            	9692		<1%
+LED            	220		<1%
+Cfg            	293		<1%
+Poll           	179825		<1%
+Ptch           	297		<1%
+Tmr Svc        	6		<1%
+sys_evt        	1234		<1%
+wifi           	614552		<1%
+esp_timer      	48931		<1%
+arduino_events 	363		<1%
+FSM            	15		<1%
+

@@ -1,0 +1,453 @@
+[   332][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081ce08
+[   332][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081ce08
+[   332][I][main.cpp:68] setup(): [NaMa] Serial initialized
+[   333][I][main.cpp:78] setup(): [NaMa] LED initialized
+[ 11713][I][AdapterWLAN.cpp:82] identifyOptimalChannel(): [AW] WiFI Net Cnt: 48
+[ 11713][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -40
+[ 11713][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -40, iRSSI: 80
+[ 11714][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 80, C6: 0, C11: 0
+[ 11714][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -40
+[ 11714][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -40, iRSSI: 80
+[ 11715][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 160, C6: 0, C11: 0
+[ 11715][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -40
+[ 11715][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 116, RSSI: -40, iRSSI: 80
+[ 11715][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 160, C6: 0, C11: 0
+[ 11715][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -41
+[ 11716][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -41, iRSSI: 79
+[ 11716][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 239, C6: 0, C11: 0
+[ 11716][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -45
+[ 11716][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 116, RSSI: -45, iRSSI: 75
+[ 11717][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 239, C6: 0, C11: 0
+[ 11717][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -46
+[ 11717][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 116, RSSI: -46, iRSSI: 74
+[ 11717][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 239, C6: 0, C11: 0
+[ 11718][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -71
+[ 11718][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -71, iRSSI: 49
+[ 11718][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 239, C6: 49, C11: 0
+[ 11718][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11719][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -72, iRSSI: 48
+[ 11719][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 287, C6: 49, C11: 0
+[ 11719][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -72
+[ 11719][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -72, iRSSI: 48
+[ 11720][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 287, C6: 97, C11: 0
+[ 11720][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11720][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -73, iRSSI: 47
+[ 11720][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 334, C6: 97, C11: 0
+[ 11721][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -73
+[ 11721][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -73, iRSSI: 47
+[ 11721][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 381, C6: 97, C11: 0
+[ 11721][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -74
+[ 11722][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -74, iRSSI: 46
+[ 11722][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 97, C11: 0
+[ 11722][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11722][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -75, iRSSI: 45
+[ 11723][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11723][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11723][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -75, iRSSI: 45
+[ 11723][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11724][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -75
+[ 11724][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -75, iRSSI: 45
+[ 11724][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11724][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11725][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -76, iRSSI: 44
+[ 11725][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11725][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11725][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 120, RSSI: -76, iRSSI: 44
+[ 11725][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11726][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -76
+[ 11726][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 157, RSSI: -76, iRSSI: 44
+[ 11726][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11727][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -77
+[ 11727][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -77, iRSSI: 43
+[ 11727][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 427, C6: 142, C11: 0
+[ 11727][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11728][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -79, iRSSI: 41
+[ 11728][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 468, C6: 142, C11: 0
+[ 11728][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -79
+[ 11728][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 13, RSSI: -79, iRSSI: 41
+[ 11729][E][AdapterWLAN.cpp:152] identifyOptimalChannel(): [AW] Detected Illegal WiFi Ch.: 13
+[ 11729][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 468, C6: 142, C11: 0
+[ 11729][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11729][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -80, iRSSI: 40
+[ 11730][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 468, C6: 142, C11: 0
+[ 11730][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -80
+[ 11730][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 64, RSSI: -80, iRSSI: 40
+[ 11730][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 468, C6: 142, C11: 0
+[ 11731][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11731][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -81, iRSSI: 39
+[ 11731][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 507, C6: 142, C11: 0
+[ 11731][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -81
+[ 11731][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -81, iRSSI: 39
+[ 11732][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 546, C6: 142, C11: 0
+[ 11732][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11732][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 120, RSSI: -82, iRSSI: 38
+[ 11732][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 546, C6: 142, C11: 0
+[ 11733][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11733][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 120, RSSI: -82, iRSSI: 38
+[ 11733][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 546, C6: 142, C11: 0
+[ 11733][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11734][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -82, iRSSI: 38
+[ 11734][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 546, C6: 142, C11: 0
+[ 11734][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -82
+[ 11734][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 132, RSSI: -82, iRSSI: 38
+[ 11735][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 546, C6: 142, C11: 0
+[ 11735][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -83
+[ 11735][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -83, iRSSI: 37
+[ 11735][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 0
+[ 11736][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -85
+[ 11736][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -85, iRSSI: 35
+[ 11736][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 35
+[ 11736][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -86
+[ 11737][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -86, iRSSI: 34
+[ 11737][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 35
+[ 11737][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11737][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -87, iRSSI: 33
+[ 11738][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 35
+[ 11738][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -87
+[ 11738][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 40, RSSI: -87, iRSSI: 33
+[ 11738][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 35
+[ 11739][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -88
+[ 11739][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -88, iRSSI: 32
+[ 11739][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 67
+[ 11739][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11740][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -89, iRSSI: 31
+[ 11740][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 98
+[ 11740][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -89
+[ 11740][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 36, RSSI: -89, iRSSI: 31
+[ 11741][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 98
+[ 11741][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11741][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -90, iRSSI: 30
+[ 11741][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 128
+[ 11742][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -90
+[ 11742][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 48, RSSI: -90, iRSSI: 30
+[ 11742][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 128
+[ 11742][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11742][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 48, RSSI: -91, iRSSI: 29
+[ 11743][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 128
+[ 11743][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11743][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 48, RSSI: -91, iRSSI: 29
+[ 11744][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 128
+[ 11744][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11744][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -91, iRSSI: 29
+[ 11744][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 128
+[ 11745][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -91
+[ 11745][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -91, iRSSI: 29
+[ 11745][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 583, C6: 142, C11: 128
+[ 11745][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11746][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 1, RSSI: -92, iRSSI: 28
+[ 11746][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 611, C6: 142, C11: 128
+[ 11746][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -92
+[ 11746][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 161, RSSI: -92, iRSSI: 28
+[ 11747][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 611, C6: 142, C11: 128
+[ 11747][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11747][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 6, RSSI: -93, iRSSI: 27
+[ 11747][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 611, C6: 169, C11: 128
+[ 11748][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11748][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[ 11748][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 611, C6: 169, C11: 155
+[ 11748][D][AdapterWLAN.cpp:99] identifyOptimalChannel(): [AW] RSSI: -93
+[ 11749][D][AdapterWLAN.cpp:114] identifyOptimalChannel(): [AW] Ch.: 11, RSSI: -93, iRSSI: 27
+[ 11749][D][AdapterWLAN.cpp:154] identifyOptimalChannel(): [AW] Subtotals: C1: 611, C6: 169, C11: 182
+[ 11749][I][AdapterWLAN.cpp:163] identifyOptimalChannel(): [AW] Optimal Ch.: 6
+[ 11749][I][main.cpp:91] setup(): [NaMa] Optimal WiFi Channel: 6
+[ 11750][D][AdapterESPNow.cpp:42] begin(): [AE] ESP-NOW init. success
+[ 11750][I][main.cpp:105] setup(): [NaMa] ESP-NOW initialized.
+[ 11750][D][AdapterESPNow.cpp:182] registerPeer(): [AE] Peer registered: 
+[ 11751][I][main.cpp:117] setup(): [NaMa] Registered peer
+[ 11751][W][AdapterWLAN.cpp:234] getMACAddress(): [AW] Starting WiFi4
+E (12252) wifi:can not set wifi Bandwidth under WiFi band mode WIFI_BAND_MODE_AUTO, please use esp_wifi_set_bandwidths instead
+[ 11752][E][STA.cpp:261] bandwidth(): Could not set STA bandwidth! 0x106: ESP_ERR_NOT_SUPPORTED
+[ 11752][D][WiFiGeneric.cpp:730] setBandMode(): Switching Band Mode from 3 to 1
+[ 11857][D][AdapterWLAN.cpp:252] getMACAddress(): [AW] Queried MACAddr
+[ 11857][D][AdapterWLAN.cpp:314] getMACAddress(): [AW] MACAddrFormatted: MACADDR: 
+[ 11751][I][main.cpp:138] setup(): [NaMa] MAC Address: 30:ed:a0:e0:6b:78
+[ 11858][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 11859][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	0		<1%
+loopTask       	51192		<1%
+IDLE           	11103222		93%
+tiT            	2614		<1%
+Poll           	7		<1%
+Ptch           	6		<1%
+Recv           	7		<1%
+Send           	6		<1%
+Cfg            	5		<1%
+LED            	7[ 11860][I][main.cpp:173] setup(): [NaMa] Setup complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   257568 B ( 251.5 KB)
+  Free Bytes        :   151148 B ( 147.6 KB)
+		<1%
+esp_timer      	42620		<1%
+sys_evt        	1211		<1%
+arduino_events 	365		<1%
+wifi           	651085		5%
+Tmr Svc        	5		<1%
+
+  Allocated Bytes   :   100460 B (  98.1 KB)
+  Minimum Free Bytes:   151008 B ( 147.5 KB)
+  Largest Free Block:   131060 B ( 128.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+    11 : UART_TX[0]
+    12 : UART_RX[0]
+    13 : USB_DM
+    14 : USB_DP
+    15 : GPIO
+============ After Setup End =============
+[ 13527][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 13528][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	2137		<1%
+IDLE           	12767254		94%
+Cfg            	5		<1%
+Poll           	13		<1%
+Ptch           	10		<1%
+Recv           	12		<1%
+Send           	10		<1%
+loopTask       	53525		<1%
+LED            	14		<1%
+tiT            	2833		<1%
+arduino_events 	365		<1%
+wifi           	651085		4%
+esp_timer      	42679		<1%
+Tmr Svc        	5		<1%
+sys_evt        	1211		<1%
+
+[ 15195][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 15196][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	4293		<1%
+IDLE           	14432898		94%
+LED            	14		<1%
+Cfg            	10		<1%
+Poll           	22		<1%
+Ptch           	19		<1%
+Recv           	21		<1%
+Send           	19		<1%
+loopTask       	53543		<1%
+tiT            	2945		<1%
+wifi           	651085		4%
+Tmr Svc        	5		<1%
+esp_timer      	42708		<1%
+sys_evt        	1211		<1%
+arduino_events 	365		<1%
+
+[ 16863][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 16864][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	6439		<1%
+IDLE           	16098374		95%
+tiT            	3118		<1%
+Cfg            	15		<1%
+Poll           	31		<1%
+Ptch           	28		<1%
+Recv           	30		<1%
+Send           	28		<1%
+LED            	27		<1%
+loopTask       	53555		<1%
+sys_evt        	1211		<1%
+wifi           	651194		3%
+esp_timer      	42738		<1%
+arduino_events 	365		<1%
+Tmr Svc        	5		<1%
+
+[ 18531][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 18532][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	8547		<1%
+IDLE           	17764027		95%
+Poll           	36		<1%
+Ptch           	32		<1%
+Recv           	35		<1%
+Send           	32		<1%
+loopTask       	53573		<1%
+LED            	27		<1%
+Cfg            	20		<1%
+tiT            	3266		<1%
+arduino_events 	365		<1%
+esp_timer      	42753		<1%
+wifi           	651229		3%
+Tmr Svc        	5		<1%
+sys_evt        	1211		<1%
+
+[ 20199][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 20200][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	10621		<1%
+IDLE           	19429717		96%
+Poll           	45		<1%
+Ptch           	41		<1%
+Recv           	45		<1%
+Send           	40		<1%
+loopTask       	53592		<1%
+Cfg            	25		<1%
+LED            	38		<1%
+tiT            	3378		<1%
+Tmr Svc        	5		<1%
+wifi           	651253		3%
+esp_timer      	42782		<1%
+sys_evt        	1211		<1%
+arduino_events 	365		<1%
+
+[ 21867][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 21868][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	12685		<1%
+IDLE           	21095403		96%
+tiT            	3550		<1%
+Poll           	54		<1%
+Ptch           	50		<1%
+Recv           	54		<1%
+Send           	49		<1%
+LED            	38		<1%
+Cfg            	30		<1%
+loopTask       	53599		<1%
+wifi           	651253		2%
+sys_evt        	1211		<1%
+esp_timer      	42812		<1%
+arduino_events 	365		<1%
+Tmr Svc        	5		<1%
+
+[ 23535][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 23536][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	14933		<1%
+IDLE           	22760929		96%
+tiT            	3697		<1%
+Cfg            	30		<1%
+Poll           	58		<1%
+Ptch           	55		<1%
+Recv           	58		<1%
+Send           	54		<1%
+loopTask       	53617		<1%
+LED            	43		<1%
+arduino_events 	365		<1%
+wifi           	651276		2%
+esp_timer      	42827		<1%
+Tmr Svc        	5		<1%
+sys_evt        	1211		<1%
+
+[ 25203][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 25204][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	17059		<1%
+IDLE           	24426597		96%
+Cfg            	35		<1%
+Poll           	67		<1%
+Ptch           	64		<1%
+Recv           	67		<1%
+Send           	63		<1%
+loopTask       	53635		<1%
+LED            	49		<1%
+tiT            	3809		<1%
+wifi           	651276		2%
+Tmr Svc        	5		<1%
+esp_timer      	42856		<1%
+sys_evt        	1211		<1%
+arduino_events 	365		<1%
+
+[ 26871][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 26872][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	19130		<1%
+IDLE           	26092261		97%
+LED            	49		<1%
+tiT            	3981		<1%
+Cfg            	40		<1%
+Poll           	76		<1%
+Ptch           	73		<1%
+Recv           	77		<1%
+Send           	71		<1%
+loopTask       	53646		<1%
+sys_evt        	1211		<1%
+wifi           	651288		2%
+esp_timer      	42885		<1%
+arduino_events 	365		<1%
+Tmr Svc        	5		<1%
+
+[ 28539][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 28540][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	21371		<1%
+IDLE           	27757795		97%
+Poll           	81		<1%
+Ptch           	77		<1%
+Recv           	82		<1%
+Send           	75		<1%
+loopTask       	53664		<1%
+Cfg            	45		<1%
+LED            	59		<1%
+tiT            	4128		<1%
+arduino_events 	365		<1%
+esp_timer      	42900		<1%
+wifi           	651300		2%
+Tmr Svc        	5		<1%
+sys_evt        	1211		<1%
+
+[ 30207][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 30208][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	23588		<1%
+IDLE           	29423273		97%
+Poll           	90		<1%
+Ptch           	86		<1%
+Recv           	92		<1%
+Send           	83		<1%
+loopTask       	53682		<1%
+LED            	59		<1%
+Cfg            	50		<1%
+tiT            	4240		<1%
+Tmr Svc        	5		<1%
+wifi           	651404		2%
+esp_timer      	42930		<1%
+sys_evt        	1211		<1%
+arduino_events 	365		<1%
+
+[ 31875][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 31876][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	25700		<1%
+IDLE           	31088901		97%
+tiT            	4412		<1%
+Poll           	99		<1%
+Ptch           	95		<1%
+Recv           	102		<1%
+Send           	91		<1%
+Cfg            	55		<1%
+LED            	69		<1%
+loopTask       	53689		<1%
+wifi           	651404		2%
+sys_evt        	1211		<1%
+esp_timer      	42960		<1%
+arduino_events 	365		<1%
+Tmr Svc        	5		<1%
+
+[ 33543][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 33544][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	27883		<1%
+IDLE           	32754471		97%
+Cfg            	55		<1%
+Poll           	103		<1%
+Ptch           	100		<1%
+Recv           	106		<1%
+Send           	96		<1%
+loopTask       	53707		<1%
+LED            	69		<1%
+tiT            	4560		<1%
+arduino_events 	365		<1%
+wifi           	651452		1%
+esp_timer      	42975		<1%
+Tmr Svc        	5		<1%
+sys_evt        	1211		<1%
+
+[ 35211][D][main.cpp:286] vTaskLogData(): [NaMa] Logging Data:
+[ 35212][I][main.cpp:292] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	30036		<1%
+IDLE           	34420109		97%
+Cfg            	60		<1%
+Poll           	112		<1%
+Ptch           	109		<1%
+Recv           	116		<1%
+Send           	104		<1%
+loopTask       	53725		<1%
+LED            	79		<1%
+tiT            	4672		<1%
+wifi           	651452		1%
+Tmr Svc        	5		<1%
+esp_timer      	43003		<1%
+sys_evt        	1211		<1%
+arduino_events 	365		<1%
+
