@@ -143,11 +143,12 @@ namespace Encoder {
     // todo check avg. function - can a neg. ruin it? - not problem?
 
     // TODO: Max RPM
-    constexpr uint_fast16_t MAX_RPM = 2500;
+    constexpr uint_fast16_t MAX_RPM = 3000;
     constexpr uint_fast8_t SECS_PER_MIN = 60;
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
-    constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_uS_PER_REV / 4;
+    constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_mS_PER_REV / 4;
+    static_assert(SAMPLE_DELAY_MS == OPTIMAL_SAMPLE_TIME_mS, "Suboptimal encoder sample time.");
     // constexpr uint_fast16_t ENCODER_TICKS_PER_REV = 4092;
     // constexpr uint_fast32_t MAX_ENCODER_TICS_PER_SEC = MAX_RPS *
     // ENCODER_TICKS_PER_REV;
