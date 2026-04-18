@@ -1,7 +1,7 @@
 /**
  * @file nacelleDemo.ino
  * @brief Manually control the actuator
- * @version 1.1.0
+ * @version 1.2.0
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -9,7 +9,7 @@
  * @CalPolyWindPower <https://github.com/calpolywindpower>
  *
  * The DFRobot FireBeetle 2 ESP32-C5 has one USB C port.  The baud rate is set
- * to to 115,200 below and uses the internal USB pripheral, not a separate
+ * to to 115,200 below and uses the internal USB peripheral, not a separate
  * chip. Some compatible serial monitors include the Arduino IDE
  * <https://www.arduino.cc/en/software/>, VSCode "Serial" extension from
  * Microsoft
@@ -157,10 +157,10 @@ namespace Encoder {
     float runningRpmSum =
         0; // Sum of the RPM samples currently stored in rpmSamples
 
-    void getRpmMovingAverage(float &rpmAvg);
-    void errorChecking();
-    void initializeEncoder();
-} // namespace Encoder
+  void getRpmMovingAverage(float& rpmAvg);
+  void errorChecking();
+  void initialize();
+} // namespace encoder
 
 /**
  * @details put your setup code here, to run once:
@@ -196,7 +196,7 @@ void setup() {
         "Initalized 2026 Actuator and Encoder Demo v2026-4-2 / v1.0.0");
     digitalWrite(LED::PIN, LOW); // Toggle LED
 
-    Encoder::initializeEncoder();
+    Encoder::initialize();
     digitalWrite(LED::PIN, LOW); // Toggle LED
 
     Serial.print("Input servo position in Microseconds: ");
@@ -243,18 +243,17 @@ void loop() {
         LEDOn = false;
     }
 #endif
-    float rpmAverage = 0;
-    Encoder::errorChecking(); // checks for basic I2C errors
 
-    static int time1 = 0;
-    int time2 = millis();
-    if (time2 - time1 > Encoder::SAMPLE_DELAY_MS) {
-        time1 = millis();
-        Encoder::getRpmMovingAverage(rpmAverage);
-    }
+  Encoder::errorChecking(); // checks for basic I2C errors
 
-    Serial.print("\tω = ");
-    Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
+  float rpmAverage;
+  Encoder::getRpmMovingAverage(rpmAverage);
+
+  Serial.print("\tω = ");
+  Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
+
+  delay(Encoder::SAMPLE_DELAY_MS);
+
 }
 
 // Updates the moving average of the RPM over the averaging period
@@ -285,40 +284,21 @@ void Encoder::getRpmMovingAverage(float &rpmAvg) {
 
 // Definitely room for a more in depth system
 void Encoder::errorChecking() {
-    int e = Encoder::as5600.lastError();
-    if (e != AS5600_OK) {
-        Serial.println(e);
-    }
-
-    Serial.print("AGC: \t");
-    Serial.println(
-        Encoder::as5600.readAGC()); // reads automatic gain control. Range of
-                                    // 0-128 where target value is 64
+  int e = Encoder::as5600.lastError();
+  if (e != AS5600_OK){
+    Serial.println(e);
+  }
 }
 
 // runs the setup for the encoder
-void Encoder::initializeEncoder() {
-    Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
-    Wire.setTimeOut(5);
-    Encoder::as5600.begin();
-    Encoder::as5600.setDirection(
-        AS5600_COUNTERCLOCK_WISE); // sets encoder's assumed direction of
-                                   // rotation to clockwise
-
-    int connectionTest =
-        Encoder::as5600
-            .isConnected(); // checks if the microcontroller has successfully
-                            // established a connection with the encoder
-    Serial.print("Connect: ");
-    Serial.println(connectionTest);
-
-    Serial.print("Magnet Detected: \t");
-    Serial.println(Encoder::as5600.magnetDetected());
-    Serial.print("Magnet Too Strong: \t");
-    Serial.println(Encoder::as5600.magnetTooStrong());
-    Serial.print("Magnet Too Weak: \t");
-    Serial.println(Encoder::as5600.magnetTooWeak());
-    delay(1000);
+void Encoder::initialize() {
+  Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
+  Encoder::as5600.begin(); 
+  Encoder::as5600.setDirection(AS5600_CLOCK_WISE);    // sets encoder's assumed direction of rotation to clockwise 
+  int connectionTest = Encoder::as5600.isConnected(); // checks if the microcontroller has successfully established a connection with the encoder
+  Serial.print("Connect: ");
+  Serial.println(connectionTest);
+  delay(1000);
 
     // load RPM samples into array to prevent error during main loop
     for (int i = 0; i < Encoder::DATASET_SIZE; i++) {
