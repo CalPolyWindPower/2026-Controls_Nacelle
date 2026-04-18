@@ -134,8 +134,6 @@ namespace Encoder {
   constexpr uint32_t SAMPLE_DELAY_MS = AVERAGING_PERIOD_MS / DATASET_SIZE; 
   // todo check avg. function - can a neg. ruin it? - not problem?
 
-  float rpmSamples[DATASET_SIZE]; // Circular buffer of recent RPM samples
-  float runningRpmSum = 0;        // Sum of the RPM samples currently stored in rpmSamples
   // TODO: Max RPM
   constexpr uint_fast16_t MAX_RPM = 2500;
   constexpr uint_fast8_t SECS_PER_MIN = 60;
@@ -144,6 +142,9 @@ namespace Encoder {
   constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_uS_PER_REV / 4;
   // constexpr uint_fast16_t ENCODER_TICKS_PER_REV = 4092;
   // constexpr uint_fast32_t MAX_ENCODER_TICS_PER_SEC = MAX_RPS * ENCODER_TICKS_PER_REV;
+
+  float rpmSamples[DATASET_SIZE];  // Circular buffer of recent RPM samples
+  float runningRpmSum = 0;           // Sum of the RPM samples currently stored in rpmSamples
 
   void getRpmMovingAverage(float& rpmAvg);
   void errorChecking();
@@ -183,9 +184,10 @@ void setup() {
     Serial.println("Initalized 2026 Actuator and Encoder Demo v2026-4-2 / v1.0.0");
     digitalWrite(LED::PIN, LOW); // Toggle LED
 
-    Serial.print("Input servo position in Microseconds: ");
-
     Encoder::initializeEncoder();
+    digitalWrite(LED::PIN, LOW);  // Toggle LED
+
+    Serial.print("Input servo position in Microseconds: ");
 }
 
 /**
