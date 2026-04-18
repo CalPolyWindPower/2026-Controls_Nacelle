@@ -127,14 +127,23 @@ namespace Encoder {
   constexpr uint8_t SCL_FIREBEETLE = 10; // SCL pin for the Firebeetle
   constexpr uint8_t SDA_FIREBEETLE = 9;  // SDA pin for the Firebeetle
 
-  constexpr uint32_t AVERAGING_PERIOD_MS = 1000; // time window of moving average, in milliseconds
-  constexpr uint8_t DATASET_SIZE = 3;            // size of the rpmSamples array and # of times encoder samples per second
+  constexpr uint32_t AVERAGING_PERIOD_MS = 40;  // time window of moving average, in milliseconds
+  constexpr uint8_t DATASET_SIZE = 8;            // size of the rpmSamples array and # of times encoder samples per second
 
   // Sets delay between samples so that collecting DATASET_SIZE samples spans one full averaging period
   constexpr uint32_t SAMPLE_DELAY_MS = AVERAGING_PERIOD_MS / DATASET_SIZE; 
+  // todo check avg. function - can a neg. ruin it? - not problem?
 
   float rpmSamples[DATASET_SIZE]; // Circular buffer of recent RPM samples
   float runningRpmSum = 0;        // Sum of the RPM samples currently stored in rpmSamples
+  // TODO: Max RPM
+  constexpr uint_fast16_t MAX_RPM = 2500;
+  constexpr uint_fast8_t SECS_PER_MIN = 60;
+  constexpr uint_fast8_t MAX_RPS = MAX_RPM / SECS_PER_MIN;
+  constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
+  constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_uS_PER_REV / 4;
+  // constexpr uint_fast16_t ENCODER_TICKS_PER_REV = 4092;
+  // constexpr uint_fast32_t MAX_ENCODER_TICS_PER_SEC = MAX_RPS * ENCODER_TICKS_PER_REV;
 
   void getRpmMovingAverage(float& rpmAvg);
   void errorChecking();
