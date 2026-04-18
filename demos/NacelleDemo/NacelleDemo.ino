@@ -95,12 +95,13 @@ namespace SERIAL_CONFIG {
  */
 namespace Actuator {
     Servo device = Servo();
-    constexpr int MIN_POS_us = 1230;    // Minimum position in microseconds
-    constexpr int MAX_POS_us = 1900;    // Maximum position in microseconds
-    constexpr int DEFAULT_us = 1500;    // Default position in microseconds
-    constexpr int CONTROL_PIN = 3;      // PWM pin
-    constexpr uint8_t FEEDBACK_PIN = 2; // Analog feedback pin
-} // namespace Actuator
+    constexpr int MIN_POS_us = 1230;     // Minimum position in microseconds // max in break
+    constexpr int MAX_POS_us = 1900;     // Maximum position in microseconds // max out, stall at 1645, even at higher wind speeds
+    constexpr int DEFAULT_us = 1550;     // Default position in microseconds // cut in-ish
+    constexpr int CONTROL_PIN = 3;       // PWM pin
+    constexpr uint8_t FEEDBACK_PIN = 2;  // Analog feedback pin
+                                        // cut in 1480 us @ R=0b1 / 8.75 Ohms, 1540 @ 24 Ohms
+}  // namespace Actuator
 
 /**
  * @brief Configuration for the LED and related pins
@@ -114,7 +115,7 @@ namespace Actuator {
 namespace LED {
     constexpr uint8_t PIN = 15; // LED pin
     constexpr uint_fast32_t TIME_ON_MS =
-        1000; // Time LED stays on in milliseconds
+      1000;  // Time LED stays on in milliseconds
     constexpr uint_fast32_t TIME_OFF_MS =
         3000; // Time LED stays off in milliseconds
 } // namespace LED

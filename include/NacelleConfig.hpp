@@ -112,29 +112,28 @@ namespace PITCHING {
     constexpr float SERVO_A2 = 0.000178592;
 
     // Mechanism constants
-    constexpr uint_fast16_t PITCH_MIN_ANGLE_DEG = 0;
-    constexpr uint_fast16_t PITCH_CUTIN_ANGLE_DEG = 9;
-    constexpr uint_fast16_t PITCH_MAX_ANGLE_DEG = 85;
-    constexpr uint_fast16_t ARM_CHORD_DEG_CCW =
-        100; // angle between arm and tip chord (+ccw looking from tip)
-    constexpr uint_fast16_t PITCH_ANGLE_OFFSET = ARM_CHORD_DEG_CCW - 90;
+    // constexpr uint_fast16_t PITCH_MIN_ANGLE_DEG = 0;
+    // constexpr uint_fast16_t PITCH_CUTIN_ANGLE_DEG = 9;
+    // constexpr uint_fast16_t PITCH_MAX_ANGLE_DEG = 85;
+    // constexpr uint_fast16_t ARM_CHORD_DEG_CCW =
+    //     100; // angle between arm and tip chord (+ccw looking from tip)
+    // constexpr uint_fast16_t PITCH_ANGLE_OFFSET = ARM_CHORD_DEG_CCW - 90;
 
-    constexpr uint_fast16_t SERVO_MIN_uS_2026 = 1000; // todo
-    constexpr uint_fast16_t SERVO_MAX_uS_2026 = 2000; // todo
+    constexpr uint_fast16_t SERVO_MIN_uS_2026 = 1230;
+    constexpr uint_fast16_t SERVO_MAX_uS_2026 = 1900;
     constexpr uint_fast16_t SERVO_MIN_uS_2025 = 1000;
     constexpr uint_fast16_t SERVO_MAX_uS_2025 = 2000;
     constexpr uint_fast16_t SERVO_MIN_uS_2024 = 1450;
     constexpr uint_fast16_t SERVO_MAX_uS_2024 = 1870;
 
     // Pitching config
-    constexpr uint_fast8_t BLADE_PITCH_STARTUP_DEG =
-        PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG //todo
-    constexpr uint_fast16_t POS_STARTUP_uS = SERVO_MAX_uS_2025; // CONFIG //todo
+    // constexpr uint_fast8_t BLADE_PITCH_STARTUP_DEG =
+    //     PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG //todo
+    constexpr uint_fast16_t POS_STARTUP_uS = 1540; // CONFIG //todo
 
-    constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
-        PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
-    constexpr uint_fast16_t POS_STOP_uS =
-        SERVO_MIN_uS_2025; // Feather -CONFIG //todo
+    // constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
+    //     PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
+    constexpr uint_fast16_t POS_STOP_uS = SERVO_MIN_uS_2026; // Feather - CONFIG
 
     // todo: Ftarget rpm var
 
