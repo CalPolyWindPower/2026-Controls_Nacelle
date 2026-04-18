@@ -51,7 +51,7 @@
 #include <cstdint> // Fixed size integers
 #include "AS5600.h"
 #include <Wire.h>
-#include <pins_arduino.h>
+// #include <pins_arduino.h>
 /**
  * @details Only use ESP32 Servo on the ESP32, and use our custom one for better
  * ESP32 C5 support.
@@ -64,6 +64,7 @@
 #    include "./src/ESP32Servo/src/ESP32PWM.h"
 #    include "./src/ESP32Servo/src/ESP32Servo.h"
 #else
+#    warning "Not using production board!"
 #    include <Servo.h>
 #endif
 
