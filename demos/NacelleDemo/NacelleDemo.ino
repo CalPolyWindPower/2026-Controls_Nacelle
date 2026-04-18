@@ -9,7 +9,7 @@
  * @CalPolyWindPower <https://github.com/calpolywindpower>
  *
  * The DFRobot FireBeetle 2 ESP32-C5 has one USB C port.  The baud rate is set
- * to to 115,200 below and uses the internal USB peripheral, not a separate
+ * to to 115,200 below and uses the internal USB pripheral, not a separate
  * chip. Some compatible serial monitors include the Arduino IDE
  * <https://www.arduino.cc/en/software/>, VSCode "Serial" extension from
  * Microsoft
@@ -136,7 +136,7 @@ namespace Encoder {
 
   void getRpmMovingAverage(float& rpmAvg);
   void errorChecking();
-  void initialize();
+  void initializeEncoder();
 } // namespace encoder
 
 /**
@@ -174,7 +174,7 @@ void setup() {
 
     Serial.print("Input servo position in Microseconds: ");
 
-    Encoder::initialize();
+    Encoder::initializeEncoder();
 }
 
 /**
@@ -218,16 +218,22 @@ void loop() {
         LEDOn = false;
     }
 #endif
-
+  float rpmAverage = 0;
   Encoder::errorChecking(); // checks for basic I2C errors
 
-  float rpmAverage;
-  Encoder::getRpmMovingAverage(rpmAverage);
+  static int time1 = 0; 
+  int time2 = millis();
+  if (time2 - time1 > Encoder::SAMPLE_DELAY_MS) {
+    time1 = millis();
+    Encoder::getRpmMovingAverage(rpmAverage);
+  }
 
   Serial.print("\tω = ");
   Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
 
-  delay(Encoder::SAMPLE_DELAY_MS);
+  
+
+  
 
 }
 
@@ -256,16 +262,29 @@ void Encoder::errorChecking() {
   if (e != AS5600_OK){
     Serial.println(e);
   }
+
+  Serial.print("AGC: \t");
+  Serial.println(Encoder::as5600.readAGC()); // reads automatic gain control. Range of 0-128 where target value is 64
+
 }
 
 // runs the setup for the encoder
-void Encoder::initialize() {
+void Encoder::initializeEncoder() {
   Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
+  Wire.setTimeOut(5);
   Encoder::as5600.begin(); 
-  Encoder::as5600.setDirection(AS5600_CLOCK_WISE);    // sets encoder's assumed direction of rotation to clockwise 
+  Encoder::as5600.setDirection(AS5600_COUNTERCLOCK_WISE);    // sets encoder's assumed direction of rotation to clockwise 
+
   int connectionTest = Encoder::as5600.isConnected(); // checks if the microcontroller has successfully established a connection with the encoder
   Serial.print("Connect: ");
   Serial.println(connectionTest);
+  
+  Serial.print("Magnet Detected: \t");
+  Serial.println(Encoder::as5600.magnetDetected());
+  Serial.print("Magnet Too Strong: \t");
+  Serial.println(Encoder::as5600.magnetTooStrong());
+  Serial.print("Magnet Too Weak: \t");
+  Serial.println(Encoder::as5600.magnetTooWeak());
   delay(1000);
 
   // load RPM samples into array to prevent error during main loop
