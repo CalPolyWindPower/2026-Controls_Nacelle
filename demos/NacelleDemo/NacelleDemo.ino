@@ -47,10 +47,10 @@
  */
 
 // MARK: Imports
-#include <Arduino.h>
-#include <cstdint> // Fixed size integers
 #include "AS5600.h"
+#include <Arduino.h>
 #include <Wire.h>
+#include <cstdint> // Fixed size integers
 // #include <pins_arduino.h>
 /**
  * @details Only use ESP32 Servo on the ESP32, and use our custom one for better
@@ -96,13 +96,18 @@ namespace SERIAL_CONFIG {
  */
 namespace Actuator {
     Servo device = Servo();
-    constexpr int MIN_POS_us = 1230;     // Minimum position in microseconds // max in break
-    constexpr int MAX_POS_us = 1900;     // Maximum position in microseconds // max out, stall at 1645, even at higher wind speeds
-    constexpr int DEFAULT_us = 1550;     // Default position in microseconds // cut in-ish
-    constexpr int CONTROL_PIN = 3;       // PWM pin
-    constexpr uint8_t FEEDBACK_PIN = 2;  // Analog feedback pin
-                                        // cut in 1480 us @ R=0b1 / 8.75 Ohms, 1540 @ 24 Ohms
-}  // namespace Actuator
+    constexpr int MIN_POS_us =
+        1230; // Minimum position in microseconds // max in break
+    constexpr int MAX_POS_us =
+        1900; // Maximum position in microseconds // max out, stall at 1645,
+              // even at higher wind speeds
+    constexpr int DEFAULT_us =
+        1550; // Default position in microseconds // cut in-ish
+    constexpr int CONTROL_PIN = 3; // PWM pin
+    constexpr uint8_t FEEDBACK_PIN =
+        2; // Analog feedback pin
+           // cut in 1480 us @ R=0b1 / 8.75 Ohms, 1540 @ 24 Ohms
+} // namespace Actuator
 
 /**
  * @brief Configuration for the LED and related pins
@@ -116,40 +121,45 @@ namespace Actuator {
 namespace LED {
     constexpr uint8_t PIN = 15; // LED pin
     constexpr uint_fast32_t TIME_ON_MS =
-      1000;  // Time LED stays on in milliseconds
+        1000; // Time LED stays on in milliseconds
     constexpr uint_fast32_t TIME_OFF_MS =
         3000; // Time LED stays off in milliseconds
 } // namespace LED
 
 namespace Encoder {
-  AS5600 as5600;
+    AS5600 as5600;
 
-  constexpr uint8_t SCL_FIREBEETLE = 10; // SCL pin for the Firebeetle
-  constexpr uint8_t SDA_FIREBEETLE = 9;  // SDA pin for the Firebeetle
+    constexpr uint8_t SCL_FIREBEETLE = 10; // SCL pin for the Firebeetle
+    constexpr uint8_t SDA_FIREBEETLE = 9;  // SDA pin for the Firebeetle
 
-  constexpr uint32_t AVERAGING_PERIOD_MS = 40;  // time window of moving average, in milliseconds
-  constexpr uint8_t DATASET_SIZE = 8;            // size of the rpmSamples array and # of times encoder samples per second
+    constexpr uint32_t AVERAGING_PERIOD_MS =
+        40; // time window of moving average, in milliseconds
+    constexpr uint8_t DATASET_SIZE = 8; // size of the rpmSamples array and # of
+                                        // times encoder samples per second
 
-  // Sets delay between samples so that collecting DATASET_SIZE samples spans one full averaging period
-  constexpr uint32_t SAMPLE_DELAY_MS = AVERAGING_PERIOD_MS / DATASET_SIZE; 
-  // todo check avg. function - can a neg. ruin it? - not problem?
+    // Sets delay between samples so that collecting DATASET_SIZE samples spans
+    // one full averaging period
+    constexpr uint32_t SAMPLE_DELAY_MS = AVERAGING_PERIOD_MS / DATASET_SIZE;
+    // todo check avg. function - can a neg. ruin it? - not problem?
 
-  // TODO: Max RPM
-  constexpr uint_fast16_t MAX_RPM = 2500;
-  constexpr uint_fast8_t SECS_PER_MIN = 60;
-  constexpr uint_fast8_t MAX_RPS = MAX_RPM / SECS_PER_MIN;
-  constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
-  constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_uS_PER_REV / 4;
-  // constexpr uint_fast16_t ENCODER_TICKS_PER_REV = 4092;
-  // constexpr uint_fast32_t MAX_ENCODER_TICS_PER_SEC = MAX_RPS * ENCODER_TICKS_PER_REV;
+    // TODO: Max RPM
+    constexpr uint_fast16_t MAX_RPM = 2500;
+    constexpr uint_fast8_t SECS_PER_MIN = 60;
+    constexpr uint_fast8_t MAX_RPS = MAX_RPM / SECS_PER_MIN;
+    constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
+    constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_uS_PER_REV / 4;
+    // constexpr uint_fast16_t ENCODER_TICKS_PER_REV = 4092;
+    // constexpr uint_fast32_t MAX_ENCODER_TICS_PER_SEC = MAX_RPS *
+    // ENCODER_TICKS_PER_REV;
 
-  float rpmSamples[DATASET_SIZE];  // Circular buffer of recent RPM samples
-  float runningRpmSum = 0;           // Sum of the RPM samples currently stored in rpmSamples
+    float rpmSamples[DATASET_SIZE]; // Circular buffer of recent RPM samples
+    float runningRpmSum =
+        0; // Sum of the RPM samples currently stored in rpmSamples
 
-  void getRpmMovingAverage(float& rpmAvg);
-  void errorChecking();
-  void initializeEncoder();
-} // namespace encoder
+    void getRpmMovingAverage(float &rpmAvg);
+    void errorChecking();
+    void initializeEncoder();
+} // namespace Encoder
 
 /**
  * @details put your setup code here, to run once:
@@ -181,11 +191,12 @@ void setup() {
                             Actuator::MAX_POS_us); // Attach actuator
     Actuator::device.writeMicroseconds(Actuator::DEFAULT_us);
 
-    Serial.println("Initalized 2026 Actuator and Encoder Demo v2026-4-2 / v1.0.0");
+    Serial.println(
+        "Initalized 2026 Actuator and Encoder Demo v2026-4-2 / v1.0.0");
     digitalWrite(LED::PIN, LOW); // Toggle LED
 
     Encoder::initializeEncoder();
-    digitalWrite(LED::PIN, LOW);  // Toggle LED
+    digitalWrite(LED::PIN, LOW); // Toggle LED
 
     Serial.print("Input servo position in Microseconds: ");
 }
@@ -231,81 +242,90 @@ void loop() {
         LEDOn = false;
     }
 #endif
-  float rpmAverage = 0;
-  Encoder::errorChecking(); // checks for basic I2C errors
+    float rpmAverage = 0;
+    Encoder::errorChecking(); // checks for basic I2C errors
 
-  static int time1 = 0; 
-  int time2 = millis();
-  if (time2 - time1 > Encoder::SAMPLE_DELAY_MS) {
-    time1 = millis();
-    Encoder::getRpmMovingAverage(rpmAverage);
-  }
+    static int time1 = 0;
+    int time2 = millis();
+    if (time2 - time1 > Encoder::SAMPLE_DELAY_MS) {
+        time1 = millis();
+        Encoder::getRpmMovingAverage(rpmAverage);
+    }
 
-  Serial.print("\tω = ");
-  Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
-
-  
-
-  
-
+    Serial.print("\tω = ");
+    Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
 }
 
 // Updates the moving average of the RPM over the averaging period
-void Encoder::getRpmMovingAverage(float& rpmAvg) {
-  static uint16_t index = 0; // Index of the oldest RPM sample
+void Encoder::getRpmMovingAverage(float &rpmAvg) {
+    static uint16_t index = 0; // Index of the oldest RPM sample
 
-  Encoder::runningRpmSum -= Encoder::rpmSamples[index];                           // Subtracts the oldest rpm sample from the running sum
-  Encoder::rpmSamples[index] = Encoder::as5600.getAngularSpeed(AS5600_MODE_RPM);  // Replaces oldest rpm sample with newest
-  Encoder::runningRpmSum += Encoder::rpmSamples[index];                           // Adds the newest rpm sample to the running sum
+    Encoder::runningRpmSum -=
+        Encoder::rpmSamples[index]; // Subtracts the oldest rpm sample from the
+                                    // running sum
+    Encoder::rpmSamples[index] = Encoder::as5600.getAngularSpeed(
+        AS5600_MODE_RPM); // Replaces oldest rpm sample with newest
+    Encoder::runningRpmSum +=
+        Encoder::rpmSamples[index]; // Adds the newest rpm sample to the running
+                                    // sum
 
-  rpmAvg = Encoder::runningRpmSum / Encoder::DATASET_SIZE;  // RPM average: Quotient of the running sum of the RPM samples and the size of the dataset
+    rpmAvg =
+        Encoder::runningRpmSum /
+        Encoder::DATASET_SIZE; // RPM average: Quotient of the running sum of
+                               // the RPM samples and the size of the dataset
 
-  // loops index back to the start 
-  if (index == (Encoder::DATASET_SIZE - 1)) {
-    index = 0;
-  }
-  else {
-    index += 1;
-  }
+    // loops index back to the start
+    if (index == (Encoder::DATASET_SIZE - 1)) {
+        index = 0;
+    } else {
+        index += 1;
+    }
 }
 
 // Definitely room for a more in depth system
 void Encoder::errorChecking() {
-  int e = Encoder::as5600.lastError();
-  if (e != AS5600_OK){
-    Serial.println(e);
-  }
+    int e = Encoder::as5600.lastError();
+    if (e != AS5600_OK) {
+        Serial.println(e);
+    }
 
-  Serial.print("AGC: \t");
-  Serial.println(Encoder::as5600.readAGC()); // reads automatic gain control. Range of 0-128 where target value is 64
-
+    Serial.print("AGC: \t");
+    Serial.println(
+        Encoder::as5600.readAGC()); // reads automatic gain control. Range of
+                                    // 0-128 where target value is 64
 }
 
 // runs the setup for the encoder
 void Encoder::initializeEncoder() {
-  Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
-  Wire.setTimeOut(5);
-  Encoder::as5600.begin(); 
-  Encoder::as5600.setDirection(AS5600_COUNTERCLOCK_WISE);    // sets encoder's assumed direction of rotation to clockwise 
+    Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
+    Wire.setTimeOut(5);
+    Encoder::as5600.begin();
+    Encoder::as5600.setDirection(
+        AS5600_COUNTERCLOCK_WISE); // sets encoder's assumed direction of
+                                   // rotation to clockwise
 
-  int connectionTest = Encoder::as5600.isConnected(); // checks if the microcontroller has successfully established a connection with the encoder
-  Serial.print("Connect: ");
-  Serial.println(connectionTest);
-  
-  Serial.print("Magnet Detected: \t");
-  Serial.println(Encoder::as5600.magnetDetected());
-  Serial.print("Magnet Too Strong: \t");
-  Serial.println(Encoder::as5600.magnetTooStrong());
-  Serial.print("Magnet Too Weak: \t");
-  Serial.println(Encoder::as5600.magnetTooWeak());
-  delay(1000);
+    int connectionTest =
+        Encoder::as5600
+            .isConnected(); // checks if the microcontroller has successfully
+                            // established a connection with the encoder
+    Serial.print("Connect: ");
+    Serial.println(connectionTest);
 
-  // load RPM samples into array to prevent error during main loop
-  for (int i = 0; i < Encoder::DATASET_SIZE; i++) {
-    Encoder::rpmSamples[i] = Encoder::as5600.getAngularSpeed(AS5600_MODE_RPM);
-    Encoder::runningRpmSum += Encoder::rpmSamples[i];
-    delay(Encoder::SAMPLE_DELAY_MS);
-  }
+    Serial.print("Magnet Detected: \t");
+    Serial.println(Encoder::as5600.magnetDetected());
+    Serial.print("Magnet Too Strong: \t");
+    Serial.println(Encoder::as5600.magnetTooStrong());
+    Serial.print("Magnet Too Weak: \t");
+    Serial.println(Encoder::as5600.magnetTooWeak());
+    delay(1000);
+
+    // load RPM samples into array to prevent error during main loop
+    for (int i = 0; i < Encoder::DATASET_SIZE; i++) {
+        Encoder::rpmSamples[i] =
+            Encoder::as5600.getAngularSpeed(AS5600_MODE_RPM);
+        Encoder::runningRpmSum += Encoder::rpmSamples[i];
+        delay(Encoder::SAMPLE_DELAY_MS);
+    }
 }
 
 /**
