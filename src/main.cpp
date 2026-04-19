@@ -416,7 +416,7 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         digitalWrite(LED::LED_PIN, LOW);
 
-        BaseType_t xWasDelayed = xTaskDelayUntil(
+        xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(LED::BLINK_OFF_MILLIS));
         if (xWasDelayed != pdTRUE) {
             ESP_LOGE(TAG, "Timing not met!");
