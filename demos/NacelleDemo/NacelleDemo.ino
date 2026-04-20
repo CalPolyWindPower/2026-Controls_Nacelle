@@ -12,7 +12,7 @@
  * to to 115,200 below and uses the internal USB peripheral, not a separate
  * chip. Some compatible serial monitors include the Arduino IDE
  * <https://www.arduino.cc/en/software/>, VSCode "Serial" extension from
- * Microsoft
+ * Microsoft (May cause hang the controller at times)
  * <https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor>,or
  * PuTTY.
  *
