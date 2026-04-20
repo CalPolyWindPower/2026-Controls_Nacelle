@@ -202,7 +202,8 @@ void setup() {
  * @see
  * https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/01-Tasks-and-co-routines/05-Implementing-a-task
  * @see https://forum.arduino.cc/t/non-blocking-delay-actions/1044079
- * @see https://docs.freertos.org/Documentation/02-Kernel/04-API-references/02-Task-control/03-xTaskDelayUntil
+ * @see
+ * https://docs.freertos.org/Documentation/02-Kernel/04-API-references/02-Task-control/03-xTaskDelayUntil
  */
 
 /**
@@ -211,7 +212,7 @@ void setup() {
 [[noreturn]] void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
         if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
@@ -235,7 +236,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime,
@@ -251,7 +252,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
  */
 [[noreturn]] void vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartLoad ||
             nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
@@ -289,7 +290,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         if (false) {
             delay(RUN::TASK_INTERVALS::TI_RECV_ms);
@@ -321,7 +322,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         if (false) {
 
@@ -353,7 +354,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         // setup(); // todo
         BaseType_t xWasDelayed = xTaskDelayUntil(
@@ -369,7 +370,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
  */
 [[noreturn]] void vTaskTelnet([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         // TELNET::loop();
         BaseType_t xWasDelayed = xTaskDelayUntil(
@@ -385,7 +386,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
  */
 [[noreturn]] void vTaskOTA([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_OTA_ms));
@@ -403,7 +404,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         ESP_LOGV(TAG, "vTSL");
         digitalWrite(LED::LED_PIN, HIGH);
@@ -416,8 +417,8 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         digitalWrite(LED::LED_PIN, LOW);
 
-        xWasDelayed = xTaskDelayUntil(
-            &xLastWakeTime, pdMS_TO_TICKS(LED::BLINK_OFF_MILLIS));
+        xWasDelayed = xTaskDelayUntil(&xLastWakeTime,
+                                      pdMS_TO_TICKS(LED::BLINK_OFF_MILLIS));
         if (xWasDelayed != pdTRUE) {
             ESP_LOGE(TAG, "Timing not met!");
         }
@@ -460,7 +461,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         temperature_sensor_install(&tempSensConfig, &tempSensHandle));
 
     while (true) {
-        TickType_t xLastWakeTime = xTaskGetTickCount();
+        static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         // if (!Serial.isConnected()) {
         //     BaseType_t xWasDelayed = xTaskDelayUntil(
