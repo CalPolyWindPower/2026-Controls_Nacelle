@@ -1,7 +1,7 @@
 /**
  * @file nacelleDemo.ino
  * @brief Manually control the actuator
- * @version 1.2.1
+ * @version 1.4.0
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -148,7 +148,8 @@ namespace Encoder {
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
     constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_mS_PER_REV / 4;
-    static_assert(SAMPLE_DELAY_MS == OPTIMAL_SAMPLE_TIME_mS, "Suboptimal encoder sample time.");
+    static_assert(SAMPLE_DELAY_MS == OPTIMAL_SAMPLE_TIME_mS,
+                  "Suboptimal encoder sample time.");
     // constexpr uint_fast16_t ENCODER_TICKS_PER_REV = 4092;
     // constexpr uint_fast32_t MAX_ENCODER_TICS_PER_SEC = MAX_RPS *
     // ENCODER_TICKS_PER_REV;
@@ -157,10 +158,37 @@ namespace Encoder {
     float runningRpmSum =
         0; // Sum of the RPM samples currently stored in rpmSamples
 
-  void getRpmMovingAverage(float& rpmAvg);
-  void errorChecking();
-  void initialize();
-} // namespace encoder
+    void getRpmMovingAverage(float &rpmAvg);
+    void errorChecking();
+    void initialize();
+
+    /**
+     * @SuppressWarnings("cpp:S5008") // Does not work
+     */
+    [[noreturn]] void
+    vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
+        while (true) {
+            static TickType_t xLastWakeTime = xTaskGetTickCount();
+
+            Encoder::errorChecking(); // checks for basic I2C errors
+
+            float rpmAverage;
+            Encoder::getRpmMovingAverage(rpmAverage);
+
+            Serial.print("\tω = ");
+            Serial.println(rpmAverage,
+                           3); // Print average RPM with 3 decimal places
+
+            // delay(Encoder::SAMPLE_DELAY_MS);
+
+            BaseType_t xWasDelayed =
+                xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(SAMPLE_DELAY_MS));
+            if (xWasDelayed != pdTRUE) {
+                Serial.println("E: Timing not met!");
+            }
+        }
+    }
+} // namespace Encoder
 
 /**
  * @details put your setup code here, to run once:
@@ -200,6 +228,20 @@ void setup() {
     digitalWrite(LED::PIN, LOW); // Toggle LED
 
     Serial.print("Input servo position in Microseconds: ");
+
+    BaseType_t result = xTaskCreate(
+        Encoder::vTaskPollSensors, "nc", 1024,
+        nullptr, 10, nullptr);
+    if (result != pdPASS) {
+        Serial.println("Failed to create task Enc");
+    } else {
+        // taskDesc.initialized = true;
+        // ESP_LOGV("ENC",
+        //          "Created task %s with priority %u and stack "
+        //          "size %u bytes",
+        //          taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+        Serial.println("Sucefully crated tasks");
+    }
 }
 
 /**
@@ -243,17 +285,6 @@ void loop() {
         LEDOn = false;
     }
 #endif
-
-  Encoder::errorChecking(); // checks for basic I2C errors
-
-  float rpmAverage;
-  Encoder::getRpmMovingAverage(rpmAverage);
-
-  Serial.print("\tω = ");
-  Serial.println(rpmAverage, 3); // Print average RPM with 3 decimal places
-
-  delay(Encoder::SAMPLE_DELAY_MS);
-
 }
 
 // Updates the moving average of the RPM over the averaging period
@@ -284,21 +315,27 @@ void Encoder::getRpmMovingAverage(float &rpmAvg) {
 
 // Definitely room for a more in depth system
 void Encoder::errorChecking() {
-  int e = Encoder::as5600.lastError();
-  if (e != AS5600_OK){
-    Serial.println(e);
-  }
+    int e = Encoder::as5600.lastError();
+    if (e != AS5600_OK) {
+        Serial.println(e);
+    }
 }
 
 // runs the setup for the encoder
 void Encoder::initialize() {
-  Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
-  Encoder::as5600.begin(); 
-  Encoder::as5600.setDirection(AS5600_CLOCK_WISE);    // sets encoder's assumed direction of rotation to clockwise 
-  int connectionTest = Encoder::as5600.isConnected(); // checks if the microcontroller has successfully established a connection with the encoder
-  Serial.print("Connect: ");
-  Serial.println(connectionTest);
-  delay(1000);
+    Wire.begin(Encoder::SDA_FIREBEETLE, Encoder::SCL_FIREBEETLE);
+    // Encoder::as5600.setTimeout();
+    Encoder::as5600.begin();
+    Encoder::as5600.setDirection(
+        AS5600_CLOCK_WISE); // sets encoder's assumed direction of rotation to
+                            // clockwise
+    int connectionTest =
+        Encoder::as5600
+            .isConnected(); // checks if the microcontroller has successfully
+                            // established a connection with the encoder
+    Serial.print("Connect: ");
+    Serial.println(connectionTest);
+    delay(1000);
 
     // load RPM samples into array to prevent error during main loop
     for (int i = 0; i < Encoder::DATASET_SIZE; i++) {
