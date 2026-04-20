@@ -1,7 +1,7 @@
 /**
  * @file nacelleDemo.ino
  * @brief Manually control the actuator
- * @version 1.2.0
+ * @version 1.2.1
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
