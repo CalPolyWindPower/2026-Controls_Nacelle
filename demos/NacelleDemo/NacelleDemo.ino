@@ -1,7 +1,7 @@
 /**
  * @file nacelleDemo.ino
  * @brief Manually control the actuator
- * @version 1.4.1
+ * @version 1.5.0
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -48,6 +48,7 @@
 
 // MARK: Imports
 #include "AS5600.h"
+#include "./src/PID/PID.hpp"
 #include <Arduino.h>
 #include <Wire.h>
 #include <cstdint> // Fixed size integers
@@ -162,6 +163,8 @@ namespace Encoder {
     void errorChecking();
     void initialize();
 
+    float rpmAverage = 0.0;
+
     /**
      * @SuppressWarnings("cpp:S5008") // Does not work
      */
@@ -172,7 +175,6 @@ namespace Encoder {
 
             Encoder::errorChecking(); // checks for basic I2C errors
 
-            float rpmAverage;
             Encoder::getRpmMovingAverage(rpmAverage);
 
             Serial.print("\tω = ");
@@ -189,6 +191,36 @@ namespace Encoder {
         }
     }
 } // namespace Encoder
+
+namespace PITCHING {
+    PID pitchPIDController = PID( // todo
+        0.01f, 0.0f, 0.0f,
+        /* Setpoint */ 2200.0f, PID::ProportionalMode::ProportionalOnMeas,
+        /* Min Output */ (float)Actuator::MAX_POS_us,
+        /* Max Output */ (float)Actuator::MAX_POS_us, /* Min Sample Time */ 0,
+        /* Direction */ PID::Direction::DIRECT);
+
+    TaskHandle_t pxHandle = nullptr;
+
+    [[noreturn]] void
+    vTaskPitch([[maybe_unused]] void *pvParameters) { // NOSONAR
+        while (true) {
+            static TickType_t xLastWakeTime = xTaskGetTickCount();
+
+            auto pidOutput =
+                (uint_fast16_t)pitchPIDController.compute(Encoder::rpmAverage);
+            Actuator::device.writeMicroseconds(pidOutput);
+            Serial.print("New pitch otuput: ");
+            Serial.println(pidOutput);
+
+            BaseType_t xWasDelayed = xTaskDelayUntil(
+                &xLastWakeTime, pdMS_TO_TICKS(Encoder::SAMPLE_DELAY_MS * 10));
+            if (xWasDelayed != pdTRUE) {
+                Serial.println("E: Timing not met!");
+            }
+        }
+    }
+} // namespace PID
 
 /**
  * @details put your setup code here, to run once:
@@ -229,9 +261,8 @@ void setup() {
 
     Serial.print("Input servo position in Microseconds: ");
 
-    BaseType_t result = xTaskCreate(
-        Encoder::vTaskPollSensors, "nc", 1024,
-        nullptr, 10, nullptr);
+    BaseType_t result = xTaskCreate(Encoder::vTaskPollSensors, "nc", 1024,
+                                    nullptr, 10, nullptr);
     if (result != pdPASS) {
         Serial.println("Failed to create task Enc");
     } else {
@@ -240,7 +271,23 @@ void setup() {
         //          "Created task %s with priority %u and stack "
         //          "size %u bytes",
         //          taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
-        Serial.println("Sucefully crated tasks");
+        Serial.println("Sucefully crated task enc");
+    }
+
+    PITCHING::pitchPIDController.disable();
+
+    result = xTaskCreate(PITCHING::vTaskPitch, "Ptch", 4096,
+                                    nullptr, 10, &PITCHING::pxHandle);
+    if (result != pdPASS) {
+        Serial.println("Failed to create task Ptdch");
+    } else {
+        // taskDesc.initialized = true;
+        // ESP_LOGV("ENC",
+        //          "Created task %s with priority %u and stack "
+        //          "size %u bytes",
+        //          taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
+        Serial.println("Sucefully crated task ptch");
+        vTaskSuspend(PITCHING::pxHandle);
     }
 }
 
@@ -250,6 +297,7 @@ void setup() {
 void loop() {
     // Check if Serial data is available
     if (Serial.available() > 0) {
+        static int prevPos = 0;
         int position = Serial.parseInt();
 
         // It would appear parseInt returns 0 on failure
@@ -258,10 +306,13 @@ void loop() {
             if (position < Actuator::MIN_POS_us) {
                 Serial.print("\nposition too small: ");
             } else if ((position > Actuator::MAX_POS_us)) {
-                Serial.print("\nposition too large: ");
+                Serial.print("\nposition too large, enableing PI: ");
+                PITCHING::pitchPIDController.enable(Encoder::rpmAverage, (float)prevPos);
+                vTaskResume(PITCHING::pxHandle);
             } else {
                 Serial.print("\nNew Position: ");
                 Actuator::device.writeMicroseconds(position);
+                prevPos = position;
             }
             Serial.println(position);
 
