@@ -10,6 +10,10 @@ Nacelle specific code fore 2026 Controls .
 
 [![PlatformIO CI](https://github.com/CalPolyWindPower/2026-Controls_Nacelle/actions/workflows/platformio.yml/badge.svg)](https://github.com/CalPolyWindPower/2026-Controls_Nacelle/actions/workflows/platformio.yml)
 
+## Releases & Demos
+
+For releases and prepared demos, please see the [Releases](https://github.com/CalPolyWindPower/2026-Controls_Nacelle/releases) section.
+
 ## Folder/ Directory Structure
 
 - `.github` - GitHub config
