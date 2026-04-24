@@ -134,9 +134,9 @@ namespace Encoder {
     constexpr uint8_t SDA_FIREBEETLE = 9;  // SDA pin for the Firebeetle
 
     constexpr uint32_t AVERAGING_PERIOD_MS =
-        40; // time window of moving average, in milliseconds
+        40; // time window of moving average, in milliseconds, 2 ms last year. Pitch was every 10 ms
     constexpr uint8_t DATASET_SIZE = 8; // size of the rpmSamples array and # of
-                                        // times encoder samples per second
+                                        // times encoder samples per second, was 10 last year
 
     // Sets delay between samples so that collecting DATASET_SIZE samples spans
     // one full averaging period
