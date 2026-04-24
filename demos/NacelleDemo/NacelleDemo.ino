@@ -177,7 +177,7 @@ namespace Encoder {
 
             Encoder::getRpmMovingAverage(rpmAverage);
 
-            Serial.print("\tω = ");
+            //Serial.print("\tω = ");
             Serial.println(rpmAverage,
                            3); // Print average RPM with 3 decimal places
 
@@ -193,10 +193,13 @@ namespace Encoder {
 } // namespace Encoder
 
 namespace PITCHING {
+    float Kp = 0.127;
+    float Ki = 0;
+    float Kd = 0;
     PID pitchPIDController = PID( // todo
-        0.01f, 0.0f, 0.0f,
-        /* Setpoint */ 2200.0f, PID::ProportionalMode::ProportionalOnMeas,
-        /* Min Output */ (float)Actuator::MAX_POS_us,
+        Kp, Ki, Kd,
+        /* Setpoint */ 2200.0f, PID::ProportionalMode::ProportionalOnErr,
+        /* Min Output */ (float)Actuator::MIN_POS_us,
         /* Max Output */ (float)Actuator::MAX_POS_us, /* Min Sample Time */ 0,
         /* Direction */ PID::Direction::DIRECT);
 
@@ -210,11 +213,11 @@ namespace PITCHING {
             auto pidOutput =
                 (uint_fast16_t)pitchPIDController.compute(Encoder::rpmAverage);
             Actuator::device.writeMicroseconds(pidOutput);
-            Serial.print("New pitch otuput: ");
+            //Serial.print("New pitch otuput: ");
             Serial.println(pidOutput);
 
             BaseType_t xWasDelayed = xTaskDelayUntil(
-                &xLastWakeTime, pdMS_TO_TICKS(Encoder::SAMPLE_DELAY_MS * 10));
+                &xLastWakeTime, pdMS_TO_TICKS(Encoder::SAMPLE_DELAY_MS * 30));
             if (xWasDelayed != pdTRUE) {
                 Serial.println("E: Timing not met!");
             }
@@ -298,25 +301,40 @@ void loop() {
     // Check if Serial data is available
     if (Serial.available() > 0) {
         static int prevPos = 0;
-        int position = Serial.parseInt();
+        int position;
 
+        String line = Serial.readStringUntil('\n');
+        line.trim();
+
+        parseLine(line, position, PITCHING::Kp, PITCHING::Ki, PITCHING::Kd);
+        
         // It would appear parseInt returns 0 on failure
         if (position != 0) {
             // Check and write position
-            if (position < Actuator::MIN_POS_us) {
+            if (position == 1) { // an input of 1 will disable the PID loop
+                PITCHING::pitchPIDController.disable();
+                vTaskSuspend(PITCHING::pxHandle);
+                Serial.println("Ending PI Loop... \n \n \n");
+            } else if (position == 2) { // a position of 2 will update the PID tuning
+                PITCHING::pitchPIDController.setTunings(PITCHING::Kp, PITCHING::Ki, PITCHING::Kd);
+                Serial.println("Updating PI Loop... \n \n \n");
+            } else if (position < Actuator::MIN_POS_us) {
                 Serial.print("\nposition too small: ");
             } else if ((position > Actuator::MAX_POS_us)) {
                 Serial.print("\nposition too large, enableing PI: ");
                 PITCHING::pitchPIDController.enable(Encoder::rpmAverage, (float)prevPos);
                 vTaskResume(PITCHING::pxHandle);
-            } else {
-                Serial.print("\nNew Position: ");
+            } 
+             else {
+                //Serial.print("\nNew Position: ");
                 Actuator::device.writeMicroseconds(position);
                 prevPos = position;
             }
-            Serial.println(position);
 
-            Serial.print("Input servo position in Microseconds: ");
+            PITCHING::pitchPIDController.setTunings(PITCHING::Kp, PITCHING::Ki, PITCHING::Kd);
+           // Serial.println(position);
+
+            //Serial.print("Input servo position in Microseconds: ");
         }
     }
 
@@ -351,6 +369,15 @@ void Encoder::getRpmMovingAverage(float &rpmAvg) {
         Encoder::rpmSamples[index]; // Adds the newest rpm sample to the running
                                     // sum
 
+    /*size_t prevIndex = (index == 0) 
+    ? Encoder::DATASET_SIZE - 1 
+    : index - 1;
+
+    if (rpmSamples[index] < rpmSamples[prevIndex] * 0.5) {
+        rpmSamples[index] = rpmSamples[prevIndex];
+    }*/
+    
+    
     rpmAvg =
         Encoder::runningRpmSum /
         Encoder::DATASET_SIZE; // RPM average: Quotient of the running sum of
@@ -362,6 +389,8 @@ void Encoder::getRpmMovingAverage(float &rpmAvg) {
     } else {
         index += 1;
     }
+
+    
 }
 
 // Definitely room for a more in depth system
@@ -370,6 +399,9 @@ void Encoder::errorChecking() {
     if (e != AS5600_OK) {
         Serial.println(e);
     }
+    //Serial.println(PITCHING::Kp);
+    //Serial.print("AGC: \t");
+    //Serial.println(Encoder::as5600.readAGC()); // reads automatic gain control. Range of 0-128 where target value is 64
 }
 
 // runs the setup for the encoder
@@ -397,6 +429,14 @@ void Encoder::initialize() {
     }
 }
 
+int parseLine(const String &line, int &position, float &kp, float &ki, float &kd) {
+    // Convert to C-string
+    char buffer[100];
+    line.toCharArray(buffer, sizeof(buffer));
+
+    // Parse: position Kp Ki Kd
+    return sscanf(buffer, "%d %f %f %f", &position, &kp, &ki, &kd);
+}
 /**
  * @see
  * https://docs.arduino.cc/language-reference/en/functions/communication/serial/serialEvent/
