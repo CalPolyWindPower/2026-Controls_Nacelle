@@ -1,7 +1,7 @@
 /**
  * @file nacelleDemo.ino
  * @brief Manually control the actuator
- * @version 1.5.0
+ * @version 1.5.1
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -85,7 +85,7 @@
  * @see https://www.sciencedirect.com/topics/computer-science/immediate-operand
  */
 namespace SERIAL_CONFIG {
-    constexpr long BAUD = 115200; // BAUD rate (bits per second)
+    constexpr unsigned long BAUD = 115200; // BAUD rate (bits per second)
 } // namespace SERIAL_CONFIG
 
 /**
