@@ -19,6 +19,9 @@ void getRpmMovingAverage(float& rpmAvg) {
 
   runningRpmSum -= rpmSamples[index];
   rpmSamples[index] = as5600.getAngularSpeed(AS5600_MODE_RPM);
+  if(rpmSamples[index] == NAN) {
+      ESP_LOGE(TAG, "AS5600 read failed");
+  }
   runningRpmSum += rpmSamples[index];
 
   rpmAvg = runningRpmSum / DATASET_SIZE;
@@ -35,11 +38,13 @@ void getRpmMovingAverage(float& rpmAvg) {
  *
  * Outputs the error code via serial if the status is not OK.
  */
-void errorChecking() {
+int errorChecking() {
   int e = as5600.lastError();
   if (e != AS5600_OK) {
-    Serial.println(e);
+    ESP_LOGE(TAG, "AS5600 error: %d", e);
   }
+
+  return e;
 }
 
 /**

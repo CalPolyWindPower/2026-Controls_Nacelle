@@ -52,10 +52,12 @@ bool initialize();
 
 /**
  * @brief Checks for encoder communication or sensor errors.
+ * 
+ * @brief Returns the error code
  *
  * Prints the error code to the serial monitor if a fault is detected.
  */
-void errorChecking();
+int errorChecking();
 
 /**
  * @brief Computes the moving average of the encoder RPM.
