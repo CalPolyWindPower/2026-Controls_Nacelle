@@ -6,7 +6,7 @@
 #include <Wire.h>
 
 #include "AS5600.h"
-#include "NacelleConfig.hpp"
+#include "../../include/NacelleConfig.hpp"
 
 /**
  * @namespace Encoder
