@@ -13,11 +13,19 @@ namespace Encoder {
 
 extern AS5600 as5600;
 
-constexpr uint8_t SCL_FIREBEETLE = 10;
-constexpr uint8_t SDA_FIREBEETLE = 9;
+/**
+ * @brief I2C SCL pin
+ * @details Wire.begin takes two ints for pins
+ */
+constexpr int SCL_FIREBEETLE = 10;
+/**
+ * @brief I2C SDA pin
+ * @details Wire.begin takes two ints for pins
+ */
+constexpr int SDA_FIREBEETLE = 9;
 
 constexpr uint32_t AVERAGING_PERIOD_MS = 1000;
-constexpr uint8_t DATASET_SIZE = 3;
+constexpr uint_fast8_t DATASET_SIZE = 3;
 constexpr uint32_t SAMPLE_DELAY_MS = AVERAGING_PERIOD_MS / DATASET_SIZE;
 
 extern float rpmSamples[DATASET_SIZE];
