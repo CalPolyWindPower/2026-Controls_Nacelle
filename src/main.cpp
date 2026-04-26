@@ -22,6 +22,7 @@
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp" // NOSONAR
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
 #include "ActuonixL12.hpp"
+#include "Encoder.hpp"
 #include "NacelleContainer.hpp"
 #include "NacelleFSM.hpp"
 #include "NacelleTasks.hpp"
@@ -89,6 +90,17 @@ void setup() {
         pitchActuator.begin();
         actuatorInitialized = true;
         ESP_LOGI(TAG, "Actuator Initialized");
+    }
+
+    // Configure Encoder
+    static bool encoderInitialized = false;
+    if (!encoderInitialized) {
+        if (Encoder::initialize()) {
+            ESP_LOGI(TAG, "Encoder initialized");
+            encoderInitialized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize encoder");
+        }
     }
 
     // Configure WiFi
@@ -240,6 +252,9 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
+        // Poll encoder & update stored value
+        Encoder::getRpmMovingAverage(nacelle.currentRPM);
+
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime,
             pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS));
@@ -261,8 +276,8 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Fine
         } else if (nacelleFSM.getCurrentState() ==
                    FSMCommon::States::sCurtail) {
-            auto pidOutput =
-                (uint_fast16_t)pitchPIDController.compute(0.0f); // todo - input
+            auto pidOutput = (uint_fast16_t)pitchPIDController.compute(
+                nacelle.currentRPM); // todo - input
             ESP_LOGI(TAG, "PID Output: %u", pidOutput);
             pitchActuator.writePosMicros(pidOutput);
         } else {

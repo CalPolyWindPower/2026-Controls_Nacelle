@@ -172,7 +172,7 @@ namespace RUN {
     // Task Execution Intervals
     enum TASK_INTERVALS : uint_fast32_t {
         TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
-        TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz)
+        TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz) // todo - change?
         TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
         TI_RECV_ms = 100,       // CONFIG - 100 ms (10 Hz)
         TI_SEND_ms = 10,        // CONFIG - 10 ms (100 Hz)
