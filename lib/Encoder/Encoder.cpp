@@ -56,12 +56,12 @@ void initialize() {
   bool connectionTest = as5600.isConnected();
   Serial.print("Connect: ");
   Serial.println(connectionTest);
-  delay(1000);
+  delay(1000); // todo maybe don't block in setup?
 
   for (int i = 0; i < DATASET_SIZE; i++) {
     rpmSamples[i] = as5600.getAngularSpeed(AS5600_MODE_RPM);
     runningRpmSum += rpmSamples[i];
-    delay(SAMPLE_DELAY_MS);
+    delay(SAMPLE_DELAY_MS); // todo maybe don't block in setup?
   }
 }
 
