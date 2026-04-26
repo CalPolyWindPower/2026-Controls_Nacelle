@@ -1,7 +1,7 @@
 /**
  * @file nacelleDemo.ino
  * @brief Manually control the actuator
- * @version 1.5.1
+ * @version 1.5.2
  * @since Winter 2026
  * @author Noah (@BobSaidHi <https://github.com/bobsaidhi>) for
  * @CalPolyWindPower <https://github.com/calpolywindpower>
@@ -213,7 +213,7 @@ namespace PITCHING {
             auto pidOutput =
                 (uint_fast16_t)pitchPIDController.compute(Encoder::rpmAverage);
             Actuator::device.writeMicroseconds(pidOutput);
-            //Serial.print("New pitch otuput: ");
+            //Serial.print("New pitch output: ");
             Serial.println(pidOutput);
 
             BaseType_t xWasDelayed = xTaskDelayUntil(
@@ -274,7 +274,7 @@ void setup() {
         //          "Created task %s with priority %u and stack "
         //          "size %u bytes",
         //          taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
-        Serial.println("Sucefully crated task enc");
+        Serial.println("Successfully crated task enc");
     }
 
     PITCHING::pitchPIDController.disable();
@@ -282,14 +282,14 @@ void setup() {
     result = xTaskCreate(PITCHING::vTaskPitch, "Ptch", 4096,
                                     nullptr, 10, &PITCHING::pxHandle);
     if (result != pdPASS) {
-        Serial.println("Failed to create task Ptdch");
+        Serial.println("Failed to create task Pitch");
     } else {
         // taskDesc.initialized = true;
         // ESP_LOGV("ENC",
         //          "Created task %s with priority %u and stack "
         //          "size %u bytes",
         //          taskDesc.name, taskDesc.priority, taskDesc.stackSize_bytes);
-        Serial.println("Sucefully crated task ptch");
+        Serial.println("Successfully crated task ptch");
         vTaskSuspend(PITCHING::pxHandle);
     }
 }
@@ -414,7 +414,7 @@ void Encoder::initialize() {
                             // clockwise
     int connectionTest =
         Encoder::as5600
-            .isConnected(); // checks if the microcontroller has successfully
+            .isConnected(); // checks if the micro-controller has successfully
                             // established a connection with the encoder
     Serial.print("Connect: ");
     Serial.println(connectionTest);
