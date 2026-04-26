@@ -48,21 +48,33 @@ void errorChecking() {
  * Starts I2C communication, configures the sensor, verifies connection,
  * and fills the sample buffer to ensure valid averaging during runtime.
  */
-void initialize() {
-  Wire.begin(SDA_FIREBEETLE, SCL_FIREBEETLE);
-  as5600.begin();
-  as5600.setDirection(AS5600_CLOCK_WISE);
+bool initialize() {
+    Wire.begin(SDA_FIREBEETLE, SCL_FIREBEETLE);
+    bool connected = as5600.begin();
+    if(!connected) {
+      ESP_LOGE(TAG, "AS5600 init failed");
+      return false;
+    }
+    as5600.setDirection(AS5600_CLOCK_WISE);
 
-  bool connectionTest = as5600.isConnected();
-  Serial.print("Connect: ");
-  Serial.println(connectionTest);
-  delay(1000); // todo maybe don't block in setup?
+    connected = as5600.isConnected();
+    if(!connected) {
+      ESP_LOGE(TAG, "AS5600 test failed");
+      return false;
+    }
+    delay(1000); // todo maybe don't block in setup?
 
-  for (int i = 0; i < DATASET_SIZE; i++) {
-    rpmSamples[i] = as5600.getAngularSpeed(AS5600_MODE_RPM);
-    runningRpmSum += rpmSamples[i];
-    delay(SAMPLE_DELAY_MS); // todo maybe don't block in setup?
-  }
+    for (int i = 0; i < DATASET_SIZE; i++) {
+        rpmSamples[i] = as5600.getAngularSpeed(AS5600_MODE_RPM);
+        if(rpmSamples[i] == NAN) {
+            ESP_LOGE(TAG, "AS5600 read failed during init");
+            return false;
+        }
+        runningRpmSum += rpmSamples[i];
+        delay(SAMPLE_DELAY_MS); // todo maybe don't block in setup?
+    }
+    
+    return true;
 }
 
 }  // namespace Encoder

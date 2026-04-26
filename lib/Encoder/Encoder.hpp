@@ -13,6 +13,8 @@
  */
 namespace Encoder {
 
+static constexpr const char *TAG = "Enc";
+
 extern AS5600 as5600;
 
 /**
@@ -40,11 +42,13 @@ extern float runningRpmSum;
 
 /**
  * @brief Initializes the encoder and prepares the moving average buffer.
+ * 
+ * @returns true if initialization is successful, false otherwise.
  *
  * Configures I2C communication, initializes the AS5600 sensor,
  * verifies connectivity, and preloads RPM samples.
  */
-void initialize();
+bool initialize();
 
 /**
  * @brief Checks for encoder communication or sensor errors.
