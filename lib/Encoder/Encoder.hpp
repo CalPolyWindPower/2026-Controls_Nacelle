@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include "AS5600.h"
-#include <Wire.h"
+#include <Wire.h>
 
 /**
  * @namespace Encoder
