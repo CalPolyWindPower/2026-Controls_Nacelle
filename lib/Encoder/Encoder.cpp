@@ -15,7 +15,7 @@ float runningRpmSum = 0;
  * @param[out] rpmAvg Reference to store the computed RPM average.
  */
 void getRpmMovingAverage(float& rpmAvg) {
-  static uint16_t index = 0;
+  static uint_fast16_t index = 0;
 
   runningRpmSum -= rpmSamples[index];
   rpmSamples[index] = as5600.getAngularSpeed(AS5600_MODE_RPM);
@@ -53,7 +53,7 @@ void initialize() {
   as5600.begin();
   as5600.setDirection(AS5600_CLOCK_WISE);
 
-  int connectionTest = as5600.isConnected();
+  bool connectionTest = as5600.isConnected();
   Serial.print("Connect: ");
   Serial.println(connectionTest);
   delay(1000);
