@@ -14,7 +14,7 @@ float runningRpmSum = 0;
  *
  * @param[out] rpmAvg Reference to store the computed RPM average.
  */
-void getRpmMovingAverage(float& rpmAvg) {
+void getRpmMovingAverage(std::atomic<int_fast16_t>& rpmAvg) {
   static uint_fast16_t index = 0;
 
   runningRpmSum -= rpmSamples[index];
@@ -24,7 +24,7 @@ void getRpmMovingAverage(float& rpmAvg) {
   }
   runningRpmSum += rpmSamples[index];
 
-  rpmAvg = runningRpmSum / DATASET_SIZE;
+  rpmAvg = (int_fast16_t)(runningRpmSum / DATASET_SIZE);
 
   if (index == (DATASET_SIZE - 1)) {
     index = 0;

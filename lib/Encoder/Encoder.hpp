@@ -2,6 +2,7 @@
 #define ENCODER_HPP
 
 #include <Arduino.h>
+#include <atomic>
 #include <Wire.h>
 
 #include "AS5600.h"
@@ -60,6 +61,54 @@ bool initialize();
 int errorChecking();
 
 /**
+ * @brief Check for C++17 support, which allows us to verify if std::atomic
+ * is a acceptable (lock free) solution for shared variables
+ * @see https://stackoverflow.com/a/49915536
+ */
+static_assert(
+    (__cplusplus >= 201703L),
+    "C++17 or higher is required for std::atomic is_always_lock_free");
+
+/**
+ * @brief Do some basic checks regarding std::atomic and data types
+ * From C++14.2.0 atomic.h:
+ * Check Lock-free property.
+ *
+ * 0 indicates that the types are never lock-free.
+ * 1 indicates that the types are sometimes lock-free.
+ * 2 indicates that the types are always lock-free.
+ */
+static_assert(sizeof(int) == sizeof(int_fast16_t),
+                "Atomic Lock-free check issue");
+// Can't use floats atomically
+// #if (ATOMIC_FLOAT_LOCK_FREE == 0)
+// #    error "Atomic operations on float are not lock-free on this platform."
+// #elif (ATOMIC_FLOAT_LOCK_FREE == 1)
+// #    warning                                                                   \
+//         "Atomic operations on float are only sometimes lock-free on this platform."
+// #endif
+#if (ATOMIC_INT_LOCK_FREE == 0)
+#    error "Atomic operations on int are not lock-free on this platform."
+#elif (ATOMIC_INT_LOCK_FREE == 1)
+#    warning                                                                   \
+        "Atomic operations on int are only sometimes lock-free on this platform."
+#endif
+
+/**
+ * @brief Check if std::atomic<int_fast16_t> is an acceptable (lock free)
+ * solution for shared variables
+ * @see https://www.reddit.com/r/embedded/comments/zn23of/comment/j0fav6o/
+ * @see
+ * https://stackoverflow.com/questions/63471387/should-volatile-still-be-used-for-sharing-data-with-isrs-in-modern-c
+ * @see https://en.cppreference.com/w/c/language/atomic.html
+ * @see https://en.cppreference.com/w/cpp/atomic/atomic.html
+ * @see https://stackoverflow.com/a/16783513
+ */
+static_assert(std::atomic<int_fast16_t>::is_always_lock_free,
+                "Atomic operations on int_fast16_t are not lock-free on "
+                "this platform.");
+
+/**
  * @brief Computes the moving average of the encoder RPM.
  *
  * Updates the circular buffer with a new sample and returns
@@ -67,7 +116,7 @@ int errorChecking();
  *
  * @param[out] rpmAvg Reference to store the computed RPM average.
  */
-void getRpmMovingAverage(float& rpmAvg);
+void getRpmMovingAverage(std::atomic<int_fast16_t>& rpmAvg);
 
 }  // namespace Encoder
 
