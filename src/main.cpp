@@ -62,23 +62,23 @@ NacelleFSM nacelleFSM(nacelle);
  * @details put your setup code here, to run once:
  */
 void setup() {
+    // Configure Hardware
     static bool serialInitialized = false;
     if (!serialInitialized) {
-        Serial.begin(115200);
+        Serial.begin(WTbCommonConfig::SERIAL_BAUD);
         ESP_LOGI(TAG, "Serial initialized");
         serialInitialized = true;
     }
 
-    // Configure Hardare
     static bool LEDInitialized = false;
     if (!LEDInitialized) {
-        pinMode(LED::LED_PIN, OUTPUT); // Onboard LED
-        digitalWrite(LED::LED_PIN, HIGH);
+        pinMode(LED::PIN, OUTPUT); // Onboard LED
+        digitalWrite(LED::PIN, HIGH);
         LEDInitialized = true;
         ESP_LOGI(TAG, "LED initialized");
     } else {
         // Save power during main operations
-        digitalWrite(LED::LED_PIN, LOW);
+        digitalWrite(LED::PIN, LOW);
     }
 
     // Initialize Actuator
@@ -92,10 +92,10 @@ void setup() {
     // Configure WiFi
     static bool wifiInitialized = false;
     if (!wifiInitialized) {
-        digitalWrite(LED::LED_PIN,
+        digitalWrite(LED::PIN,
                      LOW); // Will take a while, so turn off the LED
         uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
-        digitalWrite(LED::LED_PIN, HIGH);
+        digitalWrite(LED::PIN, HIGH);
         ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
         if (adapterWLAN.begin(optimalChannel)) {
             ESP_LOGI(TAG, "WiFi initialized");
@@ -104,7 +104,7 @@ void setup() {
             ESP_LOGE(TAG, "Failed to initialize WiFi");
         }
     }
-    digitalWrite(LED::LED_PIN, LOW);
+    digitalWrite(LED::PIN, LOW);
 
     // Configure ESP-NOW
     static bool espNowInitalized = false;
@@ -116,7 +116,7 @@ void setup() {
             ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
         }
     }
-    digitalWrite(LED::LED_PIN, HIGH);
+    digitalWrite(LED::PIN, HIGH);
 
     // Configure ESP-NOW Peers
     static bool peerRegistered = false;
@@ -128,7 +128,7 @@ void setup() {
             ESP_LOGE(TAG, "Failed to register peer");
         }
     }
-    digitalWrite(LED::LED_PIN, LOW);
+    digitalWrite(LED::PIN, LOW);
 
     // Sync Time // FIXME! - Load accesses fault - DONE?
     static bool timeSynced = false;
@@ -140,18 +140,18 @@ void setup() {
             ESP_LOGE(TAG, "Failed to initialize time sync");
         }
     }
-    digitalWrite(LED::LED_PIN, HIGH);
+    digitalWrite(LED::PIN, HIGH);
 
     // Print MAC Address // todo - verify
     ESP_LOGI(
         TAG, "MAC Address: %s",
         AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
-    digitalWrite(LED::LED_PIN, LOW);
+    digitalWrite(LED::PIN, LOW);
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
 
-    digitalWrite(LED::LED_PIN, LOW);
+    digitalWrite(LED::PIN, LOW);
 
     // Set up tasks
     static bool tasksSetup = false;
@@ -407,7 +407,7 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         ESP_LOGV(TAG, "vTSL");
-        digitalWrite(LED::LED_PIN, HIGH);
+        digitalWrite(LED::PIN, HIGH);
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(LED::BLINK_ON_MILLIS));
@@ -415,7 +415,7 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGE(TAG, "Timing not met!");
         }
 
-        digitalWrite(LED::LED_PIN, LOW);
+        digitalWrite(LED::PIN, LOW);
 
         xWasDelayed = xTaskDelayUntil(&xLastWakeTime,
                                       pdMS_TO_TICKS(LED::BLINK_OFF_MILLIS));

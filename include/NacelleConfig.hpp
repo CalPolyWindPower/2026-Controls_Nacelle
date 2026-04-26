@@ -81,19 +81,43 @@ namespace LED {
      * @see
      * https://wiki.dfrobot.com/SKU_DFR1075_FireBeetle_2_Board_ESP32_C6#5.2%20LED%20Blinking
      */
-    constexpr uint_fast8_t LED_PIN = FR_FIREBEETLE2_ESP32C6::LED_PIN;
+    constexpr uint_fast8_t PIN = FR_FIREBEETLE2_ESP32C6::LED_PIN;
     // constexpr uint_fast32_t BLINK_OFF_SECS = 3;
     constexpr uint_fast32_t BLINK_OFF_MILLIS = 3500;
     // constexpr uint_fast32_t LED_BLINK_ON_SEC = 1;
     constexpr uint_fast32_t BLINK_ON_MILLIS = CONSTS::MILLIS_PER_SEC / 3;
 } // namespace LED
 
-namespace SENSORS {
-    constexpr uint_fast16_t ENCODER_MIN_MEAS_TIME_DELTA_MS = 0;    // CONFIG
-    constexpr uint_fast16_t ENCODER_MAX_MEAS_TIME_DELTA_MS = 1000; // CONFIG
-    constexpr uint_fast16_t ENCODER_FILTER_HISTORY_SIZE = 10;      // CONFIG
+namespace ENCODER {
+    constexpr uint_fast16_t TARGET_RPM = 2200; // CONFIG
+    constexpr uint_fast16_t MAX_RPM = 3000;    // CONFIG
+    constexpr uint_fast8_t MAX_RPS = MAX_RPM / CONSTS::SECS_PER_MIN;
+    constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
+    constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_mS_PER_REV / 4;
+    // static_assert(SAMPLE_DELAY_MS == OPTIMAL_SAMPLE_TIME_mS,
+    //               "Suboptimal encoder sample time.");
 
-    constexpr uint_fast16_t TARGET_RPM = 2750;              // CONFIG
+    constexpr uint_fast16_t MEAS_TIME_DELTA_MIN_MS = 0; // CONFIG
+    /**
+     * @brief [CONFIG] Sets delay between samples so that collecting
+     * DATASET_SIZE samples spans one full averaging period
+     */
+    constexpr uint_fast16_t MEAS_TIME_DELTA_MS = OPTIMAL_SAMPLE_TIME_mS;
+    /**
+     * @brief [CONFIG] size of the rpmSamples array and # of times encoder
+     * samples per second
+     * @details was 10 last year
+     */
+    constexpr uint_fast16_t FILTER_HISTORY_SIZE = 8; // CONFIG
+    /**
+     * @brief [CONFIG] Time window of moving average in milliseconds
+     * @details 2 ms last year. Pitch was every 10 ms
+     */
+    // constexpr uint_fast16_t AVERAGING_PERIOD_MS =
+    //     FILTER_HISTORY_SIZE * MEAS_TIME_DELTA_MS; // CONFIG
+
+    // todo check avg. function - can a neg. ruin it? - not problem?
+
     constexpr uint_fast16_t CURTAIL_HYSTERESIS_UP = 0;      // CONFIG
     constexpr uint_fast16_t CURTAIL_HYSTERESIS_DOWN = 1000; // CONFIG
     constexpr uint_fast16_t FINE_CONTROL_MIN_RPM = 200;     // CONFIG
@@ -101,7 +125,7 @@ namespace SENSORS {
     constexpr uint_fast16_t MOTOR_kV_RPMPV = 107;
     constexpr uint_fast16_t MOTOR_IkV_RPSPuV =
         CONSTS::uVOLTS_PER_VOLT * CONSTS::SECS_PER_MIN / MOTOR_kV_RPMPV;
-} // namespace SENSORS
+} // namespace ENCODER
 
 namespace PITCHING {
     // polynomial fits based on updated shaft (5/6/25) to modify CMM calibration
@@ -128,7 +152,8 @@ namespace PITCHING {
 
     // Pitching config
     // constexpr uint_fast8_t BLADE_PITCH_STARTUP_DEG =
-    //     PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG //todo
+    //     PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG
+    //     //todo
     constexpr uint_fast16_t POS_STARTUP_uS = 1540; // CONFIG //todo
 
     // constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
@@ -138,8 +163,8 @@ namespace PITCHING {
     // todo: Ftarget rpm var
 
     /* PID Config */
-    constexpr float PITCH_Kp = 0.005f;
-    constexpr float PITCH_Ki = 0.001f;
+    constexpr float PITCH_Kp = 0.127f; // CONFIG - 0.005f last year
+    constexpr float PITCH_Ki = 0.000f; // CONFIG - 0.001f last year
     constexpr float PITCH_Kd = 0.0f;
 } // namespace PITCHING
 
