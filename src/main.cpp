@@ -253,6 +253,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         // Poll encoder & update stored value
+        // todo: back off and retry if not working
         Encoder::getRpmMovingAverage(nacelle.currentRPM);
 
         BaseType_t xWasDelayed = xTaskDelayUntil(

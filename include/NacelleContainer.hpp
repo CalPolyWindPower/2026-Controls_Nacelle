@@ -27,7 +27,7 @@ class NacelleContainer {
                  false}, // 4
         TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0,
                  false}, // 5
-        TaskInfo{vTaskStatusLED, "LED", 256, nullptr, 2, nullptr, 0,
+        TaskInfo{vTaskStatusLED, "LED", 512, nullptr, 2, nullptr, 0,
                  false},                                                   // 6
         TaskInfo{vTaskLogData, "Log", 4096, nullptr, 1, nullptr, 0, false} // 7
     };
