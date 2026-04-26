@@ -193,9 +193,9 @@ namespace Encoder {
 } // namespace Encoder
 
 namespace PITCHING {
-    float Kp = 0.127;
-    float Ki = 0;
-    float Kd = 0;
+    float Kp = 0.127f;
+    float Ki = 0.0f;
+    float Kd = 0.0f;
     PID pitchPIDController = PID( // todo
         Kp, Ki, Kd,
         /* Setpoint */ 2200.0f, PID::ProportionalMode::ProportionalOnErr,
