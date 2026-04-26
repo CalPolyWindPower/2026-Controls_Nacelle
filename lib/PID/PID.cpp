@@ -12,13 +12,15 @@
 
 // MARK: Constructor
 
-PID::PID(float kP, float kI, float kD, float setpoint,
-         ProportionalMode propMode, float minOutput, float maxOutput,
-         unsigned long minSampleTime, Direction dir, const etl::string<10> n)
-    : setpoint(setpoint), outMin(minOutput), outMax(maxOutput),
-      minSampleTime(minSampleTime), controllerDirection(dir), name(n) {
+PID::PID(std::tuple<float, float, float> tunings, float setpoint,
+         ProportionalMode propMode, etl::pair<float, float> outputBounds,
+         unsigned long minSampleTime, Direction dir, const etl::string<10> &n)
+    : name(n), setpoint(setpoint), outMin(outputBounds.first),
+      outMax(outputBounds.second), minSampleTime(minSampleTime),
+      controllerDirection(dir) {
 
-    this->setTunings(kP, kI, kD, propMode);
+    this->setTunings(std::get<0>(tunings), std::get<1>(tunings),
+                     std::get<2>(tunings), propMode);
 
     this->lastTime = micros() - this->minSampleTime;
 
@@ -62,7 +64,7 @@ float PID::compute(float input) {
     ESP_LOGV(TAG, "error: %f", error);
 
     float deltaInput = (input - this->lastInput);
-    this->outputSum += (this->internalKi * (float)deltaTime * error * 1e-6);
+    this->outputSum += (this->internalKi * (float)deltaTime * error * 1e-6f);
     // constexpr float maxSum = 0.1 * 20000 * 500;
     ESP_LOGV(TAG, "outputSum: %f", this->outputSum);
 
@@ -98,7 +100,7 @@ float PID::compute(float input) {
 
     /*Compute Rest of PID Output*/
     output += this->outputSum -
-              this->internalKd / ((float)deltaTime * 1e-6) * deltaInput;
+              this->internalKd / ((float)deltaTime * 1e-6f) * deltaInput;
     ESP_LOGV(TAG, "Fin. Output: %f", output);
 
     /**
@@ -242,9 +244,9 @@ bool PID::setTunings(float kP, float kI, float kD, ProportionalMode propMode) {
     }
 
     ESP_LOGI(TAG, "PID tunings set!");
-    ESP_LOGI(TAG, "internalKp: %f", this->internalKp);
-    ESP_LOGI(TAG, "internalKi: %f", this->internalKi);
-    ESP_LOGI(TAG, "internalKd: %f", this->internalKd);
+    ESP_LOGI(TAG, "internalKp: %f", (double)this->internalKp);
+    ESP_LOGI(TAG, "internalKi: %f", (double)this->internalKi);
+    ESP_LOGI(TAG, "internalKd: %f", (double)this->internalKd);
 
     return true;
 }

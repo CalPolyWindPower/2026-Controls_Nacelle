@@ -15,6 +15,7 @@
 #include <etl/format_spec.h>
 #include <etl/string.h>
 #include <etl/to_string.h>
+#include <tuple>
 
 class PID {
 
@@ -36,21 +37,20 @@ class PID {
 
     /**
      * @brief Constructor
-     * @param kP Proportional tuning parameter
-     * @param kI Integral tuning parameter
-     * @param kD Derivative tuning parameter
+     * @param tunings Tuple of (kP: Proportional tuning parameter, kI: Integral
+     * tuning parameter, kD: Derivative tuning parameter) tuning parameters
      * @param setpoint Setpoint
      * @param proportionalMode Set proportional mode
-     * @param minOutput Minimum output value to clamp to
-     * @param maxOutput Maximum output value to clamp to
+     * @param outputBounds Pair of minimum and maximum output values to clamp to
      * @param minSampleTime Minimum sample time in microseconds, or 0 if unused
      * @param dir Set the direction of the controller
      */
-    PID(float kP, float kI, float kD, float setpoint,
+    PID(std::tuple<float, float, float> tunings, float setpoint,
         ProportionalMode propMode = ProportionalMode::ProportionalOnErr,
-        float minOutput = 0, float maxOutput = 255,
+        etl::pair<float, float> outputBounds = etl::pair<float, float>(0.0f,
+                                                                       255.0f),
         unsigned long minSampleTime = 100, Direction dir = Direction::DIRECT,
-        const etl::string<10> n = "PID");
+        const etl::string<10> &n = "PID");
 
     // MARK: Updaters
 
@@ -252,7 +252,7 @@ class PID {
     void initialize(float input, float currentOutput);
 
     /* Working Vars */
-    const etl::string<10> name;
+    const etl::string<10> &name;
     unsigned long lastTime;
     float outputSum = 0;
     float lastInput = 0;

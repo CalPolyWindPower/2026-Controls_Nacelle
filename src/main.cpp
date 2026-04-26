@@ -49,9 +49,11 @@ ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
                           PITCHING::SERVO_MAX_uS_2026);
 
 PID pitchPIDController = PID( // todo
-    PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd,
-    /* Setpoint */ 1500.0f, PID::ProportionalMode::ProportionalOnMeas,
-    /* Min Output */ 1100.0f, /* Max Output */ 1900.0f, /* Min Sample Time */ 0,
+    {PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd},
+    /* Setpoint */ ENCODER::TARGET_RPM,
+    PID::ProportionalMode::ProportionalOnMeas,
+    {PITCHING::SERVO_MIN_uS_2026, PITCHING::SERVO_MAX_uS_2026},
+    /* Min Sample Time */ 0,
     /* Direction */ PID::Direction::DIRECT, "PC");
 
 NacelleContainer nacelle(pitchActuator, pitchPIDController);
