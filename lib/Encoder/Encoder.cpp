@@ -88,4 +88,48 @@ bool initialize() {
     return true;
 }
 
+/**
+ * @see https://stackoverflow.com/questions/3350385/how-to-return-an-object-in-c
+ */
+etl::string<Encoder::LOG_STRING_SIZE> getLogString() {
+    etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
+    logString.append(": DS: ");                 // 6 chars
+
+    etl::format_spec decFormatA;
+    decFormatA.width(2).fill('0');                                // [2 chars]
+    etl::to_string(DATASET_SIZE, logString, decFormatA, true);    // 2 chars
+    logString.append(", SD: ");                                   // 6 chars
+    etl::to_string(SAMPLE_DELAY_MS, logString, decFormatA, true); // 2 chars
+    logString.append(", A: 0x");                                  // 7 chars
+
+    etl::format_spec hexFormatA;
+    hexFormatA.hex().width(2).fill('0');                              // [2 chars]
+    etl::to_string(as5600.getAddress(), logString, hexFormatA, true); // 2 chars
+    logString.append(", D: ");                                        // 5 chars          
+
+    etl::format_spec boolFormatA;
+    etl::to_string(as5600.getDirection(), logString, boolFormatA, true); // 1 char
+    logString.append(", AGC: ");
+
+    etl::format_spec decFormatB;
+    decFormatB.width(3).fill('0');                             // [3 chars]
+    etl::to_string(DATASET_SIZE, logString, decFormatB, true); // 3 chars
+    logString.append(", MD: ");                                // 6 chars
+    
+    boolFormatA.binary().width(1).fill('0');                               // [1 char]
+    etl::to_string(as5600.detectMagnet(), logString, decFormatB, true);    // 1 chars
+    logString.append(", MTS: ");                                           // 6 chars
+    etl::to_string(as5600.magnetTooStrong(), logString, decFormatB, true); // 1 chars
+    logString.append(", MTW: ");                                           // 6 chars
+    etl::to_string(as5600.magnetTooWeak(), logString, decFormatB, true);   // 1 chars
+    logString.append(", lE: ");                                            // 6 chars
+
+    etl::format_spec decFormatC;
+    decFormatC.width(4).fill('0');                                   // [4 chars]
+    etl::to_string(as5600.lastError(), logString, decFormatC, true); // 4 chars
+    
+
+    return logString;
+};
+
 }  // namespace Encoder

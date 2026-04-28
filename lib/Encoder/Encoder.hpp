@@ -1,10 +1,17 @@
 #ifndef ENCODER_HPP
 #define ENCODER_HPP
 
+// System Libraries
 #include <Arduino.h>
 #include <atomic>
 #include <Wire.h>
 
+// Third Party Libraries
+#include <etl/format_spec.h>
+#include <etl/string.h>
+#include <etl/to_string.h>
+
+// Custom Includes
 #include "AS5600.h"
 #include "../../include/NacelleConfig.hpp"
 
@@ -117,6 +124,14 @@ static_assert(std::atomic<int_fast16_t>::is_always_lock_free,
  * @param[out] rpmAvg Reference to store the computed RPM average.
  */
 void getRpmMovingAverage(std::atomic<int_fast16_t>& rpmAvg);
+
+static constexpr uint_fast8_t LOG_STRING_SIZE =
+        3 + 6 + 2 +6 + 2 + 7 + 2 + 5 + 1 + 3 + ((6 + 1) * 3) + 1 + 6 + 4 + 4;
+/**
+ * @brief Get at string that describes the current state of the PID instance
+ * @returns the current state of the PID instance as a string
+ */
+etl::string<LOG_STRING_SIZE> getLogString();
 
 }  // namespace Encoder
 

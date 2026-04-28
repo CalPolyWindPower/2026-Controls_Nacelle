@@ -584,6 +584,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         ESP_LOGI(TAG, "Current State: %d", nacelleFSM.getCurrentState());
         delay(LOG_ITEM_INTERVAL_MS);
 
+        ESP_LOGI(TAG, "%s", Encoder::getLogString().c_str());
+        delay(LOG_ITEM_INTERVAL_MS);
+
         // BaseType_t xWasDelayed = xTaskDelayUntil(
         //     &xLastWakeTime, pdMS_TO_TICKS(LOG_ITEM_INTERVAL_MS));
         // if (xWasDelayed != pdTRUE) {
