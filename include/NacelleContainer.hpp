@@ -12,6 +12,8 @@
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
 
+static constexpr const char *TAG = "NC";
+
 /**
  * @brief Class to manage the container for nacelle data
  */
@@ -129,7 +131,8 @@ class NacelleContainer {
     }
 
     static constexpr uint_fast8_t LOG_STRING_SIZE =
-        3 + 7 + 5 + ((6 + 1) * 3) + 7 + 1 + 1;
+        3 + 7 + 5 + ((6 + 1) * 3) + 7 + 1 +
+        1; // TODO - improve this and null terminator may not be needed
     /**
      * @brief Get at string that describes the current state of the PID instance
      * @returns the current state of the PID instance as a string
