@@ -6,7 +6,11 @@
  * Sends RPM data and receives control/state information.
  */
 
-#include "NacelleComms.h"
+#include "NacelleComms.h
+#include <esp_log.h>
+
+static constexpr char* TAG = "NacelleComms";
+constexpr uint8_t wiFiChannel = 6;
 
 /**
  * @brief MAC address of the load box controller.
@@ -39,7 +43,26 @@ NacelleComms::NacelleComms()
  * @return true if initialization is successful, false otherwise.
  */
 bool NacelleComms::begin() {
-  WiFi.mode(WIFI_STA);
+  // Set device as a Wi-Fi Station
+    if (!WiFi.mode(WIFI_STA)) {
+        ESP_LOGE(TAG, "Failed to set WiFi mode");
+        return false;
+    }
+
+    if (!WiFi.setBandMode(WIFI_BAND_MODE_2G_ONLY)) {
+        ESP_LOGE(TAG, "Failed to set WiFi band mode");
+        return false;
+    }
+
+    if (WiFi.STA.bandwidth(WIFI_BW_HT20)) {
+        ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
+        return false;
+    }
+
+    if (WiFi.setChannel(wiFiChannel) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to set WiFi channel");
+        return false;
+    }
 
   if (esp_now_init() != ESP_OK) {
     Serial.println("ESP-NOW init failed");
