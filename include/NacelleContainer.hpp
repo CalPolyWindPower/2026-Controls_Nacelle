@@ -2,9 +2,15 @@
 
 #include <cstdint>
 
+// Third Party Libraries
+#include <ActuonixL12.hpp>
+#include <etl/format_spec.h>
+#include <etl/string.h>
+#include <etl/to_string.h>
+
+// Custom Includes
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
-#include <ActuonixL12.hpp>
 
 /**
  * @brief Class to manage the container for nacelle data
@@ -120,6 +126,41 @@ class NacelleContainer {
     inline bool isSteadyRPM() const { return false; } // todo
     inline bool isTargetRPMExceeded() const {
         return (currentRPM > ENCODER::TARGET_RPM);
+    }
+
+    static constexpr uint_fast8_t LOG_STRING_SIZE =
+        3 + 7 + 5 + ((6 + 1) * 3) + 7 + 1 + 1;
+    /**
+     * @brief Get at string that describes the current state of the PID instance
+     * @returns the current state of the PID instance as a string
+     */
+    etl::string<LOG_STRING_SIZE> getLogString() {
+        etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
+        logString.append(": RPM: ");                 // 7 chars
+
+        etl::format_spec decFormatA;
+        decFormatA.width(5).fill('0'); // [5 chars]
+        /**
+         * @details I don't think we need strong guarantees on logging data
+         * @see
+         * https://stackoverflow.com/questions/12346487/what-do-each-memory-order-mean
+         * @see https://en.cppreference.com/cpp/atomic/memory_order
+         */
+        etl::to_string(currentRPM.load(std::memory_order::relaxed), logString,
+                       decFormatA, true); // 5 chars
+
+        logString.append(", SF: "); // 6 chars
+        etl::format_spec boolFormatA;
+        boolFormatA.binary().width(1).fill('0'); // [1 char]
+        etl::to_string(getSafetyFlag(), logString, boolFormatA, true); // 1 char
+        logString.append(", PP: "); // 6 chars, 1 char \/
+        etl::to_string(isPowerPositive(), logString, boolFormatA, true);
+        logString.append(", SR: ");                                  // 6 chars
+        etl::to_string(isSteadyRPM(), logString, boolFormatA, true); // 1 char
+        logString.append(", TRE: "); // 7 chars, 1 char \/
+        etl::to_string(isTargetRPMExceeded(), logString, boolFormatA, true);
+
+        return logString;
     }
 
     inline void updateSafetyFlag(bool safetyFlag) {

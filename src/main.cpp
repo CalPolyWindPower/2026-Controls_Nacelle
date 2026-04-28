@@ -578,6 +578,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         ESP_LOGI(TAG, "%s", pitchPIDController.getLogString().c_str());
         delay(LOG_ITEM_INTERVAL_MS);
 
+        ESP_LOGI(TAG, "%s", nacelle.getLogString().c_str());
+        delay(LOG_ITEM_INTERVAL_MS);
+
         ESP_LOGI(TAG, "Current State: %d", nacelleFSM.getCurrentState());
         delay(LOG_ITEM_INTERVAL_MS);
 

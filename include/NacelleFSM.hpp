@@ -149,7 +149,7 @@ class NacelleFSM {
     }
 
   private:                     // MARK: Private
-    NacelleContainer &nacelle; // todo switch to by reference
+    NacelleContainer &nacelle; // DONE: switch to by reference
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic
