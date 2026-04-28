@@ -108,8 +108,8 @@ class NacelleFSM {
                     .pxHandle);
             // PID is already disabled
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if ((currentState == FSMCommon::States::sStartLoad) &&
-                   nacelle.isSteadyRPM()) {
+        } else if ((currentState == FSMCommon::States::sStartLoad) && true
+                   /*nacelle.isSteadyRPM()*/) { // todo
             // sStartLoad -> sRunLoad
             // Note: The producing positive power condition is handled by the
             // reset logic

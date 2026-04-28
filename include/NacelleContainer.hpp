@@ -125,6 +125,9 @@ class NacelleContainer {
 
     inline bool getSafetyFlag() const { return safetyFlag; }
     inline bool isPowerPositive() const { return powerPositive; }
+    /**
+     * @deprecated Apparently we don't need to check this
+     */
     inline bool isSteadyRPM() const { return false; } // todo
     inline bool isTargetRPMExceeded() const {
         return (currentRPM > ENCODER::TARGET_RPM);
