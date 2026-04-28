@@ -19,8 +19,14 @@ void getRpmMovingAverage(std::atomic<int_fast16_t>& rpmAvg) {
 
   runningRpmSum -= rpmSamples[index];
   rpmSamples[index] = as5600.getAngularSpeed(AS5600_MODE_RPM);
-  if(rpmSamples[index] == NAN) {
+  /**
+   * @details From GitHub Copiolet, GPT-5.4 mini: 
+   * @see
+   * https://stackoverflow.com/questions/570669/checking-if-a-double-or-float-is-nan-in-c
+   */
+  if(std::isnan(rpmSamples[index])) {
       ESP_LOGE(TAG, "AS5600 read failed");
+      // TODO: Handle better?
   }
   runningRpmSum += rpmSamples[index];
 
