@@ -12,13 +12,13 @@
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
 
-static constexpr const char *TAG = "NC";
-
 /**
  * @brief Class to manage the container for nacelle data
  */
 class NacelleContainer {
   public:
+    static constexpr const char *TAG = "NC";
+
     // constexpr uint_fast8_t NUM_MAIN_TASKS = 1;
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
