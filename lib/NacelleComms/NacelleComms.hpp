@@ -6,13 +6,13 @@
  * Sends RPM data and receives control/state information.
  */
 
-#ifndef NACELLE_COMMS_H
-#define NACELLE_COMMS_H
+#ifndef NACELLE_COMMS_HPP
+#define NACELLE_COMMS_HPP
 
 #include <Arduino.h>
 #include <WiFi.h>
 #include <esp_now.h>
-#include <TurbinePacket.h>
+#include "2026Core/TurbinePacket/TurbinePacket.hpp"
 
 /**
  * @brief MAC address of the load box controller.
@@ -55,4 +55,4 @@ private:
   static NacelleComms* instance_;
 };
 
-#endif // NACELLE_COMMS_H
+#endif // NACELLE_COMMS_HPP

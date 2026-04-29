@@ -6,7 +6,7 @@
  * Sends RPM data and receives control/state information.
  */
 
-#include "NacelleComms.h
+#include "NacelleComms.hpp"
 #include <esp_log.h>
 
 static constexpr char* TAG = "NacelleComms";
