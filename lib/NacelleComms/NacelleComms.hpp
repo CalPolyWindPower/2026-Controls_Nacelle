@@ -22,17 +22,22 @@ extern const uint8_t LOADBOX_MAC[];
 /**
  * @brief Transmission period in milliseconds.
  */
-const unsigned long NACELLE_COMMS_SEND_PERIOD_MS = 100;
+// const unsigned long NACELLE_COMMS_SEND_PERIOD_MS = 100;
 
 /**
  * @brief Communication timeout threshold in milliseconds.
  */
-const unsigned long NACELLE_COMMS_TIMEOUT_MS = 1500;
+// const unsigned long NACELLE_COMMS_TIMEOUT_MS = 1500;
 
 class NacelleComms {
 public:
-  NacelleComms();
+  static constexpr char* TAG = "NCO";
+  static constexpr uint8_t wiFiChannel = 6;
+
   static QueueHandle_t priorityDataQueue;
+
+  NacelleComms();
+  
   bool begin();
   bool sendNacelleData(int16_t rpm);
   bool isLinkAlive() const;

@@ -9,9 +9,6 @@
 #include "NacelleComms.hpp"
 #include <esp_log.h>
 
-static constexpr char* TAG = "NacelleComms";
-constexpr uint8_t wiFiChannel = 6;
-
 // Initialization of static members
 QueueHandle_t NacelleComms::priorityDataQueue = nullptr;
 
@@ -77,8 +74,14 @@ bool NacelleComms::begin() {
     return false;
   }
 
-  esp_now_register_send_cb(onDataSent_);
-  esp_now_register_recv_cb(onDataRecv_);
+  if(esp_now_register_send_cb(onDataSent_) != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to register tx cb");
+    return false;
+  }
+  if(esp_now_register_recv_cb(onDataRecv_) != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to register rx cb");
+    return false;
+  }
 
   if( setupPeer_() != ESP_OK) {
     // Logging already handled
@@ -120,9 +123,10 @@ esp_err_t NacelleComms::setupPeer_() {
  * @param status Transmission result.
  */
 void NacelleComms::onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_status_t status) {
-  (void)tx_info;
-  Serial.print("Send status: ");
-  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Success" : "Fail");
+  // (void)tx_info;
+  // Serial.print("Send status: ");
+  // Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Success" : "Fail");
+  // This is check elsewhere
 }
 
 
@@ -148,6 +152,8 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8
     // printLoadboxPacket(instance_->incomingPacket_, Serial);
 
     (void)xQueueOverwrite(priorityDataQueue, data); // Allegedly cannot fail
+  } else {
+    ESP_LOGE(TAG, "Rx invalid len: %d", len);
   }
 }
 
