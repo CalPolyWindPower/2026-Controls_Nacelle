@@ -13,6 +13,9 @@
  */
 const uint8_t NACELLE_MAC[] = {0x30, 0xED, 0xA0, 0xE0, 0x6B, 0x78};
 
+static constexpr char* TAG = "LoadboxComms";
+constexpr uint8_t wiFiChannel = 6;
+
 /**
  * @brief Pointer to instance for static callbacks.
  */
@@ -27,7 +30,25 @@ LoadComms::LoadComms()
 }
 
 bool LoadComms::begin() {
-  WiFi.mode(WIFI_STA);
+  if (!WiFi.mode(WIFI_STA)) {
+        ESP_LOGE(TAG, "Failed to set WiFi mode");
+        return false;
+    }
+
+    if (!WiFi.setBandMode(WIFI_BAND_MODE_2G_ONLY)) {
+        ESP_LOGE(TAG, "Failed to set WiFi band mode");
+        return false;
+    }
+
+    if (WiFi.STA.bandwidth(WIFI_BW_HT20)) {
+        ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
+        return false;
+    }
+
+    if (WiFi.setChannel(wiFiChannel) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to set WiFi channel");
+        return false;
+    }
 
   if (esp_now_init() != ESP_OK) {
     Serial.println("ESP-NOW init failed");
@@ -39,7 +60,7 @@ bool LoadComms::begin() {
 
   setupPeer_();
 
-  Serial.println("Load box ready");
+  Serial.println("Loadbox ready");
   return true;
 }
 
