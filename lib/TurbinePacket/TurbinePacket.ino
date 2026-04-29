@@ -1,6 +1,6 @@
 // Packet Demo
 
-#include "TurbinePacket.h"
+#include "TurbinePacket.hpp"
 
 NacellePacket packet1;
 LoadboxPacket packet2;
