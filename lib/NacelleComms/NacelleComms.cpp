@@ -36,7 +36,7 @@ NacelleComms::NacelleComms()
       // remoteActuatorPos_(0.0f) 
       {
   instance_ = this;
-  priorityDataQueue = xQueueCreate( 1, sizeof(NacellePacket) );
+  priorityDataQueue = xQueueCreate( 1, sizeof(LoadboxPacket) );
   if(priorityDataQueue == NULL) {
     ESP_LOGE(TAG, "Failed to create Rx priority data queue");
   }
