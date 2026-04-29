@@ -32,12 +32,13 @@ const unsigned long NACELLE_COMMS_TIMEOUT_MS = 1500;
 class NacelleComms {
 public:
   NacelleComms();
+  static QueueHandle_t priorityDataQueue;
   bool begin();
-  void sendNacelleData(int32_t rpm);
+  bool sendNacelleData(int16_t rpm);
   bool isLinkAlive() const;
-  uint8_t getRemoteState() const;
-  uint8_t getRemoteEstop() const;
-  float getRemoteActuatorPos() const;
+  // uint8_t getRemoteState() const;
+  // uint8_t getRemoteEstop() const;
+  // uint16_t getRemoteActuatorPos() const;
 
 private:
   NacellePacket outgoingPacket_;
@@ -45,11 +46,11 @@ private:
   unsigned long lastSendTime_;
   unsigned long lastRxTime_;
   bool linkAlive_;
-  uint8_t remoteState_;
-  uint8_t remoteEstop_;
-  float remoteActuatorPos_;
+  // uint8_t remoteState_;
+  // uint8_t remoteEstop_;
+  // uint16_t remoteActuatorPos_;
 
-  void setupPeer_();
+  esp_err_t setupPeer_();
   static void onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_status_t status);
   static void onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t *data, int len);
   static NacelleComms* instance_;

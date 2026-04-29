@@ -30,11 +30,16 @@ NacelleComms* NacelleComms::instance_ = nullptr;
 NacelleComms::NacelleComms()
     : lastSendTime_(0),
       lastRxTime_(0),
-      linkAlive_(false),
-      remoteState_(0),
-      remoteEstop_(0),
-      remoteActuatorPos_(0.0f) {
+      linkAlive_(false) //,
+      // remoteState_(0),
+      // remoteEstop_(0),
+      // remoteActuatorPos_(0.0f) 
+      {
   instance_ = this;
+  priorityDataQueue = xQueueCreate( 1, sizeof(NacellePacket) );
+  if(priorityDataQueue == NULL) {
+    ESP_LOGE(TAG, "Failed to create Rx priority data queue");
+  }
 }
 
 
@@ -65,16 +70,19 @@ bool NacelleComms::begin() {
     }
 
   if (esp_now_init() != ESP_OK) {
-    Serial.println("ESP-NOW init failed");
+    ESP_LOGE(TAG, "ESP-NOW init failed");
     return false;
   }
 
   esp_now_register_send_cb(onDataSent_);
   esp_now_register_recv_cb(onDataRecv_);
 
-  setupPeer_();
+  if( setupPeer_() != ESP_OK) {
+    // Logging already handled
+    return false;
+  }
 
-  Serial.println("Nacelle ready");
+  ESP_LOGI(TAG, "Nacelle ready");
   return true;
 }
 
@@ -82,18 +90,24 @@ bool NacelleComms::begin() {
 /**
  * @brief Configures the ESP-NOW peer (load box controller).
  */
-void NacelleComms::setupPeer_() {
+esp_err_t NacelleComms::setupPeer_() {
   esp_now_peer_info_t peerInfo = {};
   memcpy(peerInfo.peer_addr, LOADBOX_MAC, 6);
   peerInfo.channel = 0;
   peerInfo.encrypt = false;
 
-  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
-    Serial.println("Failed to add peer");
-    return;
+  esp_err_t result = esp_now_add_peer(&peerInfo);
+  if (result != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to add peer: %d at %02x:%02x:%02x:%02x:%02x:%02x", result,
+             LOADBOX_MAC[0], LOADBOX_MAC[1], LOADBOX_MAC[2],
+             LOADBOX_MAC[3], LOADBOX_MAC[4], LOADBOX_MAC[5]);
+  } else{
+    ESP_LOGI(TAG, "Peer added: %02X:%02X:%02X:%02X:%02X:%02X",
+           LOADBOX_MAC[0], LOADBOX_MAC[1], LOADBOX_MAC[2],
+           LOADBOX_MAC[3], LOADBOX_MAC[4], LOADBOX_MAC[5]);
   }
 
-  Serial.println("Peer added");
+  return result;
 }
 
 
@@ -117,17 +131,20 @@ void NacelleComms::onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_statu
  */
 void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t *data, int len) {
   if (instance_ == nullptr) {
+    ESP_LOGE(TAG, "Rx CB: Invalid instance");
     return;
   }
   if (len == sizeof(LoadboxPacket)) {
-    memcpy(&instance_->incomingPacket_, data, sizeof(LoadboxPacket));
+    // memcpy(&instance_->incomingPacket_, data, sizeof(LoadboxPacket));
     instance_->lastRxTime_ = millis();
     instance_->linkAlive_ = true;
-    instance_->remoteState_ = instance_->incomingPacket_.state;
-    instance_->remoteEstop_ = instance_->incomingPacket_.estop;
-    instance_->remoteActuatorPos_ = instance_->incomingPacket_.actuatorPos;
-    Serial.println("Received LoadboxPacket:");
-    printLoadboxPacket(instance_->incomingPacket_, Serial);
+    // instance_->remoteState_ = instance_->incomingPacket_.state;
+    // instance_->remoteEstop_ = instance_->incomingPacket_.estop;
+    // instance_->remoteActuatorPos_ = instance_->incomingPacket_.actuatorPos;
+    ESP_LOGI(TAG, "Rx success");
+    // printLoadboxPacket(instance_->incomingPacket_, Serial);
+
+    (void)xQueueOverwrite(priorityDataQueue, data); // Allegedly cannot fail
   }
 }
 
@@ -135,20 +152,27 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8
 /**
  * @brief Sends RPM data to the load box controller.
  * @param rpm The RPM value to send.
+ * @returns true if send is initiated successfully, false otherwise.
  */
-void NacelleComms::sendNacelleData(int32_t rpm) {
-  unsigned long now = millis();
-  if (now - lastSendTime_ >= NACELLE_COMMS_SEND_PERIOD_MS) {
-    lastSendTime_ = now;
-    makeNacellePacket(outgoingPacket_, rpm);
-    esp_now_send(LOADBOX_MAC, (uint8_t *)&outgoingPacket_, sizeof(outgoingPacket_));
-  }
-  if (now - lastRxTime_ > NACELLE_COMMS_TIMEOUT_MS) {
+bool NacelleComms::sendNacelleData(int16_t rpm) {
+  // if (now - lastSendTime_ >= NACELLE_COMMS_SEND_PERIOD_MS) {
+  makeNacellePacket(outgoingPacket_, rpm);
+  esp_err_t result = esp_now_send(LOADBOX_MAC, (uint8_t *)&outgoingPacket_, sizeof(outgoingPacket_));
+  if(result == ESP_OK) {
+    lastSendTime_ = millis();
+    linkAlive_ = true;
+  } else {
     linkAlive_ = false;
+    ESP_LOGE(TAG, "Tx failed");
   }
-  if (!linkAlive_) {
-    Serial.println("WARNING: load-box comms timeout");
-  }
+  // }
+  // if (now - lastRxTime_ > NACELLE_COMMS_TIMEOUT_MS) {
+  //   linkAlive_ = false;
+  // }
+  // if (!linkAlive_) {
+  //   Serial.println("WARNING: load-box comms timeout");
+  // }
+  return linkAlive_;
 }
 
 
@@ -165,22 +189,22 @@ bool NacelleComms::isLinkAlive() const {
  * @brief Gets the latest received state from the load box.
  * @return State value.
  */
-uint8_t NacelleComms::getRemoteState() const {
-  return remoteState_;
-}
+// uint8_t NacelleComms::getRemoteState() const {
+//   return remoteState_;
+// }
 
 /**
  * @brief Gets the latest received E-stop value from the load box.
  * @return E-stop value.
  */
-uint8_t NacelleComms::getRemoteEstop() const {
-  return remoteEstop_;
-}
+// uint8_t NacelleComms::getRemoteEstop() const {
+//   return remoteEstop_;
+// }
 
 /**
  * @brief Gets the latest received actuator position from the load box.
  * @return Actuator position value.
  */
-float NacelleComms::getRemoteActuatorPos() const {
-  return remoteActuatorPos_;
-}
+// uint16_t NacelleComms::getRemoteActuatorPos() const {
+//   return remoteActuatorPos_;
+// }

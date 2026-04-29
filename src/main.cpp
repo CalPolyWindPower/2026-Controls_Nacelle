@@ -21,8 +21,10 @@
 #include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
 // #include "2026Core/Net/Net-Link/AdapterUHCI.hpp" // NOSONAR
 #include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include "ActuonixL12.hpp"
 #include "Encoder.hpp"
+#include "NacelleComms.hpp"
 #include "NacelleContainer.hpp"
 #include "NacelleFSM.hpp"
 #include "NacelleTasks.hpp"
@@ -38,12 +40,13 @@ static constexpr const char *TAG = "NaMa";
 
 // MARK:  Global Objects
 
+NacelleComms nacelleComms;
 // AdapterWLAN adapterWLAN = AdapterWLAN();
-AdapterWLAN adapterWLAN;
+// AdapterWLAN adapterWLAN;
 // AdapterESPNow adapterESPNow = AdapterESPNow();
-AdapterESPNow adapterESPNow;
+// AdapterESPNow adapterESPNow;
 // SyncedClock netClock = SyncedClock(adapterESPNow); // todo
-SyncedClock netClock(adapterESPNow); // todo
+// SyncedClock netClock(adapterESPNow); // todo
 
 ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
                           PITCHING::SERVO_MIN_uS_2026,
@@ -57,7 +60,7 @@ PID pitchPIDController = PID( // todo
     /* Min Sample Time */ 0,
     /* Direction */ PID::Direction::DIRECT, "PC");
 
-NacelleContainer nacelle(pitchActuator, pitchPIDController);
+NacelleContainer nacelle(pitchActuator, pitchPIDController, nacelleComms);
 NacelleFSM nacelleFSM(nacelle);
 
 /**
@@ -103,64 +106,71 @@ void setup() {
         }
     }
 
+    // Configure New ESP-NOW + WiFI implementation
+
     // Configure WiFi
-    static bool wifiInitialized = false;
-    if (!wifiInitialized) {
-        digitalWrite(LED::PIN,
-                     LOW); // Will take a while, so turn off the LED
-        uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
-        digitalWrite(LED::PIN, HIGH);
-        ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
-        if (adapterWLAN.begin(optimalChannel)) {
-            ESP_LOGI(TAG, "WiFi initialized");
-            wifiInitialized = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to initialize WiFi");
-        }
-    }
-    digitalWrite(LED::PIN, LOW);
+    // static bool wifiInitialized = false;
+    // if (!wifiInitialized) {
+    //     digitalWrite(LED::PIN,
+    //                  LOW); // Will take a while, so turn off the LED
+    //     uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
+    //     digitalWrite(LED::PIN, HIGH);
+    //     ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
+    //     if (adapterWLAN.begin(optimalChannel)) {
+    //         ESP_LOGI(TAG, "WiFi initialized");
+    //         wifiInitialized = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize WiFi");
+    //     }
+    // }
+    // digitalWrite(LED::PIN, LOW);
 
     // Configure ESP-NOW
     static bool espNowInitalized = false;
-    if (!espNowInitalized) {
-        if (adapterESPNow.begin()) {
-            ESP_LOGI(TAG, "ESP-NOW initialized.");
-            espNowInitalized = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
-        }
+    if (nacelleComms.begin()) {
+        espNowInitalized = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize NacelleComms");
     }
-    digitalWrite(LED::PIN, HIGH);
+    // if (!espNowInitalized) {
+    //     if (adapterESPNow.begin()) {
+    //         ESP_LOGI(TAG, "ESP-NOW initialized.");
+    //         espNowInitalized = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+    //     }
+    // }
+    // digitalWrite(LED::PIN, HIGH);
 
     // Configure ESP-NOW Peers
-    static bool peerRegistered = false;
-    if (!peerRegistered) {
-        if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
-            ESP_LOGI(TAG, "Registered peer");
-            peerRegistered = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to register peer");
-        }
-    }
-    digitalWrite(LED::PIN, LOW);
+    // static bool peerRegistered = false;
+    // if (!peerRegistered) {
+    //     if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
+    //         ESP_LOGI(TAG, "Registered peer");
+    //         peerRegistered = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to register peer");
+    //     }
+    // }
+    // digitalWrite(LED::PIN, LOW);
 
     // Sync Time // FIXME! - Load accesses fault - DONE?
-    static bool timeSynced = false;
-    if (!timeSynced) {
-        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
-            ESP_LOGI(TAG, "Time sync initialized successfully");
-            timeSynced = true;
-        } else {
-            ESP_LOGE(TAG, "Failed to initialize time sync");
-        }
-    }
-    digitalWrite(LED::PIN, HIGH);
+    // static bool timeSynced = false;
+    // if (!timeSynced) {
+    //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+    //         ESP_LOGI(TAG, "Time sync initialized successfully");
+    //         timeSynced = true;
+    //     } else {
+    //         ESP_LOGE(TAG, "Failed to initialize time sync");
+    //     }
+    // }
+    // digitalWrite(LED::PIN, HIGH);
 
     // Print MAC Address // todo - verify
-    ESP_LOGI(
-        TAG, "MAC Address: %s",
-        AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
-    digitalWrite(LED::PIN, LOW);
+    // ESP_LOGI(
+    //     TAG, "MAC Address: %s",
+    //     AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    // digitalWrite(LED::PIN, LOW);
 
     // TODO: Check ESP-NOW impl against last years
     // TODO: Configure response handler, load server
@@ -310,8 +320,13 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
-        if (false) {
-            delay(RUN::TASK_INTERVALS::TI_RECV_ms);
+        if (true) { // todo - when to suspend?
+            LoadboxPacket packet;
+            if (xQueueReceive(NacelleComms::priorityDataQueue, &packet, 0) ==
+                pdPASS) {
+                ESP_LOGV(TAG, "Received packet: safety=%u", packet.safety);
+                nacelle.setSafetyFlag(packet.safety);
+            }
 
             BaseType_t xWasDelayed = xTaskDelayUntil(
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
@@ -334,7 +349,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
 }
 
 /**
- * @brief Task to handle outbound data that has been queued
+ * @brief Task to handle outbound data
  * @SuppressWarnings("cpp:S5008") // Does not work
  */
 [[noreturn]] void
@@ -342,8 +357,8 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
-        if (false) {
-
+        if (true) { // todo - when to suspend?
+            (void)nacelleComms.sendNacelleData((int16_t)(nacelle.currentRPM));
             BaseType_t xWasDelayed = xTaskDelayUntil(
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
             if (xWasDelayed != pdTRUE) {
@@ -569,8 +584,8 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         // esp_wifi_get_bandwidth
         // esp_wifi_sta_get_rssi
 
-        ESP_LOGI(TAG, "%s", netClock.getLogString().c_str());
-        delay(LOG_ITEM_INTERVAL_MS);
+        // ESP_LOGI(TAG, "%s", netClock.getLogString().c_str());
+        // delay(LOG_ITEM_INTERVAL_MS);
 
         ESP_LOGI(TAG, "%s", pitchActuator.getLogString().c_str());
         delay(LOG_ITEM_INTERVAL_MS);

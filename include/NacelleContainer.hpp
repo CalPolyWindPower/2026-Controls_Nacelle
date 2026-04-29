@@ -9,6 +9,7 @@
 #include <etl/to_string.h>
 
 // Custom Includes
+#include "NacelleComms.hpp" q
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
 
@@ -23,7 +24,7 @@ class NacelleContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
     etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
-        TaskInfo{vTaskUpdateFSM, "FSM", 512, nullptr, 24, nullptr, 0,
+        TaskInfo{vTaskUpdateFSM, "FSM", 512, nullptr, 20, nullptr, 0,
                  false}, // 0
         TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
                  false},                                                    // 1
@@ -67,6 +68,7 @@ class NacelleContainer {
 
     ActuonixL12 &pitchActuator;
     PID &pitchPIDController;
+    NacelleComms &nacelleComms;
 
     /**
      * @brief Check for C++17 support, which allows us to verify if std::atomic
@@ -118,9 +120,10 @@ class NacelleContainer {
                   "this platform.");
     std::atomic<int_fast16_t> currentRPM = 0;
 
-    NacelleContainer(ActuonixL12 &pitchActuator, PID &pitchPIDController)
-        : pitchActuator(pitchActuator), pitchPIDController(pitchPIDController) {
-    }
+    NacelleContainer(ActuonixL12 &pitchActuator, PID &pitchPIDController,
+                     NacelleComms &nacelleComms)
+        : pitchActuator(pitchActuator), pitchPIDController(pitchPIDController),
+          nacelleComms(nacelleComms) {}
     ~NacelleContainer() = default;
 
     inline bool getSafetyFlag() const { return safetyFlag; }
@@ -169,7 +172,7 @@ class NacelleContainer {
         return logString;
     }
 
-    inline void updateSafetyFlag(bool safetyFlag) {
+    inline void setSafetyFlag(bool safetyFlag) {
         this->safetyFlag = safetyFlag;
     }
     inline void updatePowerPositive(bool powerPositive) {

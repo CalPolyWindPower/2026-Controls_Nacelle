@@ -117,6 +117,7 @@ class NacelleFSM {
 
             // Pitch is already set to adjust (fine)
             // TODO: signal load (set steadyRPM)
+            // Load will be sent RPM info elsewhere
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRunLoad) &&
@@ -128,6 +129,7 @@ class NacelleFSM {
             // state (PI)
             nacelle.pitchPIDController.enable(0.0, 0.0); // todo input & output
             // TODO: signal load (set targetRPMExceeded)
+            // Load will be sent RPM info elsewhere
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sCurtail) &&
@@ -139,6 +141,7 @@ class NacelleFSM {
             // state (fine)
             nacelle.pitchPIDController.disable();
             // TODO: signal load (unset targetRPMExceeded)
+            // Load will be sent RPM info elsewhere
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else {
