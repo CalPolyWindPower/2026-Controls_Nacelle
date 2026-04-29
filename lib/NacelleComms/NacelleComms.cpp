@@ -12,6 +12,9 @@
 static constexpr char* TAG = "NacelleComms";
 constexpr uint8_t wiFiChannel = 6;
 
+// Initialization of static members
+QueueHandle_t NacelleComms::priorityDataQueue = nullptr;
+
 /**
  * @brief MAC address of the load box controller.
  */
