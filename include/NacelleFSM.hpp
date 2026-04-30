@@ -48,7 +48,7 @@ class NacelleFSM {
          * @details Trim -1 to an 8-bit unsigned integer(255), unsigned extend
          * to uint_fast8_t
          */
-        ERROR = (uint_fast8_t)(uint8_t)-1
+        ERROR = static_cast<uint_fast8_t>(static_cast<uint8_t>(-1))
     };
 
     /**
@@ -75,7 +75,9 @@ class NacelleFSM {
                    nacelle.getSafetyFlag()) {
             // Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
-        } // else: ~safetyTask
+        } else {
+            // else: ~safetyTask
+        }
 
         // Check reset conditions
         if ((currentState != FSMCommon::States::sRST) &&
@@ -95,7 +97,9 @@ class NacelleFSM {
                    !nacelle.isPowerPositive()) {
             // Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
-        } // else: producingPositivePower
+        } else {
+            // else: producingPositivePower
+        }
 
         // Check other transition conditions
         if (currentState == FSMCommon::States::sRST) {

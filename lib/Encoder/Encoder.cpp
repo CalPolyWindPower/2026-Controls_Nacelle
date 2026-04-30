@@ -61,7 +61,7 @@ int errorChecking() {
  */
 bool initialize() {
     Wire.begin(SDA_FIREBEETLE, SCL_FIREBEETLE);
-    bool connected = as5600.begin();
+    auto connected = as5600.begin();
     if(!connected) {
       ESP_LOGE(TAG, "AS5600 init failed");
       return false;
@@ -77,7 +77,11 @@ bool initialize() {
 
     for (int i = 0; i < DATASET_SIZE; i++) {
         rpmSamples[i] = as5600.getAngularSpeed(AS5600_MODE_RPM);
-        if(rpmSamples[i] == NAN) {
+        /**
+         * @details Can't use rpmSamples[i] == NAN, as caught by PVS Studio (Rule V550, CWE-682)
+         * @see https://stackoverflow.com/questions/570669/checking-if-a-double-or-float-is-nan-in-c
+         */
+        if(std::isnan(rpmSamples[i])) {
             ESP_LOGE(TAG, "AS5600 read failed during init");
             return false;
         }
@@ -93,39 +97,39 @@ bool initialize() {
  */
 etl::string<Encoder::LOG_STRING_SIZE> getLogString() {
     etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-    logString.append(": DS: ");                 // 6 chars
+    (void)logString.append(": DS: ");                 // 6 chars
 
     etl::format_spec decFormatA;
-    decFormatA.width(2).fill('0');                                // [2 chars]
+    (void)decFormatA.width(2).fill('0');                                // [2 chars]
     etl::to_string(DATASET_SIZE, logString, decFormatA, true);    // 2 chars
-    logString.append(", SD: ");                                   // 6 chars
+    (void)logString.append(", SD: ");                                   // 6 chars
     etl::to_string(SAMPLE_DELAY_MS, logString, decFormatA, true); // 2 chars
-    logString.append(", A: 0x");                                  // 7 chars
+    (void)logString.append(", A: 0x");                                  // 7 chars
 
     etl::format_spec hexFormatA;
-    hexFormatA.hex().width(2).fill('0');                              // [2 chars]
+    (void)hexFormatA.hex().width(2).fill('0');                              // [2 chars]
     etl::to_string(as5600.getAddress(), logString, hexFormatA, true); // 2 chars
-    logString.append(", D: ");                                        // 5 chars          
+    (void)logString.append(", D: ");                                        // 5 chars          
 
     etl::format_spec boolFormatA;
     etl::to_string(as5600.getDirection(), logString, boolFormatA, true); // 1 char
-    logString.append(", AGC: ");
+    (void)logString.append(", AGC: ");
 
     etl::format_spec decFormatB;
-    decFormatB.width(3).fill('0');                             // [3 chars]
+    (void)decFormatB.width(3).fill('0');                             // [3 chars]
     etl::to_string(DATASET_SIZE, logString, decFormatB, true); // 3 chars
-    logString.append(", MD: ");                                // 6 chars
+    (void)logString.append(", MD: ");                                // 6 chars
     
     boolFormatA.binary().width(1).fill('0');                               // [1 char]
     etl::to_string(as5600.detectMagnet(), logString, decFormatB, true);    // 1 chars
-    logString.append(", MTS: ");                                           // 6 chars
+    (void)logString.append(", MTS: ");                                           // 6 chars
     etl::to_string(as5600.magnetTooStrong(), logString, decFormatB, true); // 1 chars
-    logString.append(", MTW: ");                                           // 6 chars
+    (void)logString.append(", MTW: ");                                           // 6 chars
     etl::to_string(as5600.magnetTooWeak(), logString, decFormatB, true);   // 1 chars
-    logString.append(", lE: ");                                            // 6 chars
+    (void)logString.append(", lE: ");                                            // 6 chars
 
     etl::format_spec decFormatC;
-    decFormatC.width(4).fill('0');                                   // [4 chars]
+    (void)decFormatC.width(4).fill('0');                                   // [4 chars]
     etl::to_string(as5600.lastError(), logString, decFormatC, true); // 4 chars
     
 

@@ -34,7 +34,9 @@ class NacelleContainer {
 
         TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0,
                  false}, // 4
-        TaskInfo{vTaskConfigure, "Cfg", 512, nullptr, 10, nullptr, 0,
+        // Got an interminnat stack protection fault at 512 bytes, trying 1024
+        // bytes
+        TaskInfo{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0,
                  false}, // 5
         TaskInfo{vTaskStatusLED, "LED", 512, nullptr, 2, nullptr, 0,
                  false},                                                   // 6
@@ -145,10 +147,10 @@ class NacelleContainer {
      */
     etl::string<LOG_STRING_SIZE> getLogString() {
         etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        logString.append(": RPM: ");                 // 7 chars
+        (void)logString.append(": RPM: ");           // 7 chars
 
         etl::format_spec decFormatA;
-        decFormatA.width(5).fill('0'); // [5 chars]
+        (void)decFormatA.width(5).fill('0'); // [5 chars]
         /**
          * @details I don't think we need strong guarantees on logging data
          * @see
@@ -158,15 +160,15 @@ class NacelleContainer {
         etl::to_string(currentRPM.load(std::memory_order::relaxed), logString,
                        decFormatA, true); // 5 chars
 
-        logString.append(", SF: "); // 6 chars
+        (void)logString.append(", SF: "); // 6 chars
         etl::format_spec boolFormatA;
-        boolFormatA.binary().width(1).fill('0'); // [1 char]
+        (void)boolFormatA.binary().width(1).fill('0'); // [1 char]
         etl::to_string(getSafetyFlag(), logString, boolFormatA, true); // 1 char
-        logString.append(", PP: "); // 6 chars, 1 char \/
+        (void)logString.append(", PP: "); // 6 chars, 1 char \/
         etl::to_string(isPowerPositive(), logString, boolFormatA, true);
-        logString.append(", SR: ");                                  // 6 chars
+        (void)logString.append(", SR: ");                            // 6 chars
         etl::to_string(isSteadyRPM(), logString, boolFormatA, true); // 1 char
-        logString.append(", TRE: "); // 7 chars, 1 char \/
+        (void)logString.append(", TRE: "); // 7 chars, 1 char \/
         etl::to_string(isTargetRPMExceeded(), logString, boolFormatA, true);
 
         return logString;
