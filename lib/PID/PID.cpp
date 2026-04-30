@@ -19,8 +19,10 @@ PID::PID(std::tuple<float, float, float> tunings, float setpoint,
       outMax(outputBounds.second), minSampleTime(minSampleTime),
       controllerDirection(dir) {
 
-    this->setTunings(std::get<0>(tunings), std::get<1>(tunings),
-                     std::get<2>(tunings), propMode);
+    if (!this->setTunings(std::get<0>(tunings), std::get<1>(tunings),
+                          std::get<2>(tunings), propMode)) {
+        ESP_LOGE(TAG, "Failed to set tunings");
+    }
 
     this->lastTime = micros() - this->minSampleTime;
 
@@ -64,7 +66,8 @@ float PID::compute(float input) {
     ESP_LOGV(TAG, "error: %f", error);
 
     float deltaInput = (input - this->lastInput);
-    this->outputSum += (this->internalKi * (float)deltaTime * error * 1e-6f);
+    this->outputSum +=
+        (this->internalKi * static_cast<float>(deltaTime) * error * 1e-6f);
     // constexpr float maxSum = 0.1 * 20000 * 500;
     ESP_LOGV(TAG, "outputSum: %f", this->outputSum);
 
@@ -87,6 +90,8 @@ float PID::compute(float input) {
     } else if (this->outputSum < this->outMin) {
         ESP_LOGD(TAG, "PID outputSum capped to min");
         this->outputSum = this->outMin;
+    } else {
+        // No need to limit outputSum
     }
 
     float output;
@@ -99,8 +104,9 @@ float PID::compute(float input) {
     }
 
     /*Compute Rest of PID Output*/
-    output += this->outputSum -
-              this->internalKd / ((float)deltaTime * 1e-6f) * deltaInput;
+    output += this->outputSum - this->internalKd /
+                                    (static_cast<float>(deltaTime) * 1e-6f) *
+                                    deltaInput;
     ESP_LOGV(TAG, "Fin. Output: %f", output);
 
     /**
@@ -115,6 +121,8 @@ float PID::compute(float input) {
     } else if (output < this->outMin) {
         ESP_LOGD(TAG, "PID output capped to min");
         output = this->outMin;
+    } else {
+        // No need to limit the output
     }
 
     /*Remember some variables for next time*/
@@ -140,6 +148,8 @@ void PID::setMode(PIDMODE mode, float input, float currentOutput) {
     } else if (this->enabled && mode == PIDMODE::MANUAL) {
         // Disable PID
         this->enabled = false;
+    } else {
+        ESP_LOGW(TAG, "No mode change");
     }
 }
 
@@ -189,6 +199,9 @@ bool PID::setOutputLimits(float min, float max) {
             this->outputSum = this->outMax;
         else if (this->outputSum < this->outMin)
             this->outputSum = this->outMin;
+        else {
+            // No need to adjust outputSum
+        }
     }
 
     return true;
@@ -229,7 +242,8 @@ bool PID::setTunings(float kP, float kI, float kD, ProportionalMode propMode) {
     /**
      * @See docs folder for explanation on "if" initializer from SonarLint
      */
-    if (float SampleTimeInSec = ((float)this->minSampleTime) / 1000000;
+    if (float SampleTimeInSec =
+            (static_cast<float>(this->minSampleTime)) / 1000000;
         SampleTimeInSec > 0) {
         ESP_LOGI(TAG, "Adjusting PID values for sample time...");
         internalKi *= SampleTimeInSec;
@@ -244,9 +258,9 @@ bool PID::setTunings(float kP, float kI, float kD, ProportionalMode propMode) {
     }
 
     ESP_LOGI(TAG, "PID tunings set!");
-    ESP_LOGI(TAG, "internalKp: %f", (double)this->internalKp);
-    ESP_LOGI(TAG, "internalKi: %f", (double)this->internalKi);
-    ESP_LOGI(TAG, "internalKd: %f", (double)this->internalKd);
+    ESP_LOGI(TAG, "internalKp: %f", static_cast<double>(this->internalKp));
+    ESP_LOGI(TAG, "internalKi: %f", static_cast<double>(this->internalKi));
+    ESP_LOGI(TAG, "internalKd: %f", static_cast<double>(this->internalKd));
 
     return true;
 }
@@ -341,39 +355,39 @@ float PID::getSetpoint() const { return this->setpoint; }
  */
 etl::string<PID::LOG_STRING_SIZE> PID::getLogString() {
     etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-    logString.append(": lTus: 0x");              // 10 chars
+    (void)logString.append(": lTus: 0x");        // 10 chars
 
     etl::format_spec hexFormatA;
-    hexFormatA.hex().width(6).fill('0');                   // [6 chars]
+    (void)hexFormatA.hex().width(6).fill('0');             // [6 chars]
     etl::to_string(lastTime, logString, hexFormatA, true); // 6 c
-    logString.append(", oS: 0x");                          // 8 chars
+    (void)logString.append(", oS: 0x");                    // 8 chars
 
     etl::format_spec hexFormatB;
-    hexFormatB.hex().width(4).fill('0');                    // [4 chars]
+    (void)hexFormatB.hex().width(4).fill('0');              // [4 chars]
     etl::to_string(outputSum, logString, hexFormatB, true); // 4 c
-    logString.append(", lI: ");                             // 6 chars
+    (void)logString.append(", lI: ");                       // 6 chars
 
     etl::format_spec decFormatA;
-    decFormatA.width(4).fill('0');                          // [4 chars]
+    (void)decFormatA.width(4).fill('0');                    // [4 chars]
     etl::to_string(lastInput, logString, decFormatA, true); // 4 c
-    logString.append(", iKp: ");                            // 7 chars
+    (void)logString.append(", iKp: ");                      // 7 chars
 
     etl::format_spec decFormatB;
-    decFormatB.width(6).fill('0');                           // [6 chars]
+    (void)decFormatB.width(6).fill('0');                     // [6 chars]
     etl::to_string(internalKp, logString, decFormatB, true); // 6 chars
-    logString.append(", iKi: ");                             // 7 chars
+    (void)logString.append(", iKi: ");                       // 7 chars
     etl::to_string(internalKi, logString, decFormatB, true); // 6 chars
-    logString.append(", iKd: ");                             // 7 chars
+    (void)logString.append(", iKd: ");                       // 7 chars
     etl::format_spec decFormatC;
-    decFormatC.width(1).fill('0');                           // [1 char]
+    (void)decFormatC.width(1).fill('0');                     // [1 char]
     etl::to_string(internalKd, logString, decFormatC, true); // 1 char
-    logString.append(", sP: ");                              // 7 chars
+    (void)logString.append(", sP: ");                        // 7 chars
 
     etl::to_string(setpoint, logString, decFormatA, true); // 4 chars
-    logString.append(", e: ");                             // 5 chars
+    (void)logString.append(", e: ");                       // 5 chars
 
     etl::format_spec boolFormatA;
-    boolFormatA.binary().width(1).fill('0');               // [1 char]
+    (void)boolFormatA.binary().width(1).fill('0');         // [1 char]
     etl::to_string(enabled, logString, boolFormatA, true); // 1 char
 
     return logString;
@@ -394,5 +408,7 @@ void PID::initialize(float input, float currentOutput) {
         this->outputSum = this->outMax;
     } else if (this->outputSum < this->outMin) {
         this->outputSum = this->outMin;
+    } else {
+        // No need to limit / adjust outputSum
     }
 }

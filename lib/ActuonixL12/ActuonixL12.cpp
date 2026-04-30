@@ -9,7 +9,7 @@ void ActuonixL12::begin()
 {
     ESP_LOGI(TAG, "Attaching on pin %d (range %d-%d us)", pin_, min_us_,
              max_us_);
-    servo_.attach(pin_);
+    (void)servo_.attach(pin_);
 }
 
 // MARK: Setters
@@ -36,10 +36,10 @@ void ActuonixL12::writePosMicros(int us) {
  */
 etl::string<ActuonixL12::LOG_STRING_SIZE> ActuonixL12::getLogString() {
     etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-    logString.append(": Pus: ");                 // 6 chars
+    (void)logString.append(": Pus: ");           // 6 chars
 
     etl::format_spec format;
-    format.width(4).fill('0'); // [6 chars]
+    (void)format.width(4).fill('0'); // [6 chars]
     etl::to_string(servo_.readMicroseconds(), logString, format,
                    true); // 6 chars
 

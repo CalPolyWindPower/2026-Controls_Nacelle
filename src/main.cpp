@@ -205,14 +205,18 @@ void setup() {
 
         NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
         if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
-            ESP_LOGE(TAG, "Error during FSM init., %d", (uint_fast8_t)result);
+            // Allegedly unreachable
+            ESP_LOGE(TAG, "Error during FSM init., %d",
+                     static_cast<uint_fast8_t>(result));
         } else if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
+            // FIXME: Apparently this is always true
             ESP_LOGI(TAG, "Initialized FSM to state %d",
-                     (uint_fast8_t)nacelleFSM.getCurrentState());
+                     static_cast<uint_fast8_t>(nacelleFSM.getCurrentState()));
         } else if (result == NacelleFSM::UPDATE_RESULT::NO_CHANGE) {
             ESP_LOGE(TAG, "Failed to enter a valid state");
         } else {
-            ESP_LOGE(TAG, "Unknown FSM init. result: %d", (uint_fast8_t)result);
+            ESP_LOGE(TAG, "Unknown FSM init. result: %d",
+                     static_cast<uint_fast8_t>(result));
         }
 
         tasksSetup = true;
@@ -243,7 +247,10 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGI(TAG, "FSM State Changed: %d",
                      nacelleFSM.getCurrentState());
         } else if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
+            // Allegedly unreachable
             ESP_LOGE(TAG, "Error updating FSM state");
+        } else {
+            // No change, nothing to log
         }
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
@@ -256,6 +263,8 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
+ * TODO: PVS-Studio seems to think this can return and marking it no return
+ * could result in undefind behavior
  */
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
@@ -287,8 +296,8 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Fine
         } else if (nacelleFSM.getCurrentState() ==
                    FSMCommon::States::sCurtail) {
-            auto pidOutput = (uint_fast16_t)pitchPIDController.compute(
-                nacelle.currentRPM); // todo - input
+            auto pidOutput = static_cast<uint_fast16_t>(
+                pitchPIDController.compute(nacelle.currentRPM)); // todo - input
             ESP_LOGI(TAG, "PID Output: %u", pidOutput);
             pitchActuator.writePosMicros(pidOutput);
         } else {
@@ -358,7 +367,8 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         if (true) { // todo - when to suspend?
-            (void)nacelleComms.sendNacelleData((int16_t)(nacelle.currentRPM));
+            (void)nacelleComms.sendNacelleData(
+                static_cast<int16_t>(nacelle.currentRPM));
             BaseType_t xWasDelayed = xTaskDelayUntil(
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
             if (xWasDelayed != pdTRUE) {
@@ -568,7 +578,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         float tempSens_out;
         ESP_ERROR_CHECK(
             temperature_sensor_get_celsius(tempSensHandle, &tempSens_out));
-        auto tempTrunc_C = (int32_t)tempSens_out;
+        auto tempTrunc_C = static_cast<int32_t>(tempSens_out);
         constexpr int32_t MAX_EXT_TEMP = 105;
         constexpr int32_t MIN_EXT_TEMP = -40;
         if (tempTrunc_C > MAX_EXT_TEMP || tempTrunc_C < MIN_EXT_TEMP) {

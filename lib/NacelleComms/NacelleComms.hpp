@@ -46,19 +46,19 @@ public:
   // uint16_t getRemoteActuatorPos() const;
 
 private:
-  NacellePacket outgoingPacket_;
-  LoadboxPacket incomingPacket_;
+  static NacelleComms* instance_;
   unsigned long lastSendTime_;
   unsigned long lastRxTime_;
+  // uint16_t remoteActuatorPos_;
+  NacellePacket outgoingPacket_ = {0};
+  LoadboxPacket incomingPacket_ = {0};
   bool linkAlive_;
   // uint8_t remoteState_;
   // uint8_t remoteEstop_;
-  // uint16_t remoteActuatorPos_;
 
   esp_err_t setupPeer_();
   static void onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_status_t status);
   static void onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t *data, int len);
-  static NacelleComms* instance_;
 };
 
 #endif // NACELLE_COMMS_HPP

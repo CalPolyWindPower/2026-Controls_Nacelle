@@ -98,7 +98,7 @@ bool NacelleComms::begin() {
  */
 esp_err_t NacelleComms::setupPeer_() {
   esp_now_peer_info_t peerInfo = {};
-  memcpy(peerInfo.peer_addr, LOADBOX_MAC, 6);
+  (void)memcpy(peerInfo.peer_addr, LOADBOX_MAC, 6);
   peerInfo.channel = 0;
   peerInfo.encrypt = false;
 
@@ -166,7 +166,7 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8
 bool NacelleComms::sendNacelleData(int16_t rpm) {
   // if (now - lastSendTime_ >= NACELLE_COMMS_SEND_PERIOD_MS) {
   makeNacellePacket(outgoingPacket_, rpm);
-  esp_err_t result = esp_now_send(LOADBOX_MAC, (uint8_t *)&outgoingPacket_, sizeof(outgoingPacket_));
+  esp_err_t result = esp_now_send(LOADBOX_MAC, reinterpret_cast<uint8_t *>(&outgoingPacket_), sizeof(outgoingPacket_));
   if(result == ESP_OK) {
     lastSendTime_ = millis();
     linkAlive_ = true;
