@@ -8,6 +8,7 @@
 
 #include "NacelleComms.hpp"
 #include <esp_log.h>
+#include <esp_wifi.h>
 
 // Initialization of static members
 QueueHandle_t NacelleComms::priorityDataQueue = nullptr;
@@ -63,6 +64,18 @@ bool NacelleComms::begin() {
         ESP_LOGE(TAG, "Failed to set WiFi band mode");
         return false;
     }
+    
+    etl::array<uint8_t, 6> MACAddress = {0};
+    esp_err_t opStatus = esp_wifi_get_mac(WIFI_IF_STA, MACAddress.data());
+    if(opStatus != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to get MAC address: %d", opStatus);
+        return false;
+    } else {
+        ESP_LOGI(TAG, "Device MAC: %02X:%02X:%02X:%02X:%02X:%02X",
+               MACAddress[0], MACAddress[1], MACAddress[2],
+               MACAddress[3], MACAddress[4], MACAddress[5]);
+    }
+
 
     if (!WiFi.STA.bandwidth(WIFI_BW_HT20)) {
         ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
@@ -149,6 +162,8 @@ void NacelleComms::onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_statu
  * @param len Length of received data.
  */
 void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8_t *data, int len) {
+  rxEvents++;
+  bytesReceived += len;
   if (instance_ == nullptr) {
     ESP_LOGE(TAG, "Rx CB: Invalid instance");
     return;
@@ -162,9 +177,6 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8
     // instance_->remoteActuatorPos_ = instance_->incomingPacket_.actuatorPos;
     // ESP_LOGI(TAG, "Rx success");
     // printLoadboxPacket(instance_->incomingPacket_, Serial);
-    rxEvents++;
-    bytesReceived += len;
-
     (void)xQueueOverwrite(priorityDataQueue, data); // Allegedly cannot fail
   } else {
     ESP_LOGE(TAG, "Rx invalid len: %d", len);
