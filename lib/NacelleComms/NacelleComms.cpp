@@ -11,6 +11,11 @@
 
 // Initialization of static members
 QueueHandle_t NacelleComms::priorityDataQueue = nullptr;
+uint_fast32_t NacelleComms::txEvents = 0; // DONE: check against last years code
+uint_fast32_t NacelleComms::bytesSent = 0;
+uint_fast32_t NacelleComms::bytesNotSent = 0;
+uint_fast32_t NacelleComms::rxEvents = 0;
+uint_fast32_t NacelleComms::bytesReceived = 0;
 
 /**
  * @brief MAC address of the load box controller.
@@ -127,6 +132,13 @@ void NacelleComms::onDataSent_(const wifi_tx_info_t *tx_info, esp_now_send_statu
   // Serial.print("Send status: ");
   // Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Success" : "Fail");
   // This is check elsewhere
+  txEvents++;
+  if(status == ESP_NOW_SEND_SUCCESS) {
+    bytesSent += tx_info->data_len;
+  } else {
+    bytesNotSent += tx_info->data_len;
+  }
+  
 }
 
 
@@ -148,8 +160,10 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info, const uint8
     // instance_->remoteState_ = instance_->incomingPacket_.state;
     // instance_->remoteEstop_ = instance_->incomingPacket_.estop;
     // instance_->remoteActuatorPos_ = instance_->incomingPacket_.actuatorPos;
-    ESP_LOGI(TAG, "Rx success");
+    // ESP_LOGI(TAG, "Rx success");
     // printLoadboxPacket(instance_->incomingPacket_, Serial);
+    rxEvents++;
+    bytesReceived += len;
 
     (void)xQueueOverwrite(priorityDataQueue, data); // Allegedly cannot fail
   } else {
@@ -172,7 +186,7 @@ bool NacelleComms::sendNacelleData(int16_t rpm) {
     linkAlive_ = true;
   } else {
     linkAlive_ = false;
-    ESP_LOGE(TAG, "Tx failed");
+    // ESP_LOGE(TAG, "Tx failed");
   }
   // }
   // if (now - lastRxTime_ > NACELLE_COMMS_TIMEOUT_MS) {
@@ -217,3 +231,33 @@ bool NacelleComms::isLinkAlive() const {
 // uint16_t NacelleComms::getRemoteActuatorPos() const {
 //   return remoteActuatorPos_;
 // }
+
+etl::string<NacelleComms::LOG_STRING_SIZE> NacelleComms::getLogString() const {
+        etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
+        logString.append(": TxE: ");                 // 7 chars
+
+        etl::format_spec decFormatA;
+        decFormatA.width(6).fill('0'); // [6 chars, expecting up to 30 mins * (1/(2ms)) = 900,000 events]
+        /**
+         * @details I don't think we need strong guarantees on logging data
+         * @see
+         * https://stackoverflow.com/questions/12346487/what-do-each-memory-order-mean
+         * @see https://en.cppreference.com/cpp/atomic/memory_order
+         */
+        etl::to_string(txEvents, logString, decFormatA, true); // 6 chars
+        logString.append(", TxBS: "); // 8 chars
+
+        etl::format_spec decFormatB;
+        decFormatB.width(7).fill('0'); // [7 chars]
+        etl::to_string(bytesSent, logString, decFormatB, true); // 7 chars
+        logString.append(", TxBF: ");                 // 8 chars
+        etl::to_string(bytesNotSent, logString, decFormatB, true); // 7 chars
+
+        logString.append(", RxE: ");                 // 7 chars
+        etl::to_string(rxEvents, logString, decFormatA, true); // 6 chars
+        logString.append(", RxBS: "); // 8 chars
+        etl::to_string(bytesReceived, logString, decFormatB, true); // 7 chars
+
+        return logString;
+    }
+

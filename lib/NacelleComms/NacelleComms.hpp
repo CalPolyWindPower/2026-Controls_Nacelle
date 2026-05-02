@@ -13,6 +13,9 @@
 #include <WiFi.h>
 #include <esp_now.h>
 #include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#include <etl/format_spec.h>
+#include <etl/string.h>
+#include <etl/to_string.h>
 
 /**
  * @brief MAC address of the load box controller.
@@ -45,14 +48,26 @@ public:
   // uint8_t getRemoteEstop() const;
   // uint16_t getRemoteActuatorPos() const;
 
+  // TODO - improve this and null terminator may not be needed
+  static constexpr uint_fast8_t LOG_STRING_SIZE =
+      3 + 7 + 6 + ((8 + 7) * 2) + 7 + 6 + 8 + 7 + 1;
+  /**
+   * @brief Get at string that describes the current state of the PID instance
+   * @returns the current state of the PID instance as a string
+   */
+  etl::string<LOG_STRING_SIZE> getLogString() const;
+
 private:
   static NacelleComms* instance_;
   unsigned long lastSendTime_;
   unsigned long lastRxTime_;
-  // uint16_t remoteActuatorPos_;
-  NacellePacket outgoingPacket_ = {0};
-  LoadboxPacket incomingPacket_ = {0};
+  static uint_fast32_t txEvents;  // DONE: check against last years code
+  static uint_fast32_t bytesSent;
+  static uint_fast32_t bytesNotSent;
+  static uint_fast32_t rxEvents;
+  static uint_fast32_t bytesReceived;
   bool linkAlive_;
+
   // uint8_t remoteState_;
   // uint8_t remoteEstop_;
 
