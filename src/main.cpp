@@ -265,7 +265,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 /**
  * @SuppressWarnings("cpp:S5008") // Does not work
  * TODO: PVS-Studio seems to think this can return and marking it no return
- * could result in undefind behavior
+ * could result in undefined behavior
  */
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
@@ -283,7 +283,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         constexpr unsigned long m_TO_BASE = 1000;
         constexpr unsigned long u_TO_m = 1000;
         constexpr unsigned long u_TO_BASE = m_TO_BASE * u_TO_m;
-        nacelle.angularAccell_RPMPS = deltaRPM * u_TO_BASE / deltaTime_us;
+        nacelle.angularAccel_RPMPS = deltaRPM * u_TO_BASE / deltaTime_us;
         previousTime = currentTime;
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
@@ -384,7 +384,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
         if (true) { // todo - when to suspend?
             (void)nacelleComms.sendNacelleData(
                 static_cast<int16_t>(nacelle.currentRPM),
-                static_cast<int16_t>(nacelle.angularAccell_RPMPS));
+                static_cast<int16_t>(nacelle.angularAccel_RPMPS));
             BaseType_t xWasDelayed = xTaskDelayUntil(
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
             if (xWasDelayed != pdTRUE) {

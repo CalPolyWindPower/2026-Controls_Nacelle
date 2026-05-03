@@ -121,7 +121,7 @@ class NacelleContainer {
                   "Atomic operations on int_fast16_t are not lock-free on "
                   "this platform.");
     std::atomic<int_fast16_t> currentRPM = 0;
-    std::atomic<int_fast16_t> angularAccell_RPMPS = 0;
+    std::atomic<int_fast16_t> angularAccel_RPMPS = 0;
     std::atomic<int16_t> d_mVPS = 0;
     std::atomic<int16_t> current_mA = 0;
     std::atomic<int16_t> dIPS = 0;
@@ -137,7 +137,7 @@ class NacelleContainer {
     /**
      * @deprecated Apparently we don't need to check this
      */
-    inline bool isSteadyRPM() const { return angularAccell_RPMPS < 20; } // todo
+    inline bool isSteadyRPM() const { return angularAccel_RPMPS < 20; } // todo
     inline bool isTargetRPMExceeded() const {
         return (currentRPM > ENCODER::TARGET_RPM);
     }

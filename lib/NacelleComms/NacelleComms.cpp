@@ -183,9 +183,9 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info,
  * @param rpm The RPM value to send.
  * @returns true if send is initiated successfully, false otherwise.
  */
-bool NacelleComms::sendNacelleData(int16_t rpm, int16_t angularAccell_RPMPS) {
+bool NacelleComms::sendNacelleData(int16_t rpm, int16_t angularAccel_RPMPS) {
     // if (now - lastSendTime_ >= NACELLE_COMMS_SEND_PERIOD_MS) {
-    makeNacellePacket(outgoingPacket_, rpm, angularAccell_RPMPS);
+    makeNacellePacket(outgoingPacket_, rpm, angularAccel_RPMPS);
     esp_err_t result =
         esp_now_send(LOADBOX_MAC, reinterpret_cast<uint8_t *>(&outgoingPacket_),
                      sizeof(outgoingPacket_));
