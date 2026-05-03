@@ -143,7 +143,7 @@ class NacelleContainer {
     }
 
     static constexpr uint_fast8_t LOG_STRING_SIZE =
-        3 + 7 + 5 + ((6 + 1) * 3) + 7 + 1 +
+        3 + 7 + 5 + 10 + 5 + ((6 + 1) * 3) + 7 + 1 +
         1; // TODO - improve this and null terminator may not be needed
     /**
      * @brief Get at string that describes the current state of the PID instance
@@ -162,7 +162,12 @@ class NacelleContainer {
          * @see https://en.cppreference.com/cpp/atomic/memory_order
          */
         etl::to_string(currentRPM.load(std::memory_order::relaxed), logString,
-                       decFormatA, true); // 5 chars
+                       decFormatA, true);     // 5 chars
+        (void)logString.append(", dRPM/s: "); // 10 chars
+
+        etl::to_string(angularAccel_RPMPS.load(std::memory_order::relaxed),
+                       logString, decFormatA,
+                       true); // 5 chars
 
         (void)logString.append(", SF: "); // 6 chars
 
