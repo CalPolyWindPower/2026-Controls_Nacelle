@@ -648,7 +648,7 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         constexpr unsigned long m_TO_BASE = 1000;
         constexpr unsigned long u_TO_m = 1000;
         constexpr unsigned long u_TO_BASE = m_TO_BASE * u_TO_m;
-        ESP_LOGI(TAG, "TxE/s: %u, TxBS/s: %u, TxB/s: %u, RxE/s: %u, RxB/s: %u",
+        ESP_LOGI(TAG, "TxE/s: %u, TxBS/s: %u, TxBF/s: %u, RxE/s: %u, RxB/s: %u",
                  deltaTxEvents * u_TO_BASE / deltaTime_us,
                  deltaBytesSent * u_TO_BASE / deltaTime_us,
                  deltaBytesFailed * u_TO_BASE / deltaTime_us,
