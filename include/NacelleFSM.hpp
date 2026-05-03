@@ -59,7 +59,7 @@ class NacelleFSM {
     UPDATE_RESULT updateState() {
         // Check safety task / E-Stop conditions
         if ((currentState != FSMCommon::States::sESTOP) &&
-            nacelle.getSafetyFlag()) {
+            (nacelle.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
             // * -> sESTOP
             currentState = FSMCommon::States::sESTOP;
 
@@ -72,7 +72,7 @@ class NacelleFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sESTOP) &&
-                   nacelle.getSafetyFlag()) {
+                   (nacelle.getSafetyFlag() == ESTOP_TYPE_FAST::NONE)) {
             // Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } else {

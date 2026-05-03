@@ -42,7 +42,7 @@ public:
   NacelleComms();
   
   bool begin();
-  bool sendNacelleData(int16_t rpm);
+  bool sendNacelleData(int16_t rpm, int16_t angularAccell_RPMPS);
   bool isLinkAlive() const;
   // uint8_t getRemoteState() const;
   // uint8_t getRemoteEstop() const;

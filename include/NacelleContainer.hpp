@@ -9,7 +9,7 @@
 #include <etl/to_string.h>
 
 // Custom Includes
-#include "NacelleComms.hpp" 
+#include "NacelleComms.hpp"
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
 
@@ -121,6 +121,10 @@ class NacelleContainer {
                   "Atomic operations on int_fast16_t are not lock-free on "
                   "this platform.");
     std::atomic<int_fast16_t> currentRPM = 0;
+    std::atomic<int_fast16_t> angularAccell_RPMPS = 0;
+    std::atomic<int16_t> d_mVPS = 0;
+    std::atomic<int16_t> current_mA = 0;
+    std::atomic<int16_t> dIPS = 0;
 
     NacelleContainer(ActuonixL12 &pitchActuator, PID &pitchPIDController,
                      NacelleComms &nacelleComms)
@@ -128,7 +132,7 @@ class NacelleContainer {
           nacelleComms(nacelleComms) {}
     ~NacelleContainer() = default;
 
-    inline bool getSafetyFlag() const { return safetyFlag; }
+    inline ESTOP_TYPE_FAST getSafetyFlag() const { return safetyFlag; }
     inline bool isPowerPositive() const { return powerPositive; }
     /**
      * @deprecated Apparently we don't need to check this
@@ -161,8 +165,14 @@ class NacelleContainer {
                        decFormatA, true); // 5 chars
 
         (void)logString.append(", SF: "); // 6 chars
+
+        etl::format_spec decFormatB;
+        decFormatB.width(1).fill('0'); // [1 chars]
+        etl::to_string(static_cast<uint_fast8_t>(getSafetyFlag()), logString,
+                       decFormatB, true); // 1 char
+
         etl::format_spec boolFormatA;
-        (void)boolFormatA.binary().width(1).fill('0'); // [1 char]
+        boolFormatA.binary().width(1).fill('0'); // [1 char]
         etl::to_string(getSafetyFlag(), logString, boolFormatA, true); // 1 char
         (void)logString.append(", PP: "); // 6 chars, 1 char \/
         etl::to_string(isPowerPositive(), logString, boolFormatA, true);
@@ -174,7 +184,7 @@ class NacelleContainer {
         return logString;
     }
 
-    inline void setSafetyFlag(bool safetyFlag) {
+    inline void setSafetyFlag(ESTOP_TYPE_FAST safetyFlag) {
         this->safetyFlag = safetyFlag;
     }
     inline void updatePowerPositive(bool powerPositive) {
@@ -182,6 +192,6 @@ class NacelleContainer {
     }
 
   private:
-    bool safetyFlag = false;
+    ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE;
     bool powerPositive = false;
 };

@@ -169,7 +169,7 @@ void setup() {
     // Print MAC Address // todo - verify
     // ESP_LOGI(
     //     TAG, "MAC Address: %s",
-    //     AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    // AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
     // digitalWrite(LED::PIN, LOW);
 
     // TODO: Check ESP-NOW impl against last years
@@ -270,10 +270,20 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
+        static unsigned long previousTime = 0;
+        unsigned long currentTime = micros();
 
         // Poll encoder & update stored value
         // todo: back off and retry if not working
+        int_fast16_t lastRPM = nacelle.currentRPM;
         Encoder::getRpmMovingAverage(nacelle.currentRPM);
+        int_fast16_t deltaRPM = nacelle.currentRPM - lastRPM;
+        int_fast32_t deltaTime_us = currentTime - previousTime;
+        constexpr unsigned long m_TO_BASE = 1000;
+        constexpr unsigned long u_TO_m = 1000;
+        constexpr unsigned long u_TO_BASE = m_TO_BASE * u_TO_m;
+        nacelle.angularAccell_RPMPS = deltaRPM * u_TO_BASE / deltaTime_us;
+        previousTime = currentTime;
 
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime,
@@ -334,7 +344,11 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             if (xQueueReceive(NacelleComms::priorityDataQueue, &packet, 0) ==
                 pdPASS) {
                 ESP_LOGV(TAG, "Received packet: safety=%u", packet.safety);
-                nacelle.setSafetyFlag(packet.safety);
+                nacelle.d_mVPS = packet.d_mVPS;
+                nacelle.current_mA = packet.current_mA;
+                nacelle.dIPS = packet.dIPS;
+                nacelle.setSafetyFlag(
+                    static_cast<ESTOP_TYPE_FAST>(packet.safety));
             }
 
             BaseType_t xWasDelayed = xTaskDelayUntil(
@@ -368,7 +382,8 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         if (true) { // todo - when to suspend?
             (void)nacelleComms.sendNacelleData(
-                static_cast<int16_t>(nacelle.currentRPM));
+                static_cast<int16_t>(nacelle.currentRPM),
+                static_cast<int16_t>(nacelle.angularAccell_RPMPS));
             BaseType_t xWasDelayed = xTaskDelayUntil(
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
             if (xWasDelayed != pdTRUE) {
