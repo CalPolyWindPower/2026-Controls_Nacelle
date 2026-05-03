@@ -67,6 +67,8 @@ private:
   static uint_fast32_t rxEvents;
   static uint_fast32_t bytesReceived;
   bool linkAlive_;
+  NacellePacket outgoingPacket_ = {0};
+  LoadboxPacket incomingPacket_ = {0};
 
   // uint8_t remoteState_;
   // uint8_t remoteEstop_;

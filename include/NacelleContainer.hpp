@@ -173,8 +173,7 @@ class NacelleContainer {
 
         etl::format_spec boolFormatA;
         boolFormatA.binary().width(1).fill('0'); // [1 char]
-        etl::to_string(getSafetyFlag(), logString, boolFormatA, true); // 1 char
-        (void)logString.append(", PP: "); // 6 chars, 1 char \/
+        (void)logString.append(", PP: ");        // 6 chars, 1 char \/
         etl::to_string(isPowerPositive(), logString, boolFormatA, true);
         (void)logString.append(", SR: ");                            // 6 chars
         etl::to_string(isSteadyRPM(), logString, boolFormatA, true); // 1 char
