@@ -137,7 +137,7 @@ class NacelleContainer {
     /**
      * @deprecated Apparently we don't need to check this
      */
-    inline bool isSteadyRPM() const { return false; } // todo
+    inline bool isSteadyRPM() const { return angularAccell_RPMPS < 20; } // todo
     inline bool isTargetRPMExceeded() const {
         return (currentRPM > ENCODER::TARGET_RPM);
     }

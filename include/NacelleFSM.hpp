@@ -72,8 +72,8 @@ class NacelleFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sESTOP) &&
-                   (nacelle.getSafetyFlag() == ESTOP_TYPE_FAST::NONE)) {
-            // Nothing to do
+                   (nacelle.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
+            // sESTOP -> sESTOP: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } else {
             // else: ~safetyTask
@@ -89,32 +89,35 @@ class NacelleFSM {
             vTaskSuspend(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
-            //  PID is already disabled
+            nacelle.pitchPIDController.disable();
             nacelle.pitchActuator.writePosMicros(PITCHING::POS_STARTUP_uS);
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRST) &&
                    !nacelle.isPowerPositive()) {
-            // Nothing to do
+            // sRST -> sRST: Nothing to do
             return UPDATE_RESULT::NO_CHANGE;
         } else {
-            // else: producingPositivePower
+            // else: producingPositivePower or maybe just still starting up
         }
 
         // Check other transition conditions
-        if (currentState == FSMCommon::States::sRST) {
-            // sRST -> sStartLoad
-            currentState = FSMCommon::States::sStartLoad;
+        if ((currentState == FSMCommon::States::sRST) &&
+            (nacelle.currentRPM > ENCODER::START_RUN_2_RPM)) {
+            // sRST -> sStartRun
+            currentState = FSMCommon::States::sStartRun;
 
             // Pitch -> Adjust (fine) // TODO: Check on this
-            vTaskResume(
-                nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
-                    .pxHandle);
+            // Pitch task already disabled
+            // vTaskResume(
+            //     nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+            //         .pxHandle);
             // PID is already disabled
+            nacelle.pitchActuator.writePosMicros(PITCHING::POS_RUN_uS);
             return UPDATE_RESULT::STATE_CHANGED;
-        } else if ((currentState == FSMCommon::States::sStartLoad) && true
-                   /*nacelle.isSteadyRPM()*/) { // todo
-            // sStartLoad -> sRunLoad
+        } else if ((currentState == FSMCommon::States::sStartRun) &&
+                   (nacelle.isSteadyRPM())) { // todo
+            // sStartRun -> sRunLoad
             // Note: The producing positive power condition is handled by the
             // reset logic
             currentState = FSMCommon::States::sRunLoad;
@@ -131,8 +134,10 @@ class NacelleFSM {
 
             // Pitch is already set to adjust (fine), which will detect the new
             // state (PI)
-            nacelle.pitchPIDController.enable(0.0, 0.0); // todo input & output
-            // TODO: signal load (set targetRPMExceeded)
+            nacelle.pitchPIDController.enable(
+                nacelle.currentRPM,
+                PITCHING::POS_RUN_uS); // todo input & output
+            // DONE: signal load (set targetRPMExceeded)
             // Load will be sent RPM info elsewhere
 
             return UPDATE_RESULT::STATE_CHANGED;
@@ -144,7 +149,7 @@ class NacelleFSM {
             // Pitch is already set to adjust (PI), which will detect the new
             // state (fine)
             nacelle.pitchPIDController.disable();
-            // TODO: signal load (unset targetRPMExceeded)
+            // DONE: signal load (unset targetRPMExceeded)
             // Load will be sent RPM info elsewhere
 
             return UPDATE_RESULT::STATE_CHANGED;

@@ -89,8 +89,9 @@ namespace LED {
 } // namespace LED
 
 namespace ENCODER {
-    constexpr uint_fast16_t TARGET_RPM = 2200; // CONFIG
-    constexpr uint_fast16_t MAX_RPM = 3000;    // CONFIG
+    constexpr uint_fast16_t START_RUN_2_RPM = 500; // CONFIG
+    constexpr uint_fast16_t TARGET_RPM = 2200;     // CONFIG
+    constexpr uint_fast16_t MAX_RPM = 3000;        // CONFIG
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / CONSTS::SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
     constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_mS_PER_REV / 4;
@@ -155,6 +156,7 @@ namespace PITCHING {
     //     PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG
     //     //todo
     constexpr uint_fast16_t POS_STARTUP_uS = 1540; // CONFIG //todo
+    constexpr uint_fast16_t POS_RUN_uS = 1640;     // CONFIG //todo
 
     // constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
     //     PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
@@ -175,11 +177,12 @@ namespace RUN {
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz) // todo - change?
         TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
         TI_RECV_ms = TI_FSM_mS, // CONFIG - 100 ms (10 Hz)
-        TI_SEND_ms = ENCODER::MEAS_TIME_DELTA_MS, // CONFIG - 5 - 10 ms (200 - 100 Hz)
-        TI_CFG_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
-        TI_TELNET_ms = 500,     // CONFIG - 500 ms (2 Hz)
-        TI_OTA_ms = 1000,       // CONFIG - 1000 ms (1 Hz)
-        TI_LOG_DATA_ms = 4000   // CONFIG - 4000 ms (0.25 Hz)
+        TI_SEND_ms =
+            ENCODER::MEAS_TIME_DELTA_MS, // CONFIG - 5 - 10 ms (200 - 100 Hz)
+        TI_CFG_ms = 1000,                // CONFIG - 1000 ms (1 Hz)
+        TI_TELNET_ms = 500,              // CONFIG - 500 ms (2 Hz)
+        TI_OTA_ms = 1000,                // CONFIG - 1000 ms (1 Hz)
+        TI_LOG_DATA_ms = 4000            // CONFIG - 4000 ms (0.25 Hz)
     };
 
     // todo: What was this for?
