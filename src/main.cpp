@@ -627,8 +627,38 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         ESP_LOGI(TAG, "%s", Encoder::getLogString().c_str());
         delay(LOG_ITEM_INTERVAL_MS);
 
+        static unsigned int prevTime_us = 0;
+        static NacelleComms::LogData lastLogData = {0};
+        unsigned int currentTime_us = micros();
         ESP_LOGI(TAG, "%s", nacelleComms.getLogString().c_str());
-        delay(LOG_ITEM_INTERVAL_MS);
+        ESP_LOGI(TAG, "%s", nacelleComms.getLogString().c_str());
+        NacelleComms::LogData currentLogData = nacelleComms.getLogData();
+        unsigned long deltaTime_us = currentTime_us - prevTime_us;
+        uint_fast32_t deltaTxEvents =
+            currentLogData.txEvents - lastLogData.txEvents;
+        uint_fast32_t deltaBytesSent =
+            currentLogData.bytesSent - lastLogData.bytesSent;
+        uint_fast32_t deltaBytesFailed =
+            currentLogData.bytesNotSent - lastLogData.bytesNotSent;
+        uint_fast32_t deltaRxEvents =
+            currentLogData.rxEvents - lastLogData.rxEvents;
+        uint_fast32_t deltaBytesReceived =
+            currentLogData.bytesReceived - lastLogData.bytesReceived;
+
+        constexpr unsigned long m_TO_BASE = 1000;
+        constexpr unsigned long u_TO_m = 1000;
+        constexpr unsigned long u_TO_BASE = m_TO_BASE * u_TO_m;
+        ESP_LOGI(TAG, "TxE/s: %u, TxBS/s: %u, TxB/s: %u, RxE/s: %u, RxB/s: %u",
+                 deltaTxEvents * u_TO_BASE / deltaTime_us,
+                 deltaBytesSent * u_TO_BASE / deltaTime_us,
+                 deltaBytesFailed * u_TO_BASE / deltaTime_us,
+                 deltaRxEvents * u_TO_BASE / deltaTime_us,
+                 deltaBytesReceived * u_TO_BASE / deltaTime_us);
+        prevTime_us = currentTime_us;
+        lastLogData = currentLogData;
+
+        unsigned int elapsedTime_us = currentTime_us - prevTime_us;
+        prevTime_us = currentTime_us;
 
         // BaseType_t xWasDelayed = xTaskDelayUntil(
         //     &xLastWakeTime, pdMS_TO_TICKS(LOG_ITEM_INTERVAL_MS));

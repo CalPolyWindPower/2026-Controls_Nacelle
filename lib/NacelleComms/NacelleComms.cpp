@@ -273,3 +273,7 @@ etl::string<NacelleComms::LOG_STRING_SIZE> NacelleComms::getLogString() const {
         return logString;
     }
 
+NacelleComms::LogData NacelleComms::getLogData() const {
+    return LogData{txEvents, bytesSent, bytesNotSent, rxEvents, bytesReceived};
+}
+
