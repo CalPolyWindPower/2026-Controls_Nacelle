@@ -302,7 +302,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
-        if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartLoad ||
+        if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartRun ||
             nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
             // Fine
         } else if (nacelleFSM.getCurrentState() ==
