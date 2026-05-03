@@ -657,7 +657,6 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         prevTime_us = currentTime_us;
         lastLogData = currentLogData;
 
-        unsigned int elapsedTime_us = currentTime_us - prevTime_us;
         prevTime_us = currentTime_us;
 
         // BaseType_t xWasDelayed = xTaskDelayUntil(
