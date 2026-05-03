@@ -191,6 +191,6 @@ class NacelleContainer {
     }
 
   private:
-    ESTOP_TYPE_FAST safetyFlag = ESTOP_TYPE_FAST::NONE;
+    std::atomic<ESTOP_TYPE_FAST> safetyFlag = ESTOP_TYPE_FAST::NONE;
     bool powerPositive = false;
 };
