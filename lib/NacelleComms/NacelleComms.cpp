@@ -9,6 +9,7 @@
 #include "NacelleComms.hpp"
 #include <esp_log.h>
 #include <esp_wifi.h>
+#include <stdint.h>
 
 // Initialization of static members
 QueueHandle_t NacelleComms::priorityDataQueue = nullptr;
@@ -21,8 +22,11 @@ uint_fast32_t NacelleComms::bytesReceived = 0;
 /**
  * @brief MAC address of the load box controller.
  */
-const uint8_t LOADBOX_MAC[] = {0xEC, 0xDA, 0x3B, 0x5C, 0x93, 0x04};
+constexpr uint8_t CPWP_UMP3_TOASTED[] = {0xEC, 0xDA, 0x3B,
+                                         0x5C, 0x93, 0x04}; // Cooked
 
+constexpr uint8_t CPWP_UMP3_DEV[] = {0xEC, 0xDA, 0x3B, 0x5B, 0x03, 0xD4};
+const uint8_t *LOADBOX_MAC = CPWP_UMP3_TOASTED;
 
 /**
  * @brief Static pointer to the current NacelleComms instance for callback

@@ -20,7 +20,7 @@
 /**
  * @brief MAC address of the load box controller.
  */
-extern const uint8_t LOADBOX_MAC[];
+extern const uint8_t *LOADBOX_MAC;
 
 /**
  * @brief Transmission period in milliseconds.
