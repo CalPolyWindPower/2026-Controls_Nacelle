@@ -24,19 +24,19 @@ class NacelleContainer {
     // Arduino Loop has priority 1
     // TODO: Note: Task priority must be < 25
     etl::array<TaskInfo, NUM_MAIN_TASKS> mainTaskDescriptions = {
-        TaskInfo{vTaskUpdateFSM, "FSM", 512, nullptr, 20, nullptr, 0,
+        TaskInfo{vTaskUpdateFSM, "FSM", 2048, nullptr, 24, nullptr, 0,
                  false}, // 0
-        TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 20, nullptr, 0,
+        TaskInfo{vTaskPollSensors, "Poll", 2048, nullptr, 15, nullptr, 0,
                  false},                                                    // 1
-        TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 20, nullptr, 0, false}, // 2
-        TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 15, nullptr, 0,
+        TaskInfo{vTaskPitch, "Ptch", 4096, nullptr, 15, nullptr, 0, false}, // 2
+        TaskInfo{vTaskRecvData, "Recv", 2048, nullptr, 10, nullptr, 0,
                  false}, // 3
 
-        TaskInfo{vTaskSendData, "Send", 2048, nullptr, 15, nullptr, 0,
+        TaskInfo{vTaskSendData, "Send", 2048, nullptr, 10, nullptr, 0,
                  false}, // 4
         // Got an interminnat stack protection fault at 512 bytes, trying 1024
         // bytes
-        TaskInfo{vTaskConfigure, "Cfg", 1024, nullptr, 10, nullptr, 0,
+        TaskInfo{vTaskConfigure, "Cfg", 1024, nullptr, 5, nullptr, 0,
                  false}, // 5
         TaskInfo{vTaskStatusLED, "LED", 512, nullptr, 2, nullptr, 0,
                  false},                                                   // 6
@@ -151,7 +151,7 @@ class NacelleContainer {
      */
     etl::string<LOG_STRING_SIZE> getLogString() {
         etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        (void)logString.append(": RPM: "); // 7 chars
+        (void)logString.append(": RPM: ");           // 7 chars
 
         etl::format_spec decFormatA;
         (void)decFormatA.width(5).fill('0'); // [5 chars]
@@ -178,7 +178,6 @@ class NacelleContainer {
 
         etl::format_spec boolFormatA;
         boolFormatA.binary().width(1).fill('0'); // [1 char]
-        etl::to_string(getSafetyFlag(), logString, boolFormatA, true); // 1 char
         (void)logString.append(", PP: ");        // 6 chars, 1 char \/
         etl::to_string(isPowerPositive(), logString, boolFormatA, true);
         (void)logString.append(", SR: ");                            // 6 chars
@@ -191,18 +190,18 @@ class NacelleContainer {
 
     inline void setSafetyFlag(ESTOP_TYPE_FAST safetyFlag) {
         if (enableSafetyFlag) {
-            this->safetyFlag = ESTOP_TYPE_FAST::NONE;
-        }
-        else {
+            this->safetyFlag = ESTOP_TYPE_FAST::NONE; // todo ?
+        } else {
             this->safetyFlag = safetyFlag;
         }
-        
     }
     inline void updatePowerPositive(bool powerPositive) {
         this->powerPositive = powerPositive;
     }
 
-    inline void setEnableSafetyFlag(bool enable) { this->enableSafetyFlag = enable; }
+    inline void setEnableSafetyFlag(bool enable) {
+        this->enableSafetyFlag = enable;
+    }
 
   private:
     std::atomic<ESTOP_TYPE_FAST> safetyFlag = ESTOP_TYPE_FAST::NONE;
