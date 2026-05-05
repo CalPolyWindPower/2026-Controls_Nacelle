@@ -2,6 +2,11 @@
 
 #include <Arduino.h>
 #include <cctype>
+#include "NacelleTasks.hpp"
+#include "NacelleContainer.hpp"
+#include "NacelleConfig.hpp"
+
+//using TaskFunction = void (*)(void *);
 
 static SerialInterface *instance_;
 
@@ -9,22 +14,15 @@ class SerialInterface {
   public:
     static constexpr const char *TAG = "serialInterface";
 
-    SerialInterface(int baudRate_)
-        : baudRate(baudRate_) {
-
-        static bool serialInitialized = false;
-        if (!serialInitialized) {
-            Serial.begin(baudRate_);
-            ESP_LOGI(TAG, "Serial initialized; baud rate: %d", baudRate_);
-            serialInitialized = true;
-        }
+    SerialInterface(int baudRate_, NacelleContainer &nacelle)
+        : baudRate(baudRate_),
+          nacelle(nacelle) {
     }
 
-    float getKp() const { return kp; }
-
-    float getKi() const { return ki; }
-
-    float getKd() const { return kd; }
+    void begin() {
+        Serial.begin(baudRate);
+        ESP_LOGI(TAG, "SerialInterface Initialized at baud rate %d", baudRate);
+    }
     
     float getPosition() const { return position; }
 
@@ -34,19 +32,105 @@ class SerialInterface {
         String line = Serial.readStringUntil('\n');
         line.trim();
         stringArray parts = split(line, ' ');
-
+        
         if (parts.count > 0) {
             command = parts.tokens[0];
+            if (command.equalsIgnoreCase("pid")) {
+                Kp = parts.tokens[1].toFloat();
+                Ki = parts.tokens[2].toFloat();
+                Kd = parts.tokens[3].toFloat();
+                nacelle.pitchPIDController.setTunings(Kp, Ki, Kd);
+                ESP_LOGI(TAG, "Updated PID constants: Kp=%.2f, Ki=%.2f, Kd=%.2f", Kp, Ki, Kd);
+            }
+            else if (command.equalsIgnoreCase("Kp")) {
+                Kp = parts.tokens[1].toFloat();
+                ESP_LOGI(TAG, "Updated Kp: %.2f", Kp);
+                nacelle.pitchPIDController.setTunings(Kp, Ki, Kd);
+            }
+            else if (command.equalsIgnoreCase("Ki")) {
+                Ki = parts.tokens[1].toFloat();
+                ESP_LOGI(TAG, "Updated Ki: %.2f", Ki);
+                nacelle.pitchPIDController.setTunings(Kp, Ki, Kd);
+            }
+            else if (command.equalsIgnoreCase("Kd")) {
+                Kd = parts.tokens[1].toFloat();
+                ESP_LOGI(TAG, "Updated Kd: %.2f", Kd);
+                nacelle.pitchPIDController.setTunings(Kp, Ki, Kd);
+            }
+            else if (command.equalsIgnoreCase("position")) {
+                position = parts.tokens[1].toInt();
+                nacelle.pitchActuator.writePosMicros(position);
+                ESP_LOGI(TAG, "Updated position: %d", position);
+            }
+            else if (command.equalsIgnoreCase("disableFSM")) {
+                FSM_ENABLED = false;
+                vTaskSuspend(nacelle.mainTaskDescriptions[0].pxHandle); // Suspend FSM task to reset state
+                ESP_LOGI(TAG, "Disabled FSM");
+            }
+            else if (command.equalsIgnoreCase("enableFSM")) {
+                FSM_ENABLED = true;
+                vTaskResume(nacelle.mainTaskDescriptions[0].pxHandle); // Resume FSM
+                ESP_LOGI(TAG, "Enabled FSM");
+            }
+            else if (command.equalsIgnoreCase("enablePID")) {
+                nacelle.pitchPIDController.enable(nacelle.currentRPM, PITCHING::POS_RUN_uS);
+                ESP_LOGI(TAG, "Enabled PID controller");
+            }
+            else if (command.equalsIgnoreCase("disablePID")) {
+                nacelle.pitchPIDController.disable();
+                ESP_LOGI(TAG, "Disabled PID controller");
+            }
+            else if (command.equalsIgnoreCase("updateSetpoint")){
+                setpoint = parts.tokens[1].toFloat();
+                nacelle.pitchPIDController.setTarget(setpoint);
+                ESP_LOGI(TAG, "Updated setpoint: %.2f", setpoint);
+            }
+            else if (command.equalsIgnoreCase("disableSafety")) {
+                // This is a bit of a hack, but it allows us to test the FSM without triggering safety conditions
+                nacelle.setEnableSafetyFlag(false);
+                ESP_LOGI(TAG, "Disabled safety (ESTOP)");
+            }
+             else if (command.equalsIgnoreCase("enableSafety")) {
+                // This is a bit of a hack, but it allows us to test the FSM without triggering safety conditions
+                nacelle.setEnableSafetyFlag(true);
+                ESP_LOGI(TAG, "Enabled safety (OVERSPEED ESTOP)");
+            }
+            else if (command.equalsIgnoreCase("help")) {
+                Serial.println("Available commands:");
+                Serial.println("  pid <Kp> <Ki> <Kd> - Set all PID constants");
+                Serial.println("  Kp <value> - Set Kp constant");
+                Serial.println("  Ki <value> - Set Ki constant");
+                Serial.println("  Kd <value> - Set Kd constant");
+                Serial.println("  position <value> - Set actuator position in microseconds");
+                Serial.println("  enableFSM - Enable the FSM task");
+                Serial.println("  disableFSM - Disable the FSM task");
+                Serial.println("  enablePID - Enable the PID controller");
+                Serial.println("  disablePID - Disable the PID controller");
+                Serial.println("  updateSetpoint <value> - Update the PID setpoint");
+                Serial.println("  enableSafety - Enable safety flag (ESTOP)");
+                Serial.println("  disableSafety - Disable safety flag (ESTOP)");x
+            }
+            else {
+                ESP_LOGE(TAG, "Unknown command: %s", command.c_str());
+            }
         }
+        else {
+            ESP_LOGE(TAG, "Invalid, no input received");
+        }     
+        
     }
+
 
   private:
     int baudRate;
+    NacelleContainer &nacelle;
     int position = 0;
-    float kp = 0.0f;
-    float ki = 0.0f;
-    float kd = 0.0f;
-    String command = "No Command";
+    bool FSM_ENABLED = true;
+    String command = "";
+    float Kp = 0.0f;
+    float Ki = 0.0f;
+    float Kd = 0.0f;
+    float setpoint = 0.0f;
 
     struct stringArray {
         String tokens[10]; // Max 10 tokens
