@@ -8,8 +8,6 @@
 
 //using TaskFunction = void (*)(void *);
 
-static SerialInterface *instance_;
-
 class SerialInterface {
   public:
     static constexpr const char *TAG = "serialInterface";
@@ -108,7 +106,7 @@ class SerialInterface {
                 Serial.println("  disablePID - Disable the PID controller");
                 Serial.println("  updateSetpoint <value> - Update the PID setpoint");
                 Serial.println("  enableSafety - Enable safety flag (ESTOP)");
-                Serial.println("  disableSafety - Disable safety flag (ESTOP)");x
+                Serial.println("  disableSafety - Disable safety flag (ESTOP)");
             }
             else {
                 ESP_LOGE(TAG, "Unknown command: %s", command.c_str());
@@ -122,6 +120,7 @@ class SerialInterface {
 
 
   private:
+    static SerialInterface *instance_;
     int baudRate;
     NacelleContainer &nacelle;
     int position = 0;
