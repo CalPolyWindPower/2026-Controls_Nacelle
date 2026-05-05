@@ -1,0 +1,1252 @@
+=========== Before Setup Start ===========
+Chip Info:
+------------------------------------------
+  Model             : ESP32-C5
+  Package           : 0
+  Revision          : 1.00
+  Cores             : 1
+  CPU Frequency     : 240 MHz
+  XTAL Frequency    : 48 MHz
+  Features Bitfield : 0x00000052
+  Embedded Flash    : No
+  Embedded PSRAM    : No
+  2.4GHz WiFi       : Yes
+  Classic BT        : No
+  BT Low Energy     : Yes
+  IEEE 802.15.4     : Yes
+------------------------------------------
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   252368 B ( 246.5 KB)
+  Free Bytes        :   220836 B ( 215.7 KB)
+  Allocated Bytes   :    28316 B (  27.7 KB)
+  Minimum Free Bytes:   215704 B ( 210.6 KB)
+  Largest Free Block:   196596 B ( 192.0 KB)
+------------------------------------------
+Flash Info:
+------------------------------------------
+  Chip Size         :  4194304 B (4 MB)
+  Block Size        :    65536 B (  64.0 KB)
+  Sector Size       :     4096 B (   4.0 KB)
+  Page Size         :      256 B (   0.2 KB)
+  Bus Speed         : 80 MHz
+  Flash Frequency   : 80 MHz (source: 80 MHz, divider: 1)
+  Bus Mode          : QIO
+------------------------------------------
+Partitions Info:
+------------------------------------------
+                nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+            otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+               app0 : addr: 0x00010000, size:  1280.0 KB, type:  APP, subtype: OTA_0
+               app1 : addr: 0x00150000, size:  1280.0 KB, type:  APP, subtype: OTA_1
+             spiffs : addr: 0x00290000, size:  1408.0 KB, type: DATA, subtype: SPIFFS
+           coredump : addr: 0x003F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+------------------------------------------
+Software Info:
+------------------------------------------
+  Compile Date/Time : May  2 2026 15:18:37
+  ESP-IDF Version   : v5.5.2-729-g87912cd291
+  Arduino Version   : 3.3.7
+------------------------------------------
+Board Info:
+------------------------------------------
+  Arduino Board     : DFRobot FireBeetle 2 ESP32-C5
+  Arduino Variant   : esp32c5
+  Core Debug Level  : 4
+  Arduino Runs Core : 0
+  Arduino Events on : 0
+  Arduino USB Mode  : 1
+  CDC On Boot       : 1
+============ Before Setup End ============
+[  1627][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 13 already has type USB_DM (38) with bus 0x4081e0a8
+[  1627][I][esp32-hal-periman.c:141] perimanSetPinBus(): Pin 14 already has type USB_DP (39) with bus 0x4081e0a8
+[  1627][I][main.cpp:76] setup(): [NaMa] Serial initialized
+[  1628][I][main.cpp:85] setup(): [NaMa] LED initialized
+[  1628][I][ActuonixL12.cpp:9] begin(): [AL12] Attaching on pin 3 (range 1230-1900 us)
+[  1628][W][ESP32Servo.cpp:84] attach(): [ESP32Servo] Attempting to Attach servo on pin=3 min=544 max=2400
+[  1629][D][esp32-hal-ledc.c:53] find_matching_timer(): Searching for timer with freq=50, resolution=10
+[  1629][D][esp32-hal-ledc.c:69] find_matching_timer(): No matching timer found for freq=50, resolution=10
+[  1629][D][esp32-hal-ledc.c:97] find_free_timer(): Found free timer 0
+[  1630][I][esp32-hal-ledc.c:288] ledcAttachChannel(): LEDC attached to pin 3 (channel 0, resolution 10)
+[  1630][I][ESP32PWM.cpp:530] attachPin(): [ESP32PWM] Pin Setup 3 with code 1
+[  1630][E][esp32-hal-ledc.c:206] ledcAttachChannel(): Pin 3 is already attached to LEDC (channel 0, resolution 10)
+[  1630][E][ESP32PWM.cpp:508] attachPin(): [ESP32PWM] ERROR PWM channel failed to configure on pin 3!
+[  1631][W][ESP32Servo.cpp:136] attach(): [ESP32Servo] Success to Attach servo : 3 on PWM 0
+[  1631][I][ActuonixL12.cpp:13] begin(): [AL12] Configuring feedback pin 2
+[  1643][E][esp32-hal-adc.c:208] __analogChannelConfig(): Pin is not configured as analog channel
+[  1644][I][main.cpp:96] setup(): [NaMa] Actuator Initialized
+[  1644][I][esp32-hal-i2c-ng.c:112] i2cInit(): Initializing I2C Master: num=0 sda=9 scl=10 freq=100000
+[  1645][E][Encoder.cpp:67] initialize(): [Enc] AS5600 init failed
+[  1645][E][main.cpp:106] setup(): [NaMa] Failed to initialize encoder
+[  2182][D][WiFiGeneric.cpp:821] setBandMode(): Switching Band Mode from 3 to 1
+[  2286][I][NacelleComms.cpp:74] begin(): [NCO] Device MAC: D0:CF:13:EA:4A:08
+[  2288][I][NacelleComms.cpp:127] setupPeer_(): [NCO] Peer added: EC:DA:3B:5B:03:D4
+[  2289][I][NacelleComms.cpp:108] begin(): [NCO] Nacelle ready
+[  2289][I][main.cpp:185] setup(): [NaMa] Setting up task: FSM
+[  2289][I][main.cpp:185] setup(): [NaMa] Setting up task: Poll
+[  2289][I][main.cpp:185] setup(): [NaMa] Setting up task: Ptch
+[  2290][I][main.cpp:316] vTaskPitch(): [NaMa] No pitch updates needed in state 2, supsending
+[  2290][I][main.cpp:185] setup(): [NaMa] Setting up task: Recv
+[  2290][I][main.cpp:185] setup(): [NaMa] Setting up task: Send
+[  2291][I][main.cpp:185] setup(): [NaMa] Setting up task: Cfg
+[  2291][I][main.cpp:185] setup(): [NaMa] Setting up task: LED
+[  2291][I][main.cpp:185] setup(): [NaMa] Setting up task: Log
+[  2291][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[  2292][E][main.cpp:217] setup(): [NaMa] Failed to enter a valid state
+[  2292][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[  2293][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	280		<1%
+loopTask       	32384		1%
+IDLE         [  2292][I][main.cpp:225] setup(): [NaMa] Setup complete!
+=========== After Setup Start ============
+INTERNAL Memory Info:
+------------------------------------------
+  Total Size        :   252368 B ( 246.5 KB)
+  Free Bytes        :   137200 B ( 134.0 KB)
+  	1660569		72%
+Send           	143		<1%
+Recv           	14		<1%
+LED            	20		<1%
+tiT            	106		<1%
+Cfg            	13		<1%
+Poll           	27		<1%
+arduino_events 	212		<1%
+esp_timer      	55308		2%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+wifi           	536873		23%
+Tmr Svc        	6		<1%
+
+  Allocated Bytes   :   108696 B ( 106.1 KB)
+  Minimum Free Bytes:   137052 B ( 133.8 KB)
+  Largest Free Block:   118772 B ( 116.0 KB)
+------------------------------------------
+GPIO Info:
+------------------------------------------
+  GPIO : BUS_TYPE[bus/unit][chan]
+  --------------------------------------  
+     2 : GPIO
+     3 : LEDC[0][0]
+     9 : I2C_MASTER_SDA[0]
+    10 : I2C_MASTER_SCL[0]
+    11 : UART_TX[0]
+    12 : UART_RX[0]
+    13 : USB_DM
+    14 : USB_DP
+    15 : GPIO
+============ After Setup End =============
+[  3295][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[  3295][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 296, F: 1752
+[  3295][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[  3296][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[  3296][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 556, F: 1492
+[  3296][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[  3296][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[  3297][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2560, F: 1536
+[  4297][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 129564 bytes
+[  5297][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 21 dC
+[  6309][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6309][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6309][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6310][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6310][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6310][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+[  6310][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+TaskPollSensors(): [NaMa] Timing not met!
+[  6331][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6331][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6331][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6332][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6332][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6332][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6332][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6332][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6333][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6333][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+[  6333][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+[  6333][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+[  6342][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6342][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6342][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6342][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+[  6350][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6351][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6351][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6351][E][main.cpp:293] vTaskPollSensors(): [NaMa] Timing not met!
+[  6351][E][main.cpp:391] vTaskSendData(): [NaMa] Timing not met!
+[  6352][D][esp32-hal-adc.c:341] __analogReadMilliVolts(): Creating cali handle for ADC_0
+[  6297][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1302
+[  7352][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[  8352][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[  9352][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 10352][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 10353][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 10353][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 10352][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 11354][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 000360, TxBS: 0000000, TxBF: 0006840, RxE: 000000, RxBS: 0000000
+[ 11354][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 000360, TxBS: 0000000, TxBF: 0006840, RxE: 000000, RxBS: 0000000
+[ 11354][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 31, TxBS/s: 0, TxBF/s: 224, RxE/s: 0, RxB/s: 0
+[ 11355][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 11355][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 11356][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	58713		<1%
+IDLE           	10225237		90%
+Send           	31269		<1%
+Recv           	469		<1%
+tiT            	2049		<1%
+Cfg            	71		<1%
+loopTask       	35144		<1%
+LED            	112		<1%
+Poll           	31503		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+esp_timer      	55695		<1%
+wifi           	908775		8%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+
+[ 12357][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 12357][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 12357][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 12357][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 12358][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 12358][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 12358][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 12358][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2608, F: 1488
+[ 13359][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 14359][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 23 dC
+[ 15359][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[ 16359][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 17359][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 18359][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 19359][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 19359][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 19360][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 19359][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 20361][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 001634, TxBS: 0021641, TxBF: 0009405, RxE: 000057, RxBS: 0000456
+[ 20361][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 001634, TxBS: 0021641, TxBF: 0009405, RxE: 000057, RxBS: 0000456
+[ 20361][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 141, TxBS/s: 18, TxBF/s: 284, RxE/s: 6, RxB/s: 50
+[ 20362][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 20362][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 20363][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	68113		<1%
+IDLE           	18820201		92%
+Send           	75728		<1%
+loopTask       	35232		<1%
+Recv           	985		<1%
+tiT            	3252		<1%
+Cfg            	129		<1%
+LED            	172		<1%
+Poll           	58050		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+wifi           	1220909		5%
+esp_timer      	72728		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+
+[ 21364][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 21364][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 21364][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 21364][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 21365][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 21365][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 21365][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 21366][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2608, F: 1488
+[ 22366][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 23366][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 22 dC
+[ 24366][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1300
+[ 25366][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 26366][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 27366][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 28366][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 28366][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 28367][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 28366][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 29367][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 003435, TxBS: 0055860, TxBF: 0009405, RxE: 000147, RxBS: 0001176
+[ 29367][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 003435, TxBS: 0055860, TxBF: 0009405, RxE: 000147, RxBS: 0001176
+[ 29367][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 29368][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 29368][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 29369][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	77062		<1%
+IDLE           	27449864		93%
+Send           	130159		<1%
+Recv           	1573		<1%
+loopTask       	35330		<1%
+LED            	262		<1%
+tiT            	4471		<1%
+Cfg            	181		<1%
+Poll           	84557		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+wifi           	1467888		4%
+esp_timer      	109151		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+
+[ 30370][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 30370][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 30370][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 30371][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 30371][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 30371][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 30371][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 30372][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2608, F: 1488
+[ 31372][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 32372][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 23 dC
+[ 33372][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1301
+[ 34372][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 35372][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 36372][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 37372][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 37372][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 37373][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 37372][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 38373][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 005236, TxBS: 0090079, TxBF: 0009405, RxE: 000237, RxBS: 0001896
+[ 38373][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 005236, TxBS: 0090079, TxBF: 0009405, RxE: 000237, RxBS: 0001896
+[ 38373][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 38374][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 38374][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 38375][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	86862		<1%
+IDLE           	36085511		94%
+Poll           	111191		<1%
+Recv           	2154		<1%
+loopTask       	35438		<1%
+tiT            	5697		<1%
+Cfg            	234		<1%
+LED            	332		<1%
+Send           	184569		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+wifi           	1705096		4%
+esp_timer      	149371		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+
+[ 39376][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 39376][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 39376][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 39377][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 39377][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 39377][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 39377][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 39378][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2608, F: 1488
+[ 40378][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 41378][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 23 dC
+[ 42378][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1299
+[ 43378][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 44378][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 45378][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 46378][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 46378][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 46379][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 46378][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 47379][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 007037, TxBS: 0124298, TxBF: 0009405, RxE: 000327, RxBS: 0002616
+[ 47379][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 007037, TxBS: 0124298, TxBF: 0009405, RxE: 000327, RxBS: 0002616
+[ 47379][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 47380][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 47380][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 47381][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	97802		<1%
+IDLE           	44729131		94%
+Send           	238896		<1%
+Recv           	2742		<1%
+loopTask       	35549		<1%
+tiT            	6919		<1%
+LED            	395		<1%
+Cfg            	288		<1%
+Poll           	137906		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+esp_timer      	191547		<1%
+wifi           	1932411		4%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+
+[ 48383][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 48383][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 48383][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 48383][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 48384][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 48384][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 48384][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 48385][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2608, F: 1488
+[ 49385][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 50385][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 24 dC
+[ 51385][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1298
+[ 52385][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 53385][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 54385][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 55385][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 55386][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 55386][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 55385][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 56387][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 008838, TxBS: 0158517, TxBF: 0009405, RxE: 000417, RxBS: 0003336
+[ 56387][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 008838, TxBS: 0158517, TxBF: 0009405, RxE: 000417, RxBS: 0003336
+[ 56387][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 56388][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 56388][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 56389][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	107722		<1%
+IDLE           	53352629		94%
+Recv           	3318		<1%
+Send           	293327		<1%
+loopTask       	35650		<1%
+tiT            	8149		<1%
+Cfg            	344		<1%
+LED            	502		<1%
+Poll           	164473		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+esp_timer      	232064		<1%
+wifi           	2183053		3%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+
+[ 57390][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 57390][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 57390][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 57391][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 57391][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 57391][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 57391][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 57392][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2608, F: 1488
+[ 58392][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 59392][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 24 dC
+[ 60392][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1301
+[ 61392][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 62392][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 63392][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 64392][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 64392][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 64393][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 64392][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 65394][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 010640, TxBS: 0192755, TxBF: 0009405, RxE: 000507, RxBS: 0004056
+[ 65394][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 010640, TxBS: 0192755, TxBF: 0009405, RxE: 000507, RxBS: 0004056
+[ 65394][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 65395][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 65395][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 65396][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	117932		<1%
+IDLE           	61983834		94%
+Send           	347886		<1%
+loopTask       	35774		<1%
+Recv           	3916		<1%
+tiT            	9407		<1%
+Cfg            	396		<1%
+LED            	559		<1%
+Poll           	191018		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+esp_timer      	273082		<1%
+wifi           	2424782		3%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+
+[ 66398][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 66398][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 66398][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 66398][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 66399][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 66399][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 66399][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 66400][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2656, F: 1440
+[ 67400][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 68400][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 24 dC
+[ 69400][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1298
+[ 70400][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 71400][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 72400][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 73400][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 73401][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 73401][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 73400][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 74402][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 012442, TxBS: 0226993, TxBF: 0009405, RxE: 000597, RxBS: 0004776
+[ 74402][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 012442, TxBS: 0226993, TxBF: 0009405, RxE: 000597, RxBS: 0004776
+[ 74403][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 74403][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 74403][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 74404][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	127980		<1%
+IDLE           	70623072		94%
+Poll           	217693		<1%
+Recv           	4497		<1%
+loopTask       	35879		<1%
+tiT            	10634		<1%
+LED            	623		<1%
+Cfg            	453		<1%
+Send           	402181		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+wifi           	2658547		3%
+esp_timer      	314899		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+
+[ 75406][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 75406][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 75406][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 75407][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 75407][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 75407][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 75407][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 75408][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2656, F: 1440
+[ 76408][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 77408][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 25 dC
+[ 78408][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1299
+[ 79408][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 80408][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 81408][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 82408][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 82408][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 82409][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 82408][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 83409][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 014243, TxBS: 0261212, TxBF: 0009405, RxE: 000687, RxBS: 0005496
+[ 83409][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 014243, TxBS: 0261212, TxBF: 0009405, RxE: 000687, RxBS: 0005496
+[ 83409][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 83410][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 83410][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 83411][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	138241		<1%
+IDLE           	79266683		95%
+Send           	456593		<1%
+Recv           	5080		<1%
+loopTask       	35990		<1%
+tiT            	11871		<1%
+Cfg            	507		<1%
+LED            	721		<1%
+Poll           	244356		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+esp_timer      	356721		<1%
+wifi           	2886825		3%
+FSM            	69		<1%
+Ptch           	287		<1%
+
+[ 84412][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 84412][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 84412][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 84413][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 84413][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 84413][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 84413][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 84414][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[ 85414][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 86414][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 25 dC
+[ 87414][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[ 88414][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 89414][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 90414][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[ 91414][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 91415][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 91415][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[ 91414][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[ 92416][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 016045, TxBS: 0295450, TxBF: 0009405, RxE: 000777, RxBS: 0006216
+[ 92416][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 016045, TxBS: 0295450, TxBF: 0009405, RxE: 000777, RxBS: 0006216
+[ 92416][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[ 92417][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[ 92417][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[ 92418][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	148419		<1%
+IDLE           	87914264		95%
+Send           	510876		<1%
+Recv           	5665		<1%
+loopTask       	36096		<1%
+tiT            	13098		<1%
+Cfg            	561		<1%
+LED            	784		<1%
+Poll           	271098		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+wifi           	3110887		3%
+esp_timer      	398766		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+
+[ 93419][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[ 93419][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[ 93419][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[ 93420][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[ 93420][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[ 93420][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[ 93420][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[ 93421][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[ 94421][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[ 95421][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 25 dC
+[ 96421][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1299
+[ 97421][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[ 98421][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[ 99421][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[100421][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[100422][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[100422][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[100421][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[101423][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 017846, TxBS: 0329669, TxBF: 0009405, RxE: 000867, RxBS: 0006936
+[101423][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 017846, TxBS: 0329669, TxBF: 0009405, RxE: 000867, RxBS: 0006936
+[101423][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[101424][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[101424][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[101425][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	158353		<1%
+IDLE           	96565672		95%
+Poll           	297774		<1%
+Recv           	6255		<1%
+loopTask       	36202		<1%
+tiT            	14330		<1%
+LED            	849		<1%
+Cfg            	614		<1%
+Send           	565206		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+wifi           	3331011		3%
+esp_timer      	441282		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+
+[102426][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[102426][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[102426][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[102427][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[102427][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[102427][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[102427][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[102428][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[103428][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[104428][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 26 dC
+[105428][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[106428][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[107428][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[108428][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[109428][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[109429][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[109429][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[109428][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[110430][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 019647, TxBS: 0363888, TxBF: 0009405, RxE: 000957, RxBS: 0007656
+[110430][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 019647, TxBS: 0363888, TxBF: 0009405, RxE: 000957, RxBS: 0007656
+[110430][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[110431][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[110431][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[110432][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	168675		<1%
+IDLE           	105199464		95%
+Send           	619806		<1%
+Recv           	6823		<1%
+loopTask       	36301		<1%
+tiT            	15564		<1%
+Cfg            	670		<1%
+LED            	944		<1%
+Poll           	324444		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+esp_timer      	479814		<1%
+wifi           	3572228		3%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+
+[111433][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[111433][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[111433][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[111433][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[111434][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[111434][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[111434][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[111435][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[112435][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[113435][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 26 dC
+[114435][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1296
+[115435][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[116435][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[117435][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[118435][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[118436][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[118436][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[118435][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[119437][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 021449, TxBS: 0398126, TxBF: 0009405, RxE: 001048, RxBS: 0008384
+[119437][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 021449, TxBS: 0398126, TxBF: 0009405, RxE: 001048, RxBS: 0008384
+[119437][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 10, RxB/s: 80
+[119438][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[119438][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[119439][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	177473		<1%
+IDLE           	113836686		95%
+Send           	674326		<1%
+Recv           	7404		<1%
+loopTask       	36401		<1%
+tiT            	16783		<1%
+Cfg            	724		<1%
+LED            	1003		<1%
+Poll           	351029		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+wifi           	3807461		3%
+esp_timer      	521207		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+
+[120440][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[120440][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[120440][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[120441][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[120441][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[120441][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[120441][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[120442][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[121442][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[122442][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 27 dC
+[123442][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1298
+[124442][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[125442][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[126442][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[127442][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[127442][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[127443][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[127442][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[128443][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 023250, TxBS: 0432345, TxBF: 0009405, RxE: 001138, RxBS: 0009104
+[128443][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 023250, TxBS: 0432345, TxBF: 0009405, RxE: 001138, RxBS: 0009104
+[128443][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[128444][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[128444][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[128445][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	187430		<1%
+IDLE           	122477123		95%
+Poll           	377623		<1%
+Recv           	7989		<1%
+loopTask       	36501		<1%
+tiT            	18050		<1%
+LED            	1070		<1%
+Cfg            	781		<1%
+Send           	728908		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+wifi           	4038065		3%
+esp_timer      	562915		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+
+[129446][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[129446][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[129446][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[129446][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[129447][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[129447][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[129447][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[129447][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[130448][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[131448][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 27 dC
+[132448][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1298
+[133448][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[134448][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[135448][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[136448][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[136448][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[136449][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[136448][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[137449][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 025051, TxBS: 0466564, TxBF: 0009405, RxE: 001228, RxBS: 0009824
+[137449][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 025051, TxBS: 0466564, TxBF: 0009405, RxE: 001228, RxBS: 0009824
+[137449][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[137450][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[137450][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[137451][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	198153		<1%
+IDLE           	131122562		95%
+Send           	783504		<1%
+Recv           	8577		<1%
+tiT            	19272		<1%
+loopTask       	36606		<1%
+Cfg            	836		<1%
+LED            	1165		<1%
+Poll           	404267		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+esp_timer      	604735		<1%
+wifi           	4263903		3%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+
+[138452][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[138452][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[138452][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[138452][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[138453][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[138453][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[138453][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[138453][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[139454][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[140454][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 27 dC
+[141454][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[142454][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[143454][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[144454][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[145454][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[145454][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[145455][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[145454][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[146456][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 026852, TxBS: 0500783, TxBF: 0009405, RxE: 001318, RxBS: 0010544
+[146456][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 026852, TxBS: 0500783, TxBF: 0009405, RxE: 001318, RxBS: 0010544
+[146456][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[146457][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[146457][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[146458][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	208227		<1%
+IDLE           	139771494		95%
+Send           	837934		<1%
+Recv           	9163		<1%
+tiT            	20516		<1%
+loopTask       	36721		<1%
+Cfg            	892		<1%
+LED            	1230		<1%
+Poll           	430916		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+esp_timer      	646024		<1%
+wifi           	4487343		3%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+
+[147459][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[147459][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[147459][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[147460][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[147460][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[147460][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[147460][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[147461][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[148461][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[149461][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[150461][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[151461][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[152461][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[153461][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[154461][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[154461][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[154462][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[154461][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[155462][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 028654, TxBS: 0535021, TxBF: 0009405, RxE: 001408, RxBS: 0011264
+[155462][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 028654, TxBS: 0535021, TxBF: 0009405, RxE: 001408, RxBS: 0011264
+[155462][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[155463][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[155463][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[155464][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	218242		<1%
+IDLE           	148419928		95%
+Poll           	457595		<1%
+Recv           	9752		<1%
+LED            	1290		<1%
+tiT            	21739		<1%
+loopTask       	36832		<1%
+Cfg            	945		<1%
+Send           	892345		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+wifi           	4709606		3%
+esp_timer      	688187		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+
+[156465][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[156465][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[156465][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[156466][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[156466][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[156466][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[156466][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[156467][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[157467][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[158467][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[159467][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[160467][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[161467][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[162467][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[163467][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[163468][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[163468][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[163467][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[164469][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 030455, TxBS: 0569240, TxBF: 0009405, RxE: 001498, RxBS: 0011984
+[164469][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 030455, TxBS: 0569240, TxBF: 0009405, RxE: 001498, RxBS: 0011984
+[164469][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[164470][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[164470][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[164471][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	228141		<1%
+IDLE           	157071419		95%
+Send           	946848		<1%
+Recv           	10339		<1%
+tiT            	22972		<1%
+loopTask       	36938		<1%
+Cfg            	999		<1%
+LED            	1402		<1%
+Poll           	484231		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+esp_timer      	730412		<1%
+wifi           	4929873		2%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+
+[165472][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[165472][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[165472][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[165473][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[165473][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[165473][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[165473][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[165474][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[166474][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[167474][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[168474][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[169474][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[170474][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[171474][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[172474][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[172474][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[172475][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[172474][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[173476][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 032256, TxBS: 0603459, TxBF: 0009405, RxE: 001588, RxBS: 0012704
+[173476][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 032256, TxBS: 0603459, TxBF: 0009405, RxE: 001588, RxBS: 0012704
+[173476][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[173477][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[173477][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[173478][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	238070		<1%
+IDLE           	165723731		95%
+Send           	1001474		<1%
+Recv           	10924		<1%
+tiT            	24193		<1%
+loopTask       	37057		<1%
+Cfg            	1054		<1%
+LED            	1461		<1%
+Poll           	510953		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+esp_timer      	772891		<1%
+wifi           	5148657		2%
+FSM            	69		<1%
+Ptch           	287		<1%
+
+[174479][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[174479][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[174479][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[174480][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[174480][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[174480][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[174480][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[174481][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[175481][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[176481][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[177481][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1295
+[178481][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[179481][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[180481][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[181481][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[181481][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[181482][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[181481][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[182483][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 034058, TxBS: 0637697, TxBF: 0009405, RxE: 001678, RxBS: 0013424
+[182483][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 034058, TxBS: 0637697, TxBF: 0009405, RxE: 001678, RxBS: 0013424
+[182483][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[182484][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[182484][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[182485][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	247480		<1%
+IDLE           	174375414		95%
+Poll           	537580		<1%
+Recv           	11512		<1%
+tiT            	25462		<1%
+LED            	1550		<1%
+loopTask       	37166		<1%
+Cfg            	1109		<1%
+Send           	1056027		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+wifi           	5367163		2%
+esp_timer      	815992		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+
+[183486][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[183486][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[183486][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[183486][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[183487][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[183487][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[183487][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[183488][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[184488][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[185488][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[186488][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1298
+[187488][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[188488][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[189488][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[190488][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[190488][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[190489][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[190488][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[191489][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 035859, TxBS: 0671916, TxBF: 0009405, RxE: 001768, RxBS: 0014144
+[191489][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 035859, TxBS: 0671916, TxBF: 0009405, RxE: 001768, RxBS: 0014144
+[191489][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[191490][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[191490][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[191491][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	258355		<1%
+IDLE           	183028795		95%
+Send           	1110405		<1%
+Recv           	12105		<1%
+tiT            	26689		<1%
+loopTask       	37287		<1%
+Cfg            	1162		<1%
+LED            	1624		<1%
+Poll           	564200		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+esp_timer      	859169		<1%
+wifi           	5583791		2%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+
+[192492][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[192492][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[192492][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[192493][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[192493][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[192493][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[192493][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 260, F: 252
+[192494][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[193494][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[194494][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[195494][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[196494][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[197494][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[198494][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[199494][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[199494][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[199495][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[199494][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[200496][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 037661, TxBS: 0706154, TxBF: 0009405, RxE: 001858, RxBS: 0014864
+[200496][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 037661, TxBS: 0706154, TxBF: 0009405, RxE: 001858, RxBS: 0014864
+[200496][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[200497][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[200497][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[200498][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	268449		<1%
+IDLE           	191682527		95%
+Send           	1164746		<1%
+Recv           	12690		<1%
+tiT            	27922		<1%
+loopTask       	37394		<1%
+Cfg            	1219		<1%
+LED            	1688		<1%
+Poll           	590952		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+wifi           	5800685		2%
+esp_timer      	902234		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+
+[201499][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[201499][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[201499][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[201499][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[201500][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[201500][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[201500][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 292, F: 220
+[201501][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[202501][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[203501][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[204501][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[205501][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[206501][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[207501][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[208501][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[208501][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[208502][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[208501][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[209502][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 039462, TxBS: 0740373, TxBF: 0009405, RxE: 001948, RxBS: 0015584
+[209502][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 039462, TxBS: 0740373, TxBF: 0009405, RxE: 001948, RxBS: 0015584
+[209502][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[209503][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[209503][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[209504][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	278363		<1%
+IDLE           	200338199		95%
+Poll           	617658		<1%
+Recv           	13282		<1%
+LED            	1780		<1%
+tiT            	29141		<1%
+loopTask       	37505		<1%
+Cfg            	1273		<1%
+Send           	1219178		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+wifi           	6014936		2%
+esp_timer      	945153		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+
+[210505][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[210505][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[210505][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[210506][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[210506][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[210506][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[210506][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 292, F: 220
+[210507][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[211507][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[212507][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[213507][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1295
+[214507][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[215507][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[216507][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[217507][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[217507][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[217508][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[217507][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[218509][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 041263, TxBS: 0774592, TxBF: 0009405, RxE: 002038, RxBS: 0016304
+[218509][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 041263, TxBS: 0774592, TxBF: 0009405, RxE: 002038, RxBS: 0016304
+[218509][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[218510][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[218510][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[218511][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	288268		<1%
+IDLE           	208977155		95%
+Send           	1273585		<1%
+Recv           	13863		<1%
+tiT            	30381		<1%
+loopTask       	37608		<1%
+Cfg            	1325		<1%
+LED            	1848		<1%
+Poll           	644227		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+esp_timer      	986724		<1%
+wifi           	6248584		2%
+FSM            	69		<1%
+Ptch           	287		<1%
+
+[219512][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[219512][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[219512][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[219513][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[219513][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[219513][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[219513][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 292, F: 220
+[219514][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[220514][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[221514][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 29 dC
+[222514][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[223514][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[224514][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[225514][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[226514][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[226514][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[226515][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[226514][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[227516][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 043065, TxBS: 0808830, TxBF: 0009405, RxE: 002128, RxBS: 0017024
+[227516][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 043065, TxBS: 0808830, TxBF: 0009405, RxE: 002128, RxBS: 0017024
+[227516][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 200, TxBS/s: 463, TxBF/s: 0, RxE/s: 9, RxB/s: 79
+[227517][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[227517][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[227518][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	298170		<1%
+IDLE           	217629602		95%
+Send           	1328070		<1%
+Recv           	14451		<1%
+tiT            	31608		<1%
+loopTask       	37729		<1%
+Cfg            	1377		<1%
+LED            	1910		<1%
+Poll           	670909		<1%
+arduino_events 	212		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+wifi           	6467281		2%
+esp_timer      	1029403		<1%
+Ptch           	287		<1%
+Tmr Svc        	6		<1%
+
+[228519][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[228519][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[228519][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[228519][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[228520][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[228520][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[228520][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 292, F: 220
+[228521][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[229521][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[230521][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[231521][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1295
+[232521][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[233521][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[234521][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[235521][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[235522][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[235522][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[235521][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
+[236523][I][main.cpp:634] vTaskLogData(): [NaMa] NCO: TxE: 044866, TxBS: 0843049, TxBF: 0009405, RxE: 002219, RxBS: 0017752
+[236523][I][main.cpp:635] vTaskLogData(): [NaMa] NCO: TxE: 044866, TxBS: 0843049, TxBF: 0009405, RxE: 002219, RxBS: 0017752
+[236523][I][main.cpp:652] vTaskLogData(): [NaMa] TxE/s: 199, TxBS/s: 461, TxBF/s: 0, RxE/s: 10, RxB/s: 80
+[236524][D][main.cpp:534] vTaskLogData(): [NaMa] Logging Data:
+[236524][I][main.cpp:539] vTaskLogData(): [NaMa] Num tasks reported by FreeRTOS: 16
+[236525][I][main.cpp:562] vTaskLogData(): [NaMa] Task Run Time Stats:
+Log            	308137		<1%
+IDLE           	226292930		95%
+Poll           	697583		<1%
+Recv           	15039		<1%
+tiT            	32840		<1%
+loopTask       	37832		<1%
+Cfg            	1429		<1%
+LED            	2015		<1%
+Send           	1382441		<1%
+sys_evt        	1108		<1%
+FSM            	69		<1%
+Ptch           	287		<1%
+wifi           	6675054		2%
+esp_timer      	1072108		<1%
+Tmr Svc        	6		<1%
+arduino_events 	212		<1%
+
+[237526][I][main.cpp:568] vTaskLogData(): [NaMa] T: FSM, U: 356, F: 156
+[237526][I][main.cpp:568] vTaskLogData(): [NaMa] T: Poll, U: 1624, F: 424
+[237526][I][main.cpp:568] vTaskLogData(): [NaMa] T: Ptch, U: 1620, F: 2476
+[237527][I][main.cpp:568] vTaskLogData(): [NaMa] T: Recv, U: 288, F: 1760
+[237527][I][main.cpp:568] vTaskLogData(): [NaMa] T: Send, U: 1676, F: 372
+[237527][I][main.cpp:568] vTaskLogData(): [NaMa] T: Cfg, U: 248, F: 776
+[237527][I][main.cpp:568] vTaskLogData(): [NaMa] T: LED, U: 292, F: 220
+[237528][I][main.cpp:568] vTaskLogData(): [NaMa] T: Log, U: 2704, F: 1392
+[238528][I][main.cpp:587] vTaskLogData(): [NaMa] Minimum free heap: 128656 bytes
+[239528][I][main.cpp:603] vTaskLogData(): [NaMa] Temperature: 28 dC
+[240528][I][main.cpp:616] vTaskLogData(): [NaMa] AL12: SP: 94238: RP: 1297
+[241528][I][main.cpp:619] vTaskLogData(): [NaMa] PID: lTus: 0x0098d3, oS: 0x0000, lI: 0000, iKp: 000000, iKi: 000000, iKd: 0, sP: 2200, e: 0
+[242528][I][main.cpp:622] vTaskLogData(): [NaMa] NC: RPM: 00000, SF: 0, PP: 0, SR: 1, TRE: 0
+[243528][I][main.cpp:625] vTaskLogData(): [NaMa] Current State: 2
+[244528][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[244529][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[244529][E][esp32-hal-i2c-ng.c:275] i2cWrite(): i2c_master_transmit failed: [259] ESP_ERR_INVALID_STATE
+[244528][I][main.cpp:628] vTaskLogData(): [NaMa] Enc: DS: 08, SD: 05, A: 0x36, D: 0, AGC: 008, MD: 000, MTS: 000, MTW: 000
