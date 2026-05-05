@@ -176,7 +176,7 @@ namespace RUN {
         TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz) // todo - change?
         TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
-        TI_RECV_ms = TI_FSM_mS, // CONFIG - 100 ms (10 Hz)
+        TI_RECV_ms = 50, // CONFIG - 100 ms (10 Hz)
         TI_SEND_ms =
             ENCODER::MEAS_TIME_DELTA_MS, // CONFIG - 5 - 10 ms (200 - 100 Hz)
         TI_CFG_ms = 1000,                // CONFIG - 1000 ms (1 Hz)

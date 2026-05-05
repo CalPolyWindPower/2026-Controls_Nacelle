@@ -344,8 +344,8 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
 
         if (true) { // todo - when to suspend?
             LoadboxPacket packet;
-            if (xQueueReceive(NacelleComms::priorityDataQueue, &packet, 0) ==
-                pdPASS) {
+            if (xQueueReceive(NacelleComms::priorityDataQueue, &packet,
+                              RUN::TASK_INTERVALS::TI_RECV_ms) == pdPASS) {
                 ESP_LOGV(TAG, "Received packet: safety=%u", packet.safety);
                 nacelle.d_mVPS = packet.d_mVPS;
                 nacelle.current_mA = packet.current_mA;
@@ -354,11 +354,12 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
                     static_cast<ESTOP_TYPE_FAST>(packet.safety));
             }
 
-            BaseType_t xWasDelayed = xTaskDelayUntil(
-                &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
-            if (xWasDelayed != pdTRUE) {
-                ESP_LOGE(TAG, "Timing not met!");
-            }
+            // BaseType_t xWasDelayed = xTaskDelayUntil(
+            //     &xLastWakeTime,
+            //     pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
+            // if (xWasDelayed != pdTRUE) {
+            //     ESP_LOGE(TAG, "Timing not met!");
+            // }
         } else {
             // Suspend until reenabled from interrupt
             // vTaskSuspend(mainTaskDescriptions[MAIN_TASK_IDS::TID_RECV].pxHandle);
