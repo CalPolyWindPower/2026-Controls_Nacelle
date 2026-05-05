@@ -57,10 +57,12 @@ class NacelleFSM {
      * an error occurred
      */
     UPDATE_RESULT updateState() {
+        ESP_LOGV(TAG, "Updating FSM from state: %d", currentState.load());
         // Check safety task / E-Stop conditions
         if ((currentState != FSMCommon::States::sESTOP) &&
             (nacelle.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
             // * -> sESTOP
+            ESP_LOGD(TAG, "* -> sESTOP");
             currentState = FSMCommon::States::sESTOP;
 
             // Blade pitch -> feather
@@ -74,6 +76,7 @@ class NacelleFSM {
         } else if ((currentState == FSMCommon::States::sESTOP) &&
                    (nacelle.getSafetyFlag() != ESTOP_TYPE_FAST::NONE)) {
             // sESTOP -> sESTOP: Nothing to do
+            ESP_LOGV(TAG, "Remaining in sESTOP");
             return UPDATE_RESULT::NO_CHANGE;
         } else {
             // else: ~safetyTask
@@ -83,19 +86,28 @@ class NacelleFSM {
         if ((currentState != FSMCommon::States::sRST) &&
             !nacelle.isPowerPositive()) {
             // * -> sRST
+            ESP_LOGD(TAG, "* -> sRST");
             currentState = FSMCommon::States::sRST;
 
             // Blade pitch -> cut in
+            ESP_LOGD(TAG, "Suspending pitch task, %p",
+                     nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+                         .pxHandle);
             vTaskSuspend(
                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
                     .pxHandle);
+            ESP_LOGD(TAG, "Disabling pitch PID");
             nacelle.pitchPIDController.disable();
+            ESP_LOGD(TAG, "Writing startup pitch position: %u us",
+                     PITCHING::POS_STARTUP_uS);
             nacelle.pitchActuator.writePosMicros(PITCHING::POS_STARTUP_uS);
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRST) &&
                    !nacelle.isPowerPositive()) {
             // sRST -> sRST: Nothing to do
+            // nacelle.pitchActuator.writePosMicros(
+            //     PITCHING::POS_STARTUP_uS); // todo test
             return UPDATE_RESULT::NO_CHANGE;
         } else {
             // else: producingPositivePower or maybe just still starting up
