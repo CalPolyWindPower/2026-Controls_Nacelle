@@ -78,10 +78,10 @@ bool NacelleComms::begin() {
                  MACAddress[4], MACAddress[5]);
     }
 
-    if (!WiFi.STA.bandwidth(WIFI_BW_HT20)) {
-        ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
-        return false;
-    }
+    // if (!WiFi.STA.bandwidth(WIFI_BW_HT20)) {
+    //     ESP_LOGE(TAG, "Failed to set WiFi bandwidth");
+    //     return false;
+    // }
 
     if (WiFi.setChannel(wiFiChannel) != ESP_OK) {
         ESP_LOGE(TAG, "Failed to set WiFi channel");
