@@ -123,7 +123,7 @@ namespace Encoder {
 
         etl::format_spec decFormatB;
         (void)decFormatB.width(3).fill('0');                       // [3 chars]
-        etl::to_string(DATASET_SIZE, logString, decFormatB, true); // 3 chars
+        etl::to_string(as5600.readAGC(), logString, decFormatB, true); // 3 chars
         (void)logString.append(", MD: ");                          // 6 chars
 
         boolFormatA.binary().width(1).fill('0'); // [1 char]
