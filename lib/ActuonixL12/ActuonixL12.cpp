@@ -30,6 +30,7 @@ void ActuonixL12::writePosMicros(int us) {
         ESP_LOGD(TAG, "Command %d us", clamped);
     }
 
+    ESP_LOGD(TAG, "Writing %d us to servo on pin %d", clamped, pin_);
     servo_.writeMicroseconds(clamped);
 }
 
