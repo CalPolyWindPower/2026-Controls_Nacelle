@@ -94,6 +94,7 @@ void setup() {
     static bool actuatorInitialized = false;
     if (!actuatorInitialized) {
         pitchActuator.begin();
+        nacelle.pitchActuator.writePosMicros(PITCHING::POS_STARTUP_uS);
         actuatorInitialized = true;
         ESP_LOGI(TAG, "Actuator Initialized");
     }
@@ -189,7 +190,7 @@ void setup() {
                 ESP_LOGW(TAG, "Stack size not word aligned");
             }
             // Syntax: xTaskCreate(Task function, Name of the task (for
-            // debugging), Stack size (in words, not bytes), Task input
+            // debugging), Stack size (in bytes, not words), Task input
             // parameter, Priority of the task, Task handle)
             BaseType_t result = xTaskCreate(
                 taskDesc.function, taskDesc.name, taskDesc.stackSize_bytes,
@@ -198,13 +199,15 @@ void setup() {
                 ESP_LOGE(TAG, "Failed to create task %s", taskDesc.name);
             } else {
                 taskDesc.initialized = true;
-                ESP_LOGV(TAG,
+                ESP_LOGI(TAG,
                          "Created task %s with priority %u and stack "
                          "size %u bytes",
                          taskDesc.name, taskDesc.priority,
                          taskDesc.stackSize_bytes);
             }
         }
+        vTaskResume(nacelle.mainTaskDescriptions[NacelleContainer::TID_FSM]
+                        .pxHandle); // FIXME
 
         NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
         if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
@@ -244,8 +247,11 @@ void setup() {
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
+        ESP_LOGV(TAG, "Updating FSM");
 
         NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
+        ESP_LOGV(TAG, "FSM Update Result: %d",
+                 static_cast<uint_fast8_t>(result));
         if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
             ESP_LOGI(TAG, "FSM State Changed: %d",
                      nacelleFSM.getCurrentState());
@@ -254,8 +260,11 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGE(TAG, "Error updating FSM state");
         } else {
             // No change, nothing to log
+            ESP_LOGV(TAG, "No FSM change: %d", nacelleFSM.getCurrentState());
         }
 
+        ESP_LOGV(TAG, "FSM Update Done");
+        // delay(RUN::TASK_INTERVALS::TI_FSM_mS);
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_FSM_mS));
         if (xWasDelayed != pdTRUE) {
