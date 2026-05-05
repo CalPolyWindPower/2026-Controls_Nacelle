@@ -9,7 +9,7 @@ class ActuonixL12 {
   public: // MARK: Public
     static constexpr const char *TAG = "AL12";
     static constexpr std::pair<uint_fast16_t, uint_fast16_t> FEEDBACK_RANGE_mV =
-        {0, 3300};
+        {2643, 407};
     static constexpr std::pair<uint_fast16_t, uint_fast16_t> PULSE_RANGE_us = {
         1000, 2000};
 
