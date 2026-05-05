@@ -29,6 +29,7 @@
 #include "NacelleFSM.hpp"
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
+#include "SerialInterface.hpp"
 
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
@@ -64,17 +65,18 @@ PID pitchPIDController = PID( // todo
 NacelleContainer nacelle(pitchActuator, pitchPIDController, nacelleComms);
 NacelleFSM nacelleFSM(nacelle);
 
+SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle);
 /**
  * MARK: Setup
  * @details put your setup code here, to run once:
  */
 void setup() {
+
     // Configure Hardware
-    static bool serialInitialized = false;
-    if (!serialInitialized) {
-        Serial.begin(WTbCommonConfig::SERIAL_BAUD);
-        ESP_LOGI(TAG, "Serial initialized");
-        serialInitialized = true;
+    static bool serialInterfaceInitialized = false;
+    if (!serialInterfaceInitialized) {
+        serialInterface.begin();
+        serialInterfaceInitialized = true;
     }
 
     static bool LEDInitialized = false;

@@ -151,7 +151,7 @@ class NacelleContainer {
      */
     etl::string<LOG_STRING_SIZE> getLogString() {
         etl::string<LOG_STRING_SIZE> logString(TAG); // 3 chars
-        (void)logString.append(": RPM: ");           // 7 chars
+        (void)logString.append(": RPM: "); // 7 chars
 
         etl::format_spec decFormatA;
         (void)decFormatA.width(5).fill('0'); // [5 chars]
@@ -178,6 +178,7 @@ class NacelleContainer {
 
         etl::format_spec boolFormatA;
         boolFormatA.binary().width(1).fill('0'); // [1 char]
+        etl::to_string(getSafetyFlag(), logString, boolFormatA, true); // 1 char
         (void)logString.append(", PP: ");        // 6 chars, 1 char \/
         etl::to_string(isPowerPositive(), logString, boolFormatA, true);
         (void)logString.append(", SR: ");                            // 6 chars
@@ -189,13 +190,22 @@ class NacelleContainer {
     }
 
     inline void setSafetyFlag(ESTOP_TYPE_FAST safetyFlag) {
-        this->safetyFlag = safetyFlag;
+        if (enableSafetyFlag) {
+            this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+        }
+        else {
+            this->safetyFlag = safetyFlag;
+        }
+        
     }
     inline void updatePowerPositive(bool powerPositive) {
         this->powerPositive = powerPositive;
     }
 
+    inline void setEnableSafetyFlag(bool enable) { this->enableSafetyFlag = enable; }
+
   private:
     std::atomic<ESTOP_TYPE_FAST> safetyFlag = ESTOP_TYPE_FAST::NONE;
     bool powerPositive = false;
+    bool enableSafetyFlag = true;
 };
