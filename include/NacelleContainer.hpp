@@ -133,11 +133,17 @@ class NacelleContainer {
     ~NacelleContainer() = default;
 
     inline ESTOP_TYPE_FAST getSafetyFlag() const { return safetyFlag; }
-    inline bool isPowerPositive() const { return powerPositive; }
+    inline bool isPowerPositive() const {
+        return true;
+        // return powerPositive;
+    }
     /**
      * @deprecated Apparently we don't need to check this
      */
-    inline bool isSteadyRPM() const { return angularAccel_RPMPS < 20; } // todo
+    inline bool isSteadyRPM() const {
+        return true;
+        // return angularAccel_RPMPS < 20;
+    } // todo
     inline bool isTargetRPMExceeded() const {
         return (currentRPM > ENCODER::TARGET_RPM);
     }
@@ -188,12 +194,53 @@ class NacelleContainer {
         return logString;
     }
 
-    inline void setSafetyFlag(ESTOP_TYPE_FAST safetyFlag) {
-        if (enableSafetyFlag) {
+    void setSafetyFlag(ESTOP_TYPE_FAST safetyFlag) {
+        // Debug
+        if (!enableSafetyFlag) {
+            // Don't use safety flag
             this->safetyFlag = ESTOP_TYPE_FAST::NONE; // todo ?
-        } else {
-            this->safetyFlag = safetyFlag;
+            return;
         }
+
+        // E-stop button
+        if (safetyFlag == ESTOP_TYPE_FAST::BUTTON) {
+            this->safetyFlag = ESTOP_TYPE_FAST::BUTTON;
+            return;
+        }
+
+        // Load disconnect - inferred from low current
+        if (safetyFlag == ESTOP_TYPE_FAST::LOAD_DISCONNECT_I) {
+            ESP_LOGW(TAG, "Ignoring power-based safety flag");
+        }
+
+        // todo: Fix RPM/s calc
+        // Load disconnect - inferred from high acceleration
+        // static uint_fast16_t loadDisconnectCount = 0;
+        // if (currentRPM > (ENCODER::TARGET_RPM * 0.22f) && // 500
+        //     angularAccel_RPMPS > 500) {
+        //     // A high acceleration indicates a load disconnect
+        //     loadDisconnectCount++;
+        //     if (loadDisconnectCount > 50) {
+        //         this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT_E;
+        //     }
+        //     return;
+        // } else if (this->safetyFlag == ESTOP_TYPE_FAST::LOAD_DISCONNECT_E &&
+        //            currentRPM < (ENCODER::TARGET_RPM * 0.05f)) {
+        //     loadDisconnectCount = 0;
+        //     this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+        //     return;
+        // }
+        // todo: check current limit, hysteresis
+
+        // Unset E-stop button
+        if (this->safetyFlag == ESTOP_TYPE_FAST::BUTTON &&
+            safetyFlag == ESTOP_TYPE_FAST::NONE) {
+            this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+            return;
+        }
+
+        // Else: No estop needed
+        // ESP_LOGE(TAG, "Unexpectedly reached end of SF decision tree");
     }
     inline void updatePowerPositive(bool powerPositive) {
         this->powerPositive = powerPositive;
