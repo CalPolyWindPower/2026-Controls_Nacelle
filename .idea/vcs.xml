@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demos/ActuatorDemo/src/ESP32Servo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/demos/NacelleDemo/src/ESP32Servo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/2026-Controls_Core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/ESP32Servo" vcs="Git" />
+  </component>
+</project>
