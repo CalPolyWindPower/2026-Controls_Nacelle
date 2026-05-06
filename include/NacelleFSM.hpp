@@ -83,8 +83,9 @@ class NacelleFSM {
         }
 
         // Check reset conditions
+        ESP_LOGV(TAG, "Checking reset conditions");
         if ((currentState != FSMCommon::States::sRST) &&
-            !nacelle.isPowerPositive()) {
+            (nacelle.currentRPM < 200)) { // todo isPowerPositive didn't work
             // * -> sRST
             ESP_LOGD(TAG, "* -> sRST");
             currentState = FSMCommon::States::sRST;
@@ -104,7 +105,8 @@ class NacelleFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRST) &&
-                   !nacelle.isPowerPositive()) {
+                   (nacelle.currentRPM <
+                    200)) { // todo isPowerPositive didn't work
             // sRST -> sRST: Nothing to do
             // nacelle.pitchActuator.writePosMicros(
             //     PITCHING::POS_STARTUP_uS); // todo test
@@ -114,6 +116,7 @@ class NacelleFSM {
         }
 
         // Check other transition conditions
+        // ESP_LOGD(TAG, "Checking other transition conditions");
         if ((currentState == FSMCommon::States::sRST) &&
             (nacelle.currentRPM > ENCODER::START_RUN_2_RPM)) {
             // sRST -> sStartRun
@@ -169,6 +172,7 @@ class NacelleFSM {
             return UPDATE_RESULT::NO_CHANGE;
         }
 
+        ESP_LOGE(TAG, "Reached end of updateState");
         return UPDATE_RESULT::ERROR;
     }
 
