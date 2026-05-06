@@ -89,7 +89,7 @@ namespace LED {
 } // namespace LED
 
 namespace ENCODER {
-    constexpr uint_fast16_t START_RUN_2_RPM = 500; // CONFIG
+    constexpr uint_fast16_t START_RUN_2_RPM = 200; // CONFIG
     constexpr uint_fast16_t TARGET_RPM = 2200;     // CONFIG
     constexpr uint_fast16_t MAX_RPM = 3000;        // CONFIG
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / CONSTS::SECS_PER_MIN;
@@ -156,7 +156,7 @@ namespace PITCHING {
     //     PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG
     //     //todo
     constexpr uint_fast16_t POS_STARTUP_uS = 1540; // CONFIG //todo
-    constexpr uint_fast16_t POS_RUN_uS = 1640;     // CONFIG //todo
+    constexpr uint_fast16_t POS_RUN_uS = 1650;     // CONFIG //todo
 
     // constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
     //     PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
