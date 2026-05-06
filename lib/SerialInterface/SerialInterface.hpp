@@ -29,6 +29,7 @@ class SerialInterface {
     void parse() {
         String line = Serial.readStringUntil('\n');
         line.trim();
+        ESP_LOGI(TAG, "%s", line.c_str());
         stringArray parts = split(line, ' ');
         
         if (parts.count > 0) {
@@ -133,7 +134,7 @@ class SerialInterface {
 
     struct stringArray {
         String tokens[10]; // Max 10 tokens
-        int count;
+        int count = 0;
     };
 
     /**
