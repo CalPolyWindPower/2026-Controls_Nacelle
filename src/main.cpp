@@ -62,6 +62,8 @@ SyncedClock netClock(adapterESPNow);               // todo
 NacelleComms nacelleComms;
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
 #    error "UHCI COMMS_STRATEGY not implemented yet"
+#else
+#    error "Invalid COMMS_STRATEGY"
 #endif
 
 ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
@@ -69,11 +71,11 @@ ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
                           PITCHING::SERVO_MIN_uS_2026,
                           PITCHING::SERVO_MAX_uS_2026);
 
-PID pitchPIDController = PID( // todo
-    {PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd},
+PID pitchPIDController = PID(
+    /* Gains */ {PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd},
     /* Setpoint */ ENCODER::TARGET_RPM,
-    PID::ProportionalMode::ProportionalOnMeas,
-    {PITCHING::SERVO_MIN_uS_2026, PITCHING::SERVO_MAX_uS_2026},
+    /* Mode */ PID::ProportionalMode::ProportionalOnMeas,
+    /* Limits */ {PITCHING::SERVO_MIN_uS_2026, PITCHING::SERVO_MAX_uS_2026},
     /* Min Sample Time */ 0,
     /* Direction */ PID::Direction::DIRECT, "PC");
 
@@ -125,74 +127,81 @@ void setup() {
         }
     }
 
-    // Configure New ESP-NOW + WiFI implementation
+// Configure New ESP-NOW + WiFI implementation
 
-    // Configure WiFi
-    // static bool wifiInitialized = false;
-    // if (!wifiInitialized) {
-    //     digitalWrite(LED::PIN,
-    //                  LOW); // Will take a while, so turn off the LED
-    //     uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
-    //     digitalWrite(LED::PIN, HIGH);
-    //     ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
-    //     if (adapterWLAN.begin(optimalChannel)) {
-    //         ESP_LOGI(TAG, "WiFi initialized");
-    //         wifiInitialized = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to initialize WiFi");
-    //     }
-    // }
-    // digitalWrite(LED::PIN, LOW);
+// Configure WiFi
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+    static bool wifiInitialized = false;
+    if (!wifiInitialized) {
+        digitalWrite(LED::PIN,
+                     LOW); // Will take a while, so turn off the LED
+        uint8_t optimalChannel = adapterWLAN.identifyOptimalChannel();
+        digitalWrite(LED::PIN, HIGH);
+        ESP_LOGI(TAG, "Optimal WiFi Channel: %d", optimalChannel);
+        if (adapterWLAN.begin(optimalChannel)) {
+            ESP_LOGI(TAG, "WiFi initialized");
+            wifiInitialized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize WiFi");
+        }
+    }
+    digitalWrite(LED::PIN, LOW);
+#endif
 
     // Configure ESP-NOW
     static bool espNowInitalized = false;
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+    if (!espNowInitalized) {
+        if (adapterESPNow.begin()) {
+            ESP_LOGI(TAG, "ESP-NOW initialized.");
+            espNowInitalized = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
+        }
+    }
+    digitalWrite(LED::PIN, HIGH);
+
+    // Configure ESP-NOW Peers
+    static bool peerRegistered = false;
+    if (!peerRegistered) {
+        if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
+            ESP_LOGI(TAG, "Registered peer");
+            peerRegistered = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to register peer");
+        }
+    }
+    digitalWrite(LED::PIN, LOW);
+
+    // Sync Time // FIXME! - Load accesses fault - DONE?
+    static bool timeSynced = false;
+    if (!timeSynced) {
+        if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
+            ESP_LOGI(TAG, "Time sync initialized successfully");
+            timeSynced = true;
+        } else {
+            ESP_LOGE(TAG, "Failed to initialize time sync");
+        }
+    }
+    digitalWrite(LED::PIN, HIGH);
+
+    // Print MAC Address // todo - verify
+    ESP_LOGI(
+        TAG, "MAC Address: %s",
+        AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
+    digitalWrite(LED::PIN, LOW);
+
+    // TODO: Check ESP-NOW impl against last years
+    // TODO: Configure response handler, load server
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
     if (nacelleComms.begin()) {
         espNowInitalized = true;
     } else {
         ESP_LOGE(TAG, "Failed to initialize NacelleComms");
     }
-    // if (!espNowInitalized) {
-    //     if (adapterESPNow.begin()) {
-    //         ESP_LOGI(TAG, "ESP-NOW initialized.");
-    //         espNowInitalized = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
-    //     }
-    // }
-    // digitalWrite(LED::PIN, HIGH);
-
-    // Configure ESP-NOW Peers
-    // static bool peerRegistered = false;
-    // if (!peerRegistered) {
-    //     if (adapterESPNow.registerPeer(WTbNetConfig::LOAD_MAC)) {
-    //         ESP_LOGI(TAG, "Registered peer");
-    //         peerRegistered = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to register peer");
-    //     }
-    // }
-    // digitalWrite(LED::PIN, LOW);
-
-    // Sync Time // FIXME! - Load accesses fault - DONE?
-    // static bool timeSynced = false;
-    // if (!timeSynced) {
-    //     if (netClock.initTimeSync(WTbNetConfig::LOAD_MAC)) {
-    //         ESP_LOGI(TAG, "Time sync initialized successfully");
-    //         timeSynced = true;
-    //     } else {
-    //         ESP_LOGE(TAG, "Failed to initialize time sync");
-    //     }
-    // }
-    // digitalWrite(LED::PIN, HIGH);
-
-    // Print MAC Address // todo - verify
-    // ESP_LOGI(
-    //     TAG, "MAC Address: %s",
-    // AdapterWLAN::formatMACAddress(adapterWLAN.getMACAddress()).c_str());
-    // digitalWrite(LED::PIN, LOW);
-
-    // TODO: Check ESP-NOW impl against last years
-    // TODO: Configure response handler, load server
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    error "UHCI COMMS_STRATEGY not implemented yet"
+#endif
 
     digitalWrite(LED::PIN, LOW);
 

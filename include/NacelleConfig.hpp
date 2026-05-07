@@ -165,8 +165,8 @@ namespace PITCHING {
     // todo: Ftarget rpm var
 
     /* PID Config */
-    constexpr float PITCH_Kp = 0.127f; // CONFIG - 0.005f last year
-    constexpr float PITCH_Ki = 0.000f; // CONFIG - 0.001f last year
+    constexpr float PITCH_Kp = 0.127f; // CONFIG - 0.005f last year // TODO
+    constexpr float PITCH_Ki = 0.000f; // CONFIG - 0.001f last year // TODO
     constexpr float PITCH_Kd = 0.0f;
 } // namespace PITCHING
 
@@ -176,7 +176,7 @@ namespace RUN {
         TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz) // todo - change?
         TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
-        TI_RECV_ms = 50, // CONFIG - 100 ms (10 Hz)
+        TI_RECV_ms = 50,        // CONFIG - 100 ms (10 Hz)
         TI_SEND_ms =
             ENCODER::MEAS_TIME_DELTA_MS, // CONFIG - 5 - 10 ms (200 - 100 Hz)
         TI_CFG_ms = 1000,                // CONFIG - 1000 ms (1 Hz)
