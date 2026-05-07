@@ -330,7 +330,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             // Calculate deltas
             unsigned long currentTime = micros();
             int_fast32_t deltaRPM = nacelle.currentRPM - lastRPM; // dY
-            // ESP_LOGD(TAG, "deltaRPM: %ld", deltaRPM);
+            ESP_LOGV(TAG, "deltaRPM: %ld", deltaRPM);
             int_fast32_t deltaTime_us = currentTime - previousTime; // dT
 
             // Calculate acceleration and perform unit conversion
@@ -384,7 +384,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         } else if (nacelleFSM.getCurrentState() ==
                    FSMCommon::States::sCurtail) {
             auto pidOutput = static_cast<uint_fast16_t>(
-                pitchPIDController.compute(nacelle.currentRPM)); // todo - input
+                pitchPIDController.compute(nacelle.currentRPM)); // DONE - input
             ESP_LOGI(TAG, "PID Output: %u", pidOutput);
             pitchActuator.writePosMicros(pidOutput);
         } else {
@@ -416,7 +416,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
-        if (true) { // todo - when to suspend?
+        if (true) { // DONE - when to suspend?: Maybe never, just let it block
             LoadboxPacket packet;
             if (xQueueReceive(NacelleComms::priorityDataQueue, &packet,
                               RUN::TASK_INTERVALS::TI_RECV_ms) == pdPASS) {
@@ -610,7 +610,9 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
 
         ESP_LOGD(TAG, "Logging Data:");
 
-        // ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+        ESP_LOGI(TAG, "Time: %llu", SyncedClock::getSystemTimer());
+#endif
 
         // Free RTOS Stats
         ESP_LOGI(TAG, "Num tasks reported by FreeRTOS: %u",
@@ -620,8 +622,6 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         constexpr uint_fast8_t NUM_ESP_TASKS = 8;
         constexpr uint_fast16_t STATS_BUFFER_SIZE =
             REC_BYTES_PER_TASK * (NUM_MAIN_TASKS + NUM_ESP_TASKS);
-        // char statsBuffer[STATS_BUFFER_SIZE] = {'\0'}; // Frowned on
-        // by sonar lint:
         etl::string<STATS_BUFFER_SIZE> statsBuffer = {'\0'};
         if (uxTaskGetNumberOfTasks() > NUM_MAIN_TASKS + NUM_ESP_TASKS) {
             ESP_LOGE(TAG,
@@ -687,8 +687,10 @@ constexpr uint32_t LOG_ITEM_INTERVAL_MS =
         // esp_wifi_get_bandwidth
         // esp_wifi_sta_get_rssi
 
-        // ESP_LOGI(TAG, "%s", netClock.getLogString().c_str());
-        // delay(LOG_ITEM_INTERVAL_MS);
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+        ESP_LOGI(TAG, "%s", netClock.getLogString().c_str());
+        delay(LOG_ITEM_INTERVAL_MS);
+#endif
 
         ESP_LOGI(TAG, "%s", pitchActuator.getLogString().c_str());
         delay(LOG_ITEM_INTERVAL_MS);
