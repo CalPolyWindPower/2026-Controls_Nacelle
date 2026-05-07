@@ -230,8 +230,12 @@ void setup() {
                          taskDesc.stackSize_bytes);
             }
         }
-        vTaskResume(nacelle.mainTaskDescriptions[NacelleContainer::TID_FSM]
-                        .pxHandle); // FIXME
+
+        // TODO: This works, but perhaps the FSM should be initalized last to
+        // prevent it from disabling itself.  Or maybe the scheduler should be
+        // suspended while adding tasks, but that could be risky.
+        vTaskResume(
+            nacelle.mainTaskDescriptions[NacelleContainer::TID_FSM].pxHandle);
 
         NacelleFSM::UPDATE_RESULT result = nacelleFSM.updateState();
         if (result == NacelleFSM::UPDATE_RESULT::ERROR) {
@@ -239,7 +243,8 @@ void setup() {
             ESP_LOGE(TAG, "Error during FSM init., %d",
                      static_cast<uint_fast8_t>(result));
         } else if (result == NacelleFSM::UPDATE_RESULT::STATE_CHANGED) {
-            // FIXME: Apparently this is always true
+            // PVS-Studio: Apparently this is always true, which I guess is a
+            // good thing and means it was programmed correctly
             ESP_LOGI(TAG, "Initialized FSM to state %d",
                      static_cast<uint_fast8_t>(nacelleFSM.getCurrentState()));
         } else if (result == NacelleFSM::UPDATE_RESULT::NO_CHANGE) {
@@ -288,7 +293,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
         }
 
         ESP_LOGV(TAG, "FSM Update Done");
-        // delay(RUN::TASK_INTERVALS::TI_FSM_mS);
+
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_FSM_mS));
         if (xWasDelayed != pdTRUE) {
