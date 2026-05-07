@@ -12,8 +12,8 @@
 #include <etl/to_string.h>
 
 // Custom Includes
-#include "../../include/NacelleConfig.hpp"
 #include "AS5600.h"
+#include "NacelleConfig.hpp"
 
 /**
  * @namespace Encoder

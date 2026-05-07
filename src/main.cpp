@@ -12,6 +12,7 @@
 
 // Project Includes
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
+#include "2026Core/Units.hpp"
 #include "ActuonixL12.hpp"
 #include "Encoder.hpp"
 #include "NacelleComms.hpp"
@@ -310,37 +311,57 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
 [[noreturn]] void
 vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+        // Save last wake time to ensure consistent timing
         static TickType_t xLastWakeTime = xTaskGetTickCount();
-        static unsigned long previousTime = 0;
-        static etl::circular_buffer<int_fast32_t, 20> accelSamples;
-        static int_fast32_t accelSum = 0;
-        unsigned long currentTime = micros();
 
         // Poll encoder & update stored value
-        // todo: back off and retry if not working
-        int_fast32_t lastRPM = nacelle.currentRPM;        // Save
-        Encoder::getRpmMovingAverage(nacelle.currentRPM); // Update
-        int_fast32_t deltaRPM = nacelle.currentRPM - lastRPM;
-        // ESP_LOGD(TAG, "deltaRPM: %ld", deltaRPM);
-        int_fast32_t deltaTime_us = currentTime - previousTime;
-        constexpr unsigned long m_TO_BASE = 1000;
-        constexpr unsigned long u_TO_m = 1000;
-        constexpr unsigned long u_TO_BASE = m_TO_BASE * u_TO_m;
-        int_fast32_t accelSample_RPMPS = static_cast<int_fast32_t>(deltaRPM) *
-                                         static_cast<int_fast32_t>(u_TO_BASE) /
-                                         deltaTime_us;
+        // TODO: back off and retry if not working
+        Encoder::getRpmMovingAverage(nacelle.currentRPM); // Update RPM
 
-        if (accelSamples.full()) {
-            accelSum -= accelSamples.front();
-            accelSamples.pop();
+        // Reduce the update speed of acceleration to reduce noise
+        static uint_fast16_t RPMSamplesTaken = 0;
+
+        // Wait until the filter history has been refreshed
+        if (RPMSamplesTaken >= ENCODER::FILTER_HISTORY_SIZE) {
+            static unsigned long previousTime = 0;
+            // The first deltaRPM will be 0 instead of (current - 0)
+            static int_fast32_t lastRPM = nacelle.currentRPM;
+
+            // Calculate deltas
+            unsigned long currentTime = micros();
+            int_fast32_t deltaRPM = nacelle.currentRPM - lastRPM; // dY
+            // ESP_LOGD(TAG, "deltaRPM: %ld", deltaRPM);
+            int_fast32_t deltaTime_us = currentTime - previousTime; // dT
+
+            // Calculate acceleration and perform unit conversion
+            // (RPM / t us) * (10^6 us / 1 s) = (RPM / 1 s)
+            int_fast32_t accelSample_RPMPS =
+                deltaRPM * static_cast<int_fast32_t>(UNITS::MICROS_PER_SEC) /
+                deltaTime_us;
+
+            // Filter - moving average
+            static etl::circular_buffer<int_fast32_t,
+                                        ENCODER::FILTER_HISTORY_SIZE>
+                accelSamples;
+            static int_fast32_t accelSum = 0;
+            if (accelSamples.full()) {
+                accelSum -= accelSamples.front();
+                accelSamples.pop();
+            }
+            accelSamples.push(accelSample_RPMPS);
+            accelSum += accelSample_RPMPS;
+
+            nacelle.angularAccel_RPMPS =
+                accelSum / static_cast<int_fast32_t>(accelSamples.size());
+
+            // Save current time
+            previousTime = currentTime;
+
+            // Reset counter
+            RPMSamplesTaken = 0;
         }
-        accelSamples.push(accelSample_RPMPS);
-        accelSum += accelSample_RPMPS;
 
-        nacelle.angularAccel_RPMPS = static_cast<int_fast32_t>(
-            accelSum / static_cast<int_fast32_t>(accelSamples.size()));
-        previousTime = currentTime;
-
+        // Run at a fixed frequency
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime,
             pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS));

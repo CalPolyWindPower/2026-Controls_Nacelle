@@ -122,9 +122,10 @@ namespace Encoder {
         (void)logString.append(", AGC: ");
 
         etl::format_spec decFormatB;
-        (void)decFormatB.width(3).fill('0');                       // [3 chars]
-        etl::to_string(as5600.readAGC(), logString, decFormatB, true); // 3 chars
-        (void)logString.append(", MD: ");                          // 6 chars
+        (void)decFormatB.width(3).fill('0'); // [3 chars]
+        etl::to_string(as5600.readAGC(), logString, decFormatB,
+                       true);             // 3 chars
+        (void)logString.append(", MD: "); // 6 chars
 
         boolFormatA.binary().width(1).fill('0'); // [1 char]
         etl::to_string(as5600.detectMagnet(), logString, decFormatB,

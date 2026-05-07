@@ -6,7 +6,9 @@
 static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 
 // Imports
+#include "2026Core/Units.hpp"
 #include <cstdint>
+
 #define ESP32C5 1
 #define BOARD ESP32C5
 #if not(BOARD == ESP32C5)
@@ -68,13 +70,6 @@ namespace FR_FIREBEETLE2_ESP32C6 {
     constexpr uint_fast8_t LPUART_RX_PIN = LP_RX;
 } // namespace FR_FIREBEETLE2_ESP32C6
 
-// MARK: Constants
-namespace CONSTS {
-    constexpr uint_fast32_t MILLIS_PER_SEC = 1000;
-    constexpr uint_fast32_t SECS_PER_MIN = 60;
-    constexpr uint_fast16_t uVOLTS_PER_VOLT = 1'000'000;
-} // namespace CONSTS
-
 // Mark: Application
 namespace LED {
     /**
@@ -85,14 +80,14 @@ namespace LED {
     // constexpr uint_fast32_t BLINK_OFF_SECS = 3;
     constexpr uint_fast32_t BLINK_OFF_MILLIS = 3500;
     // constexpr uint_fast32_t LED_BLINK_ON_SEC = 1;
-    constexpr uint_fast32_t BLINK_ON_MILLIS = CONSTS::MILLIS_PER_SEC / 3;
+    constexpr uint_fast32_t BLINK_ON_MILLIS = UNITS::MILLIS_PER_SEC / 3;
 } // namespace LED
 
 namespace ENCODER {
     constexpr uint_fast16_t START_RUN_2_RPM = 200; // CONFIG
     constexpr uint_fast16_t TARGET_RPM = 2200;     // CONFIG
     constexpr uint_fast16_t MAX_RPM = 3000;        // CONFIG
-    constexpr uint_fast8_t MAX_RPS = MAX_RPM / CONSTS::SECS_PER_MIN;
+    constexpr uint_fast8_t MAX_RPS = MAX_RPM / UNITS::SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
     constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS = MIN_T_mS_PER_REV / 4;
     // static_assert(SAMPLE_DELAY_MS == OPTIMAL_SAMPLE_TIME_mS,
@@ -125,7 +120,7 @@ namespace ENCODER {
     constexpr uint_fast16_t MAX_RATED_RPM = 3500;           // CONFIG
     constexpr uint_fast16_t MOTOR_kV_RPMPV = 107;
     constexpr uint_fast16_t MOTOR_IkV_RPSPuV =
-        CONSTS::uVOLTS_PER_VOLT * CONSTS::SECS_PER_MIN / MOTOR_kV_RPMPV;
+        UNITS::uVOLTS_PER_VOLT * UNITS::SECS_PER_MIN / MOTOR_kV_RPMPV;
 } // namespace ENCODER
 
 namespace PITCHING {
@@ -188,8 +183,8 @@ namespace RUN {
     // todo: What was this for?
     // constexpr uint_fast32_t SLEEP_TIME_MINS = 10;
     // constexpr uint_fast32_t SLEEP_TIME_SECS = SLEEP_TIME_MINS *
-    // CONSTS::SECS_PER_MIN; constexpr uint_fast32_t SLEEP_TIME_MILLIS =
-    //     SLEEP_TIME_SECS * CONSTS::MILLIS_PER_SEC;
+    // UNITS::SECS_PER_MIN; constexpr uint_fast32_t SLEEP_TIME_MILLIS =
+    //     SLEEP_TIME_SECS * UNITS::MILLIS_PER_SEC;
 } // namespace RUN
 
 namespace TELNET {
