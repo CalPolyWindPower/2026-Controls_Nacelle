@@ -9,28 +9,37 @@
 // Library Includes
 #include <Arduino.h>
 #include <etl/circular_buffer.h>
-// #include <PID_v1.h>
 
 // Project Includes
-#include "NacelleConfig.hpp"
-// #include "2026Core/Net/Net-Application/Telnet.hpp"
-// #include "2026Core/Net/NetAdapter_A.hpp"
-// #include "2026Core/Net/NetAdapter_ FA.hpp"
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
-#include "2026Core/Net/Net-Application/NTP.hpp"
-// #include "2026Core/Net/Net-Application/OTA.hpp"
-#include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
-// #include "2026Core/Net/Net-Link/AdapterUHCI.hpp" // NOSONAR
-#include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
-#include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include "ActuonixL12.hpp"
 #include "Encoder.hpp"
 #include "NacelleComms.hpp"
+#include "NacelleConfig.hpp"
 #include "NacelleContainer.hpp"
 #include "NacelleFSM.hpp"
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
 #include "SerialInterface.hpp"
+
+#define COMMS_STRATEGY_OLD 0
+#define COMMS_STRATEGY_NEW 1
+#define COMMS_STRATEGY_UHCI 2
+#define COMMS_STRATEGY COMMS_STRATEGY_NEW
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+#    include "2026Core/Net/Net-Application/NTP.hpp"
+#    include "2026Core/Net/Net-Application/OTA.hpp"
+#    include "2026Core/Net/Net-Application/Telnet.hpp"
+#    include "2026Core/Net/Net-Link/AdapterESPNow.hpp"
+#    include "2026Core/Net/Net-Phy/AdapterWLAN.hpp"
+#    include "2026Core/Net/NetAdapter_A.hpp"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#    include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+#else
+#    error "Invalid COMMS_STRATEGY"
+#endif
 
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
@@ -42,13 +51,18 @@ static constexpr const char *TAG = "NaMa";
 
 // MARK:  Global Objects
 
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+AdapterWLAN adapterWLAN = AdapterWLAN();
+AdapterWLAN adapterWLAN;
+AdapterESPNow adapterESPNow = AdapterESPNow();
+AdapterESPNow adapterESPNow;
+SyncedClock netClock = SyncedClock(adapterESPNow); // todo
+SyncedClock netClock(adapterESPNow);               // todo
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 NacelleComms nacelleComms;
-// AdapterWLAN adapterWLAN = AdapterWLAN();
-// AdapterWLAN adapterWLAN;
-// AdapterESPNow adapterESPNow = AdapterESPNow();
-// AdapterESPNow adapterESPNow;
-// SyncedClock netClock = SyncedClock(adapterESPNow); // todo
-// SyncedClock netClock(adapterESPNow); // todo
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    error "UHCI COMMS_STRATEGY not implemented yet"
+#endif
 
 ActuonixL12 pitchActuator(FR_FIREBEETLE2_ESP32C6::ACTUATOR_PWM_PIN,
                           FR_FIREBEETLE2_ESP32C6::ACTUATOR_FB_PIN,
