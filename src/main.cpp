@@ -378,9 +378,13 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
-        if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartRun ||
-            nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
+        if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartRun) {
+            //nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
             // Fine
+            for (int i = PITCHING::POS_STARTUP_uS; i < PITCHING::POS_RUN_uS; i += 10) {
+                nacelle.pitchActuator.writePosMicros(i);
+                delay(220);
+            }
         } else if (nacelleFSM.getCurrentState() ==
                    FSMCommon::States::sCurtail) {
             auto pidOutput = static_cast<uint_fast16_t>(

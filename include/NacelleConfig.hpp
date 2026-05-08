@@ -150,8 +150,8 @@ namespace PITCHING {
     // constexpr uint_fast8_t BLADE_PITCH_STARTUP_DEG =
     //     PITCH_CUTIN_ANGLE_DEG;                                  // CONFIG
     //     //todo
-    constexpr uint_fast16_t POS_STARTUP_uS = 1540; // CONFIG //todo
-    constexpr uint_fast16_t POS_RUN_uS = 1650;     // CONFIG //todo
+    constexpr uint_fast16_t POS_STARTUP_uS = 1600; // CONFIG //todo
+    constexpr uint_fast16_t POS_RUN_uS = 1740;     // CONFIG //todo
 
     // constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
     //     PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
