@@ -124,11 +124,11 @@ class NacelleFSM {
 
             // Pitch -> Adjust (fine) // TODO: Check on this
             // Pitch task already disabled
-            // vTaskResume(
-            //     nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
-            //         .pxHandle);
+            vTaskResume(
+                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+                     .pxHandle);
             // PID is already disabled
-            nacelle.pitchActuator.writePosMicros(PITCHING::POS_RUN_uS);
+            //nacelle.pitchActuator.writePosMicros(PITCHING::POS_RUN_uS);
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sStartRun) &&
                    (nacelle.isSteadyRPM())) { // todo

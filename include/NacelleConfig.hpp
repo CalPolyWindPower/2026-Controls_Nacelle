@@ -155,7 +155,7 @@ namespace PITCHING {
 
     // constexpr uint_fast8_t BLADE_PITCH_STOP_DEG =
     //     PITCH_MAX_ANGLE_DEG; // Feather - CONFIG //todo
-    constexpr uint_fast16_t POS_STOP_uS = SERVO_MIN_uS_2026; // Feather - CONFIG
+    constexpr uint_fast16_t POS_STOP_uS = 1390; // Feather - CONFIG
 
     // todo: Ftarget rpm var
 
