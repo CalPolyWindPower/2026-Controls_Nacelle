@@ -210,7 +210,8 @@ class NacelleContainer {
 
         // Load disconnect - inferred from low current
         if (safetyFlag == ESTOP_TYPE_FAST::LOAD_DISCONNECT_I) {
-            ESP_LOGW(TAG, "Ignoring power-based safety flag");
+            this->safetyFlag = ESTOP_TYPE_FAST::LOAD_DISCONNECT_I;
+            return;
         }
 
         // todo: Fix RPM/s calc
@@ -234,6 +235,18 @@ class NacelleContainer {
 
         // Unset E-stop button
         if (this->safetyFlag == ESTOP_TYPE_FAST::BUTTON &&
+            safetyFlag == ESTOP_TYPE_FAST::NONE) {
+            this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+            return;
+        }
+
+        if (this->safetyFlag == ESTOP_TYPE_FAST::LOAD_DISCONNECT_I &&
+            safetyFlag == ESTOP_TYPE_FAST::NONE) {
+            this->safetyFlag = ESTOP_TYPE_FAST::NONE;
+            return;
+        }
+
+        if (this->safetyFlag == ESTOP_TYPE_FAST::LOAD_DISCONNECT_E &&
             safetyFlag == ESTOP_TYPE_FAST::NONE) {
             this->safetyFlag = ESTOP_TYPE_FAST::NONE;
             return;
