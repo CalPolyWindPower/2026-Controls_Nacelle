@@ -85,7 +85,7 @@ namespace LED {
 
 namespace ENCODER {
     constexpr uint_fast16_t START_RUN_2_RPM = 200; // CONFIG
-    constexpr uint_fast16_t TARGET_RPM = 2200;     // CONFIG
+    inline uint_fast16_t TARGET_RPM = 2200;     // CONFIG
     constexpr uint_fast16_t MAX_RPM = 3000;        // CONFIG
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / UNITS::SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
@@ -160,9 +160,11 @@ namespace PITCHING {
     // todo: Ftarget rpm var
 
     /* PID Config */
-    constexpr float PITCH_Kp = 0.127f; // CONFIG - 0.005f last year // TODO
+    constexpr float PITCH_Kp = 0.08f; // CONFIG - 0.005f last year // TODO
     constexpr float PITCH_Ki = 0.000f; // CONFIG - 0.001f last year // TODO
     constexpr float PITCH_Kd = 0.0f;
+
+    inline bool enableRpmOutput = false; // CONFIG - whether to output RPM to log
 } // namespace PITCHING
 
 namespace RUN {
@@ -170,7 +172,7 @@ namespace RUN {
     enum TASK_INTERVALS : uint_fast32_t {
         TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz) // todo - change?
-        TI_PITCH_mS = 10,       // CONFIG - 10 ms (100 Hz)
+        TI_PITCH_mS = 100,       // CONFIG - 10 ms (100 Hz)
         TI_RECV_ms = 50,        // CONFIG - 100 ms (10 Hz)
         TI_SEND_ms =
             ENCODER::MEAS_TIME_DELTA_MS, // CONFIG - 5 - 10 ms (200 - 100 Hz)

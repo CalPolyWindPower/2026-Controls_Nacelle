@@ -5,16 +5,16 @@
 #include "NacelleTasks.hpp"
 #include "NacelleContainer.hpp"
 #include "NacelleConfig.hpp"
-
 //using TaskFunction = void (*)(void *);
 
 class SerialInterface {
   public:
     static constexpr const char *TAG = "serialInterface";
 
-    SerialInterface(int baudRate_, NacelleContainer &nacelle)
+    SerialInterface(int baudRate_, NacelleContainer &nacelle, NacelleFSM &nacelleFSM)
         : baudRate(baudRate_),
-          nacelle(nacelle) {
+          nacelle(nacelle),
+          nacelleFSM(nacelleFSM) {
     }
 
     void begin() {
@@ -31,7 +31,7 @@ class SerialInterface {
         line.trim();
         ESP_LOGI(TAG, "%s", line.c_str());
         stringArray parts = split(line, ' ');
-        
+
         if (parts.count > 0) {
             command = parts.tokens[0];
             if (command.equalsIgnoreCase("pid")) {
@@ -94,6 +94,19 @@ class SerialInterface {
                 nacelle.setEnableSafetyFlag(true);
                 ESP_LOGI(TAG, "Enabled safety (OVERSPEED ESTOP)");
             }
+            else if (command.equalsIgnoreCase("enableRpmOutput")) {
+                PITCHING::enableRpmOutput = true;
+                ESP_LOGI(TAG, "Enabled RPM output to log");
+            }
+            else if (command.equalsIgnoreCase("disableRpmOutput")) {
+                PITCHING::enableRpmOutput = false;
+                ESP_LOGI(TAG, "Disabled RPM output to log");
+
+            }
+            else if (command.equalsIgnoreCase("setPower")) {
+                nacelleFSM.setPower(parts.tokens[1].toFloat());
+                ESP_LOGI(TAG, "Updated power: %.2f", nacelleFSM.power);
+            }
             else if (command.equalsIgnoreCase("help")) {
                 Serial.println("Available commands:");
                 Serial.println("  pid <Kp> <Ki> <Kd> - Set all PID constants");
@@ -124,6 +137,7 @@ class SerialInterface {
     static SerialInterface *instance_;
     int baudRate;
     NacelleContainer &nacelle;
+    NacelleFSM &nacelleFSM;
     int position = 0;
     bool FSM_ENABLED = true;
     String command = "";

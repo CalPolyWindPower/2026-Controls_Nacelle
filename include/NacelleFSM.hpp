@@ -15,6 +15,8 @@
 class NacelleFSM {
   public: // MARK: Public
     static constexpr const char *TAG = "NFSM";
+    float power = 0;
+    float targetPower = 38; // W
 
     /**
      * @brief Construct a new Nacelle FSM object
@@ -146,7 +148,10 @@ class NacelleFSM {
                    nacelle.isTargetRPMExceeded()) {
             // sRunLoad -> sCurtail
             currentState = FSMCommon::States::sCurtail;
-
+            
+            vTaskResume(
+                 nacelle.mainTaskDescriptions[NacelleContainer::TID_PITCH]
+                     .pxHandle);
             // Pitch is already set to adjust (fine), which will detect the new
             // state (PI)
             nacelle.pitchPIDController.enable(
@@ -157,23 +162,49 @@ class NacelleFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sCurtail) &&
-                   !nacelle.isTargetRPMExceeded()) {
+                   nacelle.isTargetRPMExceededHysteresis()) {
+
+            constexpr float POWER_TOLERANCE = 0.06f;
+            constexpr int_fast16_t RPM_STEP = 40;
+
+            float dPower = power - targetPower;
+
+            if ((dPower) >  POWER_TOLERANCE * targetPower) {
+                nacelle.pitchPIDController.setTarget(ENCODER::TARGET_RPM - RPM_STEP); // todo adjust decrement amount
+                ENCODER::TARGET_RPM = ENCODER::TARGET_RPM - RPM_STEP; // todo adjust decrement amount
+                ESP_LOGI(TAG, "Decreasing target RPM to %u due to overpower condition", ENCODER::TARGET_RPM);
+            }
+            else if (dPower < -POWER_TOLERANCE * targetPower) {
+                nacelle.pitchPIDController.setTarget(ENCODER::TARGET_RPM + RPM_STEP); // todo adjust increment amount
+                ENCODER::TARGET_RPM = ENCODER::TARGET_RPM + RPM_STEP; // todo adjust increment amount
+                ESP_LOGI(TAG, "Increasing target RPM to %u due to underpower condition", ENCODER::TARGET_RPM);
+            }
+            else {
+                nacelle.pitchPIDController.disable();
+                ESP_LOGI(TAG, "Power within acceptable range, PID disabled");
+            }
             // sCurtail -> sRunLoad
-            currentState = FSMCommon::States::sRunLoad;
+            //currentState = FSMCommon::States::sRunLoad;
 
             // Pitch is already set to adjust (PI), which will detect the new
             // state (fine)
-            nacelle.pitchPIDController.disable();
+
+            //nacelle.pitchPIDController.disable();
+
             // DONE: signal load (unset targetRPMExceeded)
             // Load will be sent RPM info elsewhere
-
-            return UPDATE_RESULT::STATE_CHANGED;
+            return UPDATE_RESULT::NO_CHANGE;
+            //return UPDATE_RESULT::STATE_CHANGED;
         } else {
             return UPDATE_RESULT::NO_CHANGE;
         }
 
         ESP_LOGE(TAG, "Reached end of updateState");
         return UPDATE_RESULT::ERROR;
+    }
+
+    void setPower(float power) {
+        this->power = power;
     }
 
   private:                     // MARK: Private

@@ -7,11 +7,13 @@
 #include <etl/format_spec.h>
 #include <etl/string.h>
 #include <etl/to_string.h>
+#include <cstdlib>  // or <cmath>
 
 // Custom Includes
 #include "NacelleComms.hpp"
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
+
 
 /**
  * @brief Class to manage the container for nacelle data
@@ -148,6 +150,27 @@ class NacelleContainer {
         return (currentRPM > ENCODER::TARGET_RPM);
     }
 
+
+    // checks if the rpm has been in a steady state (within tolerance) for a certain duration
+    bool isTargetRPMExceededHysteresis()  {
+        const TickType_t now = xTaskGetTickCount();
+        if (std::abs(static_cast<int32_t>(currentRPM) -
+             static_cast<int32_t>(ENCODER::TARGET_RPM)) < steadyRpmTolerance) {
+            if (initialTime != 0) {
+                if ((now - initialTime) >= pdMS_TO_TICKS(MIN_STEADY_STATE_DURATION_MS)) {
+                    return true;
+                }
+            }
+            else {
+                initialTime = xTaskGetTickCount();
+            }
+        }
+        else {
+            initialTime = 0;
+        }
+        return false;
+    }
+
     static constexpr uint_fast8_t LOG_STRING_SIZE =
         3 + 7 + 5 + 10 + 5 + ((6 + 1) * 3) + 7 + 1 +
         1; // TODO - improve this and null terminator may not be needed
@@ -267,4 +290,7 @@ class NacelleContainer {
     std::atomic<ESTOP_TYPE_FAST> safetyFlag = ESTOP_TYPE_FAST::NONE;
     bool powerPositive = false;
     bool enableSafetyFlag = true;
+    TickType_t initialTime = 0;
+    constexpr static uint32_t MIN_STEADY_STATE_DURATION_MS = 5000; // 5 seconds
+    constexpr static uint8_t steadyRpmTolerance = 20; // RPM tolerance for steady state check
 };

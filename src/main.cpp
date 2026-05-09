@@ -83,7 +83,7 @@ PID pitchPIDController = PID(
 NacelleContainer nacelle(pitchActuator, pitchPIDController, nacelleComms);
 NacelleFSM nacelleFSM(nacelle);
 
-SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle);
+SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle, nacelleFSM);
 /**
  * MARK: Setup
  * @details put your setup code here, to run once:
@@ -276,6 +276,10 @@ void setup() {
 [[noreturn]] void
 vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
     while (true) {
+
+        if (PITCHING::enableRpmOutput) {
+            Serial.println(nacelle.currentRPM);
+        }
         static TickType_t xLastWakeTime = xTaskGetTickCount();
         ESP_LOGV(TAG, "Updating FSM");
 
@@ -390,7 +394,14 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             auto pidOutput = static_cast<uint_fast16_t>(
                 pitchPIDController.compute(nacelle.currentRPM)); // DONE - input
             ESP_LOGI(TAG, "PID Output: %u", pidOutput);
-            pitchActuator.writePosMicros(pidOutput);
+            //pitchActuator.writePosMicros(pidOutput);
+            if (pidOutput >= PITCHING::SERVO_MIN_uS_2026 &&
+                pidOutput <= PITCHING::SERVO_MAX_uS_2026) {
+                ESP_LOGI(TAG, "PID Output: %.1f", pidOutput);
+                pitchActuator.writePosMicros(static_cast<int>(pidOutput));
+            } else {
+                ESP_LOGW(TAG, "PID skipped/invalid output: %.1f", pidOutput);
+            }
         } else {
             // No updates needed
             ESP_LOGI(TAG, "No pitch updates needed in state %d, supsending",
@@ -406,6 +417,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_PITCH_mS));
         if (xWasDelayed != pdTRUE) {
             ESP_LOGE(TAG, "Timing not met!");
+            xLastWakeTime = xTaskGetTickCount();
         }
     }
 }
