@@ -15,8 +15,8 @@
 class NacelleFSM {
   public: // MARK: Public
     static constexpr const char *TAG = "NFSM";
-    float power = 0;
-    float targetPower = 38; // W
+    uint32_t targetPower_mW = 27000; // mW
+    constexpr static int_fast16_t CURTAIL_EXIT_RPM_TOLERANCE = 400; // RPM tolerance for exiting curtailment, prevents oscillation
 
     /**
      * @brief Construct a new Nacelle FSM object
@@ -145,7 +145,7 @@ class NacelleFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRunLoad) &&
-                   nacelle.isTargetRPMExceeded()) {
+                   nacelle.isTargetPowerExceeded(targetPower_mW)) { // todo
             // sRunLoad -> sCurtail
             currentState = FSMCommon::States::sCurtail;
             
@@ -164,17 +164,17 @@ class NacelleFSM {
         } else if ((currentState == FSMCommon::States::sCurtail) &&
                    nacelle.isTargetRPMExceededHysteresis()) {
 
-            constexpr float POWER_TOLERANCE = 0.06f;
+            constexpr float POWER_TOLERANCE = 0.05f;
             constexpr int_fast16_t RPM_STEP = 40;
 
-            float dPower = power - targetPower;
+            float powerError = nacelle.power_mW - targetPower_mW; // only checks once, noise could mess this up
 
-            if ((dPower) >  POWER_TOLERANCE * targetPower) {
+            if ((powerError) >=  POWER_TOLERANCE * targetPower_mW) {
                 nacelle.pitchPIDController.setTarget(ENCODER::TARGET_RPM - RPM_STEP); // todo adjust decrement amount
                 ENCODER::TARGET_RPM = ENCODER::TARGET_RPM - RPM_STEP; // todo adjust decrement amount
                 ESP_LOGI(TAG, "Decreasing target RPM to %u due to overpower condition", ENCODER::TARGET_RPM);
             }
-            else if (dPower < -POWER_TOLERANCE * targetPower) {
+            else if (powerError <= (-1) * POWER_TOLERANCE * targetPower_mW) {
                 nacelle.pitchPIDController.setTarget(ENCODER::TARGET_RPM + RPM_STEP); // todo adjust increment amount
                 ENCODER::TARGET_RPM = ENCODER::TARGET_RPM + RPM_STEP; // todo adjust increment amount
                 ESP_LOGI(TAG, "Increasing target RPM to %u due to underpower condition", ENCODER::TARGET_RPM);
@@ -183,6 +183,12 @@ class NacelleFSM {
                 nacelle.pitchPIDController.disable();
                 ESP_LOGI(TAG, "Power within acceptable range, PID disabled");
             }
+
+            if (nacelle.currentRPM < ENCODER::TARGET_RPM - CURTAIL_EXIT_RPM_TOLERANCE) {
+                currentState = FSMCommon::States::sRunLoad;
+                ESP_LOGI(TAG, "Current RPM below target RPM, transitioning back to sRunLoad");
+            }
+
             // sCurtail -> sRunLoad
             //currentState = FSMCommon::States::sRunLoad;
 
@@ -203,8 +209,8 @@ class NacelleFSM {
         return UPDATE_RESULT::ERROR;
     }
 
-    void setPower(float power) {
-        this->power = power;
+    void setTargetPower(float targetPower_mW) {
+        this->targetPower_mW = targetPower_mW;
     }
 
   private:                     // MARK: Private

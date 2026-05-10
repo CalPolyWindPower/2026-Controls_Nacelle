@@ -85,7 +85,7 @@ namespace LED {
 
 namespace ENCODER {
     constexpr uint_fast16_t START_RUN_2_RPM = 200; // CONFIG
-    inline uint_fast16_t TARGET_RPM = 2200;     // CONFIG
+    inline uint_fast16_t TARGET_RPM = 3200;     // CONFIG
     constexpr uint_fast16_t MAX_RPM = 3000;        // CONFIG
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / UNITS::SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
@@ -160,8 +160,8 @@ namespace PITCHING {
     // todo: Ftarget rpm var
 
     /* PID Config */
-    constexpr float PITCH_Kp = 0.08f; // CONFIG - 0.005f last year // TODO
-    constexpr float PITCH_Ki = 0.000f; // CONFIG - 0.001f last year // TODO
+    constexpr float PITCH_Kp = 0.35f; // CONFIG - 0.005f last year // TODO
+    constexpr float PITCH_Ki = 0.03f; // CONFIG - 0.001f last year // TODO
     constexpr float PITCH_Kd = 0.0f;
 
     inline bool enableRpmOutput = false; // CONFIG - whether to output RPM to log

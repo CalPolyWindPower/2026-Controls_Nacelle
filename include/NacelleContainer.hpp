@@ -127,6 +127,7 @@ class NacelleContainer {
     std::atomic<int16_t> d_mVPS = 0;
     std::atomic<int16_t> current_mA = 0;
     std::atomic<int16_t> dIPS = 0;
+    std::atomic<int16_t> power_mW = 0;
 
     NacelleContainer(ActuonixL12 &pitchActuator, PID &pitchPIDController,
                      NacelleComms &nacelleComms)
@@ -146,10 +147,14 @@ class NacelleContainer {
         return true;
         // return angularAccel_RPMPS < 20;
     } // todo
+
+    inline bool isTargetPowerExceeded(float targetPower_mW) {
+        return (power_mW > targetPower_mW);
+    }
+
     inline bool isTargetRPMExceeded() const {
         return (currentRPM > ENCODER::TARGET_RPM);
     }
-
 
     // checks if the rpm has been in a steady state (within tolerance) for a certain duration
     bool isTargetRPMExceededHysteresis()  {
@@ -158,6 +163,7 @@ class NacelleContainer {
              static_cast<int32_t>(ENCODER::TARGET_RPM)) < steadyRpmTolerance) {
             if (initialTime != 0) {
                 if ((now - initialTime) >= pdMS_TO_TICKS(MIN_STEADY_STATE_DURATION_MS)) {
+                    ESP_LOGI(TAG, "Target RPM exceeded hysteresis condition met. Current RPM: %d, Target RPM: %d", currentRPM.load(), ENCODER::TARGET_RPM);
                     return true;
                 }
             }
@@ -291,6 +297,6 @@ class NacelleContainer {
     bool powerPositive = false;
     bool enableSafetyFlag = true;
     TickType_t initialTime = 0;
-    constexpr static uint32_t MIN_STEADY_STATE_DURATION_MS = 5000; // 5 seconds
-    constexpr static uint8_t steadyRpmTolerance = 20; // RPM tolerance for steady state check
+    constexpr static uint32_t MIN_STEADY_STATE_DURATION_MS = 1500; // minimum time for the rpm to be in relative steady state before setpoint is adjusted
+    constexpr static uint8_t steadyRpmTolerance = 80; // RPM tolerance for steady state check
 };

@@ -103,9 +103,9 @@ class SerialInterface {
                 ESP_LOGI(TAG, "Disabled RPM output to log");
 
             }
-            else if (command.equalsIgnoreCase("setPower")) {
-                nacelleFSM.setPower(parts.tokens[1].toFloat());
-                ESP_LOGI(TAG, "Updated power: %.2f", nacelleFSM.power);
+            else if (command.equalsIgnoreCase("setTargetPower")) {
+                nacelleFSM.setTargetPower(parts.tokens[1].toFloat());
+                ESP_LOGI(TAG, "Updated target power: %.2f", nacelleFSM.targetPower_mW);
             }
             else if (command.equalsIgnoreCase("help")) {
                 Serial.println("Available commands:");

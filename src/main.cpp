@@ -440,6 +440,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
                 nacelle.d_mVPS = packet.d_mVPS;
                 nacelle.current_mA = packet.current_mA;
                 nacelle.dIPS = packet.dIPS;
+                nacelle.power_mW = packet.powerIfWholeNum_mW;
                 nacelle.setSafetyFlag(
                     static_cast<ESTOP_TYPE_FAST>(packet.safety));
             }
