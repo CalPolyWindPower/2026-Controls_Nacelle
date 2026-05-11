@@ -43,7 +43,7 @@ namespace Encoder {
     // constexpr uint_fast32_t OPTIMAL_SAMPLE_TIME_mS =
     // ENCODER::OPTIMAL_SAMPLE_TIME_mS;
 
-    // constexpr uint_fast16_t AVERAGING_PERIOD_MS =
+    // constexpr uint_fast16_t AVERAGING_PERIOD_MS =kp
     // ENCODER::FILTER_HISTORY_SIZE * ENCODER::OPTIMAL_SAMPLE_TIME_mS;
     constexpr uint_fast8_t DATASET_SIZE = ENCODER::FILTER_HISTORY_SIZE;
     constexpr uint32_t SAMPLE_DELAY_MS = ENCODER::OPTIMAL_SAMPLE_TIME_mS;

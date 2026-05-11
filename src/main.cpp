@@ -89,7 +89,7 @@ SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle, nacelleFS
  * @details put your setup code here, to run once:
  */
 void setup() {
-
+    
     // Configure Hardware
     static bool serialInterfaceInitialized = false;
     if (!serialInterfaceInitialized) {

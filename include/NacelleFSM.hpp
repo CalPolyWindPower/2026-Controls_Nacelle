@@ -15,7 +15,7 @@
 class NacelleFSM {
   public: // MARK: Public
     static constexpr const char *TAG = "NFSM";
-    uint32_t targetPower_mW = 27000; // mW
+    uint32_t targetPower_mW = 26000; // mW
     constexpr static int_fast16_t CURTAIL_EXIT_RPM_TOLERANCE = 400; // RPM tolerance for exiting curtailment, prevents oscillation
 
     /**
@@ -112,6 +112,7 @@ class NacelleFSM {
             // sRST -> sRST: Nothing to do
             // nacelle.pitchActuator.writePosMicros(
             //     PITCHING::POS_STARTUP_uS); // todo test
+            //ESP_LOGI(TAG, "power : %u mW", static_cast<int>(nacelle.power_mW));
             return UPDATE_RESULT::NO_CHANGE;
         } else {
             // else: producingPositivePower or maybe just still starting up
@@ -145,7 +146,7 @@ class NacelleFSM {
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sRunLoad) &&
-                   nacelle.isTargetPowerExceeded(targetPower_mW)) { // todo
+                   nacelle.isTargetPowerExceeded(targetPower_mW)) { 
             // sRunLoad -> sCurtail
             currentState = FSMCommon::States::sCurtail;
             
@@ -159,6 +160,7 @@ class NacelleFSM {
                 PITCHING::POS_RUN_uS); // todo input & output
             // DONE: signal load (set targetRPMExceeded)
             // Load will be sent RPM info elsewhere
+        
 
             return UPDATE_RESULT::STATE_CHANGED;
         } else if ((currentState == FSMCommon::States::sCurtail) &&
@@ -179,14 +181,10 @@ class NacelleFSM {
                 ENCODER::TARGET_RPM = ENCODER::TARGET_RPM + RPM_STEP; // todo adjust increment amount
                 ESP_LOGI(TAG, "Increasing target RPM to %u due to underpower condition", ENCODER::TARGET_RPM);
             }
+
             else {
                 nacelle.pitchPIDController.disable();
                 ESP_LOGI(TAG, "Power within acceptable range, PID disabled");
-            }
-
-            if (nacelle.currentRPM < ENCODER::TARGET_RPM - CURTAIL_EXIT_RPM_TOLERANCE) {
-                currentState = FSMCommon::States::sRunLoad;
-                ESP_LOGI(TAG, "Current RPM below target RPM, transitioning back to sRunLoad");
             }
 
             // sCurtail -> sRunLoad
@@ -201,7 +199,14 @@ class NacelleFSM {
             // Load will be sent RPM info elsewhere
             return UPDATE_RESULT::NO_CHANGE;
             //return UPDATE_RESULT::STATE_CHANGED;
-        } else {
+        } else if ((currentState == FSMCommon::States::sCurtail) &&
+                   (nacelle.currentRPM < ENCODER::TARGET_RPM - CURTAIL_EXIT_RPM_TOLERANCE)) {
+            currentState = FSMCommon::States::sRunLoad;
+            ESP_LOGI(TAG, "Current RPM below target RPM, transitioning back to sRunLoad");
+            return UPDATE_RESULT::STATE_CHANGED;
+        }
+        
+        else {
             return UPDATE_RESULT::NO_CHANGE;
         }
 
