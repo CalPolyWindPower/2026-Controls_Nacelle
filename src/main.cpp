@@ -76,7 +76,7 @@ PID pitchPIDController = PID(
     /* Gains */ {PITCHING::PITCH_Kp, PITCHING::PITCH_Ki, PITCHING::PITCH_Kd},
     /* Setpoint */ ENCODER::TARGET_RPM,
     /* Mode */ PID::ProportionalMode::ProportionalOnMeas,
-    /* Limits */ {PITCHING::SERVO_MIN_uS_2026, PITCHING::SERVO_MAX_uS_2026},
+    /* Limits */ {PITCHING::SERVO_MIN_uS_2026, 1730},
     /* Min Sample Time */ 0,
     /* Direction */ PID::Direction::DIRECT, "PC");
 
@@ -396,7 +396,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             ESP_LOGI(TAG, "PID Output: %u", pidOutput);
             //pitchActuator.writePosMicros(pidOutput);
             if (pidOutput >= PITCHING::SERVO_MIN_uS_2026 &&
-                pidOutput <= PITCHING::SERVO_MAX_uS_2026) {
+                pidOutput <= 1730) {
                 ESP_LOGI(TAG, "PID Output: %.1f", pidOutput);
                 pitchActuator.writePosMicros(static_cast<int>(pidOutput));
             } else {
