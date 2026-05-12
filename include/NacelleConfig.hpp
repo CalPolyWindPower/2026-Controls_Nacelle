@@ -160,8 +160,8 @@ namespace PITCHING {
     // todo: Ftarget rpm var
 
     /* PID Config */
-    constexpr float PITCH_Kp = 0.35f; // CONFIG - 0.005f last year // TODO
-    constexpr float PITCH_Ki = 0.03f; // CONFIG - 0.001f last year // TODO
+    constexpr float PITCH_Kp = 0.20f; // CONFIG - 0.005f last year // TODO
+    constexpr float PITCH_Ki = 0.02f; // CONFIG - 0.001f last year // TODO
     constexpr float PITCH_Kd = 0.0f;
 
     inline bool enableRpmOutput = false; // CONFIG - whether to output RPM to log
