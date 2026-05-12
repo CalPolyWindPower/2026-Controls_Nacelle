@@ -199,14 +199,14 @@ class NacelleFSM {
             // Load will be sent RPM info elsewhere
             return UPDATE_RESULT::NO_CHANGE;
             //return UPDATE_RESULT::STATE_CHANGED;
-        } else if ((currentState == FSMCommon::States::sCurtail) &&
+       /* } else if ((currentState == FSMCommon::States::sCurtail) &&
                    (nacelle.currentRPM < ENCODER::TARGET_RPM - CURTAIL_EXIT_RPM_TOLERANCE)) {
             currentState = FSMCommon::States::sRunLoad;
             ESP_LOGI(TAG, "Current RPM below target RPM, transitioning back to sRunLoad");
             return UPDATE_RESULT::STATE_CHANGED;
-        }
+        }*/
         
-        else {
+        }else {
             return UPDATE_RESULT::NO_CHANGE;
         }
 
