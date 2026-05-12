@@ -15,7 +15,7 @@
 class NacelleFSM {
   public: // MARK: Public
     static constexpr const char *TAG = "NFSM";
-    uint32_t targetPower_mW = 26000; // mW
+    uint32_t targetPower_mW = 40000; // mW
     constexpr static int_fast16_t CURTAIL_EXIT_RPM_TOLERANCE = 400; // RPM tolerance for exiting curtailment, prevents oscillation
 
     /**
