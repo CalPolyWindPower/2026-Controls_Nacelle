@@ -85,6 +85,9 @@ class NacelleComms {
     bool linkAlive_;
     NacellePacket outgoingPacket_ = {0};
     LoadboxPacket incomingPacket_ = {0};
+    // Nacelle - Tx: 11, Rx: 12
+    // Load - Tx: 43, Rx: 44
+    AdapterUHCI adapterUHCI = AdapterUHCI({.tx = 11, .rx = 12}); // FIXME - hardcoded
 
     // uint8_t remoteState_;
     // uint8_t remoteEstop_;

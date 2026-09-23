@@ -10,6 +10,8 @@
 #include <esp_log.h>
 #if COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include <esp_wifi.h>
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    include <etl/vector.h>
 #endif
 #include <stdint.h>
 
@@ -111,6 +113,11 @@ bool NacelleComms::begin() {
         // Logging already handled
         return false;
     }
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+    if (!adapterUHCI.begin()) {
+        ESP_LOGE(TAG, "Failed to initialize UHCI adapter");
+        return false;
+    }
 #endif
 
     ESP_LOGI(TAG, "Nacelle ready");
@@ -209,6 +216,10 @@ bool NacelleComms::sendNacelleData(int16_t rpm, int16_t angularAccel_RPMPS) {
         linkAlive_ = false;
         // ESP_LOGE(TAG, "Tx failed");
     }
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+    etl::vector<uint8_t, AdapterUHCI::MAX_DATA_LEN> dataToSend;
+    memcpy(dataToSend.data(), &outgoingPacket_, sizeof(NacellePacket));
+    adapterUHCI.transmit(dataToSend);
 #endif
     // }
     // if (now - lastRxTime_ > NACELLE_COMMS_TIMEOUT_MS) {
