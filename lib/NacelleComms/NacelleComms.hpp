@@ -9,8 +9,23 @@
 #ifndef NACELLE_COMMS_HPP
 #define NACELLE_COMMS_HPP
 
+#include "../../include/NacelleConfig.hpp"
 #include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include <Arduino.h>
+
+// #define COMMS_STRATEGY_OLD 0
+// #define COMMS_STRATEGY_NEW 1
+// #define COMMS_STRATEGY_UHCI 2
+// #define COMMS_STRATEGY COMMS_STRATEGY_UHCI // tmp
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+#    error "COMMS_STRATEGY_OLD not supported by NacelleComms"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    warning "Useing experimental COMMS_STRATEGY_UHCI for UCHI UART over fiber"
+#else
+#    error "Invalid COMMS_STRATEGY"
+#endif
+
 #if COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include <WiFi.h>
 #    include <esp_now.h>
@@ -85,9 +100,12 @@ class NacelleComms {
     bool linkAlive_;
     NacellePacket outgoingPacket_ = {0};
     LoadboxPacket incomingPacket_ = {0};
+#if COMMS_STRATEGY == COMMS_STRATEGY_UHCI
     // Nacelle - Tx: 11, Rx: 12
     // Load - Tx: 43, Rx: 44
-    AdapterUHCI adapterUHCI = AdapterUHCI({.tx = 11, .rx = 12}); // FIXME - hardcoded
+    AdapterUHCI adapterUHCI =
+        AdapterUHCI({.tx = 11, .rx = 12}); // FIXME - hardcoded
+#endif
 
     // uint8_t remoteState_;
     // uint8_t remoteEstop_;

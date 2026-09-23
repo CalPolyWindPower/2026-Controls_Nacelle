@@ -4,16 +4,22 @@
 
 // Third Party Libraries
 #include <ActuonixL12.hpp>
+#include <cstdlib> // or <cmath>
 #include <etl/format_spec.h>
 #include <etl/string.h>
 #include <etl/to_string.h>
-#include <cstdlib>  // or <cmath>
 
 // Custom Includes
-#include "NacelleComms.hpp"
+#if COMMS_STRATEGY == COMMS_STRATEGY_OLD
+#    error "COMMS_STRATEGY_OLD not supported by NacelleContainer"
+#elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    warning "Useing experimental COMMS_STRATEGY_UHCI for UCHI UART over fiber"
+#else
+#    error "Invalid COMMS_STRATEGY"
+#endif
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
-
 
 /**
  * @brief Class to manage the container for nacelle data
@@ -156,22 +162,26 @@ class NacelleContainer {
         return (currentRPM > ENCODER::TARGET_RPM);
     }
 
-    // checks if the rpm has been in a steady state (within tolerance) for a certain duration
-    bool isTargetRPMExceededHysteresis()  {
+    // checks if the rpm has been in a steady state (within tolerance) for a
+    // certain duration
+    bool isTargetRPMExceededHysteresis() {
         const TickType_t now = xTaskGetTickCount();
         if (std::abs(static_cast<int32_t>(currentRPM) -
-             static_cast<int32_t>(ENCODER::TARGET_RPM)) < steadyRpmTolerance) {
+                     static_cast<int32_t>(ENCODER::TARGET_RPM)) <
+            steadyRpmTolerance) {
             if (initialTime != 0) {
-                if ((now - initialTime) >= pdMS_TO_TICKS(MIN_STEADY_STATE_DURATION_MS)) {
-                    ESP_LOGI(TAG, "Target RPM exceeded hysteresis condition met. Current RPM: %d, Target RPM: %d", currentRPM.load(), ENCODER::TARGET_RPM);
+                if ((now - initialTime) >=
+                    pdMS_TO_TICKS(MIN_STEADY_STATE_DURATION_MS)) {
+                    ESP_LOGI(TAG,
+                             "Target RPM exceeded hysteresis condition met. "
+                             "Current RPM: %d, Target RPM: %d",
+                             currentRPM.load(), ENCODER::TARGET_RPM);
                     return true;
                 }
-            }
-            else {
+            } else {
                 initialTime = xTaskGetTickCount();
             }
-        }
-        else {
+        } else {
             initialTime = 0;
         }
         return false;
@@ -297,6 +307,9 @@ class NacelleContainer {
     bool powerPositive = false;
     bool enableSafetyFlag = true;
     TickType_t initialTime = 0;
-    constexpr static uint32_t MIN_STEADY_STATE_DURATION_MS = 1500; // minimum time for the rpm to be in relative steady state before setpoint is adjusted
-    constexpr static uint8_t steadyRpmTolerance = 80; // RPM tolerance for steady state check
+    constexpr static uint32_t MIN_STEADY_STATE_DURATION_MS =
+        1500; // minimum time for the rpm to be in relative steady state before
+              // setpoint is adjusted
+    constexpr static uint8_t steadyRpmTolerance =
+        80; // RPM tolerance for steady state check
 };

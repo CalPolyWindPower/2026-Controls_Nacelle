@@ -15,6 +15,12 @@ static_assert(__cplusplus >= 202302L, "C++23 standard or later required.");
 #    warning "Not using production nacelle board!"
 #endif
 
+// Networking
+#define COMMS_STRATEGY_OLD 0
+#define COMMS_STRATEGY_NEW 1
+#define COMMS_STRATEGY_UHCI 2
+#define COMMS_STRATEGY COMMS_STRATEGY_NEW
+
 /**
  * @brief Debugging Setup
  * @see
@@ -85,7 +91,7 @@ namespace LED {
 
 namespace ENCODER {
     constexpr uint_fast16_t START_RUN_2_RPM = 200; // CONFIG
-    inline uint_fast16_t TARGET_RPM = 3000;     // CONFIG // TODO
+    inline uint_fast16_t TARGET_RPM = 3000;        // CONFIG // TODO
     constexpr uint_fast16_t MAX_RPM = 3500;        // CONFIG
     constexpr uint_fast8_t MAX_RPS = MAX_RPM / UNITS::SECS_PER_MIN;
     constexpr uint_fast16_t MIN_T_mS_PER_REV = 1000 / MAX_RPS;
@@ -164,7 +170,8 @@ namespace PITCHING {
     constexpr float PITCH_Ki = 0.02f; // CONFIG - 0.001f last year // TODO
     constexpr float PITCH_Kd = 0.0f;
 
-    inline bool enableRpmOutput = false; // CONFIG - whether to output RPM to log
+    inline bool enableRpmOutput =
+        false; // CONFIG - whether to output RPM to log
 } // namespace PITCHING
 
 namespace RUN {
@@ -172,7 +179,7 @@ namespace RUN {
     enum TASK_INTERVALS : uint_fast32_t {
         TI_FSM_mS = 100,        // CONFIG - 100 ms (10 Hz)
         TI_POLL_SENSORS_mS = 2, // CONFIG - 2 ms (500 Hz) // todo - change?
-        TI_PITCH_mS = 100,       // CONFIG - 10 ms (100 Hz)
+        TI_PITCH_mS = 100,      // CONFIG - 10 ms (100 Hz)
         TI_RECV_ms = 50,        // CONFIG - 100 ms (10 Hz)
         TI_SEND_ms =
             ENCODER::MEAS_TIME_DELTA_MS, // CONFIG - 5 - 10 ms (200 - 100 Hz)

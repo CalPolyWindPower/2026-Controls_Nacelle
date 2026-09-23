@@ -5,6 +5,10 @@
  * Handles wireless communication between nacelle and load box.
  * Sends RPM data and receives control/state information.
  */
+// #define COMMS_STRATEGY_OLD 0
+// #define COMMS_STRATEGY_NEW 1
+// #define COMMS_STRATEGY_UHCI 2
+// #define COMMS_STRATEGY COMMS_STRATEGY_UHCI // tmp
 
 #include "NacelleComms.hpp"
 #include <esp_log.h>

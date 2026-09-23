@@ -10,23 +10,18 @@
 #include <Arduino.h>
 #include <etl/circular_buffer.h>
 
+// Priority Project Includes
+#include "NacelleConfig.hpp"
+
 // Project Includes
 #include "2026Core/CommonConfig.hpp" // Include after NacelleConfig due to macro precednece
 #include "2026Core/Units.hpp"
 #include "ActuonixL12.hpp"
 #include "Encoder.hpp"
-#include "NacelleComms.hpp"
-#include "NacelleConfig.hpp"
-#include "NacelleContainer.hpp"
-#include "NacelleFSM.hpp"
 #include "NacelleTasks.hpp"
 #include "PID.hpp"
-#include "SerialInterface.hpp"
 
-#define COMMS_STRATEGY_OLD 0
-#define COMMS_STRATEGY_NEW 1
-#define COMMS_STRATEGY_UHCI 2
-#define COMMS_STRATEGY COMMS_STRATEGY_NEW
+// Config moved to NacelleConfig.hpp
 #if COMMS_STRATEGY == COMMS_STRATEGY_OLD
 #    include "2026Core/Net/Net-Application/NTP.hpp"
 #    include "2026Core/Net/Net-Application/OTA.hpp"
@@ -36,11 +31,16 @@
 #    include "2026Core/Net/NetAdapter_A.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#    include "NacelleComms.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
+#    include "NacelleComms.hpp"
 #else
 #    error "Invalid COMMS_STRATEGY"
 #endif
+#include "NacelleContainer.hpp" // Must be included after COMMS_STRATEGY is configured
+#include "NacelleFSM.hpp"       // Depends on NacelleContainer
+#include "SerialInterface.hpp" // Depends on NacelleContainer
 
 // MARK: Config
 static constexpr const char *TAG = "NaMa";
