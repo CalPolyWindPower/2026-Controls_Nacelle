@@ -8,7 +8,9 @@
 
 #include "NacelleComms.hpp"
 #include <esp_log.h>
-#include <esp_wifi.h>
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#    include <esp_wifi.h>
+#endif
 #include <stdint.h>
 
 // Initialization of static members
@@ -19,6 +21,7 @@ uint_fast32_t NacelleComms::bytesNotSent = 0;
 uint_fast32_t NacelleComms::rxEvents = 0;
 uint_fast32_t NacelleComms::bytesReceived = 0;
 
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
 /**
  * @brief MAC address of the load box controller.
  */
@@ -27,6 +30,7 @@ constexpr uint8_t CPWP_UMP3_TOASTED[] = {0xEC, 0xDA, 0x3B,
 
 constexpr uint8_t CPWP_UMPS3_DEV[] = {0xEC, 0xDA, 0x3B, 0x5B, 0x03, 0xD4};
 const uint8_t *LOADBOX_MAC = CPWP_UMPS3_DEV;
+#endif
 
 /**
  * @brief Static pointer to the current NacelleComms instance for callback
@@ -56,6 +60,7 @@ NacelleComms::NacelleComms()
  * @return true if initialization is successful, false otherwise.
  */
 bool NacelleComms::begin() {
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     // Set device as a Wi-Fi Station
     if (!WiFi.mode(WIFI_STA)) {
         ESP_LOGE(TAG, "Failed to set WiFi mode");
@@ -106,11 +111,13 @@ bool NacelleComms::begin() {
         // Logging already handled
         return false;
     }
+#endif
 
     ESP_LOGI(TAG, "Nacelle ready");
     return true;
 }
 
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
 /**
  * @brief Configures the ESP-NOW peer (load box controller).
  */
@@ -181,6 +188,7 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info,
         ESP_LOGE(TAG, "Rx invalid len: %d", len);
     }
 }
+#endif
 
 /**
  * @brief Sends RPM data to the load box controller.
@@ -190,6 +198,7 @@ void NacelleComms::onDataRecv_(const esp_now_recv_info_t *recv_info,
 bool NacelleComms::sendNacelleData(int16_t rpm, int16_t angularAccel_RPMPS) {
     // if (now - lastSendTime_ >= NACELLE_COMMS_SEND_PERIOD_MS) {
     makeNacellePacket(outgoingPacket_, rpm, angularAccel_RPMPS);
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     esp_err_t result =
         esp_now_send(LOADBOX_MAC, reinterpret_cast<uint8_t *>(&outgoingPacket_),
                      sizeof(outgoingPacket_));
@@ -200,6 +209,7 @@ bool NacelleComms::sendNacelleData(int16_t rpm, int16_t angularAccel_RPMPS) {
         linkAlive_ = false;
         // ESP_LOGE(TAG, "Tx failed");
     }
+#endif
     // }
     // if (now - lastRxTime_ > NACELLE_COMMS_TIMEOUT_MS) {
     //   linkAlive_ = false;

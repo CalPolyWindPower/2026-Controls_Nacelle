@@ -1,6 +1,6 @@
 /**
  * @file NacelleComms.h
- * @brief ESP-NOW communication module for nacelle controller.
+ * @brief Communication module for nacelle controller.
  *
  * Handles wireless communication between nacelle and load box.
  * Sends RPM data and receives control/state information.
@@ -11,8 +11,12 @@
 
 #include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #include <Arduino.h>
-#include <WiFi.h>
-#include <esp_now.h>
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
+#    include <WiFi.h>
+#    include <esp_now.h>
+#elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
+#    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+#endif
 #include <etl/format_spec.h>
 #include <etl/string.h>
 #include <etl/to_string.h>
@@ -28,14 +32,16 @@ extern const uint8_t *LOADBOX_MAC;
 // const unsigned long NACELLE_COMMS_SEND_PERIOD_MS = 100;
 
 /**
- * @brief Communication timeout threshold in milliseconds.
+ * @brief Communication timeout threshold in milliseconds.s
  */
 // const unsigned long NACELLE_COMMS_TIMEOUT_MS = 1500;
 
 class NacelleComms {
   public:
     static constexpr char *TAG = "NCO";
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     static constexpr uint8_t wiFiChannel = 6;
+#endif
 
     static QueueHandle_t priorityDataQueue;
 
@@ -83,11 +89,13 @@ class NacelleComms {
     // uint8_t remoteState_;
     // uint8_t remoteEstop_;
 
+#if COMMS_STRATEGY == COMMS_STRATEGY_NEW
     esp_err_t setupPeer_();
     static void onDataSent_(const wifi_tx_info_t *tx_info,
                             esp_now_send_status_t status);
     static void onDataRecv_(const esp_now_recv_info_t *recv_info,
                             const uint8_t *data, int len);
+#endif
 };
 
 #endif // NACELLE_COMMS_HPP

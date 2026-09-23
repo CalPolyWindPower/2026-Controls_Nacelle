@@ -37,7 +37,7 @@
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 #    include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
-#    include "2026Core/Net/Net-Link/AdapterUHCI.hpp"
+#    include "2026Core/TurbinePacket/TurbinePacket.hpp"
 #else
 #    error "Invalid COMMS_STRATEGY"
 #endif
@@ -62,7 +62,7 @@ SyncedClock netClock(adapterESPNow);               // todo
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
 NacelleComms nacelleComms;
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
-#    error "UHCI COMMS_STRATEGY not implemented yet"
+NacelleComms nacelleComms;
 #else
 #    error "Invalid COMMS_STRATEGY"
 #endif
@@ -83,13 +83,14 @@ PID pitchPIDController = PID(
 NacelleContainer nacelle(pitchActuator, pitchPIDController, nacelleComms);
 NacelleFSM nacelleFSM(nacelle);
 
-SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle, nacelleFSM);
+SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle,
+                                nacelleFSM);
 /**
  * MARK: Setup
  * @details put your setup code here, to run once:
  */
 void setup() {
-    
+
     // Configure Hardware
     static bool serialInterfaceInitialized = false;
     if (!serialInterfaceInitialized) {
@@ -150,12 +151,12 @@ void setup() {
 #endif
 
     // Configure ESP-NOW
-    static bool espNowInitalized = false;
+    static bool commsInitalized = false;
 #if COMMS_STRATEGY == COMMS_STRATEGY_OLD
-    if (!espNowInitalized) {
+    if (!commsInitalized) {
         if (adapterESPNow.begin()) {
             ESP_LOGI(TAG, "ESP-NOW initialized.");
-            espNowInitalized = true;
+            commsInitalized = true;
         } else {
             ESP_LOGE(TAG, "Failed to initialize ESP-NOW");
         }
@@ -196,12 +197,16 @@ void setup() {
     // TODO: Configure response handler, load server
 #elif COMMS_STRATEGY == COMMS_STRATEGY_NEW
     if (nacelleComms.begin()) {
-        espNowInitalized = true;
+        commsInitalized = true;
     } else {
         ESP_LOGE(TAG, "Failed to initialize NacelleComms");
     }
 #elif COMMS_STRATEGY == COMMS_STRATEGY_UHCI
-#    error "UHCI COMMS_STRATEGY not implemented yet"
+    if (nacelleComms.begin()) {
+        commsInitalized = true;
+    } else {
+        ESP_LOGE(TAG, "Failed to initialize NacelleComms");
+    }
 #endif
 
     digitalWrite(LED::PIN, LOW);
@@ -383,9 +388,10 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         static TickType_t xLastWakeTime = xTaskGetTickCount();
 
         if (nacelleFSM.getCurrentState() == FSMCommon::States::sStartRun) {
-            //nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
-            // Fine
-            for (int i = PITCHING::POS_STARTUP_uS; i < PITCHING::POS_RUN_uS; i += 10) {
+            // nacelleFSM.getCurrentState() == FSMCommon::States::sRunLoad) {
+            //  Fine
+            for (int i = PITCHING::POS_STARTUP_uS; i < PITCHING::POS_RUN_uS;
+                 i += 10) {
                 nacelle.pitchActuator.writePosMicros(i);
                 delay(220);
             }
@@ -394,9 +400,8 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             auto pidOutput = static_cast<uint_fast16_t>(
                 pitchPIDController.compute(nacelle.currentRPM)); // DONE - input
             ESP_LOGI(TAG, "PID Output: %u", pidOutput);
-            //pitchActuator.writePosMicros(pidOutput);
-            if (pidOutput >= PITCHING::SERVO_MIN_uS_2026 &&
-                pidOutput <= 1730) {
+            // pitchActuator.writePosMicros(pidOutput);
+            if (pidOutput >= PITCHING::SERVO_MIN_uS_2026 && pidOutput <= 1730) {
                 ESP_LOGI(TAG, "PID Output: %.1f", pidOutput);
                 pitchActuator.writePosMicros(static_cast<int>(pidOutput));
             } else {
