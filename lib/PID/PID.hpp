@@ -258,18 +258,18 @@ class PID {
     float lastInput = 0;
 
     /* Tuning and Mode Configuration */
-    float dispKp;     // * (P)roportional tuning Parameter
-    float dispKi;     // * (I)ntegral tuning Parameter
-    float dispKd;     // * (D)erivative tuning Parameter
-    float internalKp; // * (P)roportional tuning Parameter
-    float internalKi; // * (I)ntegral tuning Parameter
-    float internalKd; // * (D)erivative tuning Parameter
-    float setpoint;
-    float outMin;
-    float outMax;
-    unsigned long minSampleTime;
-    ProportionalMode proportionalMode;
-    Direction controllerDirection;
+    float dispKp = 0.0f;            // * (P)roportional tuning Parameter
+    float dispKi = 0.0f;            // * (I)ntegral tuning Parameter
+    float dispKd = 0.0f;            // * (D)erivative tuning Parameter
+    float internalKp = 0.0f; // * (P)roportional tuning Parameter
+    float internalKi = 0.0f; // * (I)ntegral tuning Parameter
+    float internalKd = 0.0f; // * (D)erivative tuning Parameter
+    float setpoint = 0.0f;
+    float outMin = 0.0f;
+    float outMax = 0.0f;
+    unsigned long minSampleTime = 0;
+    ProportionalMode proportionalMode = ProportionalMode::ProportionalOnErr;
+    Direction controllerDirection = Direction::DIRECT;
     bool enabled = false;
 };
 
