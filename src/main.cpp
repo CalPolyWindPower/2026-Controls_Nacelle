@@ -3,6 +3,7 @@
 // https://pvs-studio.com
 
 // System Includes
+#include <esp32-hal-cpu.h>
 #include <esp_log.h>
 #include <temperature_sensor.h>
 
@@ -90,7 +91,6 @@ SerialInterface serialInterface(WTbCommonConfig::SERIAL_BAUD, nacelle,
  * @details put your setup code here, to run once:
  */
 void setup() {
-
     // Configure Hardware
     static bool serialInterfaceInitialized = false;
     if (!serialInterfaceInitialized) {
@@ -108,6 +108,40 @@ void setup() {
         // Save power during main operations
         digitalWrite(LED::PIN, LOW);
     }
+
+    // Print support CPU frequencies
+    ESP_LOGI(TAG, "Supported CPU Frequencies: %s",
+             getSupportedCpuFrequencyMhz(getXtalFrequencyMhz()));
+    // Print current CPU frequency
+    ESP_LOGI(TAG, "Current CPU Frequency: %u MHz", getCpuFrequencyMhz());
+
+    // Set CPU frequency
+    // Serial.flush();
+    // delay(10);
+    digitalWrite(LED::PIN, HIGH);
+    // CONFIG - CPU frequency in MHz
+    // TODO: Disable debug logging for this call, proposed fix below, pending
+    // verification Get log level const esp_log_level_t logLevel =
+    // esp_log_level_get(NULL); esp_log_level_set("*", ESP_LOG_INFO);
+    const bool CPUEFreqChanged = setCpuFrequencyMhz(240);
+    // const bool CPUEFreqChanged = setCpuFrequencyMhz(160);
+    // const bool CPUEFreqChanged = setCpuFrequencyMhz(80);
+    // const bool CPUEFreqChanged = setCpuFrequencyMhz(40);
+    // const bool CPUEFreqChanged = setCpuFrequencyMhz(10);
+    // esp_log_level_set("*", logLevel);
+    // delay(1000);
+    // digitalWrite(LED::PIN, LOW);
+    // delay(1000);
+    // if (!CPUEFreqChanged) {
+    //     ESP_LOGE(TAG, "CPU frequency change rejected");
+    // } else {
+    //     ESP_LOGI(TAG, "CPU frequency is now %u MHz", getCpuFrequencyMhz());
+    // }
+
+    // Print current CPU frequency
+    ESP_LOGI(TAG, "Current CPU Frequency: %u MHz", getCpuFrequencyMhz());
+    // Serial.flush();
+    // delay(1000);
 
     // Initialize Actuator
     static bool actuatorInitialized = false;
@@ -307,7 +341,7 @@ vTaskUpdateFSM([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_FSM_mS));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
@@ -375,7 +409,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
             &xLastWakeTime,
             pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_POLL_SENSORS_mS));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
@@ -421,7 +455,7 @@ vTaskPollSensors([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_PITCH_mS));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
             xLastWakeTime = xTaskGetTickCount();
         }
     }
@@ -462,7 +496,7 @@ vTaskRecvData([[maybe_unused]] void *pvParameters) { // NOSONAR
             BaseType_t xWasDelayed = xTaskDelayUntil( // TODO: Fix polling
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_RECV_ms));
             if (xWasDelayed != pdTRUE) {
-                ESP_LOGE(TAG, "Timing not met!");
+                // ESP_LOGE(TAG, "Timing not met!");
             }
 
             // (suspend ^ blocks
@@ -487,7 +521,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             BaseType_t xWasDelayed = xTaskDelayUntil(
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
             if (xWasDelayed != pdTRUE) {
-                ESP_LOGE(TAG, "Timing not met!");
+                // ESP_LOGE(TAG, "Timing not met!");
             }
         } else {
             // Suspend until reenabled
@@ -495,7 +529,7 @@ vTaskSendData([[maybe_unused]] void *pvParameters) { // NOSONAR
             BaseType_t xWasDelayed = xTaskDelayUntil( // TODO: Fix polling
                 &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_SEND_ms));
             if (xWasDelayed != pdTRUE) {
-                ESP_LOGE(TAG, "Timing not met!");
+                // ESP_LOGE(TAG, "Timing not met!");
             }
 
             // (suspend ^ blocks
@@ -518,7 +552,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_CFG_ms));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
@@ -534,7 +568,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_TELNET_ms));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
@@ -549,7 +583,7 @@ vTaskConfigure([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(RUN::TASK_INTERVALS::TI_OTA_ms));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
@@ -570,7 +604,7 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
         BaseType_t xWasDelayed = xTaskDelayUntil(
             &xLastWakeTime, pdMS_TO_TICKS(LED::BLINK_ON_MILLIS));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
 
         digitalWrite(LED::PIN, LOW);
@@ -578,7 +612,7 @@ vTaskStatusLED([[maybe_unused]] void *pvParameters) { // NOSONAR
         xWasDelayed = xTaskDelayUntil(&xLastWakeTime,
                                       pdMS_TO_TICKS(LED::BLINK_OFF_MILLIS));
         if (xWasDelayed != pdTRUE) {
-            ESP_LOGE(TAG, "Timing not met!");
+            // ESP_LOGE(TAG, "Timing not met!");
         }
     }
 }
