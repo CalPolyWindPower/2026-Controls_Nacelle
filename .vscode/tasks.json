@@ -64,7 +64,7 @@
             }
         },
         {
-            "label": "Platformio Remote: Initalzie Remote Agent",
+            "label": "Platformio Remote: Initialize Remote Agent",
             "type": "shell",
             "command": "pio remote agent start",
             "group": {
