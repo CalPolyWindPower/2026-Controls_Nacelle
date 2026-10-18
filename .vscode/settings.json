@@ -167,8 +167,8 @@
         "POMPPT",
         "preconfigured",
         "println",
-        "programiz",
         "Programiz's",
+        "programiz",
         "PROGRAMLISTING",
         "projectname",
         "propput",
@@ -251,6 +251,12 @@
     "markdownlint.ignore": [
         "LICENSE.md"
     ],
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}\\compile_commands.json",
+    "sonarlint.analyzerProperties": {},
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, NamespaceIndentation: All, IndentPPDirectives: AfterHash }",
+    "C_Cpp.default.cppStandard": "gnu++26",
+    "C_Cpp.default.cStandard": "gnu23",
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}\\compile_commands.json"
 }
