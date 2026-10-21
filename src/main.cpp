@@ -110,8 +110,13 @@ void setup() {
     }
 
     // Print support CPU frequencies
+    // For old toolchain / IDF build: PLATFORM: Espressif 32 (55.3.37),
+    // framework-arduinoespressif32 @ 3.3.7, framework-arduinoespressif32-libs
+    // @ 5.5.0+sha.87912cd291 ESP_LOGI(TAG, "Supported CPU Frequencies: %s",
+    //          getSupportedCpuFrequencyMhz(getXtalFrequencyMhz()));
+    // For new toolchain:
     ESP_LOGI(TAG, "Supported CPU Frequencies: %s",
-             getSupportedCpuFrequencyMhz(getXtalFrequencyMhz()));
+             getSupportedCpuFrequencyMhz());
     // Print current CPU frequency
     ESP_LOGI(TAG, "Current CPU Frequency: %u MHz", getCpuFrequencyMhz());
 
