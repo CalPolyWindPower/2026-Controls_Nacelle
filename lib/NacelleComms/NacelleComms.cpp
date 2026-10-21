@@ -99,6 +99,25 @@ bool NacelleComms::begin() {
         return false;
     }
 
+    int8_t maxTxPower_quarter_dBm = -1;
+    if (esp_wifi_get_max_tx_power(&maxTxPower_quarter_dBm) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to get max TX power");
+    } else {
+        ESP_LOGI(TAG, "Max TX power: %d dBm", maxTxPower_quarter_dBm/4);
+    }
+    
+    // Default (and max?) is 20 dBm, minimum is 2 dBm
+    constexpr int8_t MAX_TX_POWER_dBm = 10; // 20 dBm
+    if(esp_wifi_set_max_tx_power(MAX_TX_POWER_dBm * 4) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to set max TX power");
+    }
+
+    if (esp_wifi_get_max_tx_power(&maxTxPower_quarter_dBm) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to get max TX power");
+    } else {
+        ESP_LOGI(TAG, "Max TX power: %d dBm", maxTxPower_quarter_dBm/4);
+    }
+    
     if (esp_now_init() != ESP_OK) {
         ESP_LOGE(TAG, "ESP-NOW init failed");
         return false;
