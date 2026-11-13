@@ -8,6 +8,8 @@
 #include <temperature_sensor.h>
 #include <esp_pm.h>
 
+// #include "esp_app_trace.h"
+
 // Library Includes
 #include <Arduino.h>
 #include <etl/circular_buffer.h>
