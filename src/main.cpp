@@ -6,6 +6,7 @@
 #include <esp32-hal-cpu.h>
 #include <esp_log.h>
 #include <temperature_sensor.h>
+#include <esp_pm.h>
 
 // Library Includes
 #include <Arduino.h>
@@ -128,7 +129,7 @@ void setup() {
     // TODO: Disable debug logging for this call, proposed fix below, pending
     // verification Get log level const esp_log_level_t logLevel =
     // esp_log_level_get(NULL); esp_log_level_set("*", ESP_LOG_INFO);
-    const bool CPUEFreqChanged = setCpuFrequencyMhz(240);
+    // const bool CPUEFreqChanged = setCpuFrequencyMhz(240);
     // const bool CPUEFreqChanged = setCpuFrequencyMhz(160);
     // const bool CPUEFreqChanged = setCpuFrequencyMhz(80);
     // const bool CPUEFreqChanged = setCpuFrequencyMhz(40);
@@ -147,6 +148,16 @@ void setup() {
     ESP_LOGI(TAG, "Current CPU Frequency: %u MHz", getCpuFrequencyMhz());
     // Serial.flush();
     // delay(1000);
+
+    // Configure underlying DFS
+    esp_pm_config_t pm_config = {
+        .max_freq_mhz = 240, // Max CPU frequency
+        .min_freq_mhz = 80,  // Scale down to 80MHz when idle
+        .light_sleep_enable = false // Set to true if you want automatic Light-Sleep
+    };
+    
+    ESP_ERROR_CHECK(esp_pm_configure(&pm_config));
+
 
     // Initialize Actuator
     static bool actuatorInitialized = false;
